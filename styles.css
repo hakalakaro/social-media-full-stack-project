@@ -1,0 +1,453 @@
+* {
+  box-sizing: border-box;
+}
+
+html, body {
+  height: 100%;
+  margin: 0;
+  display: flex;
+  flex-direction: column;
+  overflow: auto;
+}
+
+body {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+/* Style the header */
+.header {
+  font-size: 20px;
+  width: 100%;
+  z-index: 14; /* to keep border visible */
+}
+
+/* Container for flexboxes */
+.row {
+  display: flex;
+  flex: 1;
+  height: 100%;
+}
+
+/* Left and right column */
+.column.side {
+  flex: 1;
+  padding: 0;
+  width: 20%;
+  height: 85vh;
+}
+#side1 {
+  background-image: url('./images/testpicture6.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+#side2 {
+  background-image: url('./images/testpicture4.jpg'); /* Replace with your image path */
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+}
+/* Middle column */
+.column.middle {
+  flex: 2;
+  display: flex;
+  flex-direction: column;
+  padding: 0;
+  width: 60vh;
+}
+
+/* Full height for carousel */
+.carousel-inner, .carousel-item {
+  flex: 1; /* Allow carousel to fill available space */
+  height: 83vh; /* Ensure carousel item takes full height */
+}
+
+.carousel-inner img {
+  width: 100%;  /* Ensure images cover full width */
+  height: 100%; /* Ensure images cover full height */
+  object-fit: cover; /* Scale image to cover the area */
+}
+
+#loginModal {
+      
+      align-items: center; /* Center align items horizontally */
+      text-align: center; /* Center align text */
+      margin: auto; /* Center the form in the middle of the container */
+      padding: 17px;
+}
+/* Media query to further adjust for smaller screens */
+@media (max-width: 768px) { /* Adjust this value as needed */
+  .carousel-inner, .carousel-item {
+    height: 80vh; /* Reduce height for smaller screens */
+  }
+  .like-button {
+    width: 40% !important;
+    font-size: 10px;
+    padding: 5px 10px;
+  }
+  .uploaded-image-container {
+    width: 90% !important; /* Make container fill screen on smaller devices */
+  }
+  .no-lines {
+    text-align: center !important;
+  }
+}
+.modal-dialog {
+  max-width: 470px;
+  margin: auto; /* Center horizontally */
+}
+
+.modal-content {
+  border-radius: 0.5rem; /* Optional: Adjusts the border radius */
+}
+
+/* Footer styling */
+.footer {
+  background-color: rgba(var(--bs-dark-rgb));
+  background-image: linear-gradient(rgba(var(--bs-dark-rgb)), grey);
+  padding: 10px;
+  text-align: center;
+  color: white; 
+  width: 100%;
+  font-size: 15px;
+  border-top: 2px solid grey;
+  position: fixed;
+  left: 0;
+  bottom: 0;
+  height: 5%;
+}
+
+@media (max-width: 1000px) {
+  #homeLink {
+    margin-left: 0 !important; /* Remove left margin */
+  }
+  #logo {
+    margin-left: 0 !important;
+  }
+  #searchForm {
+    margin-left: 0 !important;
+  }
+}
+
+@media (max-width: 1800px) {
+  .column.side {
+    display: none; /* Hide side columns */
+  }
+
+  .column.middle {
+    flex: 1; /* Make middle column take full width */
+    height: 100%;
+  }
+}
+#accountForm {
+    background-color: rgba(var(--bs-dark-rgb));
+    background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)) );
+    color: white;
+    display: flex;
+    flex-direction: column;
+    align-items: center; /* Center align items horizontally */
+    text-align: center; /* Center align text */
+    margin: auto; /* Center the form in the middle of the container */
+    width: 90%; /* Make it responsive */
+    max-width: 500px; /* Set a maximum width for larger screens */
+}
+
+#accountForm .form-control {
+    width: 100%; /* Allow input fields to take full width of their container */
+    max-width: 500px; /* Set maximum width for input fields */
+    margin-bottom: 15px; /* Space between fields */
+}
+#accountForm .form-label {
+  margin-bottom: 5px; /* Space between the label and input */
+  text-align: center;; /* Align label text to the left */
+  width: 100%; /* Ensure label takes full width */
+}
+
+#mainPage {
+  
+  
+  height: 100%;
+}
+#mainContainer {
+  overflow-y: auto;
+  display: flex;
+  flex-direction: column; /* Stack posts vertically */
+ 
+  height: 65vh;
+  
+  background-color: #fafafa;
+  align-items: center;
+  
+  margin-bottom: 2px;
+  padding-bottom: 0;
+}
+#mainContainer::-webkit-scrollbar {
+  width: 8px;
+}
+#mainContainer::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  border-radius: 4px;
+}
+#mainContainer::-webkit-scrollbar-track {
+  background-color: #f0f0f0;
+}
+#postContainer {
+  background-image: linear-gradient( grey, rgba(var(--bs-dark-rgb)));
+  
+  display: flex;                  /* Use flexbox layout */
+  align-items: center;
+  padding: 20px;
+  height: 17vh;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+#textContainer {
+  background-image: linear-gradient( grey, rgba(var(--bs-dark-rgb)));
+  
+  display: flex;                  /* Use flexbox layout */
+  align-items: center;
+  padding: 20px;
+  height: 17vh;
+  box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+
+.navbar {
+    width: 100%;
+}
+.shareBtn {
+  position: relative;
+  padding: 10px 20px;
+  border: none;
+  color: white;
+  background-image: linear-gradient( grey, rgba(var(--bs-dark-rgb)));
+  transition: color 0.4s ease;
+  
+  border-radius: 5px;
+  overflow: hidden; /* Ensure the pseudo-element stays within the button */
+  isolation: isolate;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 14px;
+  font-weight: 600; /* Slightly bolder text */
+}
+
+/* Create the green transition bar */
+.shareBtn::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 100%;
+  height: 100%;
+  background-color: rgb(133, 163, 133);
+  transition: left 0.4s ease;
+  z-index: -1; /* Keeps the bar behind the button text */
+}
+
+/* Change text color and animate the bar when hovered */
+.shareBtn:hover {
+  color: rgb(211, 211, 211); /* Change text color on hover */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+.shareBtn:hover::before {
+  left: 0; /* Move the green bar from left to right */
+}
+
+.btn {
+  cursor: pointer;
+}
+.uploaded-image-container {
+  width: 70%;
+  background-color: #fafafa;
+  padding: 10px;
+  
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 10px;
+ 
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  position: relative; /* Position relative to apply pseudo-elements */
+}
+/* Pseudo-elements for containers with lines */
+.with-lines::before,
+.with-lines::after {
+  content: "";
+  position: absolute;
+  height: 2px;
+  width: calc(98% - 40px);
+  background-color: #ccc;
+}
+
+.with-lines::before {
+  top: 0; /* was 10px */
+}
+
+.with-lines::after {
+  bottom: 0; /* was 10px */
+}
+
+/* No lines for containers without lines */
+.no-lines::before,
+.no-lines::after {
+  content: none;
+}
+.with-lines {
+  border-bottom-left-radius: 0;
+  border-bottom-right-radius: 0;
+}
+/* Like button / Comment button div */
+  .no-lines {
+    border-top-left-radius: 0;
+    border-top-right-radius: 0;
+    justify-content: start;
+    display: block;
+    text-align: left;
+  }
+.uploaded-image {
+  border-radius: 10px;
+  border: 2px solid rgb(114, 112, 112);
+  margin: 5px;
+  width: 100%;
+  height: auto; /* Allow height to adjust automatically */
+  max-height: 100%; /* Prevents the image from exceeding container height */
+  
+  object-fit: contain; /* Ensures the image fits within container while maintaining aspect ratio */
+}
+
+
+
+.uploaded-image.enlarged {
+  transform: scale(1.5); /* Adjust scale to desired size */
+  z-index: 20; /* Bring image to the front */
+}
+/* Remove the default dropdown arrow */
+.dropdown-toggle::after {
+  display: none !important;
+}
+
+.switchHeader {
+  visibility: visible; /* Default state */
+  opacity: 1; /* Default state */
+  position: sticky;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 10;
+  background-image: linear-gradient(rgba(var(--bs-dark-rgb)), grey);
+  transition: opacity 1s ease-in-out, visibility 0s 1s, display 0s 1s; /* Slower fade, delayed hiding */
+  border-bottom-left-radius: 5px;
+  border-bottom-right-radius: 5px;
+  margin-bottom: 20px;
+}
+
+.switchHeader.hidden {
+  visibility: hidden; /* Hide element */
+  opacity: 0; /* Hide element */
+  display: none; /* Remove from layout */
+}
+
+/* Like button */
+.like-button {
+  background-image: linear-gradient( grey, rgba(var(--bs-dark-rgb)));
+  color: white; /* White text */
+  border: none;
+  padding: 10px 20px;
+  font-size: 14px;
+  font-weight: 600; /* Slightly bolder text */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 20%; /* Make button width responsive */
+  margin-left: 12px;
+}
+.like-button:hover {
+  background-color: #166fe5; /* Darker blue on hover */
+  transform: scale(1.05); /* Slight zoom effect */
+}
+
+.like-button:focus {
+  outline: none; /* Remove the outline on focus */
+}
+
+.like-button:active {
+  background-color: #1558b0; /* Even darker blue when button is clicked */
+}
+#searchBtn:hover {
+  transform: scale(1.05); /* Slight zoom effect */
+}
+.nav-item:hover {
+  transform: scale(1.05); /* Slight zoom effect */
+}
+.navbar-brand:hover {
+  transform: scale(1.05); /* Slight zoom effect */
+}
+#navbarSupportedContent {
+  z-index: 15;
+}
+.btn:hover {
+  transform: scale(1.05); /* Slight zoom effect */
+}
+.comment-box { /* CHECK THIS LATER */
+  width: 100%;
+  height: 150px;
+  padding: 8px 8px;
+  box-sizing: border-box;
+  border: 2px solid #ccc;
+  border-radius: 5px;
+  background-color: #fcf7f7;
+  margin-top: 10px; /* Optional space above the new div */
+  position: relative;
+  overflow-y: auto;
+  max-height: 400px;
+  height: 400px;
+  display: flex;
+  flex-direction: column-reverse; /* Makes the input field stick at the bottom */
+  justify-content: flex-start;
+}
+/* Style for the input field inside the comment box */
+.comment-box input[type="text"] {
+  width: 60%; /* Full width */
+  padding: 8px; /* Padding inside the input box */
+  font-size: 14px; /* Font size */
+  border: 1px solid #ccc; /* Border around input */
+  border-radius: 5px; /* Rounded corners */
+  box-sizing: border-box; /* Ensure padding doesn't overflow */
+  position: sticky; /* Keep the input at the bottom */
+  
+  background-color: #fff; /* Make sure the input has a background */
+  
+}
+
+/* Optional: Style for input focus */
+.comment-box input[type="text"]:focus {
+  outline: none;
+  border-color: #ccc; /* Border color when focused */
+}
+.postComment {
+  color: white; /* White text */
+  border: none;
+  padding: 10px 10px;
+  font-size: 14px;
+  font-weight: 500; /* Slightly bolder text */
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  border-radius: 5px; /* Rounded corners */
+  cursor: pointer;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  width: 20%; /* Make button width responsive */
+  margin-left: 12px;
+}
