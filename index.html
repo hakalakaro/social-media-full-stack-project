@@ -1,454 +1,533 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
-<title>Test project</title>
-<meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1">
-<link rel="stylesheet" href="styles.css">
-<link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
-<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
-<script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
-<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
+  <title>Test project</title>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link rel="stylesheet" href="styles.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
+  <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet"
+    integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
 </head>
+
 <body>
-    
-    <div class="header">
-        <nav  data-bs-theme="dark" style="justify-content: center;">
-        <nav class="navbar navbar-expand-lg bg-body-tertiary" style="background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)) ); border-bottom: 2px solid grey; padding: 10px;">
-            <div class="container-fluid">
-              <a class="navbar-brand" href="#" style="float: left;"><img src="./images/logopicture.jpg" id="logo" alt="Logo" style="height: 90px; margin-left: 25px; border-radius: 10px;"></a>
-              <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
-                <span class="navbar-toggler-icon"></span>
-              </button>
-              <div class="collapse navbar-collapse" id="navbarSupportedContent">
-                <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 17px;">
-                  <li class="nav-item" style="padding-right: 40px;">
-                    <a class="nav-link active" aria-current="page" href="#" id="homeLink" style="margin-left: 45px; color: white;"><i class="fa fa-home" aria-hidden="true" style="margin-right: 5px;"></i>Home</a>
+
+  <div class="header">
+    <nav data-bs-theme="dark" style="justify-content: center;">
+      <nav class="navbar navbar-expand-lg bg-body-tertiary"
+        style="background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)) ); border-bottom: 2px solid grey; padding: 10px;">
+        <div class="container-fluid">
+          <a class="navbar-brand" href="#" style="float: left;"><img src="./images/logopicture.jpg" id="logo" alt="Logo"
+              style="height: 90px; margin-left: 25px; border-radius: 10px;"></a>
+          <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
+            data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
+            aria-label="Toggle navigation">
+            <span class="navbar-toggler-icon"></span>
+          </button>
+          <div class="collapse navbar-collapse" id="navbarSupportedContent">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 17px;">
+              <li class="nav-item" style="padding-right: 40px;">
+                <a class="nav-link active" aria-current="page" href="#" id="homeLink"
+                  style="margin-left: 45px; color: white;"><i class="fa fa-home" aria-hidden="true"
+                    style="margin-right: 5px;"></i>Home</a>
+              </li>
+              <li class="nav-item" style="padding-right: 40px;">
+                <a class="nav-link" href="#" style="color: white;"><i class="fa fa-info-circle" aria-hidden="true"
+                    style="margin-right: 5px;"></i>About</a>
+              </li>
+              <li class="nav-item dropdown" style="padding-right: 40px;">
+                <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
+                  aria-expanded="false" style="color: white;"><i class="fa fa-cube" aria-hidden="true" ;></i>
+                  Portal
+                </a>
+                <ul class="dropdown-menu">
+                  <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal"
+                      id="loginDropdown"><i class="fa fa-sign-in" aria-hidden="true"
+                        style="margin-right: 5px;"></i>Login</a></li>
+                  <li><a class="dropdown-item" href="#create-account" id="createAccDropdown"><i class="fa fa-user-plus"
+                        aria-hidden="true" style="margin-right: 5px;"></i>Register</a></li>
+                  <li><a class="dropdown-item" href="#" id="profileDropdown" style="display: none;"><i
+                        class="fa fa-user" aria-hidden="true" style="margin-right: 5px;"></i>Profile</a></li>
+                  <li>
+                    <hr class="dropdown-divider">
                   </li>
-                  <li class="nav-item" style="padding-right: 40px;">
-                    <a class="nav-link" href="#" style="color: white;"><i class="fa fa-info-circle" aria-hidden="true" style="margin-right: 5px;"></i>About</a>
-                  </li>
-                  <li class="nav-item dropdown" style="padding-right: 40px;">
-                    <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown" aria-expanded="false" style="color: white;"><i class="fa fa-cube" aria-hidden="true";></i>
-                      Portal
-                    </a>
-                    <ul class="dropdown-menu">
-                      <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal" id="loginDropdown"><i class="fa fa-sign-in" aria-hidden="true" style="margin-right: 5px;"></i>Login</a></li>
-                      <li><a class="dropdown-item" href="#create-account" id="createAccDropdown"><i class="fa fa-user-plus" aria-hidden="true" style="margin-right: 5px;"></i>Register</a></li>
-                      <li><a class="dropdown-item" href="#" id="profileDropdown" style="display: none;"><i class="fa fa-user" aria-hidden="true" style="margin-right: 5px;"></i>Profile</a></li>
-                      <li><hr class="dropdown-divider"></li>
-                      <li><a class="dropdown-item" href="#" id="helpDropdown"><i class="fa fa-question-circle" aria-hidden="true" style="margin-right: 5px;"></i>Help</a></li>
-                      <li><a class="dropdown-item" href="#" id="logoutDropdown" style="display: none;"><i class="fa fa-sign-out" aria-hidden="true" style="margin-right: 5px;"></i>Logout</a></li>
-                    </ul>
-                  </li>
-                  
+                  <li><a class="dropdown-item" href="#" id="helpDropdown"><i class="fa fa-question-circle"
+                        aria-hidden="true" style="margin-right: 5px;"></i>Help</a></li>
+                  <li><a class="dropdown-item" href="#" id="logoutDropdown" style="display: none;"><i
+                        class="fa fa-sign-out" aria-hidden="true" style="margin-right: 5px;"></i>Logout</a></li>
                 </ul>
-                <form class="d-flex" role="search" id="searchForm" style="margin-left: 258px;">
-                  <!-- Dropdown with Font Awesome Icon -->
-                  <div class="dropdown">
-                    <i class="fa fa-cog fa-2x fa-sync fa-spin dropdown-toggle" id="dropdownMenuButton" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false" style="margin-right: 15px; color: rgb(211, 211, 211); cursor: pointer;" title="Settings"></i>
-                    
-                    <!-- Dropdown Menu -->
-                    <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                      <a class="dropdown-item" href="#"><i class="fa fa-cog" aria-hidden="true"style="margin-right: 12px;"></i>Settings</a>
-                      <hr class="dropdown-divider">
-                      <a class="dropdown-item" href="#"><i class="fa fa-sun-o" aria-hidden="true"style="margin-right: 12px;"></i>Day Mode</a>
-                      <a class="dropdown-item" href="#"><i class="fa fa-moon-o" aria-hidden="true" style="margin-right: 10px;"></i>
-                        Night Mode</a>
-                    </div>
-                  </div>
-                
-                  <!-- Search Input Field -->
-                  <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" style="border-color: rgb(211, 211, 211);">
-                  
-                  <!-- Search Button -->
-                  <button class="btn btn-outline-secondary" type="submit" id="searchBtn" style="background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)) ); color: rgb(211, 211, 211); border-color: rgb(211, 211, 211); margin-right: 25px;">
-                    Search
-                  </button>
-                </form>
-              </div>
-            </div>
-          </nav>
-        </nav>
-    </div>
-    
-    <div class="row">
-      <div class="column side" id="side1"></div>
-      <!-- Middle div start -->
-      <div class="column middle">
-        <!-- Carousel -->
-        <div id="carouselExampleCaptions" class="carousel slide">
-            <div class="carousel-indicators">
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active" aria-current="true" aria-label="Slide 1"></button>
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1" aria-label="Slide 2"></button>
-              <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2" aria-label="Slide 3"></button>
-            </div>
-            <div class="carousel-inner">
-              <div class="carousel-item active">
-                <img src="./images/testpicture1.jpg"class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Connect</h5>
-                  <p>Interact with millions of people around the world.</p>
+              </li>
+
+            </ul>
+            <form class="d-flex" role="search" id="searchForm" style="margin-left: 258px;">
+              <!-- Dropdown with Font Awesome Icon -->
+              <div class="dropdown">
+                <i class="fa fa-cog fa-2x fa-sync fa-spin dropdown-toggle" id="dropdownMenuButton"
+                  data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
+                  style="margin-right: 15px; color: rgb(211, 211, 211); cursor: pointer;" title="Settings"></i>
+
+                <!-- Dropdown Menu -->
+                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                  <a class="dropdown-item" href="#"><i class="fa fa-cog" aria-hidden="true"
+                      style="margin-right: 12px;"></i>Settings</a>
+                  <hr class="dropdown-divider">
+                  <a class="dropdown-item" href="#"><i class="fa fa-sun-o" aria-hidden="true"
+                      style="margin-right: 12px;"></i>Day Mode</a>
+                  <a class="dropdown-item" href="#"><i class="fa fa-moon-o" aria-hidden="true"
+                      style="margin-right: 10px;"></i>
+                    Night Mode</a>
                 </div>
               </div>
-              <div class="carousel-item">
-                <img src="./images/testpicture2.jpg" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Share</h5>
-                  <p>Share your stories and pictures.</p>
-                </div>
-              </div>
-              <div class="carousel-item">
-                <img src="./images/testpicture3.jpg" class="d-block w-100" alt="...">
-                <div class="carousel-caption d-none d-md-block">
-                  <h5>Free to use</h5>
-                  <p>Creating your account is fast and simple.</p>
-                  <button type="button" class="btn btn-outline-secondary" id="loginBtn" style="background-color: rgba(var(--bs-dark-rgb)); background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)) ); color: white; border-color: rgb(211, 211, 211);">Get Started</button>
-                </div>
-              </div>
-            </div>
-            <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="prev">
-              <span class="carousel-control-prev-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Previous</span>
-            </button>
-            <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide="next">
-              <span class="carousel-control-next-icon" aria-hidden="true"></span>
-              <span class="visually-hidden">Next</span>
-            </button>
+
+              <!-- Search Input Field -->
+              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+                style="border-color: rgb(211, 211, 211);">
+
+              <!-- Search Button -->
+              <button class="btn btn-outline-secondary" type="submit" id="searchBtn"
+                style="background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)) ); color: rgb(211, 211, 211); border-color: rgb(211, 211, 211); margin-right: 25px;">
+                Search
+              </button>
+            </form>
           </div>
-           <!-- Account Creation Form -->
-  <div id="accountForm" style="display: none; padding: 17px; border-radius: 15px; color: rgb(211, 211, 211); ">
-    <h3>Register</h3>
-    <form id="registerForm">
-      <div class="mb-3">
-        <label for="username" class="form-label">Username</label>
-        <input type="text" class="form-control" id="username" placeholder="Enter username">
-      </div>
-      <div class="mb-3">
-        <label for="email" class="form-label">Email address</label>
-        <input type="email" class="form-control" id="email" placeholder="name@example.com">
-      </div>
-      <div class="mb-3">
-        <label for="password" class="form-label">Password</label>
-        <input type="password" class="form-control" id="password" placeholder="Password">
-      </div>
-      <button class="btn btn-outline-secondary" type="submit" style=" background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)) ); color: rgb(211, 211, 211); border-color: rgb(211, 211, 211);">Register</button>
-    </form>
+        </div>
+      </nav>
+    </nav>
   </div>
 
-  <!-- Main Page -->
-  <div id="mainPage" style="display: none; background-color: #fafafa;">
-    <div id="mainContainer" style="text-align: center; position: relative;">
-      <!-- Text/Picture Switch -->
-      <div class="switchHeader">
-          <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-secondary" style="background-image: linear-gradient(rgba(var(--bs-dark-rgb)), grey); border: none;">
-                  <i class="fa fa-picture-o fa-1x" aria-hidden="true" style="font-size: 20px; cursor: pointer; padding: 5px;" title="Show Images"></i>
-              </button>
-              <button type="button" class="btn btn-secondary" style="background-image: linear-gradient(rgba(var(--bs-dark-rgb)), grey); border: none;">
-                  <i class="fa fa-list-alt fa-1x" aria-hidden="true" style="font-size: 20px; cursor: pointer; padding: 5px;" title="Show Stories"></i>
-              </button>
-              <button type="button" class="btn btn-secondary" style="background-image: linear-gradient(rgba(var(--bs-dark-rgb)), grey); border: none;">
-                <i id="cameraIcon" class="fa fa-upload fa-1x" aria-hidden="true" style="font-size: 20px; cursor: pointer; padding: 5px;" title="Upload Images"></i>
-              </button>
-              <button type="button" class="btn btn-secondary" style="background-image: linear-gradient(rgba(var(--bs-dark-rgb)), grey); border: none;">
-                <i id="keyboardIcon" class="fa fa-keyboard-o fa-1x" aria-hidden="true" style="font-size: 20px; cursor: pointer; padding: 5px;" title="Upload Text"></i>
-              </button>
-              <button type="button" id="toggleIcon" class="btn btn-secondary" style="background-image: linear-gradient(rgba(var(--bs-dark-rgb)), grey); border: none;">
-                <i class="fa fa-arrows-v fa-1x" aria-hidden="true" style="font-size: 20px; cursor: pointer; padding: 5px;" title="Show/Hide UI"></i>
-            </button>
+  <div class="row">
+    <div class="column side" id="side1"></div>
+    <!-- Middle div start -->
+    <div class="column middle">
+      <!-- Carousel -->
+      <div id="carouselExampleCaptions" class="carousel slide">
+        <div class="carousel-indicators">
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="0" class="active"
+            aria-current="true" aria-label="Slide 1"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="1"
+            aria-label="Slide 2"></button>
+          <button type="button" data-bs-target="#carouselExampleCaptions" data-bs-slide-to="2"
+            aria-label="Slide 3"></button>
+        </div>
+        <div class="carousel-inner">
+          <div class="carousel-item active">
+            <img src="./images/testpicture1.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Connect</h5>
+              <p>Interact with millions of people around the world.</p>
+            </div>
           </div>
-      </div>
-      
-      <p style="padding: 20px;">Error fetching posts from database.</p>
-      
-      <!-- Container for uploaded images -->
-      <div class="uploaded-image-container">
-          <div class="uploaded-image">
-              <!-- The uploaded image will be dynamically inserted here -->
-              <img id="uploadedImage" src="" alt="Uploaded Image" style="width: 100%; height: 100%; border-radius: 10px;" />
+          <div class="carousel-item">
+            <img src="./images/testpicture2.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Share</h5>
+              <p>Share your stories and pictures.</p>
+            </div>
           </div>
+          <div class="carousel-item">
+            <img src="./images/testpicture3.jpg" class="d-block w-100" alt="...">
+            <div class="carousel-caption d-none d-md-block">
+              <h5>Free to use</h5>
+              <p>Creating your account is fast and simple.</p>
+              <button type="button" class="btn btn-outline-secondary" id="loginBtn"
+                style="background-color: rgba(var(--bs-dark-rgb)); background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)) ); color: white; border-color: rgb(211, 211, 211);">Get
+                Started</button>
+            </div>
+          </div>
+        </div>
+        <button class="carousel-control-prev" type="button" data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="prev">
+          <span class="carousel-control-prev-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Previous</span>
+        </button>
+        <button class="carousel-control-next" type="button" data-bs-target="#carouselExampleCaptions"
+          data-bs-slide="next">
+          <span class="carousel-control-next-icon" aria-hidden="true"></span>
+          <span class="visually-hidden">Next</span>
+        </button>
       </div>
-  
-      
-  </div>
-    <!-- Text Container-->
-    <div class="bg-dark" data-bs-theme="dark" id="textContainer" style="justify-content: center; border-top-left-radius: 5px; border-top-right-radius: 5px; display: none; ">
-      <div class="mb-3" style=" display: flex;">
-        <label for="exampleFormControlTextarea1" class="form-label" style="color: white; margin-right:50px; margin-top: 30px; font-size: 14px; font-weight: 600; ">What is on your mind?</label>
-        <textarea class="form-control" id="textBox" rows="3" style="height: 75px; margin-top: 15px; resize: none; "></textarea>
-        <button class="shareBtn btn btn-outline-secondary" type="submit" style="color: white; height: 40px; width: 150px; margin-top: 30px; margin-left: 50px; "><i class="fa fa-pencil" aria-hidden="true" style="margin-right: 10px;"></i>Share</button>
-      </div>
-    </div>
-    <!-- Upload Container-->
-  <div class="bg-dark" data-bs-theme="dark" id="postContainer" style="justify-content: center;  border-top-left-radius: 5px; border-top-right-radius: 5px; ">
-    <div style="text-align: center; align-items: center; display: flex; color: white; font-size: 14px; text-decoration: none; font-weight: 600; margin-right: 50px; ">Share your pictures</div>
-    <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data" style="margin-left: 40px; display: flex; align-items: center; color: white;">
-      <input type="file" name="image" accept=".jpg, .jpeg, .png" required/>
-      <button class="shareBtn btn btn-outline-secondary" type="submit" style="color: white ; height: 40px; width: 100px;"><i class="fa fa-upload" aria-hidden="true" style="margin-right: 10px;"></i>Share</button>
-  </form>
-    </div>
-  </div>
-  <!-- Profile Page -->
-  <div id="profilePage" style="display: none; background-color: #fafafa;">
-    <p>Profile Page not found</p>
-  </div>
-  <!-- Help Page -->
-   <div id="helpPage" style="display: none; background-color: #fafafa;">
-    <p>Help Page not found</p>
-   </div>
-      </div>
-      <div class="column side" id="side2">
-        
-      </div>
-    </div>
-    
-    <div class="footer" data-bs-theme="dark">
-      <p>Garbagebook</p>
-      <p>All rights reserved.</p>
-    </div>
-
-    <!-- Login Modal -->
-<div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true" style="border-radius: 15px;">
-  <div class="modal-dialog modal-dialog-centered">
-    <div class="modal-content" style="background-color: rgba(var(--bs-dark-rgb)); background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)) ); color: rgb(211, 211, 211);  ">
-      <div class="modal-header">
-        <h5 class="modal-title" id="loginModalLabel" style="text-align: center; width: 100%;">Login</h5>
-        <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" style="background-color: white;"></button>
-      </div>
-      <div class="modal-body">
-        <form id="loginForm">
+      <!-- Account Creation Form -->
+      <div id="accountForm" style="display: none; padding: 17px; border-radius: 15px; color: rgb(211, 211, 211); ">
+        <h3>Register</h3>
+        <form id="registerForm">
           <div class="mb-3">
-            <label for="loginUsername" class="form-label">Username</label>
-            <input type="text" class="form-control" id="loginUsername" placeholder="Enter username">
+            <label for="username" class="form-label">Username</label>
+            <input type="text" class="form-control" id="username" placeholder="Enter username">
           </div>
           <div class="mb-3">
-            <label for="loginPassword" class="form-label">Password</label>
-            <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+            <label for="email" class="form-label">Email address</label>
+            <input type="email" class="form-control" id="email" placeholder="name@example.com">
           </div>
-          <button class="btn btn-outline-secondary" type="submit" style=" background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)) ); color: rgb(211, 211, 211); border-color: rgb(211, 211, 211); ">Login</button>
-          <div id="loginMessage" style="margin-top: 10px;"></div>
+          <div class="mb-3">
+            <label for="password" class="form-label">Password</label>
+            <input type="password" class="form-control" id="password" placeholder="Password">
+          </div>
+          <button class="btn btn-outline-secondary" type="submit"
+            style=" background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)) ); color: rgb(211, 211, 211); border-color: rgb(211, 211, 211);">Register</button>
         </form>
       </div>
+
+      <!-- Main Page -->
+      <div id="mainPage" style="display: none; background-color: #fafafa;">
+        <div id="mainContainer" style="text-align: center; position: relative;">
+          <!-- Text/Picture Switch -->
+          <div class="switchHeader">
+            <div class="btn-group" role="group" aria-label="Basic example">
+              <button type="button" class="btn btn-secondary"
+                style="background-image: linear-gradient(rgba(var(--bs-dark-rgb)), grey); border: none;">
+                <i class="fa fa-picture-o fa-1x" aria-hidden="true"
+                  style="font-size: 20px; cursor: pointer; padding: 5px;" title="Show Images"></i>
+              </button>
+              <button type="button" class="btn btn-secondary"
+                style="background-image: linear-gradient(rgba(var(--bs-dark-rgb)), grey); border: none;">
+                <i class="fa fa-list-alt fa-1x" aria-hidden="true"
+                  style="font-size: 20px; cursor: pointer; padding: 5px;" title="Show Stories"></i>
+              </button>
+              <button type="button" class="btn btn-secondary"
+                style="background-image: linear-gradient(rgba(var(--bs-dark-rgb)), grey); border: none;">
+                <i id="cameraIcon" class="fa fa-upload fa-1x" aria-hidden="true"
+                  style="font-size: 20px; cursor: pointer; padding: 5px;" title="Upload Images"></i>
+              </button>
+              <button type="button" class="btn btn-secondary"
+                style="background-image: linear-gradient(rgba(var(--bs-dark-rgb)), grey); border: none;">
+                <i id="keyboardIcon" class="fa fa-keyboard-o fa-1x" aria-hidden="true"
+                  style="font-size: 20px; cursor: pointer; padding: 5px;" title="Upload Text"></i>
+              </button>
+              <button type="button" id="toggleIcon" class="btn btn-secondary"
+                style="background-image: linear-gradient(rgba(var(--bs-dark-rgb)), grey); border: none;">
+                <i class="fa fa-arrows-v fa-1x" aria-hidden="true"
+                  style="font-size: 20px; cursor: pointer; padding: 5px;" title="Show/Hide UI"></i>
+              </button>
+            </div>
+          </div>
+
+          <p style="padding: 20px;">Error fetching posts from database.</p>
+
+          <!-- Container for uploaded images -->
+          <div class="uploaded-image-container">
+            <div class="uploaded-image">
+              <!-- The uploaded image will be dynamically inserted here -->
+              <img id="uploadedImage" src="" alt="Uploaded Image"
+                style="width: 100%; height: 100%; border-radius: 10px;" />
+            </div>
+          </div>
+
+
+        </div>
+        <!-- Text Container-->
+        <div class="bg-dark" data-bs-theme="dark" id="textContainer"
+          style="justify-content: center; border-top-left-radius: 5px; border-top-right-radius: 5px; display: none; ">
+          <div class="mb-3" style=" display: flex;">
+            <label for="exampleFormControlTextarea1" class="form-label"
+              style="color: white; margin-right:50px; margin-top: 30px; font-size: 14px; font-weight: 600; ">What is on
+              your mind?</label>
+            <textarea class="form-control" id="textBox" rows="3"
+              style="height: 75px; margin-top: 15px; resize: none; "></textarea>
+            <button class="shareBtn btn btn-outline-secondary" type="submit"
+              style="color: white; height: 40px; width: 150px; margin-top: 30px; margin-left: 50px; "><i
+                class="fa fa-pencil" aria-hidden="true" style="margin-right: 10px;"></i>Share</button>
+          </div>
+        </div>
+        <!-- Upload Container-->
+        <div class="bg-dark" data-bs-theme="dark" id="postContainer"
+          style="justify-content: center;  border-top-left-radius: 5px; border-top-right-radius: 5px; ">
+          <div
+            style="text-align: center; align-items: center; display: flex; color: white; font-size: 14px; text-decoration: none; font-weight: 600; margin-right: 50px; ">
+            Share your pictures</div>
+          <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data"
+            style="margin-left: 40px; display: flex; align-items: center; color: white;">
+            <input type="file" name="image" accept=".jpg, .jpeg, .png" required />
+            <button class="shareBtn btn btn-outline-secondary" type="submit"
+              style="color: white ; height: 40px; width: 100px;"><i class="fa fa-upload" aria-hidden="true"
+                style="margin-right: 10px;"></i>Share</button>
+          </form>
+        </div>
+      </div>
+      <!-- Profile Page -->
+      <div id="profilePage" style="display: none; background-color: #fafafa;">
+        <p>Profile Page not found</p>
+      </div>
+      <!-- Help Page -->
+      <div id="helpPage" style="display: none; background-color: #fafafa;">
+        <p>Help Page not found</p>
+      </div>
+    </div>
+    <div class="column side" id="side2">
+
     </div>
   </div>
-</div>
+
+  <div class="footer" data-bs-theme="dark">
+    <p>Garbagebook</p>
+    <p>All rights reserved.</p>
+  </div>
+
+  <!-- Login Modal -->
+  <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true"
+    style="border-radius: 15px;">
+    <div class="modal-dialog modal-dialog-centered">
+      <div class="modal-content"
+        style="background-color: rgba(var(--bs-dark-rgb)); background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)) ); color: rgb(211, 211, 211);  ">
+        <div class="modal-header">
+          <h5 class="modal-title" id="loginModalLabel" style="text-align: center; width: 100%;">Login</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
+            style="background-color: white;"></button>
+        </div>
+        <div class="modal-body">
+          <form id="loginForm">
+            <div class="mb-3">
+              <label for="loginUsername" class="form-label">Username</label>
+              <input type="text" class="form-control" id="loginUsername" placeholder="Enter username">
+            </div>
+            <div class="mb-3">
+              <label for="loginPassword" class="form-label">Password</label>
+              <input type="password" class="form-control" id="loginPassword" placeholder="Password">
+            </div>
+            <button class="btn btn-outline-secondary" type="submit"
+              style=" background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)) ); color: rgb(211, 211, 211); border-color: rgb(211, 211, 211); ">Login</button>
+            <div id="loginMessage" style="margin-top: 10px;"></div>
+          </form>
+        </div>
+      </div>
+    </div>
+  </div>
   </div>
   <script>
-    document.addEventListener("DOMContentLoaded", function() {
-        // Check login state and update visibility on load
-        updateLogoutLinkVisibility();
+    document.addEventListener("DOMContentLoaded", function () {
+      // Check login state and update visibility on load
+      updateLogoutLinkVisibility();
 
-        // Show login modal on page load if not logged in
+      // Show login modal on page load if not logged in
+      if (!isLoggedIn()) {
+        $('#loginModal').modal('show'); // Show the login modal if not logged in
+      }
+
+      function handleHomeNavigation() {
         if (!isLoggedIn()) {
-            $('#loginModal').modal('show'); // Show the login modal if not logged in
-        }
-        
-        function handleHomeNavigation() {
-        if (!isLoggedIn()) {
-            document.getElementById("carouselExampleCaptions").style.display = "block"; // Show carousel if logged out
-            document.getElementById("mainPage").style.display = "none"; // Hide main page
-            document.getElementById("accountForm").style.display = "none";
-            document.getElementById("helpPage").style.display = "none";
-            document.getElementById("profilePage").style.display = "none";
+          document.getElementById("carouselExampleCaptions").style.display = "block"; // Show carousel if logged out
+          document.getElementById("mainPage").style.display = "none"; // Hide main page
+          document.getElementById("accountForm").style.display = "none";
+          document.getElementById("helpPage").style.display = "none";
+          document.getElementById("profilePage").style.display = "none";
         } else {
-            document.getElementById("carouselExampleCaptions").style.display = "none"; // Hide carousel if logged in
-            document.getElementById("mainPage").style.display = "block"; // Show main page content
-            document.getElementById("helpPage").style.display = "none";
-            document.getElementById("profilePage").style.display = "none";
+          document.getElementById("carouselExampleCaptions").style.display = "none"; // Hide carousel if logged in
+          document.getElementById("mainPage").style.display = "block"; // Show main page content
+          document.getElementById("helpPage").style.display = "none";
+          document.getElementById("profilePage").style.display = "none";
         }
-    }
+      }
 
-         // Set up the click event for homeLink
-        document.getElementById("homeLink").onclick = handleHomeNavigation;
-        document.getElementById('homeLink').addEventListener('click', () => {
-    const mainContainer = document.getElementById('mainContainer');
-    mainContainer.scrollTop = 0;  // Scroll to the top
-   });
-        // Set up the click event for homeLogo
-        document.getElementById("logo").onclick = handleHomeNavigation; // Add similar functionality
-        // Event listener for the account creation link
-        document.querySelector(".dropdown-item[href='#create-account']").addEventListener("click", function (e) {
-            e.preventDefault();
-            helpPage.style.display = 'none';
-            showAccountForm(); // Call the function to show account form
-        });
+      // Set up the click event for homeLink
+      document.getElementById("homeLink").onclick = handleHomeNavigation;
+      document.getElementById('homeLink').addEventListener('click', () => {
+        const mainContainer = document.getElementById('mainContainer');
+        mainContainer.scrollTop = 0;  // Scroll to the top
+      });
+      // Set up the click event for homeLogo
+      document.getElementById("logo").onclick = handleHomeNavigation; // Add similar functionality
+      // Event listener for the account creation link
+      document.querySelector(".dropdown-item[href='#create-account']").addEventListener("click", function (e) {
+        e.preventDefault();
+        helpPage.style.display = 'none';
+        showAccountForm(); // Call the function to show account form
+      });
 
-        // Event listener for the login button
-        const loginBtn = document.getElementById("loginBtn");
-        if (loginBtn) {
-            loginBtn.addEventListener("click", showAccountForm); // Added here for clarity
+      // Event listener for the login button
+      const loginBtn = document.getElementById("loginBtn");
+      if (loginBtn) {
+        loginBtn.addEventListener("click", showAccountForm); // Added here for clarity
+      }
+
+      // Add event listener for the register form submission
+      document.getElementById('registerForm').addEventListener('submit', async function (event) {
+        event.preventDefault(); // Prevent the default form submission
+
+        // Collect form data
+        const username = document.getElementById('username').value;
+        const email = document.getElementById('email').value;
+        const password = document.getElementById('password').value;
+
+        // Create the user object to send to the server
+        const userData = {
+          username: username,
+          email: email,
+          password: password,
+        };
+
+        try {
+          const response = await fetch('http://localhost:5000/auth/register', {
+            method: 'POST',
+            headers: {
+              'Content-Type': 'application/json',
+            },
+            body: JSON.stringify(userData),
+          });
+
+          if (!response.ok) {
+            throw new Error('Network response was not ok ' + response.statusText);
+            alert('There was a problem registering your user.')
+          }
+
+          const data = await response.json();
+          console.log('User registered:', data);
+          alert('User registered successfully.')
+          // Optionally, redirect or show a success message
+        } catch (error) {
+          console.error('There was a problem with the fetch operation:', error);
         }
+      });
 
-        // Add event listener for the register form submission
-        document.getElementById('registerForm').addEventListener('submit', async function(event) {
-            event.preventDefault(); // Prevent the default form submission
+      // Add event listener for the login form submission
+      document.getElementById('loginForm').addEventListener('submit', async (event) => {
+        event.preventDefault(); // Prevent default form submission
 
-            // Collect form data
-            const username = document.getElementById('username').value;
-            const email = document.getElementById('email').value;
-            const password = document.getElementById('password').value;
+        // Get form input values
+        const username = document.getElementById('loginUsername').value;
+        const password = document.getElementById('loginPassword').value;
 
-            // Create the user object to send to the server
-            const userData = {
-                username: username,
-                email: email,
-                password: password,
-            };
+        try {
+          const response = await fetch('http://localhost:5000/auth/login', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({ username, password }),
+          });
 
-            try {
-                const response = await fetch('http://localhost:5000/auth/register', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                    },
-                    body: JSON.stringify(userData),
-                });
+          if (response.ok) {
+            const data = await response.json();
+            console.log("Login successful", data);
 
-                if (!response.ok) {
-                    throw new Error('Network response was not ok ' + response.statusText);
-                    alert('There was a problem registering your user.')
-                }
-
-                const data = await response.json();
-                console.log('User registered:', data);
-                alert('User registered successfully.')
-                // Optionally, redirect or show a success message
-            } catch (error) {
-                console.error('There was a problem with the fetch operation:', error);
-            }
-        });
-
-        // Add event listener for the login form submission
-        document.getElementById('loginForm').addEventListener('submit', async (event) => {
-            event.preventDefault(); // Prevent default form submission
-
-            // Get form input values
-            const username = document.getElementById('loginUsername').value;
-            const password = document.getElementById('loginPassword').value;
-
-            try {
-                const response = await fetch('http://localhost:5000/auth/login', {
-                    method: 'POST',
-                    headers: { 'Content-Type': 'application/json' },
-                    body: JSON.stringify({ username, password }),
-                });
-
-                if (response.ok) {
-                    const data = await response.json();
-                    console.log("Login successful", data);
-
-                    localStorage.setItem("authToken", data.token); // Store token
-                    updateLogoutLinkVisibility(); // Update logout link visibility
-                    $('#loginModal').modal('hide'); // Hide the modal
-                } else {
-                    console.error("Login failed");
-                    // Handle login failure, e.g., display an error message to the user
-                }
-            } catch (error) {
-                console.error("Error:", error);
-            }
-        });
+            localStorage.setItem("authToken", data.token); // Store token
+            updateLogoutLinkVisibility(); // Update logout link visibility
+            $('#loginModal').modal('hide'); // Hide the modal
+          } else {
+            console.error("Login failed");
+            // Handle login failure, e.g., display an error message to the user
+          }
+        } catch (error) {
+          console.error("Error:", error);
+        }
+      });
     });
 
     function isLoggedIn() {
-        return !!localStorage.getItem("authToken"); // Returns true if the token exists
+      return !!localStorage.getItem("authToken"); // Returns true if the token exists
     }
 
     function updateLogoutLinkVisibility() {
-        const createAccLink = document.getElementById("createAccDropdown");
-        const logoutLink = document.getElementById("logoutDropdown");
-        const loginLink = document.getElementById("loginDropdown");
-        const profileLink = document.getElementById("profileDropdown");
-        
-        if (isLoggedIn()) {
-            logoutLink.style.display = "block"; // Show the Logout link
-            loginLink.style.display = "none";
-            profileLink.style.display = "block";
-            createAccLink.style.display = "none";
-            document.getElementById("accountForm").style.display = "none"; // Hide account form
-            document.getElementById("carouselExampleCaptions").style.display = "none"; // Hide carousel
-            document.getElementById("mainPage").style.display = "block"; // Show main page content
-        } else {
-            logoutLink.style.display = "none"; // Hide the Logout link
-            createAccLink.style.display = "block"; // Show account creation link
-            loginLink.style.display = "block"; // Show login link
-            profileLink.style.display = "none"; // Hide profile link
-            document.getElementById("accountForm").style.display = "none"; // Hide account form when logged out
-            document.getElementById("mainPage").style.display = "none"; // Hide main content when logged out
-        }
+      const createAccLink = document.getElementById("createAccDropdown");
+      const logoutLink = document.getElementById("logoutDropdown");
+      const loginLink = document.getElementById("loginDropdown");
+      const profileLink = document.getElementById("profileDropdown");
+
+      if (isLoggedIn()) {
+        logoutLink.style.display = "block"; // Show the Logout link
+        loginLink.style.display = "none";
+        profileLink.style.display = "block";
+        createAccLink.style.display = "none";
+        document.getElementById("accountForm").style.display = "none"; // Hide account form
+        document.getElementById("carouselExampleCaptions").style.display = "none"; // Hide carousel
+        document.getElementById("mainPage").style.display = "block"; // Show main page content
+      } else {
+        logoutLink.style.display = "none"; // Hide the Logout link
+        createAccLink.style.display = "block"; // Show account creation link
+        loginLink.style.display = "block"; // Show login link
+        profileLink.style.display = "none"; // Hide profile link
+        document.getElementById("accountForm").style.display = "none"; // Hide account form when logged out
+        document.getElementById("mainPage").style.display = "none"; // Hide main content when logged out
+      }
     }
 
     function handleLoginBtnClick() {
-        // Hide the carousel and the account form
-        document.getElementById("carouselExampleCaptions").style.display = "none";
-        document.getElementById("accountForm").style.display = "none";
-    } 
+      // Hide the carousel and the account form
+      document.getElementById("carouselExampleCaptions").style.display = "none";
+      document.getElementById("accountForm").style.display = "none";
+    }
 
     function logout() {
-        localStorage.removeItem('authToken');
-        alert('Logged out successfully');
-        // Hide the main content area
-        document.getElementById('mainPage').style.display = 'none'; 
-        // Hide the profile page
-        document.getElementById('profilePage').style.display = 'none';
-        // Show the carousel
-        document.getElementById('carouselExampleCaptions').style.display = 'block'; 
-        document.getElementById('helpPage').style.display = 'none';
+      localStorage.removeItem('authToken');
+      alert('Logged out successfully');
+      // Hide the main content area
+      document.getElementById('mainPage').style.display = 'none';
+      // Hide the profile page
+      document.getElementById('profilePage').style.display = 'none';
+      // Show the carousel
+      document.getElementById('carouselExampleCaptions').style.display = 'block';
+      document.getElementById('helpPage').style.display = 'none';
 
-        
 
-        // Update logout link visibility
-        updateLogoutLinkVisibility();
+
+      // Update logout link visibility
+      updateLogoutLinkVisibility();
     }
 
     // Add logout functionality to the logout link
-    document.addEventListener("DOMContentLoaded", function() {
-        const logoutLink = document.getElementById("logoutDropdown");
-        if (logoutLink) {
-            logoutLink.addEventListener("click", function(e) {
-                e.preventDefault(); // Prevent default link behavior
-                logout(); // Call the logout function
-            });
-        }
+    document.addEventListener("DOMContentLoaded", function () {
+      const logoutLink = document.getElementById("logoutDropdown");
+      if (logoutLink) {
+        logoutLink.addEventListener("click", function (e) {
+          e.preventDefault(); // Prevent default link behavior
+          logout(); // Call the logout function
+        });
+      }
     });
 
     function showAccountForm() {
-        // Hide the carousel and show the account creation form
-        document.getElementById('carouselExampleCaptions').style.display = 'none'; 
-        document.getElementById('accountForm').style.display = 'block'; 
-        document.getElementById('helpForm').style.display = 'none';
+      // Hide the carousel and show the account creation form
+      document.getElementById('carouselExampleCaptions').style.display = 'none';
+      document.getElementById('accountForm').style.display = 'block';
+      document.getElementById('helpForm').style.display = 'none';
     }
-    
-    document.getElementById('uploadForm').addEventListener('submit', async (event) => {
-    event.preventDefault(); // Prevent page reload
 
-    // Check file type on the frontend
-    const fileInput = document.querySelector('input[name="image"]');
-    const filePath = fileInput.value;
-    const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
-    
-    if (!allowedExtensions.exec(filePath)) {
+    document.getElementById('uploadForm').addEventListener('submit', async (event) => {
+      event.preventDefault(); // Prevent page reload
+
+      // Check file type on the frontend
+      const fileInput = document.querySelector('input[name="image"]');
+      const filePath = fileInput.value;
+      const allowedExtensions = /(\.jpg|\.jpeg|\.png)$/i;
+
+      if (!allowedExtensions.exec(filePath)) {
         alert('Invalid file type. Please upload an image with a .jpg, .jpeg, or .png extension.');
         fileInput.value = ''; // Clear the file input
         return; // Exit the function early
-    }
+      }
 
-    const formData = new FormData(event.target);
-    const token = localStorage.getItem("authToken");
+      const formData = new FormData(event.target);
+      const token = localStorage.getItem("authToken");
+      
+      // Optional code to see if we can retrieve username from the jwt token
+      console.log("Token stored:", localStorage.getItem("authToken"));
+      if (token) {
+        // Decode the token: split the token into parts (header, payload, signature)
+        const base64Url = token.split('.')[1]; // The middle part is the payload
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/'); // Replace URL-safe chars with standard Base64 chars
 
-    try {
+        // Decode the Base64 encoded payload
+        const decodedPayload = JSON.parse(atob(base64)); // Decode Base64 and parse as JSON
+
+        // Extract the username from the decoded payload
+        const usernameFromToken = decodedPayload.username;
+
+        // Now you can use the `usernameFromToken` variable
+        console.log('Extracted Username:', usernameFromToken); // Output the username from the token
+      } else {
+        console.error("No token found!");
+      }
+      try {
         const response = await fetch('http://localhost:5000/upload', {
-            method: 'POST',
-            headers: {
-                'Authorization': `Bearer ${token}`, // Attach token here
-            },
-            body: formData,
+          method: 'POST',
+          headers: {
+            'Authorization': `Bearer ${token}`, // Attach token here
+          },
+          body: formData,
         });
 
         if (!response.ok) {
-            console.error("Server responded with an error:", await response.text());
-            return;
+          console.error("Server responded with an error:", await response.text());
+          return;
         }
 
         const data = await response.json();
@@ -457,162 +536,168 @@
         // Add delay before calling loadImages
         const delay = 4000; // 4 seconds delay
         setTimeout(async () => {
-            await loadImages(); // Call loadImages after the delay
+          await loadImages(); // Call loadImages after the delay
         }, delay);
 
-    } catch (error) {
+      } catch (error) {
         console.error('Error uploading image:', error);
-    }
-    mainContainer.scrollTop = 0;
-});
+      }
+      mainContainer.scrollTop = 0;
+    });
 
-document.addEventListener("DOMContentLoaded", function () {
-  const keyboardIcon = document.getElementById("keyboardIcon");
-  const uploadIcon = document.getElementById("uploadIcon");
-  const postContainer = document.getElementById("postContainer");
-  const textContainer = document.getElementById("textContainer");
-  const mainContainer = document.getElementById('mainContainer');
+    document.addEventListener("DOMContentLoaded", function () {
+      const keyboardIcon = document.getElementById("keyboardIcon");
+      const uploadIcon = document.getElementById("uploadIcon");
+      const postContainer = document.getElementById("postContainer");
+      const textContainer = document.getElementById("textContainer");
+      const mainContainer = document.getElementById('mainContainer');
 
-  // Add click event listener to the keyboard icon
-  keyboardIcon.addEventListener("click", function () {
-    // Hide the keyboard icon and show the upload icon
-    
-    
-    // Show/Hide text/upload containers
-    postContainer.style.display = "none";
-    textContainer.style.display = "block";
-    textContainer.style.display = "flex";
+      // Add click event listener to the keyboard icon
+      keyboardIcon.addEventListener("click", function () {
+        // Hide the keyboard icon and show the upload icon
 
-    textContainer.style.backgroundImage = "linear-gradient(grey, rgba(var(--bs-dark-rgb)))";
-    textContainer.style.padding = "20px";
-    textContainer.style.height = "17vh";
-    textContainer.style.display = "flex";
-    textContainer.style.justifyContent = "center";  // Optional, for centering content
-    textContainer.style.boxShadow = "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
-    textContainer.style.borderbottomleftradius = "0";
-    textContainer.style.borderbottomrightradius = "0";
-    mainContainer.style.height = '65vh';
-  });
 
-  cameraIcon.addEventListener("click", function() {
-      
-      
-      postContainer.style.display = "block";
-      textContainer.style.display = "none";
-      postContainer.style.display = "flex";
+        // Show/Hide text/upload containers
+        postContainer.style.display = "none";
+        textContainer.style.display = "block";
+        textContainer.style.display = "flex";
 
-    postContainer.style.backgroundImage = "linear-gradient(grey, rgba(var(--bs-dark-rgb)))";
-    postContainer.style.padding = "20px";
-    postContainer.style.height = "17vh";
-    postContainer.style.display = "flex";
-    postContainer.style.justifyContent = "center";  // Optional, for centering content
-    postContainer.style.boxShadow = "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
-    postContainer.style.borderbottomleftradius = "0";
-    postContainer.style.borderbottomrightradius = "0";
-    mainContainer.style.height = '65vh';
-    
-});
-});
+        textContainer.style.backgroundImage = "linear-gradient(grey, rgba(var(--bs-dark-rgb)))";
+        textContainer.style.padding = "20px";
+        textContainer.style.height = "17vh";
+        textContainer.style.display = "flex";
+        textContainer.style.justifyContent = "center";  // Optional, for centering content
+        textContainer.style.boxShadow = "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
+        textContainer.style.borderbottomleftradius = "0";
+        textContainer.style.borderbottomrightradius = "0";
+        mainContainer.style.height = '65vh';
+      });
 
-async function loadImages() {
-    try {
+      cameraIcon.addEventListener("click", function () {
+
+
+        postContainer.style.display = "block";
+        textContainer.style.display = "none";
+        postContainer.style.display = "flex";
+
+        postContainer.style.backgroundImage = "linear-gradient(grey, rgba(var(--bs-dark-rgb)))";
+        postContainer.style.padding = "20px";
+        postContainer.style.height = "17vh";
+        postContainer.style.display = "flex";
+        postContainer.style.justifyContent = "center";  // Optional, for centering content
+        postContainer.style.boxShadow = "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
+        postContainer.style.borderbottomleftradius = "0";
+        postContainer.style.borderbottomrightradius = "0";
+        mainContainer.style.height = '65vh';
+
+      });
+    });
+
+    async function loadImages() {
+      try {
         const token = localStorage.getItem('authToken');
         console.log('Token:', token);  // Check the token
-        
+
         const response = await fetch('http://localhost:5000/upload/images', {
-            method: 'GET',
-            headers: {
-                'Authorization': `Bearer ${token}`,
-                'Content-Type': 'application/json'
-            }
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
         });
 
         if (!response.ok) {
-            throw new Error(`Network response was not ok: ${response.statusText}`);
+          throw new Error(`Network response was not ok: ${response.statusText}`);
         }
 
         const data = await response.json();
         const postContainer = document.getElementById('mainContainer');
-        
+        console.log('Fetched data:', data);
         // Remove any existing <p> element if present
         const pElement = postContainer.querySelector('p');
         if (pElement) {
-            pElement.remove();
+          pElement.remove();
         }
 
         // Remove all existing image containers to avoid duplicates
         postContainer.querySelectorAll('.uploaded-image-container').forEach(container => {
-            container.remove();
+          container.remove();
         });
 
         // Add each image from the data
         data.reverse().forEach(post => {
-            // Create the container for each image
-            const container = document.createElement('div');
-            container.classList.add('uploaded-image-container', 'with-lines'); // Apply the container styles
-            container.style.padding = "20px"; // Padding to add space around the image
+          const { imageUrl, username } = post;
+          const displayUsername = post.username || 'Anonymous';
+          //Create the upper container for upload name etc
+          const upperContainer = document.createElement('div');
+          upperContainer.classList.add('uploaded-image-container', 'no-lines', 'upperContainer');
+          upperContainer.innerHTML = `<span>Submitted by: ${displayUsername}</span>`; // Example content
+          // Create the container for each image
+          const container = document.createElement('div');
+          container.classList.add('uploaded-image-container', 'with-lines'); // Apply the container styles
+          container.style.padding = "20px"; // Padding to add space around the image
+          postContainer.appendChild(upperContainer);
+          const img = document.createElement('img');
+          img.src = `http://localhost:5000/${post.imageUrl}`;
+          console.log('Image URL:', img.src);  // Log image URL to verify it's correct
+          img.alt = "Uploaded Image";
+          img.classList.add('uploaded-image'); // Apply the existing image styles
 
-            const img = document.createElement('img');
-            img.src = `http://localhost:5000/${post.imageUrl}`;
-            console.log('Image URL:', img.src);  // Log image URL to verify it's correct
-            img.alt = "Uploaded Image";
-            img.classList.add('uploaded-image'); // Apply the existing image styles
+          // Hide image if it fails to load
+          img.onerror = () => {
+            img.style.display = 'none';
+          };
 
-            // Hide image if it fails to load
-            img.onerror = () => {
-                img.style.display = 'none';
-            };
+          // Add event listener for image click (optional: for enlarging)
+          img.addEventListener('click', () => {
+            img.classList.toggle('enlarged');
+          });
 
-            // Add event listener for image click (optional: for enlarging)
-            img.addEventListener('click', () => {
-                img.classList.toggle('enlarged');
-            });
-            
-            // Append the image to the container
-            container.appendChild(img);
-            // Append the container to the postContainer
-            postContainer.appendChild(container);
-            const newContainer = document.createElement('div');
-            newContainer.classList.add('uploaded-image-container', 'no-lines');
-            newContainer.style.padding = '10px'; // Adjust padding if needed
-            
-            newContainer.style.marginBottom ='30px';
-            newContainer.style.backgroundColor ='#fafafa;';
-            
-            const button = document.createElement('button');
-            const button2 = document.createElement('button');
-            const button3 = document.createElement('button');
+          // Append the image to the container
+          container.appendChild(img);
+          // Append the container to the postContainer
+          postContainer.appendChild(container);
+          const newContainer = document.createElement('div');
+          newContainer.classList.add('uploaded-image-container', 'no-lines');
+          newContainer.style.padding = '10px'; // Adjust padding if needed
 
-            button.classList.add('like-button'); // Add custom class for styling if needed
-            button2.classList.add('like-button');
-            button3.classList.add('like-button', 'postComment');
+          newContainer.style.marginBottom = '30px';
+          newContainer.style.backgroundColor = '#fafafa;';
 
-            const icon = document.createElement('i');
-            const icon2 = document.createElement('i');
-            const icon3 = document.createElement('i');
+          const button = document.createElement('button');
+          const button2 = document.createElement('button');
+          const button3 = document.createElement('button');
 
-            icon.classList.add('fa', 'fa-thumbs-up'); // Font Awesome thumbs-up icon
-            icon2.classList.add('fa', 'fa-comment');
-            icon3.classList.add('fa', 'fa-share');
+          button.classList.add('like-button'); // Add custom class for styling if needed
+          button2.classList.add('like-button');
+          button3.classList.add('like-button', 'postComment');
 
-            icon.setAttribute('aria-hidden', 'true'); // Accessibility
-            icon2.setAttribute('aria-hidden', 'true');
-            icon3.setAttribute('aria-hidden', 'true');
+          const icon = document.createElement('i');
+          const icon2 = document.createElement('i');
+          const icon3 = document.createElement('i');
 
-            // Add the icon inside the button
-            button.appendChild(icon);
-            button2.appendChild(icon2);
-            button3.appendChild(icon3);
+          icon.classList.add('fa', 'fa-thumbs-up'); // Font Awesome thumbs-up icon
+          icon2.classList.add('fa', 'fa-comment');
+          icon3.classList.add('fa', 'fa-share');
+
+          icon.setAttribute('aria-hidden', 'true'); // Accessibility
+          icon2.setAttribute('aria-hidden', 'true');
+          icon3.setAttribute('aria-hidden', 'true');
+
+          // Add the icon inside the button
+          button.appendChild(icon);
+          button2.appendChild(icon2);
+          button3.appendChild(icon3);
 
           // Set the button text 
-           button.appendChild(document.createTextNode(' Like'));
-           button2.appendChild(document.createTextNode(' Comments'));
-           button3.appendChild(document.createTextNode(' Comment'));
+          button.appendChild(document.createTextNode(' Like'));
+          button2.appendChild(document.createTextNode(' Comments'));
+          button3.appendChild(document.createTextNode(' Comment'));
 
           // Append the button to the newContainer
           newContainer.appendChild(button);
           newContainer.appendChild(button2);
-          
+
           const commentBox = document.createElement('div');
           commentBox.classList.add('comment-box');  // Apply the CSS class for styling // // CHECK THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! //
           commentBox.style.display = 'none'; // Hide initially
@@ -626,111 +711,113 @@ async function loadImages() {
           commentBox.appendChild(inputField); // Append input field to comment box
           commentBox.appendChild(button3);
 
-         // Add event listener to comment button
-         button2.addEventListener('click', () => {
-         // Toggle visibility of the comment box when the comment button is clicked
-         if (commentBox.style.display === 'none') {
-         commentBox.style.display = 'block';
-         inputField.focus(); // Auto-focus the input when opened
-        } else {
-        commentBox.style.display = 'none'; // Hide it again if it's already visible
-        }
-        });
+          // Add event listener to comment button
+          button2.addEventListener('click', () => {
+            // Toggle visibility of the comment box when the comment button is clicked
+            if (commentBox.style.display === 'none') {
+              commentBox.style.display = 'block';
+              inputField.focus(); // Auto-focus the input when opened
+            } else {
+              commentBox.style.display = 'none'; // Hide it again if it's already visible
+            }
+          });
           // You can add text or other content inside the comment box
           //commentBox.textContent = "This is a comment box below the like button.";
           // Append the new container directly after the image container
+          
           postContainer.appendChild(newContainer);
           newContainer.appendChild(commentBox);
         });
 
         // Keep fa icons positioned at the bottom
-        
-    } catch (error) {
+
+      } catch (error) {
         console.error('Error fetching images:', error);
+      }
+      mainContainer.scrollTo({ top: 0, behavior: 'smooth' });
     }
-    mainContainer.scrollTo({ top: 0, behavior: 'smooth' });
-}
 
-// Run loadImages on window load
-window.onload = loadImages;
+    // Run loadImages on window load
+    window.onload = loadImages;
 
 
-// Toggle profile page
-document.getElementById('profileDropdown').addEventListener('click', function() {
-  var profilePage = document.getElementById('profilePage');
-  var mainPage = document.getElementById('mainPage');
-  var helpPage = document.getElementById('helpPage');
+    // Toggle profile page
+    document.getElementById('profileDropdown').addEventListener('click', function () {
+      var profilePage = document.getElementById('profilePage');
+      var mainPage = document.getElementById('mainPage');
+      var helpPage = document.getElementById('helpPage');
 
-  profilePage.style.display = 'block';
-  mainPage.style.display = 'none';
-  helpPage.style.display ='none';
-});
+      profilePage.style.display = 'block';
+      mainPage.style.display = 'none';
+      helpPage.style.display = 'none';
+    });
 
-// Toggle help page
-document.getElementById('helpDropdown').addEventListener('click', function() {
-  var profilePage = document.getElementById('profilePage');
-  var mainPage = document.getElementById('mainPage');
-  var helpPage = document.getElementById('helpPage');
-  var carouselExampleCaptions = document.getElementById('carouselExampleCaptions');
-  var accountForm = document.getElementById('accountForm');
+    // Toggle help page
+    document.getElementById('helpDropdown').addEventListener('click', function () {
+      var profilePage = document.getElementById('profilePage');
+      var mainPage = document.getElementById('mainPage');
+      var helpPage = document.getElementById('helpPage');
+      var carouselExampleCaptions = document.getElementById('carouselExampleCaptions');
+      var accountForm = document.getElementById('accountForm');
 
-  accountForm.style.display ='none';
-  carouselExampleCaptions.style.display = 'none';
-  profilePage.style.display = 'none';
-  mainPage.style.display = 'none';
-  helpPage.style.display ='block';
-});
+      accountForm.style.display = 'none';
+      carouselExampleCaptions.style.display = 'none';
+      profilePage.style.display = 'none';
+      mainPage.style.display = 'none';
+      helpPage.style.display = 'block';
+    });
 
-// Toggle Account Creation Form
-document.getElementById('createAccDropdown').addEventListener('click', function() {
-  var helpPage = document.getElementById('helpPage');
+    // Toggle Account Creation Form
+    document.getElementById('createAccDropdown').addEventListener('click', function () {
+      var helpPage = document.getElementById('helpPage');
 
-  helpPage.style.display = 'none';
-});
-// Custom script for the second dropdown (settings icon)
-document.querySelector('#dropdownMenuButton').addEventListener('click', function(event) {
+      helpPage.style.display = 'none';
+    });
+    // Custom script for the second dropdown (settings icon)
+    document.querySelector('#dropdownMenuButton').addEventListener('click', function (event) {
       event.stopPropagation(); // Prevents closing the dropdown when clicking inside
       const dropdownMenu = this.nextElementSibling; // Get the corresponding dropdown menu
       dropdownMenu.classList.toggle('show'); // Toggle dropdown visibility
     });
 
     // Close the dropdown when clicking outside
-    document.addEventListener('click', function(event) {
+    document.addEventListener('click', function (event) {
       const dropdownMenu = document.querySelector('.dropdown-menu');
       if (dropdownMenu && !dropdownMenu.contains(event.target) && !event.target.closest('.dropdown')) {
         dropdownMenu.classList.remove('show'); // Hide the dropdown if clicking outside
       }
     });
-   
-// Toggle visibility of upload / post interface
-const toggleIcon = document.getElementById('toggleIcon');
-const mainContainer = document.getElementById('mainContainer');
-const textContainer = document.getElementById('textContainer');
-const postContainer = document.getElementById('postContainer');
 
-toggleIcon.addEventListener('click', () => {
-    // Check if the textContainer is currently hidden
-    if (textContainer.style.display && postContainer.style.display === 'none') {
+    // Toggle visibility of upload / post interface
+    const toggleIcon = document.getElementById('toggleIcon');
+    const mainContainer = document.getElementById('mainContainer');
+    const textContainer = document.getElementById('textContainer');
+    const postContainer = document.getElementById('postContainer');
+
+    toggleIcon.addEventListener('click', () => {
+      // Check if the textContainer is currently hidden
+      if (textContainer.style.display && postContainer.style.display === 'none') {
         // Show the textContainer and postContainer
         textContainer.style.display = 'none';
         postContainer.style.display = 'block';
         postContainer.style.backgroundImage = "linear-gradient(grey, rgba(var(--bs-dark-rgb)))";
-    postContainer.style.padding = "20px";
-    postContainer.style.height = "17vh";
-    postContainer.style.display = "flex";
-    postContainer.style.justifyContent = "center";  // Optional, for centering content
-    postContainer.style.boxShadow = "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
-    postContainer.style.borderbottomleftradius = "0";
-    postContainer.style.borderbottomrightradius = "0";
+        postContainer.style.padding = "20px";
+        postContainer.style.height = "17vh";
+        postContainer.style.display = "flex";
+        postContainer.style.justifyContent = "center";  // Optional, for centering content
+        postContainer.style.boxShadow = "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
+        postContainer.style.borderbottomleftradius = "0";
+        postContainer.style.borderbottomrightradius = "0";
         mainContainer.style.height = '65vh'; // Reset to original height
-    } else {
+      } else {
         // Hide the textContainer and postContainer
         textContainer.style.display = 'none';
         postContainer.style.display = 'none';
         mainContainer.style.height = '85vh'; // Adjust height as needed
-    }
-});
-</script>
+      }
+    });
+  </script>
 
-    </body>
-    </html>
+</body>
+
+</html>

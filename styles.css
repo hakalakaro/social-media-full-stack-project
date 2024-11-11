@@ -271,6 +271,24 @@ body {
   align-items: center;
   box-sizing: border-box;
   border-radius: 10px;
+  transition: opacity 0.3s ease;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  position: relative; /* Position relative to apply pseudo-elements */
+}
+.uploaded-image-container.hidden {
+  display: none; /* Properly hide the container */
+  opacity: 0; /* Fades out the container */
+}
+#textContainer2 {
+  width: 70%;
+  background-color: #fafafa;
+  padding: 10px;
+  
+  display: none;
+  justify-content: center;
+  align-items: center;
+  box-sizing: border-box;
+  border-radius: 10px;
  
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
   position: relative; /* Position relative to apply pseudo-elements */
@@ -281,7 +299,7 @@ body {
   content: "";
   position: absolute;
   height: 2px;
-  width: calc(98% - 40px);
+  width: calc(99% - 40px);
   background-color: #ccc;
 }
 
@@ -301,6 +319,8 @@ body {
 .with-lines {
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  border-top-right-radius: 0;
+  border-top-left-radius: 0;
 }
 /* Like button / Comment button div */
   .no-lines {
@@ -450,4 +470,20 @@ body {
   transition: background-color 0.3s ease, transform 0.2s ease;
   width: 20%; /* Make button width responsive */
   margin-left: 12px;
+}
+.upperContainer {
+border-bottom-right-radius: 0;
+border-bottom-left-radius: 0;
+border-top-left-radius: 10px;
+border-top-right-radius: 10px;
+height: 300px;
+margin-bottom: 0;
+margin-top: 10px;
+box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+background-color: white;
+}
+.upperContainer span {
+  margin-left: 20px;
+  text-decoration: none;
+  font-weight: 600;
 }

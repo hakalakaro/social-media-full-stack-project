@@ -28,7 +28,7 @@ export const register = async (req: Request, res: Response): Promise<Response> =
 
 // Login function
 export const login = async (req: Request, res: Response): Promise<Response> => {
-  try {
+  try { 
     const { username, password } = req.body;
 
     // Check if user exists and validate password
@@ -43,7 +43,7 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
     }
 
     // Generate JWT
-    const token = jwt.sign({ id: user._id }, process.env.JWT_SECRET || '', { expiresIn: '1h' });
+    const token = jwt.sign({ id: user._id, username: user.username }, process.env.JWT_SECRET || '', { expiresIn: '1h' });
     return res.json({ success: true, token });
   } catch (error) {
     console.error("Login error:", error);
