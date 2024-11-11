@@ -74,12 +74,13 @@ export const uploadImage = async (req: Request, res: Response): Promise<void> =>
 // Controller function to fetch images
 export const getImages = async (req: Request, res: Response): Promise<void> => {
     try {
-        const posts = await Post.find({}, 'imageUrl username');
+        const posts = await Post.find({}, 'imageUrl username _id');
         console.log('Fetched Posts:', posts);
         const imagesWithPaths = posts.map(post => {
             const imageUrl = post.imageUrl.replace(/\\/g, '/');
             const username = post.username || 'Anonymous'
-            return { imageUrl, username };
+            const _id = post._id;
+            return { imageUrl, username, _id };
         });
 
         res.json(imagesWithPaths);

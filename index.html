@@ -626,7 +626,9 @@
 
         // Add each image from the data
         data.reverse().forEach(post => {
-          const { imageUrl, username } = post;
+          console.log('Post object:', post);
+          const { _id, imageUrl, username } = post;
+          console.log('Image ID:', _id);  // This will log the ID of the image
           const displayUsername = post.username || 'Anonymous';
           //Create the upper container for upload name etc
           const upperContainer = document.createElement('div');

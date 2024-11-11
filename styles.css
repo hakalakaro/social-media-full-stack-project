@@ -271,24 +271,6 @@ body {
   align-items: center;
   box-sizing: border-box;
   border-radius: 10px;
-  transition: opacity 0.3s ease;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-  position: relative; /* Position relative to apply pseudo-elements */
-}
-.uploaded-image-container.hidden {
-  display: none; /* Properly hide the container */
-  opacity: 0; /* Fades out the container */
-}
-#textContainer2 {
-  width: 70%;
-  background-color: #fafafa;
-  padding: 10px;
-  
-  display: none;
-  justify-content: center;
-  align-items: center;
-  box-sizing: border-box;
-  border-radius: 10px;
  
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
   position: relative; /* Position relative to apply pseudo-elements */
