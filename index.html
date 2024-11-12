@@ -592,7 +592,8 @@
 
       });
     });
-
+    
+    //Load images from database and create layout for pictures/comments etc
     async function loadImages() {
       try {
         const token = localStorage.getItem('authToken');
@@ -629,11 +630,14 @@
           console.log('Post object:', post);
           const { _id, imageUrl, username } = post;
           console.log('Image ID:', _id);  // This will log the ID of the image
-          const displayUsername = post.username || 'Anonymous';
-          //Create the upper container for upload name etc
+
+          const displayUsername = post.username || 'Anonymous'; // Display "anonymous" if username not found.
+
+          //Create the upper container for upload name of uploader etc
           const upperContainer = document.createElement('div');
           upperContainer.classList.add('uploaded-image-container', 'no-lines', 'upperContainer');
           upperContainer.innerHTML = `<span>Submitted by: ${displayUsername}</span>`; // Example content
+
           // Create the container for each image
           const container = document.createElement('div');
           container.classList.add('uploaded-image-container', 'with-lines'); // Apply the container styles
@@ -723,6 +727,38 @@
               commentBox.style.display = 'none'; // Hide it again if it's already visible
             }
           });
+          
+          button3.addEventListener('click', async () => {
+    const commentText = inputField.value.trim();
+    if (!commentText) {
+        alert('Please enter a comment before submitting.');
+        return;
+    }
+
+    const token = localStorage.getItem('authToken');
+    const postId = _id; // Use the image ID from the current post
+
+    try {
+        const response = await fetch('http://localhost:5000/upload/comment', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ postId, commentText })
+        });
+
+        if (response.ok) {
+            inputField.value = ''; // Clear the input field on success
+            alert('Comment added successfully!');
+        } else {
+            const errorData = await response.json();
+            console.error('Error adding comment:', errorData);
+        }
+    } catch (error) {
+        console.error('Error:', error);
+    }
+});
           // You can add text or other content inside the comment box
           //commentBox.textContent = "This is a comment box below the like button.";
           // Append the new container directly after the image container

@@ -319,7 +319,7 @@ body {
   width: 100%;
   height: auto; /* Allow height to adjust automatically */
   max-height: 100%; /* Prevents the image from exceeding container height */
-  
+  cursor: pointer;
   object-fit: contain; /* Ensures the image fits within container while maintaining aspect ratio */
 }
 
@@ -430,6 +430,7 @@ body {
   position: sticky; /* Keep the input at the bottom */
   
   background-color: #fff; /* Make sure the input has a background */
+  margin-top: 340px;
   
 }
 

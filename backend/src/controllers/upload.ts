@@ -89,5 +89,51 @@ export const getImages = async (req: Request, res: Response): Promise<void> => {
     }
 };
 
+export const addComment = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const { commentText, postId } = req.body;
+
+        // Ensure that both fields are provided
+        if (!commentText || !postId) {
+            res.status(400).json({ message: 'Comment text and post ID are required' });
+            return;
+        }
+
+        // Extract the token from the request headers
+        const authHeader = req.headers.authorization;
+        const token = authHeader && authHeader.split(' ')[1];
+
+        if (!token) {
+            res.status(401).json({ message: 'Unauthorized' });
+            return;
+        }
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as { username: string };
+        const username = decoded.username;
+
+        // Find the post by ID
+        const post = await Post.findById(postId);
+        if (!post) {
+            res.status(404).json({ message: 'Post not found' });
+            return;
+        }
+
+        // Add the new comment to the post's comments array
+        const newComment = {
+            username,
+            commentText,
+            createdAt: new Date(),
+        };
+
+        post.comments.push(newComment);
+        await post.save();
+
+        res.status(200).json({ message: 'Comment added successfully' });
+    } catch (error) {
+        console.error('Error adding comment:', error);
+        res.status(500).json({ message: 'Internal server error' });
+    }
+};
+
 // Export the multer middleware as a separate function
 export const uploadMiddleware = upload.single('image');
