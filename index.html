@@ -469,6 +469,7 @@
       if (logoutLink) {
         logoutLink.addEventListener("click", function (e) {
           e.preventDefault(); // Prevent default link behavior
+          localStorage.removeItem('authToken');
           logout(); // Call the logout function
         });
       }
@@ -534,7 +535,7 @@
         console.log(data.message);  // Log success message from the backend
 
         // Add delay before calling loadImages
-        const delay = 4000; // 4 seconds delay
+        const delay = 2000; // 4 seconds delay
         setTimeout(async () => {
           await loadImages(); // Call loadImages after the delay
         }, delay);
@@ -595,188 +596,213 @@
     
     //Load images from database and create layout for pictures/comments etc
     async function loadImages() {
-      try {
-        const token = localStorage.getItem('authToken');
-        console.log('Token:', token);  // Check the token
+  try {
+    const token = localStorage.getItem('authToken');
+    console.log('Token:', token);  // Check the token
 
-        const response = await fetch('http://localhost:5000/upload/images', {
-          method: 'GET',
-          headers: {
-            'Authorization': `Bearer ${token}`,
-            'Content-Type': 'application/json'
-          }
-        });
+    const response = await fetch('http://localhost:5000/upload/images', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json'
+      }
+    });
 
-        if (!response.ok) {
-          throw new Error(`Network response was not ok: ${response.statusText}`);
-        }
-
-        const data = await response.json();
-        const postContainer = document.getElementById('mainContainer');
-        console.log('Fetched data:', data);
-        // Remove any existing <p> element if present
-        const pElement = postContainer.querySelector('p');
-        if (pElement) {
-          pElement.remove();
-        }
-
-        // Remove all existing image containers to avoid duplicates
-        postContainer.querySelectorAll('.uploaded-image-container').forEach(container => {
-          container.remove();
-        });
-
-        // Add each image from the data
-        data.reverse().forEach(post => {
-          console.log('Post object:', post);
-          const { _id, imageUrl, username } = post;
-          console.log('Image ID:', _id);  // This will log the ID of the image
-
-          const displayUsername = post.username || 'Anonymous'; // Display "anonymous" if username not found.
-
-          //Create the upper container for upload name of uploader etc
-          const upperContainer = document.createElement('div');
-          upperContainer.classList.add('uploaded-image-container', 'no-lines', 'upperContainer');
-          upperContainer.innerHTML = `<span>Submitted by: ${displayUsername}</span>`; // Example content
-
-          // Create the container for each image
-          const container = document.createElement('div');
-          container.classList.add('uploaded-image-container', 'with-lines'); // Apply the container styles
-          container.style.padding = "20px"; // Padding to add space around the image
-          postContainer.appendChild(upperContainer);
-          const img = document.createElement('img');
-          img.src = `http://localhost:5000/${post.imageUrl}`;
-          console.log('Image URL:', img.src);  // Log image URL to verify it's correct
-          img.alt = "Uploaded Image";
-          img.classList.add('uploaded-image'); // Apply the existing image styles
-
-          // Hide image if it fails to load
-          img.onerror = () => {
-            img.style.display = 'none';
-          };
-
-          // Add event listener for image click (optional: for enlarging)
-          img.addEventListener('click', () => {
-            img.classList.toggle('enlarged');
-          });
-
-          // Append the image to the container
-          container.appendChild(img);
-          // Append the container to the postContainer
-          postContainer.appendChild(container);
-          const newContainer = document.createElement('div');
-          newContainer.classList.add('uploaded-image-container', 'no-lines');
-          newContainer.style.padding = '10px'; // Adjust padding if needed
-
-          newContainer.style.marginBottom = '30px';
-          newContainer.style.backgroundColor = '#fafafa;';
-
-          const button = document.createElement('button');
-          const button2 = document.createElement('button');
-          const button3 = document.createElement('button');
-
-          button.classList.add('like-button'); // Add custom class for styling if needed
-          button2.classList.add('like-button');
-          button3.classList.add('like-button', 'postComment');
-
-          const icon = document.createElement('i');
-          const icon2 = document.createElement('i');
-          const icon3 = document.createElement('i');
-
-          icon.classList.add('fa', 'fa-thumbs-up'); // Font Awesome thumbs-up icon
-          icon2.classList.add('fa', 'fa-comment');
-          icon3.classList.add('fa', 'fa-share');
-
-          icon.setAttribute('aria-hidden', 'true'); // Accessibility
-          icon2.setAttribute('aria-hidden', 'true');
-          icon3.setAttribute('aria-hidden', 'true');
-
-          // Add the icon inside the button
-          button.appendChild(icon);
-          button2.appendChild(icon2);
-          button3.appendChild(icon3);
-
-          // Set the button text 
-          button.appendChild(document.createTextNode(' Like'));
-          button2.appendChild(document.createTextNode(' Comments'));
-          button3.appendChild(document.createTextNode(' Comment'));
-
-          // Append the button to the newContainer
-          newContainer.appendChild(button);
-          newContainer.appendChild(button2);
-
-          const commentBox = document.createElement('div');
-          commentBox.classList.add('comment-box');  // Apply the CSS class for styling // // CHECK THIS!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!! //
-          commentBox.style.display = 'none'; // Hide initially
-
-          const inputField = document.createElement('input');
-
-          inputField.type = 'text';
-          inputField.placeholder = 'Write your comment...';
-          inputField.classList.add('comment-input'); // Add a class for specific styling if needed
-
-          commentBox.appendChild(inputField); // Append input field to comment box
-          commentBox.appendChild(button3);
-
-          // Add event listener to comment button
-          button2.addEventListener('click', () => {
-            // Toggle visibility of the comment box when the comment button is clicked
-            if (commentBox.style.display === 'none') {
-              commentBox.style.display = 'block';
-              inputField.focus(); // Auto-focus the input when opened
-            } else {
-              commentBox.style.display = 'none'; // Hide it again if it's already visible
-            }
-          });
-          
-          button3.addEventListener('click', async () => {
-    const commentText = inputField.value.trim();
-    if (!commentText) {
-        alert('Please enter a comment before submitting.');
-        return;
+    if (!response.ok) {
+      throw new Error(`Network response was not ok: ${response.statusText}`);
     }
 
-    const token = localStorage.getItem('authToken');
-    const postId = _id; // Use the image ID from the current post
+    const data = await response.json();
+    const postContainer = document.getElementById('mainContainer');
+    console.log('Fetched data:', data);
 
-    try {
-        const response = await fetch('http://localhost:5000/upload/comment', {
+    // Remove any existing <p> element if present
+    const pElement = postContainer.querySelector('p');
+    if (pElement) {
+      pElement.remove();
+    }
+
+    // Remove all existing image containers to avoid duplicates
+    postContainer.querySelectorAll('.uploaded-image-container').forEach(container => {
+      container.remove();
+    });
+
+    // Add each image from the data
+    data.reverse().forEach(post => {
+      const { _id, imageUrl, username, comments } = post;
+      console.log('Post ID:', _id);
+      console.log('Comments:', comments);
+      
+      const displayUsername = post.username || 'Anonymous'; // Display "anonymous" if username not found.
+
+      // Create the upper container for upload name of uploader etc
+      const upperContainer = document.createElement('div');
+      upperContainer.classList.add('uploaded-image-container', 'no-lines', 'upperContainer');
+      upperContainer.innerHTML = `<span>Submitted by: ${displayUsername}</span>`; // Example content
+
+      // Create the container for each image
+      const container = document.createElement('div');
+      container.classList.add('uploaded-image-container', 'with-lines'); // Apply the container styles
+      container.style.padding = "20px"; // Padding to add space around the image
+      postContainer.appendChild(upperContainer);
+      const img = document.createElement('img');
+      img.src = `http://localhost:5000/${post.imageUrl}`;
+      console.log('Image URL:', img.src);  // Log image URL to verify it's correct
+      img.alt = "Uploaded Image";
+      img.classList.add('uploaded-image'); // Apply the existing image styles
+
+      // Hide image if it fails to load
+      img.onerror = () => {
+        img.style.display = 'none';
+      };
+
+      // Add event listener for image click (optional: for enlarging)
+      img.addEventListener('click', () => {
+        img.classList.toggle('enlarged');
+      });
+
+      // Append the image to the container
+      container.appendChild(img);
+      // Append the container to the postContainer
+      postContainer.appendChild(container);
+      
+      const newContainer = document.createElement('div');
+      newContainer.classList.add('uploaded-image-container', 'no-lines');
+      newContainer.style.padding = '10px'; // Adjust padding if needed
+
+      newContainer.style.marginBottom = '30px';
+      newContainer.style.backgroundColor = '#fafafa';
+
+      const button = document.createElement('button');
+      const button2 = document.createElement('button');
+      const button3 = document.createElement('button');
+
+      button.classList.add('like-button'); // Add custom class for styling if needed
+      button2.classList.add('like-button');
+      button3.classList.add('like-button', 'postComment');
+
+      const icon = document.createElement('i');
+      const icon2 = document.createElement('i');
+      const icon3 = document.createElement('i');
+
+      icon.classList.add('fa', 'fa-thumbs-up'); // Font Awesome thumbs-up icon
+      icon2.classList.add('fa', 'fa-comment');
+      icon3.classList.add('fa', 'fa-share');
+
+      icon.setAttribute('aria-hidden', 'true'); // Accessibility
+      icon2.setAttribute('aria-hidden', 'true');
+      icon3.setAttribute('aria-hidden', 'true');
+
+      // Add the icon inside the button
+      button.appendChild(icon);
+      button2.appendChild(icon2);
+      button3.appendChild(icon3);
+
+      // Set the button text 
+      button.appendChild(document.createTextNode(' Like'));
+      button2.appendChild(document.createTextNode(' Comments'));
+      button3.appendChild(document.createTextNode(' Comment'));
+
+      // Append the button to the newContainer
+      newContainer.appendChild(button);
+      newContainer.appendChild(button2);
+
+      const commentBox = document.createElement('div');
+      commentBox.classList.add('comment-box');  // Apply the CSS class for styling
+      commentBox.style.display = 'none'; // Hide initially
+
+      const inputField = document.createElement('input');
+      inputField.type = 'text';
+      inputField.placeholder = 'Write your comment...';
+      inputField.classList.add('comment-input'); // Add a class for specific styling if needed
+
+      commentBox.appendChild(inputField); // Append input field to comment box
+      commentBox.appendChild(button3);
+
+      
+
+      // Add event listener to comment button
+      button2.addEventListener('click', () => {
+        // Toggle visibility of the comment box when the comment button is clicked
+        if (commentBox.style.display === 'none') {
+          commentBox.style.display = 'block';
+          inputField.focus(); // Auto-focus the input when opened
+        } else {
+          commentBox.style.display = 'none'; // Hide it again if it's already visible
+        }
+      });
+
+      button3.addEventListener('click', async () => {
+        const commentText = inputField.value.trim();
+        if (!commentText) {
+          alert('Please enter a comment before submitting.');
+          return;
+        }
+
+        const token = localStorage.getItem('authToken');
+        const postId = _id; // Use the image ID from the current post
+
+        try {
+          const response = await fetch('http://localhost:5000/upload/comment', {
             method: 'POST',
             headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`
             },
             body: JSON.stringify({ postId, commentText })
-        });
+          });
 
-        if (response.ok) {
+          if (response.ok) {
             inputField.value = ''; // Clear the input field on success
             alert('Comment added successfully!');
-        } else {
+
+            // Add the new comment to the commentsContainer
+            const newComment = document.createElement('div');
+            newComment.classList.add('comment');
+            newComment.textContent = `${comment.username}: ${comment.commentText}`;
+            commentsContainer.appendChild(newComment);
+
+          } else {
             const errorData = await response.json();
             console.error('Error adding comment:', errorData);
+          }
+        } catch (error) {
+          console.error('Error:', error);
         }
-    } catch (error) {
-        console.error('Error:', error);
-    }
-});
-          // You can add text or other content inside the comment box
-          //commentBox.textContent = "This is a comment box below the like button.";
-          // Append the new container directly after the image container
-          
-          postContainer.appendChild(newContainer);
-          newContainer.appendChild(commentBox);
-        });
+      });
+    
+      // Append the new container directly after the image container
+      postContainer.appendChild(newContainer);
+      newContainer.appendChild(commentBox);
+      // Create a container for comments (if there are any)
+      const commentsContainer = document.createElement('div');
+      commentsContainer.classList.add('comments-container');
+      commentsContainer.style.marginTop = '10px';
 
-        // Keep fa icons positioned at the bottom
+      // Display any existing comments
+      comments.forEach(comment => {
+        const commentDiv = document.createElement('div');
+        commentDiv.classList.add('comment');
+        commentDiv.textContent = `${comment.username}: ${comment.commentText}`;
+        commentsContainer.appendChild(commentDiv);
+      });
 
-      } catch (error) {
-        console.error('Error fetching images:', error);
-      }
-      mainContainer.scrollTo({ top: 0, behavior: 'smooth' });
-    }
+      // Append the comments container to the commentBox
+      commentBox.appendChild(commentsContainer);
+    });
 
-    // Run loadImages on window load
-    window.onload = loadImages;
+    // Keep fa icons positioned at the bottom
+
+  } catch (error) {
+    console.error('Error fetching images:', error);
+  }
+
+  mainContainer.scrollTo({ top: 0, behavior: 'smooth' });
+}
+
+// Run loadImages on window load
+window.onload = loadImages;
+
 
 
     // Toggle profile page

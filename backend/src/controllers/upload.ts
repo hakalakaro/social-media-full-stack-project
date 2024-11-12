@@ -74,16 +74,18 @@ export const uploadImage = async (req: Request, res: Response): Promise<void> =>
 // Controller function to fetch images
 export const getImages = async (req: Request, res: Response): Promise<void> => {
     try {
-        const posts = await Post.find({}, 'imageUrl username _id');
+        const posts = await Post.find({}, 'imageUrl username comments _id');
         console.log('Fetched Posts:', posts);
-        const imagesWithPaths = posts.map(post => {
+        
+        const imagesWithDetails = posts.map(post => {
             const imageUrl = post.imageUrl.replace(/\\/g, '/');
-            const username = post.username || 'Anonymous'
+            const username = post.username || 'Anonymous';
             const _id = post._id;
-            return { imageUrl, username, _id };
+            const comments = post.comments || [];
+            return { imageUrl, username, _id, comments };
         });
 
-        res.json(imagesWithPaths);
+        res.json(imagesWithDetails);
     } catch (error) {
         res.status(500).json({ message: 'Error fetching images', error });
     }
