@@ -5,6 +5,7 @@
   <title>Test project</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@700&display=swap" rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
@@ -20,7 +21,7 @@
   <div class="header">
     <nav data-bs-theme="dark" style="justify-content: center;">
       <nav class="navbar navbar-expand-lg bg-body-tertiary"
-        style="background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)) ); border-bottom: 2px solid grey; padding: 10px;">
+        style="background-color: rgba(var(--bs-dark-rgb)); border-bottom: 2px solid grey; padding: 10px;">
         <div class="container-fluid">
           <a class="navbar-brand" href="#" style="float: left;"><img src="./images/logopicture.jpg" id="logo" alt="Logo"
               style="height: 90px; margin-left: 25px; border-radius: 10px;"></a>
@@ -30,11 +31,11 @@
             <span class="navbar-toggler-icon"></span>
           </button>
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
-            <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 17px;">
+            <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 20px;">
               <li class="nav-item" style="padding-right: 40px;">
                 <a class="nav-link active" aria-current="page" href="#" id="homeLink"
-                  style="margin-left: 45px; color: white;"><i class="fa fa-home" aria-hidden="true"
-                    style="margin-right: 5px;"></i>Home</a>
+                  style="margin-left: 45px; color: orange;"><i class="fa fa-home" aria-hidden="true"
+                    style="margin-right: 5px; color: orange;"></i>Home</a>
               </li>
               <li class="nav-item" style="padding-right: 40px;">
                 <a class="nav-link" href="#" style="color: white;"><i class="fa fa-info-circle" aria-hidden="true"
@@ -90,7 +91,7 @@
 
               <!-- Search Button -->
               <button class="btn btn-outline-secondary" type="submit" id="searchBtn"
-                style="background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)) ); color: white; border-color: rgb(211, 211, 211); margin-right: 25px;">
+                style="background-color: rgba(var(--bs-dark-rgb)); color: white; border-color: rgb(211, 211, 211); margin-right: 25px;">
                 Search
               </button>
             </form>
@@ -170,7 +171,7 @@
             <input type="password" class="form-control" id="password" placeholder="Password">
           </div>
           <button class="btn btn-outline-secondary" type="submit"
-            style=" background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)) ); color: rgb(211, 211, 211); border-color: rgb(211, 211, 211);">Register</button>
+            style=" background-color: rgba(var(--bs-dark-rgb)); color: rgb(211, 211, 211); border-color: rgb(211, 211, 211);">Register</button>
         </form>
       </div>
 
@@ -184,27 +185,27 @@
           <div class="switchHeader">
             <div class="btn-group" role="group" aria-label="Basic example">
               <button type="button" class="btn btn-secondary"
-                style="background-image: linear-gradient(rgba(var(--bs-dark-rgb)), grey); border: none;">
-                <i class="fa fa-picture-o fa-1x" aria-hidden="true"
+                style="background-color: rgba(var(--bs-dark-rgb)); border: none;">
+                <i class="far fa-images fa-1x" aria-hidden="true"
                   style="font-size: 20px; cursor: pointer; padding: 5px;" title="Show Images"></i>
               </button>
               <button type="button" class="btn btn-secondary"
-                style="background-image: linear-gradient(rgba(var(--bs-dark-rgb)), grey); border: none;">
+                style="background-color: rgba(var(--bs-dark-rgb)); border: none;">
                 <i class="fa fa-list-alt fa-1x" aria-hidden="true"
                   style="font-size: 20px; cursor: pointer; padding: 5px;" title="Show Stories"></i>
               </button>
               <button type="button" class="btn btn-secondary"
-                style="background-image: linear-gradient(rgba(var(--bs-dark-rgb)), grey); border: none;">
+                style="background-color: rgba(var(--bs-dark-rgb)); border: none;">
                 <i id="cameraIcon" class="fa fa-upload fa-1x" aria-hidden="true"
                   style="font-size: 20px; cursor: pointer; padding: 5px;" title="Upload Images"></i>
               </button>
               <button type="button" class="btn btn-secondary"
-                style="background-image: linear-gradient(rgba(var(--bs-dark-rgb)), grey); border: none;">
+                style="background-color: rgba(var(--bs-dark-rgb)); border: none;">
                 <i id="keyboardIcon" class="fa fa-keyboard-o fa-1x" aria-hidden="true"
                   style="font-size: 20px; cursor: pointer; padding: 5px;" title="Upload Text"></i>
               </button>
               <button type="button" id="toggleIcon" class="btn btn-secondary"
-                style="background-image: linear-gradient(rgba(var(--bs-dark-rgb)), grey); border: none;">
+                style="background-color: rgba(var(--bs-dark-rgb)); border: none;">
                 <i class="fa fa-arrows-v fa-1x" aria-hidden="true"
                   style="font-size: 20px; cursor: pointer; padding: 5px;" title="Show/Hide UI"></i>
               </button>
@@ -255,7 +256,24 @@
       </div>
       <!-- Profile Page -->
       <div id="profilePage" style="display: none; background-color: #fafafa;">
-        <p>Profile Page not found</p>
+        <div id="profilePageContainer">
+        <div id="profilePageHeader">
+          <div id="profilePictureContainer">
+            <i class='far fa-image' style='font-size:75px; color: #969494; position: absolute;'></i>
+          </div>
+          <div id="profileUserInfo">
+            <div id="welcomeProfileMessage">
+              Welcome back, <span id="welcomeProfileUser">&nbsp;User.</span>
+            </div>
+          </div>
+          <div id="profileSettings">
+
+          </div>
+          <div id="profileSettings2">
+
+          </div>
+        </div>
+        </div>
       </div>
       <!-- Help Page -->
       <div id="helpPage" style="display: none; background-color: #fafafa;">
@@ -283,7 +301,7 @@
     style="border-radius: 15px;">
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content"
-        style="background-color: rgba(var(--bs-dark-rgb)); background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)) ); color: rgb(211, 211, 211);  ">
+        style="background-color: rgba(var(--bs-dark-rgb)); color: rgb(211, 211, 211);  ">
         <div class="modal-header">
           <h5 class="modal-title" id="loginModalLabel" style="text-align: center; width: 100%;">Login</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
@@ -300,7 +318,7 @@
               <input type="password" class="form-control" id="loginPassword" placeholder="Password">
             </div>
             <button class="btn btn-outline-secondary" type="submit"
-              style=" background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)) ); color: rgb(211, 211, 211); border-color: rgb(211, 211, 211); ">Login</button>
+              style=" background-color: rgba(var(--bs-dark-rgb)); color: rgb(211, 211, 211); border-color: rgb(211, 211, 211); ">Login</button>
             <div id="loginMessage" style="margin-top: 10px;"></div>
           </form>
         </div>
@@ -578,7 +596,7 @@
         postContainer.style.display = "none";
         textContainer.style.display = "block";
         textContainer.style.display = "flex";
-        textContainer.style.backgroundImage = "linear-gradient(grey, rgba(var(--bs-dark-rgb)))";
+        textContainer.style.backgroundColor = "rgba(var(--bs-dark-rgb))";
         textContainer.style.height = "17vh";
         textContainer.style.boxShadow = "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
         textContainer.style.borderbottomleftradius = "0";
@@ -591,7 +609,7 @@
         postContainer.style.display = "block";
         textContainer.style.display = "none";
         postContainer.style.display = "flex";
-        postContainer.style.backgroundImage = "linear-gradient(grey, rgba(var(--bs-dark-rgb)))";
+        postContainer.style.backgroundColor = "rgba(var(--bs-dark-rgb))";
         postContainer.style.height = "17vh";
         postContainer.style.display = "flex";
         postContainer.style.boxShadow = "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
@@ -872,7 +890,7 @@
         // Show the textContainer and postContainer
         textContainer.style.display = 'none';
         postContainer.style.display = 'block';
-        postContainer.style.backgroundImage = "linear-gradient(grey, rgba(var(--bs-dark-rgb)))";
+        postContainer.style.backgroundColor = "rgba(var(--bs-dark-rgb))";
         postContainer.style.height = "17vh";
         postContainer.style.display = "flex";
         postContainer.style.boxShadow = "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
