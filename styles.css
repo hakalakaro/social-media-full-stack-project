@@ -147,16 +147,22 @@ body {
   background-image: linear-gradient(rgba(var(--bs-dark-rgb)), grey);
   padding: 10px;
   text-align: center;
-  color: white;
   width: 100%;
-  font-size: 15px;
+  
   border-top: 2px solid grey;
   position: fixed;
   left: 0;
   bottom: 0;
   height: 5%;
 }
-
+#footerText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 14px;
+  background: linear-gradient(90deg, #ffffff, #f0eeee);
+  background-clip: text; /* Standard property */
+  -webkit-background-clip: text; /* Vendor prefix for older WebKit browsers */
+  -webkit-text-fill-color: transparent;
+}
 @media (max-width: 1000px) {
   #homeLink {
     margin-left: 0 !important;
@@ -173,8 +179,8 @@ body {
 }
 
 @media (max-width: 1800px) {
-  .column.side {
-    display: none;
+  .column.side{
+    display: none !important;
     /* Hide side columns */
   }
 
@@ -234,7 +240,7 @@ body {
   flex-direction: column;
   /* Stack posts vertically */
 
-  height: 65vh;
+  height: 85vh;
 
   background-color: #fafafa;
   align-items: center;
@@ -258,28 +264,53 @@ body {
 
 #postContainer {
   background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)));
-
+  border: 2px solid #ccc;
   display: flex;
   /* Use flexbox layout */
   align-items: center;
-  padding: 20px;
+  display: none;
   height: 17vh;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  border-bottom: none;
+}
+#imageShareText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  background: linear-gradient(90deg, #ffffff, #d8d6d6);
+  background-clip: text; /* Standard property */
+  -webkit-background-clip: text; /* Vendor prefix for older WebKit browsers */
+  -webkit-text-fill-color: transparent;
+  text-align: center;
 }
 
 #textContainer {
   background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)));
-
+  border: 2px solid #ccc;
   display: flex;
   /* Use flexbox layout */
   align-items: center;
-  padding: 20px;
+  display: none;
   height: 17vh;
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
+  border-bottom: none;
+  position: relative;
+}
+#textShareText {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  background: linear-gradient(90deg, #ffffff, #d8d6d6);
+  background-clip: text; /* Standard property */
+  -webkit-background-clip: text; /* Vendor prefix for older WebKit browsers */
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  
+  display: flex;
+  margin-left: 150px;
+  margin-bottom: 30px;
 }
 
 .navbar {
@@ -440,7 +471,8 @@ body {
   /* Slower fade, delayed hiding */
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
-
+  border: 2px solid #ccc;
+  border-top: none;
 }
 
 .switchHeader.hidden {
@@ -647,7 +679,7 @@ body {
 
 }
 
-#friendsList {
+#friendsListIcon {
   border: 2px solid grey;
   font-size: 25px;
   color: white;
@@ -656,15 +688,58 @@ body {
   border-radius: 50%;
   position: absolute;
   bottom: 60px;
-  left: 40%;
+  left: 42%;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
 }
 
-#friendsList:hover {
+#friendsListIcon:hover {
   transform: scale(1.05);
   /* Slight zoom effect */
   cursor: pointer;
 }
-#friendsList:active {
+#friendsListIcon:active {
   transform: translateY(4px);
+}
+#friendsListModal {
+  height: 75%;
+  width: 70%;
+  background-image: linear-gradient(rgba(var(--bs-dark-rgb)), rgb(90, 90, 90));
+  border-radius: 10px;
+  margin-top: 20px;
+  display: flex;
+  position: absolute;
+  top: 20px;
+  border: 2px solid #ccc;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3); /* Add shadow for depth */
+  
+}
+.active-friends-header {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  background: linear-gradient(90deg, #ffffff, #686364);
+  background-clip: text; /* Standard property */
+  -webkit-background-clip: text; /* Vendor prefix for older WebKit browsers */
+  -webkit-text-fill-color: transparent;
+  text-align: center;
+  margin-bottom: 20px;
+  margin-top: 20px;
+}
+#friendsListModalContainer {
+  width: 93%;
+  height: 87%;
+  border-radius: 5px;
+  border: 2px solid #ccc;
+  
+  display: flex;
+  align-items: center; /* Center content vertically inside container */
+  justify-content: center; /* Center content horizontally inside container */
+  margin: auto; /* Optional - center within parent if needed */
+}
+#submittedBySpan {
+  font-family: 'Poppins', sans-serif;
+  font-size: 20px;
+  background: linear-gradient(90deg, #222222, #686364);
+  background-clip: text; /* Standard property */
+  -webkit-background-clip: text; /* Vendor prefix for older WebKit browsers */
+  -webkit-text-fill-color: transparent;
 }

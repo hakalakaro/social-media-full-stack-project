@@ -5,6 +5,7 @@
   <title>Test project</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/4.7.0/css/font-awesome.min.css">
@@ -41,7 +42,7 @@
               </li>
               <li class="nav-item dropdown" style="padding-right: 40px;">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                  aria-expanded="false" style="color: white;"><i class="fa fa-cube" aria-hidden="true" ;></i>
+                  aria-expanded="false" style="color: white;"><i class="fas fa-cube" aria-hidden="true" ;></i>
                   Portal
                 </a>
                 <ul class="dropdown-menu">
@@ -89,7 +90,7 @@
 
               <!-- Search Button -->
               <button class="btn btn-outline-secondary" type="submit" id="searchBtn"
-                style="background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)) ); color: rgb(211, 211, 211); border-color: rgb(211, 211, 211); margin-right: 25px;">
+                style="background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)) ); color: white; border-color: rgb(211, 211, 211); margin-right: 25px;">
                 Search
               </button>
             </form>
@@ -101,7 +102,7 @@
 
   <div class="row">
     <div class="column side" id="side1">
-      
+
     </div>
     <!-- Middle div start -->
     <div class="column middle">
@@ -176,6 +177,9 @@
       <!-- Main Page -->
       <div id="mainPage" style="display: none; background-color: #fafafa;">
         <div id="mainContainer" style="text-align: center; position: relative;">
+          <div id="hoverTip" style="position: absolute; top: 0; left: 20px;">
+            <i class="fa-solid fa-caret-down fa-2x"></i>
+          </div>
           <!-- Text/Picture Switch -->
           <div class="switchHeader">
             <div class="btn-group" role="group" aria-label="Basic example">
@@ -222,31 +226,31 @@
         </div>
         <!-- Text Container-->
         <div class="bg-dark" data-bs-theme="dark" id="textContainer"
-          style="justify-content: center; border-top-left-radius: 5px; border-top-right-radius: 5px; display: none; ">
-          <div class="mb-3" style=" display: flex;">
-            <label for="exampleFormControlTextarea1" class="form-label"
-              style="color: white; margin-right:50px; margin-top: 30px; font-size: 14px; font-weight: 600; ">What is on
-              your mind?</label>
+          style=" border-top-left-radius: 5px; border-top-right-radius: 5px; display: none; ">
+          <div style="display: flex; position: absolute; float: left; width: 100%; height: 80%; align-items: center;">
+            <label for="exampleFormControlTextarea1" class="form-label" id="textShareText"
+              style=" margin-top: 30px;">Share your &nbsp;<em>stories</em></label>
             <textarea class="form-control" id="textBox" rows="3"
-              style="height: 75px; margin-top: 15px; resize: none; "></textarea>
+              style="height: 80%; width: 25%;  resize: none; margin-left: 50px; "></textarea>
             <button class="shareBtn btn btn-outline-secondary" type="submit"
-              style="color: white; height: 40px; width: 150px; margin-top: 30px; margin-left: 50px; "><i
-                class="fa fa-pencil" aria-hidden="true" style="margin-right: 10px;"></i>Share</button>
+              style="color: white; height: 40px; width: 150px;  margin-left: 50px; "><i class="fa fa-pencil"
+                aria-hidden="true" style="margin-right: 10px;"></i>Share</button>
           </div>
         </div>
         <!-- Upload Container-->
         <div class="bg-dark" data-bs-theme="dark" id="postContainer"
-          style="justify-content: center;  border-top-left-radius: 5px; border-top-right-radius: 5px; ">
-          <div
-            style="text-align: center; align-items: center; display: flex; color: white; font-size: 14px; text-decoration: none; font-weight: 600; margin-right: 50px; ">
-            Share your pictures</div>
-          <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data"
-            style="margin-left: 40px; display: flex; align-items: center; color: white;">
-            <input type="file" name="image" accept=".jpg, .jpeg, .png" required />
-            <button class="shareBtn btn btn-outline-secondary" type="submit"
-              style="color: white ; height: 40px; width: 100px;"><i class="fa fa-upload" aria-hidden="true"
-                style="margin-right: 10px;"></i>Share</button>
-          </form>
+          style="  border-top-left-radius: 5px; border-top-right-radius: 5px; ">
+          <div id="imageShareText" style="text-align: center; align-items: center; display: flex; margin-left: 150px; ">
+            Share your &nbsp;<em>images</em></div>
+          <div id="imageUploadContainer">
+            <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data"
+              style="margin-left: 40px; display: flex; align-items: center; color: white;">
+              <input type="file" name="image" accept=".jpg, .jpeg, .png" required />
+              <button class="shareBtn btn btn-outline-secondary" type="submit"
+                style="color: white ; height: 40px; width: 150px; align-items: center;"><i class="fa fa-upload"
+                  aria-hidden="true"></i> Share</button>
+            </form>
+          </div>
         </div>
       </div>
       <!-- Profile Page -->
@@ -259,13 +263,19 @@
       </div>
     </div>
     <div class="column side" id="side2">
-      <i class='fas fa-user-friends' id="friendsList" title="Friend List" style="display: none;"></i>
+      <div class="friendsListModal" id="friendsListModal" style="display: none;">
+        <h2 class="active-friends-header">Active Friends</h2>
+        <div class="friendsListModalContainer" id="friendsListModalContainer">
+
+        </div>
+      </div>
+      <i class='fas fa-user-friends' id="friendsListIcon" title="Friend List" style="display: none;"></i>
     </div>
   </div>
 
   <div class="footer" data-bs-theme="dark">
-    <p>Garbagebook</p>
-    <p>All rights reserved.</p>
+    <p id="footerText">Garbagebook</p>
+
   </div>
 
   <!-- Login Modal -->
@@ -390,7 +400,7 @@
         // Get form input values
         const username = document.getElementById('loginUsername').value;
         const password = document.getElementById('loginPassword').value;
-
+        const mainContainer = document.getElementById('mainContainer');
         try {
           const response = await fetch('http://localhost:5000/auth/login', {
             method: 'POST',
@@ -401,10 +411,11 @@
           if (response.ok) {
             const data = await response.json();
             console.log("Login successful", data);
-
+            mainContainer?.scrollTo({ top: 0, behavior: 'smooth' });
             localStorage.setItem("authToken", data.token); // Store token
             updateLogoutLinkVisibility(); // Update logout link visibility
             $('#loginModal').modal('hide'); // Hide the modal
+            location.reload();
           } else {
             console.error("Login failed");
             // Handle login failure, e.g., display an error message to the user
@@ -424,7 +435,7 @@
       const logoutLink = document.getElementById("logoutDropdown");
       const loginLink = document.getElementById("loginDropdown");
       const profileLink = document.getElementById("profileDropdown");
-      const friendsListIcon = document.getElementById("friendsList");
+      const friendsListIcon = document.getElementById("friendsListIcon");
 
       if (isLoggedIn()) {
         logoutLink.style.display = "block"; // Show the Logout link
@@ -504,7 +515,7 @@
 
       const formData = new FormData(event.target);
       const token = localStorage.getItem("authToken");
-      
+
       // Optional code to see if we can retrieve username from the jwt token
       console.log("Token stored:", localStorage.getItem("authToken"));
       if (token) {
@@ -563,17 +574,12 @@
       keyboardIcon.addEventListener("click", function () {
         // Hide the keyboard icon and show the upload icon
 
-
         // Show/Hide text/upload containers
         postContainer.style.display = "none";
         textContainer.style.display = "block";
         textContainer.style.display = "flex";
-
         textContainer.style.backgroundImage = "linear-gradient(grey, rgba(var(--bs-dark-rgb)))";
-        textContainer.style.padding = "20px";
         textContainer.style.height = "17vh";
-        textContainer.style.display = "flex";
-        textContainer.style.justifyContent = "center";  // Optional, for centering content
         textContainer.style.boxShadow = "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
         textContainer.style.borderbottomleftradius = "0";
         textContainer.style.borderbottomrightradius = "0";
@@ -582,16 +588,12 @@
 
       cameraIcon.addEventListener("click", function () {
 
-
         postContainer.style.display = "block";
         textContainer.style.display = "none";
         postContainer.style.display = "flex";
-
         postContainer.style.backgroundImage = "linear-gradient(grey, rgba(var(--bs-dark-rgb)))";
-        postContainer.style.padding = "20px";
         postContainer.style.height = "17vh";
         postContainer.style.display = "flex";
-        postContainer.style.justifyContent = "center";  // Optional, for centering content
         postContainer.style.boxShadow = "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
         postContainer.style.borderbottomleftradius = "0";
         postContainer.style.borderbottomrightradius = "0";
@@ -599,215 +601,215 @@
 
       });
     });
-    
+
     //Load images from database and create layout for pictures/comments etc
     async function loadImages() {
-  try {
-    const token = localStorage.getItem('authToken');
-    console.log('Token:', token);  // Check the token
-
-    const response = await fetch('http://localhost:5000/upload/images', {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json'
-      }
-    });
-
-    if (!response.ok) {
-      throw new Error(`Network response was not ok: ${response.statusText}`);
-    }
-
-    const data = await response.json();
-    const postContainer = document.getElementById('mainContainer');
-    console.log('Fetched data:', data);
-
-    // Remove any existing <p> element if present
-    const pElement = postContainer.querySelector('p');
-    if (pElement) {
-      pElement.remove();
-    }
-
-    // Remove all existing image containers to avoid duplicates
-    postContainer.querySelectorAll('.uploaded-image-container').forEach(container => {
-      container.remove();
-    });
-
-    // Add each image from the data
-    data.reverse().forEach(post => {
-      const { _id, imageUrl, username, comments } = post;
-      console.log('Post ID:', _id);
-      console.log('Comments:', comments);
-      
-      const displayUsername = post.username || 'Anonymous'; // Display "anonymous" if username not found.
-
-      // Create the upper container for upload name of uploader etc
-      const upperContainer = document.createElement('div');
-      upperContainer.classList.add('uploaded-image-container', 'no-lines', 'upperContainer');
-      upperContainer.innerHTML = `<span>Submitted by: ${displayUsername}</span>`; // Example content
-
-      // Create the container for each image
-      const container = document.createElement('div');
-      container.classList.add('uploaded-image-container', 'with-lines'); // Apply the container styles
-      container.style.padding = "20px"; // Padding to add space around the image
-      postContainer.appendChild(upperContainer);
-      const img = document.createElement('img');
-      img.src = `http://localhost:5000/${post.imageUrl}`;
-      console.log('Image URL:', img.src);  // Log image URL to verify it's correct
-      img.alt = "Uploaded Image";
-      img.classList.add('uploaded-image'); // Apply the existing image styles
-
-      // Hide image if it fails to load
-      img.onerror = () => {
-        img.style.display = 'none';
-      };
-
-      // Add event listener for image click (optional: for enlarging)
-      img.addEventListener('click', () => {
-        img.classList.toggle('enlarged');
-      });
-
-      // Append the image to the container
-      container.appendChild(img);
-      // Append the container to the postContainer
-      postContainer.appendChild(container);
-      
-      const newContainer = document.createElement('div');
-      newContainer.classList.add('uploaded-image-container', 'no-lines');
-      newContainer.style.padding = '10px'; // Adjust padding if needed
-
-      newContainer.style.marginBottom = '30px';
-      newContainer.style.backgroundColor = '#fafafa';
-
-      const button = document.createElement('button');
-      const button2 = document.createElement('button');
-      const button3 = document.createElement('button');
-
-      button.classList.add('like-button'); // Add custom class for styling if needed
-      button2.classList.add('like-button');
-      button3.classList.add('like-button', 'postComment');
-
-      const icon = document.createElement('i');
-      const icon2 = document.createElement('i');
-      const icon3 = document.createElement('i');
-
-      icon.classList.add('fa', 'fa-thumbs-up'); // Font Awesome thumbs-up icon
-      icon2.classList.add('fa', 'fa-comment');
-      icon3.classList.add('fa', 'fa-share');
-
-      icon.setAttribute('aria-hidden', 'true'); // Accessibility
-      icon2.setAttribute('aria-hidden', 'true');
-      icon3.setAttribute('aria-hidden', 'true');
-
-      // Add the icon inside the button
-      button.appendChild(icon);
-      button2.appendChild(icon2);
-      button3.appendChild(icon3);
-
-      // Set the button text 
-      button.appendChild(document.createTextNode(' Like'));
-      button2.appendChild(document.createTextNode(' Comments'));
-      button3.appendChild(document.createTextNode(' Comment'));
-
-      // Append the button to the newContainer
-      newContainer.appendChild(button);
-      newContainer.appendChild(button2);
-
-      const commentBox = document.createElement('div');
-      commentBox.classList.add('comment-box');  // Apply the CSS class for styling
-      commentBox.style.display = 'none'; // Hide initially
-
-      const inputField = document.createElement('input');
-      inputField.type = 'text';
-      inputField.placeholder = 'Write your comment...';
-      inputField.classList.add('comment-input'); // Add a class for specific styling if needed
-
-      commentBox.appendChild(inputField); // Append input field to comment box
-      commentBox.appendChild(button3);
-
-      
-
-      // Add event listener to comment button
-      button2.addEventListener('click', () => {
-        // Toggle visibility of the comment box when the comment button is clicked
-        if (commentBox.style.display === 'none') {
-          commentBox.style.display = 'block';
-          inputField.focus(); // Auto-focus the input when opened
-        } else {
-          commentBox.style.display = 'none'; // Hide it again if it's already visible
-        }
-      });
-
-      button3.addEventListener('click', async () => {
-        const commentText = inputField.value.trim();
-        if (!commentText) {
-          alert('Please enter a comment before submitting.');
-          return;
-        }
-
+      try {
         const token = localStorage.getItem('authToken');
-        const postId = _id; // Use the image ID from the current post
+        console.log('Token:', token);  // Check the token
 
-        try {
-          const response = await fetch('http://localhost:5000/upload/comment', {
-            method: 'POST',
-            headers: {
-              'Content-Type': 'application/json',
-              'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({ postId, commentText })
+        const response = await fetch('http://localhost:5000/upload/images', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if (!response.ok) {
+          throw new Error(`Network response was not ok: ${response.statusText}`);
+        }
+
+        const data = await response.json();
+        const postContainer = document.getElementById('mainContainer');
+        console.log('Fetched data:', data);
+
+        // Remove any existing <p> element if present
+        const pElement = postContainer.querySelector('p');
+        if (pElement) {
+          pElement.remove();
+        }
+
+        // Remove all existing image containers to avoid duplicates
+        postContainer.querySelectorAll('.uploaded-image-container').forEach(container => {
+          container.remove();
+        });
+
+        // Add each image from the data
+        data.reverse().forEach(post => {
+          const { _id, imageUrl, username, comments } = post;
+          console.log('Post ID:', _id);
+          console.log('Comments:', comments);
+
+          const displayUsername = post.username || 'Anonymous'; // Display "anonymous" if username not found.
+
+          // Create the upper container for upload name of uploader etc
+          const upperContainer = document.createElement('div');
+          upperContainer.classList.add('uploaded-image-container', 'no-lines', 'upperContainer');
+          upperContainer.innerHTML = `<span id="submittedBySpan"><i class="fa-solid fa-crosshairs"></i> ${displayUsername}</span>`; // Example content
+
+          // Create the container for each image
+          const container = document.createElement('div');
+          container.classList.add('uploaded-image-container', 'with-lines'); // Apply the container styles
+          container.style.padding = "20px"; // Padding to add space around the image
+          postContainer.appendChild(upperContainer);
+          const img = document.createElement('img');
+          img.src = `http://localhost:5000/${post.imageUrl}`;
+          console.log('Image URL:', img.src);  // Log image URL to verify it's correct
+          img.alt = "Uploaded Image";
+          img.classList.add('uploaded-image'); // Apply the existing image styles
+
+          // Hide image if it fails to load
+          img.onerror = () => {
+            img.style.display = 'none';
+          };
+
+          // Add event listener for image click (optional: for enlarging)
+          img.addEventListener('click', () => {
+            img.classList.toggle('enlarged');
           });
 
-          if (response.ok) {
-            inputField.value = ''; // Clear the input field on success
-            alert('Comment added successfully!');
+          // Append the image to the container
+          container.appendChild(img);
+          // Append the container to the postContainer
+          postContainer.appendChild(container);
 
-            // Add the new comment to the commentsContainer
-            const newComment = document.createElement('div');
-            newComment.classList.add('comment');
-            commentDiv.innerHTML = `<span class="username">${comment.username}:</span> <br> <span class="userComment">${comment.commentText}</span>`;
-            commentsContainer.appendChild(newComment);
+          const newContainer = document.createElement('div');
+          newContainer.classList.add('uploaded-image-container', 'no-lines');
+          newContainer.style.padding = '10px'; // Adjust padding if needed
 
-          } else {
-            const errorData = await response.json();
-            console.error('Error adding comment:', errorData);
-          }
-        } catch (error) {
-          console.error('Error:', error);
-        }
-      });
-    
-      // Append the new container directly after the image container
-      postContainer.appendChild(newContainer);
-      newContainer.appendChild(commentBox);
-      // Create a container for comments (if there are any)
-      const commentsContainer = document.createElement('div');
-      commentsContainer.classList.add('comments-container');
-      commentsContainer.style.marginTop = '10px';
+          newContainer.style.marginBottom = '30px';
+          newContainer.style.backgroundColor = '#fafafa';
 
-      // Display any existing comments
-      comments.forEach(comment => {
-        const commentDiv = document.createElement('div');
-        commentDiv.classList.add('comment');
-        commentDiv.innerHTML = `<span class="username">${comment.username}</span> <em>commented</em>: <br> <span class="userComment">${comment.commentText}</span>`;
-        commentsContainer.appendChild(commentDiv);
-      });
+          const button = document.createElement('button');
+          const button2 = document.createElement('button');
+          const button3 = document.createElement('button');
 
-      // Append the comments container to the commentBox
-      commentBox.appendChild(commentsContainer);
-    });
+          button.classList.add('like-button'); // Add custom class for styling if needed
+          button2.classList.add('like-button');
+          button3.classList.add('like-button', 'postComment');
 
-    // Keep fa icons positioned at the bottom
+          const icon = document.createElement('i');
+          const icon2 = document.createElement('i');
+          const icon3 = document.createElement('i');
 
-  } catch (error) {
-    console.error('Error fetching images:', error);
-  }
+          icon.classList.add('fa', 'fa-thumbs-up'); // Font Awesome thumbs-up icon
+          icon2.classList.add('fa', 'fa-comment');
+          icon3.classList.add('fa', 'fa-share');
 
-  mainContainer.scrollTo({ top: 0, behavior: 'smooth' });
-}
+          icon.setAttribute('aria-hidden', 'true'); // Accessibility
+          icon2.setAttribute('aria-hidden', 'true');
+          icon3.setAttribute('aria-hidden', 'true');
 
-// Run loadImages on window load
-window.onload = loadImages;
+          // Add the icon inside the button
+          button.appendChild(icon);
+          button2.appendChild(icon2);
+          button3.appendChild(icon3);
+
+          // Set the button text 
+          button.appendChild(document.createTextNode(' Like'));
+          button2.appendChild(document.createTextNode(' Comments'));
+          button3.appendChild(document.createTextNode(' Comment'));
+
+          // Append the button to the newContainer
+          newContainer.appendChild(button);
+          newContainer.appendChild(button2);
+
+          const commentBox = document.createElement('div');
+          commentBox.classList.add('comment-box');  // Apply the CSS class for styling
+          commentBox.style.display = 'none'; // Hide initially
+
+          const inputField = document.createElement('input');
+          inputField.type = 'text';
+          inputField.placeholder = 'Write your comment...';
+          inputField.classList.add('comment-input'); // Add a class for specific styling if needed
+
+          commentBox.appendChild(inputField); // Append input field to comment box
+          commentBox.appendChild(button3);
+
+
+
+          // Add event listener to comment button
+          button2.addEventListener('click', () => {
+            // Toggle visibility of the comment box when the comment button is clicked
+            if (commentBox.style.display === 'none') {
+              commentBox.style.display = 'block';
+              inputField.focus(); // Auto-focus the input when opened
+            } else {
+              commentBox.style.display = 'none'; // Hide it again if it's already visible
+            }
+          });
+
+          button3.addEventListener('click', async () => {
+            const commentText = inputField.value.trim();
+            if (!commentText) {
+              alert('Please enter a comment before submitting.');
+              return;
+            }
+
+            const token = localStorage.getItem('authToken');
+            const postId = _id; // Use the image ID from the current post
+
+            try {
+              const response = await fetch('http://localhost:5000/upload/comment', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ postId, commentText })
+              });
+
+              if (response.ok) {
+                inputField.value = ''; // Clear the input field on success
+                alert('Comment added successfully!');
+
+                // Add the new comment to the commentsContainer
+                const newComment = document.createElement('div');
+                newComment.classList.add('comment');
+                commentDiv.innerHTML = `<span class="username">${comment.username}:</span> <br> <span class="userComment">${comment.commentText}</span>`;
+                commentsContainer.appendChild(newComment);
+
+              } else {
+                const errorData = await response.json();
+                console.error('Error adding comment:', errorData);
+              }
+            } catch (error) {
+              console.error('Error:', error);
+            }
+          });
+
+          // Append the new container directly after the image container
+          postContainer.appendChild(newContainer);
+          newContainer.appendChild(commentBox);
+          // Create a container for comments (if there are any)
+          const commentsContainer = document.createElement('div');
+          commentsContainer.classList.add('comments-container');
+          commentsContainer.style.marginTop = '10px';
+
+          // Display any existing comments
+          comments.forEach(comment => {
+            const commentDiv = document.createElement('div');
+            commentDiv.classList.add('comment');
+            commentDiv.innerHTML = `<span class="username">${comment.username}</span> <em>commented</em>: <br> <span class="userComment">${comment.commentText}</span>`;
+            commentsContainer.appendChild(commentDiv);
+          });
+
+          // Append the comments container to the commentBox
+          commentBox.appendChild(commentsContainer);
+        });
+
+        // Keep fa icons positioned at the bottom
+
+      } catch (error) {
+        console.error('Error fetching images:', error);
+      }
+
+      mainContainer.scrollTo({ top: 0, behavior: 'smooth' });
+    }
+
+    // Run loadImages on window load
+    window.onload = loadImages;
 
 
 
@@ -871,10 +873,8 @@ window.onload = loadImages;
         textContainer.style.display = 'none';
         postContainer.style.display = 'block';
         postContainer.style.backgroundImage = "linear-gradient(grey, rgba(var(--bs-dark-rgb)))";
-        postContainer.style.padding = "20px";
         postContainer.style.height = "17vh";
         postContainer.style.display = "flex";
-        postContainer.style.justifyContent = "center";  // Optional, for centering content
         postContainer.style.boxShadow = "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
         postContainer.style.borderbottomleftradius = "0";
         postContainer.style.borderbottomrightradius = "0";
@@ -884,6 +884,16 @@ window.onload = loadImages;
         textContainer.style.display = 'none';
         postContainer.style.display = 'none';
         mainContainer.style.height = '85vh'; // Adjust height as needed
+      }
+    });
+
+    friendsListIcon.addEventListener('click', () => {
+      const friendsListModal = document.getElementById('friendsListModal');
+      if (friendsListModal.style.display === 'none') {
+        friendsListModal.style.display = 'block';
+      }
+      else {
+        friendsListModal.style.display = 'none';
       }
     });
   </script>
