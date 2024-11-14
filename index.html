@@ -5,7 +5,8 @@
   <title>Test project</title>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@700&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Dancing+Script&family=Poppins:wght@700&display=swap"
+    rel="stylesheet">
   <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@600&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
   <link rel="stylesheet" href="styles.css">
@@ -21,7 +22,7 @@
   <div class="header">
     <nav data-bs-theme="dark" style="justify-content: center;">
       <nav class="navbar navbar-expand-lg bg-body-tertiary"
-        style="background-color: rgba(var(--bs-dark-rgb)); border-bottom: 2px solid grey; padding: 10px;">
+        style="background-color: rgba(var(--bs-dark-rgb)); border-bottom: 2px solid #555555; padding: 10px;">
         <div class="container-fluid">
           <a class="navbar-brand" href="#" style="float: left;"><img src="./images/logopicture.jpg" id="logo" alt="Logo"
               style="height: 90px; margin-left: 25px; border-radius: 10px;"></a>
@@ -33,34 +34,34 @@
           <div class="collapse navbar-collapse" id="navbarSupportedContent">
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 20px;">
               <li class="nav-item" style="padding-right: 40px;">
-                <a class="nav-link active" aria-current="page" href="#" id="homeLink"
-                  style="margin-left: 45px; color: orange;"><i class="fa fa-home" aria-hidden="true"
-                    style="margin-right: 5px; color: orange;"></i>Home</a>
+                <a class="nav-link active" aria-current="page" href="#" id="homeLink" style="margin-left: 45px;"><i
+                    class="fa fa-home" aria-hidden="true" style="margin-right: 5px; color: #ee6306;"></i>Home</a>
               </li>
               <li class="nav-item" style="padding-right: 40px;">
                 <a class="nav-link" href="#" style="color: white;"><i class="fa fa-info-circle" aria-hidden="true"
-                    style="margin-right: 5px;"></i>About</a>
+                    style="margin-right: 5px; color: #ee6306;"></i>About</a>
               </li>
               <li class="nav-item dropdown" style="padding-right: 40px;">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
-                  aria-expanded="false" style="color: white;"><i class="fas fa-cube" aria-hidden="true" ;></i>
+                  aria-expanded="false" style="color: white;"><i class="fas fa-cube" aria-hidden="true"
+                    style="margin-right: 5px; color: #ee6306;"></i>
                   Portal
                 </a>
                 <ul class="dropdown-menu">
                   <li><a class="dropdown-item" href="#" data-bs-toggle="modal" data-bs-target="#loginModal"
                       id="loginDropdown"><i class="fa fa-sign-in" aria-hidden="true"
-                        style="margin-right: 5px;"></i>Login</a></li>
+                        style="margin-right: 14px;"></i>Login</a></li>
                   <li><a class="dropdown-item" href="#create-account" id="createAccDropdown"><i class="fa fa-user-plus"
-                        aria-hidden="true" style="margin-right: 5px;"></i>Register</a></li>
+                        aria-hidden="true" style="margin-right: 10px;"></i>Register</a></li>
                   <li><a class="dropdown-item" href="#" id="profileDropdown" style="display: none;"><i
-                        class="fa fa-user" aria-hidden="true" style="margin-right: 5px;"></i>Profile</a></li>
+                        class="fa fa-user" aria-hidden="true" style="margin-right: 15px;"></i>Profile</a></li>
                   <li>
                     <hr class="dropdown-divider">
                   </li>
                   <li><a class="dropdown-item" href="#" id="helpDropdown"><i class="fa fa-question-circle"
-                        aria-hidden="true" style="margin-right: 5px;"></i>Help</a></li>
+                        aria-hidden="true" style="margin-right: 14px;"></i>Help</a></li>
                   <li><a class="dropdown-item" href="#" id="logoutDropdown" style="display: none;"><i
-                        class="fa fa-sign-out" aria-hidden="true" style="margin-right: 5px;"></i>Logout</a></li>
+                        class="fa fa-sign-out" aria-hidden="true" style="margin-right: 13px;"></i>Logout</a></li>
                 </ul>
               </li>
 
@@ -77,21 +78,19 @@
                   <a class="dropdown-item" href="#"><i class="fa fa-cog" aria-hidden="true"
                       style="margin-right: 12px;"></i>Settings</a>
                   <hr class="dropdown-divider">
-                  <a class="dropdown-item" href="#"><i class="fa fa-sun-o" aria-hidden="true"
-                      style="margin-right: 12px;"></i>Day Mode</a>
-                  <a class="dropdown-item" href="#"><i class="fa fa-moon-o" aria-hidden="true"
-                      style="margin-right: 10px;"></i>
-                    Night Mode</a>
+                  <a class="dropdown-item" id="nightModeToggle" href="#"><i class="fa fa-moon-o" id="nightModeIcon"
+                      aria-hidden="true" style="margin-right: 10px;"></i>
+                    <span id="nightModeText">Night Mode</span></a>
                 </div>
               </div>
 
               <!-- Search Input Field -->
               <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
-                style="border-color: rgb(211, 211, 211);">
+                style="border-color: #555555;">
 
               <!-- Search Button -->
               <button class="btn btn-outline-secondary" type="submit" id="searchBtn"
-                style="background-color: rgba(var(--bs-dark-rgb)); color: white; border-color: rgb(211, 211, 211); margin-right: 25px;">
+                style="background-color: rgba(var(--bs-dark-rgb)); color: white; border-color: #555555; margin-right: 25px;">
                 Search
               </button>
             </form>
@@ -137,8 +136,7 @@
             <div class="carousel-caption d-none d-md-block">
               <h5>Free to use</h5>
               <p>Creating your account is fast and simple.</p>
-              <button type="button" class="btn btn-outline-secondary" id="loginBtn"
-                style="background-color: rgba(var(--bs-dark-rgb)); background-image: linear-gradient(grey, rgba(var(--bs-dark-rgb)) ); color: white; border-color: rgb(211, 211, 211);">Get
+              <button type="button" class="like-button" id="registerBtn">Get
                 Started</button>
             </div>
           </div>
@@ -155,7 +153,7 @@
         </button>
       </div>
       <!-- Account Creation Form -->
-      <div id="accountForm" style="display: none; padding: 17px; border-radius: 15px; color: rgb(211, 211, 211); ">
+      <div id="accountForm" style="display: none; padding: 17px; border-radius: 10px;">
         <h3>Register</h3>
         <form id="registerForm">
           <div class="mb-3">
@@ -170,8 +168,7 @@
             <label for="password" class="form-label">Password</label>
             <input type="password" class="form-control" id="password" placeholder="Password">
           </div>
-          <button class="btn btn-outline-secondary" type="submit"
-            style=" background-color: rgba(var(--bs-dark-rgb)); color: rgb(211, 211, 211); border-color: rgb(211, 211, 211);">Register</button>
+          <button class="like-button" type="submit">Register</button>
         </form>
       </div>
 
@@ -179,35 +176,35 @@
       <div id="mainPage" style="display: none; background-color: #fafafa;">
         <div id="mainContainer" style="text-align: center; position: relative;">
           <div id="hoverTip" style="position: absolute; top: 0; left: 20px;">
-            <i class="fa-solid fa-caret-down fa-2x"></i>
+            <i class="fa-solid fa-caret-down fa-3x"></i>
           </div>
           <!-- Text/Picture Switch -->
           <div class="switchHeader">
-            <div class="btn-group" role="group" aria-label="Basic example">
-              <button type="button" class="btn btn-secondary"
-                style="background-color: rgba(var(--bs-dark-rgb)); border: none;">
+            <div class="btn-group" id="switchHeaderBtnGroup" role="group" aria-label="Basic example">
+              <button type="button" class="btn" style=" border: none;">
                 <i class="far fa-images fa-1x" aria-hidden="true"
-                  style="font-size: 20px; cursor: pointer; padding: 5px;" title="Show Images"></i>
+                  style="font-size: 20px; cursor: pointer; padding: 5px; color: orange;" title="Show Images"></i>
+                Images
               </button>
-              <button type="button" class="btn btn-secondary"
-                style="background-color: rgba(var(--bs-dark-rgb)); border: none;">
+              <button type="button" class="btn" style=" border: none;">
                 <i class="fa fa-list-alt fa-1x" aria-hidden="true"
-                  style="font-size: 20px; cursor: pointer; padding: 5px;" title="Show Stories"></i>
+                  style="font-size: 20px; cursor: pointer; padding: 5px; color: orange;" title="Show Stories"></i>
+                Stories
               </button>
-              <button type="button" class="btn btn-secondary"
-                style="background-color: rgba(var(--bs-dark-rgb)); border: none;">
+              <button type="button" class="btn" id="cameraIcon1" style=" border: none;">
                 <i id="cameraIcon" class="fa fa-upload fa-1x" aria-hidden="true"
-                  style="font-size: 20px; cursor: pointer; padding: 5px;" title="Upload Images"></i>
+                  style="font-size: 20px; cursor: pointer; padding: 5px; color: orange;" title="Upload Images"></i>
+                Share Images
               </button>
-              <button type="button" class="btn btn-secondary"
-                style="background-color: rgba(var(--bs-dark-rgb)); border: none;">
+              <button type="button" class="btn" id="keyboardIcon1" style=" border: none;">
                 <i id="keyboardIcon" class="fa fa-keyboard-o fa-1x" aria-hidden="true"
-                  style="font-size: 20px; cursor: pointer; padding: 5px;" title="Upload Text"></i>
+                  style="font-size: 20px; cursor: pointer; padding: 5px; color: orange;" title="Upload Text"></i>
+                Share Stories
               </button>
-              <button type="button" id="toggleIcon" class="btn btn-secondary"
-                style="background-color: rgba(var(--bs-dark-rgb)); border: none;">
+              <button type="button" id="toggleIcon" class="btn" style=" border: none;">
                 <i class="fa fa-arrows-v fa-1x" aria-hidden="true"
-                  style="font-size: 20px; cursor: pointer; padding: 5px;" title="Show/Hide UI"></i>
+                  style="font-size: 20px; cursor: pointer; padding: 5px; color: orange;" title="Show/Hide UI"></i>
+                Toggle Interface
               </button>
             </div>
           </div>
@@ -230,11 +227,11 @@
           style=" border-top-left-radius: 5px; border-top-right-radius: 5px; display: none; ">
           <div style="display: flex; position: absolute; float: left; width: 100%; height: 80%; align-items: center;">
             <label for="exampleFormControlTextarea1" class="form-label" id="textShareText"
-              style=" margin-top: 30px;">Share your &nbsp;<em>stories</em></label>
+              style=" margin-top: 30px;">Share your <span id="span2">&nbsp;<em>stories</em></span></label>
             <textarea class="form-control" id="textBox" rows="3"
               style="height: 80%; width: 25%;  resize: none; margin-left: 50px; "></textarea>
-            <button class="shareBtn btn btn-outline-secondary" type="submit"
-              style="color: white; height: 40px; width: 150px;  margin-left: 50px; "><i class="fa fa-pencil"
+            <button class="shareBtn btn" type="submit"
+              style="color: white; margin-left: 50px; width: 140px; "><i class="fa fa-pencil"
                 aria-hidden="true" style="margin-right: 10px;"></i>Share</button>
           </div>
         </div>
@@ -242,42 +239,61 @@
         <div class="bg-dark" data-bs-theme="dark" id="postContainer"
           style="  border-top-left-radius: 5px; border-top-right-radius: 5px; ">
           <div id="imageShareText" style="text-align: center; align-items: center; display: flex; margin-left: 150px; ">
-            Share your &nbsp;<em>images</em></div>
-          <div id="imageUploadContainer">
+            Share your <span id="span1">&nbsp;<em>images</em></span></div>
+          <div id="imageUploadContainer" style="display: flex;">
             <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data"
               style="margin-left: 40px; display: flex; align-items: center; color: white;">
               <input type="file" name="image" accept=".jpg, .jpeg, .png" required />
-              <button class="shareBtn btn btn-outline-secondary" type="submit"
-                style="color: white ; height: 40px; width: 150px; align-items: center;"><i class="fa fa-upload"
-                  aria-hidden="true"></i> Share</button>
+              <button class="shareBtn btn" type="submit"
+                style="color: white; width: 140px;"><i class="fa fa-upload"
+                  aria-hidden="true" style="margin-right: 10px;"></i> Share</button>
             </form>
           </div>
         </div>
       </div>
       <!-- Profile Page -->
-      <div id="profilePage" style="display: none; background-color: #fafafa;">
+      <div id="profilePage" style="display: none;">
         <div id="profilePageContainer">
-        <div id="profilePageHeader">
-          <div id="profilePictureContainer">
-            <i class='far fa-image' style='font-size:75px; color: #969494; position: absolute;'></i>
-          </div>
-          <div id="profileUserInfo">
-            <div id="welcomeProfileMessage">
-              Welcome back, <span id="welcomeProfileUser">&nbsp;User.</span>
+          <div id="profilePageHeader">
+            <div id="profilePictureContainer">
+              <i class='far fa-image' style='font-size:75px; color: #969494; position: absolute;'></i>
+            </div>
+            <div id="profileUserInfo">
+              <div id="welcomeProfileMessage">
+                Welcome back, <span id="welcomeProfileUser">&nbsp;User.</span>
+              </div>
+            </div>
+            <div id="profileSettings">
+
+            </div>
+            <div id="profileSettings2">
+             <div id="changeProfilePicture">
+              <span id="profilePicText">Change profile picture</span>
+             </div>
+             <div id="profilePicButton">
+              <button id="profilePicBtn" class="like-button">Browse</button>
+             </div>
+             <div id="changePassword">
+              <span id="changePasswordText">Change password</span>
+             </div>
+             <div id="changePasswordField1">
+             <input type="text" id="passwordChangeField1" placeholder="New password.."></input>
+             </div>
+             <div id="changePasswordField2">
+             <input type="text" id="passwordChangeField2" placeholder="New password.."></input>
+             </div>
+             <div id="changePasswordButton">
+              <button id="changePasswordBtn" class="like-button">Confirm</button>
+             </div>
             </div>
           </div>
-          <div id="profileSettings">
-
-          </div>
-          <div id="profileSettings2">
-
-          </div>
-        </div>
         </div>
       </div>
       <!-- Help Page -->
-      <div id="helpPage" style="display: none; background-color: #fafafa;">
-        <p>Help Page not found</p>
+      <div id="helpPage" style="display: none;">
+        <div id="helpPageContainer">
+
+        </div>
       </div>
     </div>
     <div class="column side" id="side2">
@@ -300,10 +316,9 @@
   <div class="modal fade" id="loginModal" tabindex="-1" aria-labelledby="loginModalLabel" aria-hidden="true"
     style="border-radius: 15px;">
     <div class="modal-dialog modal-dialog-centered">
-      <div class="modal-content"
-        style="background-color: rgba(var(--bs-dark-rgb)); color: rgb(211, 211, 211);  ">
+      <div class="modal-content" style="background-color: rgba(var(--bs-dark-rgb)); color: rgb(211, 211, 211);  ">
         <div class="modal-header">
-          <h5 class="modal-title" id="loginModalLabel" style="text-align: center; width: 100%;">Login</h5>
+          <h5 class="modal-title" id="loginModalLabel" style="text-align: center; width: 100%; margin-left: 20px;">Login</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
             style="background-color: white;"></button>
         </div>
@@ -318,7 +333,7 @@
               <input type="password" class="form-control" id="loginPassword" placeholder="Password">
             </div>
             <button class="btn btn-outline-secondary" type="submit"
-              style=" background-color: rgba(var(--bs-dark-rgb)); color: rgb(211, 211, 211); border-color: rgb(211, 211, 211); ">Login</button>
+              style=" background-color: rgba(var(--bs-dark-rgb)); color: rgb(211, 211, 211); border-color: #555555; ">Login</button>
             <div id="loginMessage" style="margin-top: 10px;"></div>
           </form>
         </div>
@@ -367,9 +382,9 @@
       });
 
       // Event listener for the login button
-      const loginBtn = document.getElementById("loginBtn");
-      if (loginBtn) {
-        loginBtn.addEventListener("click", showAccountForm); // Added here for clarity
+      const registerBtn = document.getElementById("registerBtn");
+      if (registerBtn) {
+        registerBtn.addEventListener("click", showAccountForm); // Added here for clarity
       }
 
       // Add event listener for the register form submission
@@ -475,7 +490,7 @@
       }
     }
 
-    function handleLoginBtnClick() {
+    function handleRegisterBtnClick() {
       // Hide the carousel and the account form
       document.getElementById("carouselExampleCaptions").style.display = "none";
       document.getElementById("accountForm").style.display = "none";
@@ -589,7 +604,7 @@
       const mainContainer = document.getElementById('mainContainer');
 
       // Add click event listener to the keyboard icon
-      keyboardIcon.addEventListener("click", function () {
+      keyboardIcon1.addEventListener("click", function () {
         // Hide the keyboard icon and show the upload icon
 
         // Show/Hide text/upload containers
@@ -597,20 +612,20 @@
         textContainer.style.display = "block";
         textContainer.style.display = "flex";
         textContainer.style.backgroundColor = "rgba(var(--bs-dark-rgb))";
-        textContainer.style.height = "17vh";
+        textContainer.style.height = "18vh";
         textContainer.style.boxShadow = "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
         textContainer.style.borderbottomleftradius = "0";
         textContainer.style.borderbottomrightradius = "0";
         mainContainer.style.height = '65vh';
       });
 
-      cameraIcon.addEventListener("click", function () {
+      cameraIcon1.addEventListener("click", function () {
 
         postContainer.style.display = "block";
         textContainer.style.display = "none";
         postContainer.style.display = "flex";
         postContainer.style.backgroundColor = "rgba(var(--bs-dark-rgb))";
-        postContainer.style.height = "17vh";
+        postContainer.style.height = "18vh";
         postContainer.style.display = "flex";
         postContainer.style.boxShadow = "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
         postContainer.style.borderbottomleftradius = "0";
@@ -694,6 +709,7 @@
 
           const newContainer = document.createElement('div');
           newContainer.classList.add('uploaded-image-container', 'no-lines');
+          newContainer.Id = 'newContainer';
           newContainer.style.padding = '10px'; // Adjust padding if needed
 
           newContainer.style.marginBottom = '30px';
@@ -803,13 +819,13 @@
           // Create a container for comments (if there are any)
           const commentsContainer = document.createElement('div');
           commentsContainer.classList.add('comments-container');
-          commentsContainer.style.marginTop = '10px';
+          commentsContainer.style.marginTop = '20px';
 
           // Display any existing comments
           comments.forEach(comment => {
             const commentDiv = document.createElement('div');
             commentDiv.classList.add('comment');
-            commentDiv.innerHTML = `<span class="username">${comment.username}</span> <em>commented</em>: <br> <span class="userComment">${comment.commentText}</span>`;
+            commentDiv.innerHTML = `<span class="username">${comment.username}</span> <br> <span class="userComment">${comment.commentText}</span>`;
             commentsContainer.appendChild(commentDiv);
           });
 
@@ -891,12 +907,13 @@
         textContainer.style.display = 'none';
         postContainer.style.display = 'block';
         postContainer.style.backgroundColor = "rgba(var(--bs-dark-rgb))";
-        postContainer.style.height = "17vh";
+        postContainer.style.height = "18vh";
         postContainer.style.display = "flex";
         postContainer.style.boxShadow = "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
         postContainer.style.borderbottomleftradius = "0";
         postContainer.style.borderbottomrightradius = "0";
         mainContainer.style.height = '65vh'; // Reset to original height
+        postContainer.style.borderbottom.style = '2px solid #555555;'
       } else {
         // Hide the textContainer and postContainer
         textContainer.style.display = 'none';
@@ -914,6 +931,34 @@
         friendsListModal.style.display = 'none';
       }
     });
+
+    // Nightmode toggle
+    const nightModeIcon = document.getElementById('nightModeIcon');
+    const nightModeText = document.getElementById('nightModeText');
+
+    nightModeToggle.addEventListener('click', () => {
+      event.preventDefault();
+      document.body.classList.toggle('night-mode');
+      if (nightModeText.textContent === 'Night Mode') {
+        nightModeText.textContent = 'Day Mode';
+        nightModeIcon.classList.remove('fa-moon-o');
+        nightModeIcon.classList.add('fa-sun-o');
+        document.body.classList.add('night-mode'); // Add a class to enable dark mode
+      } else {
+        nightModeText.textContent = 'Night Mode';
+        nightModeIcon.classList.remove('fa-sun-o');
+        nightModeIcon.classList.add('fa-moon-o');
+        document.body.classList.remove('night-mode'); // Remove the class to disable dark mode
+      }
+
+
+
+    });
+
+
+
+
+
   </script>
 
 </body>
