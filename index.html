@@ -85,7 +85,7 @@
               </div>
 
               <!-- Search Input Field -->
-              <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search"
+              <input class="form-control me-2" id="searchInput" type="search" placeholder="Search users" aria-label="Search"
                 style="border-color: #555555;">
 
               <!-- Search Button -->
@@ -310,7 +310,7 @@
       </div>
     </div>
     <div class="column side" id="side2">
-      <div id = "searchResults" style="border: 1px solid #555555; width: 50%; height: 5%; max-height: 40%; top: -37px; left: 19%; position: absolute; z-index:99; border-radius: 5px; display: none;"></div>
+      <div id = "searchResults" ></div>
       <div class="friendsListModal" id="friendsListModal" style="display: none;">
         <h2 class="active-friends-header">Active Friends</h2>
         <div class="friendsListModalContainer" id="friendsListModalContainer">
@@ -938,7 +938,7 @@
 
     toggleIcon.addEventListener('click', () => {
       // Check if the textContainer is currently hidden
-      if (textContainer.style.display && postContainer.style.display === 'none') {
+      if (textContainer.style.display && postContainer.style.display === 'none' || textContainer.style.display && postContainer.style.display === '') {
         // Show the textContainer and postContainer
         textContainer.style.display = 'none';
         postContainer.style.display = 'block';
@@ -1006,15 +1006,12 @@
     // Settings on click event listener (fa cog)
     const settingsContainer = document.getElementById('settingsContainer');
     document.getElementById('settingsBtn').addEventListener('click', () => {
-      if (settingsContainer.style.display === 'none') {
-
-
-        settingsContainer.style.display = 'block';
-      }
-      else {
-        settingsContainer.style.display = 'none';
-      }
-    });
+      if (settingsContainer.style.display === '' || settingsContainer.style.display === 'none') {
+    settingsContainer.style.display = 'block';
+  } else {
+    settingsContainer.style.display = 'none';
+  }
+    }); 
     // About page click event listener
     const aboutPage = document.getElementById('aboutPage');
     const aboutPageContainer = document.getElementById('aboutPageContainer');
@@ -1028,7 +1025,75 @@
       accountForm.style.display = 'none';
       carouselExampleCaptions.style.display = 'none';
     });
+    document.addEventListener('DOMContentLoaded', () => {
+    const searchBtn = document.getElementById('searchBtn');
+    const searchInput = document.getElementById('searchInput');
+    const searchResultsDiv = document.getElementById('searchResults');
 
+    console.log('searchBtn:', searchBtn);
+    console.log('searchInput:', searchInput);
+    console.log('searchResultsDiv:', searchResultsDiv);
+
+    // Add event listener for the search button
+    searchBtn.addEventListener('click', async (event) => {
+        event.preventDefault();  // Prevent the default form submission (page refresh)
+        
+        console.log('Button clicked');
+        const query = searchInput.value.trim(); // Get the trimmed value from the input field
+        console.log('Search query:', query);
+
+        if (query === '') {
+            searchResultsDiv.style.display = 'none'; // Hide the div if query is empty
+            console.log('Query is empty, hiding results div');
+            return;
+        }
+
+        searchResultsDiv.style.display = 'block'; // Show the div
+        console.log('Displaying search results div');
+
+        // Fetch users from the backend based on the search query
+        try {
+            const response = await fetch(`http://localhost:5000/users/search?query=${query}`);
+            const users = await response.json(); // Parse the JSON response
+
+            if (users.length > 0) {
+                // Display the search results dynamically
+                searchResultsDiv.innerHTML = `<p>Showing results for: "${query}"</p><ul>`;
+                users.forEach(user => {
+                    searchResultsDiv.innerHTML += `
+                    <li style="display: flex; justify-content: space-between; align-items: center;">
+                        <span style="margin-left: 10px;">${user.username}</span>
+                        <button 
+                            style=" border-radius: 5px;" 
+                            id="friendBtn" 
+                            onclick="sendFriendRequest('${user.username}')">
+                            <i class="fas fa-user-plus"></i> 
+                        </button>
+                    </li>`;
+                });
+                searchResultsDiv.innerHTML += `</ul>`;
+            } else {
+                searchResultsDiv.innerHTML = `<p>No users found for "${query}"</p>`;
+            }
+        } catch (error) {
+            console.error('Error fetching search results:', error);
+            searchResultsDiv.innerHTML = `<p>There was an error fetching the search results.</p>`;
+        }
+    });
+    document.addEventListener('click', (event) => {
+        // Check if the click is outside the search results div
+        if (!searchResultsDiv.contains(event.target) && !searchInput.contains(event.target) && event.target !== searchBtn) {
+            searchResultsDiv.style.display = 'none';
+            searchInput.value = '';
+        }
+    });
+});
+
+// Function to handle sending friend requests
+function sendFriendRequest(username) {
+    console.log(`Sending friend request to ${username}`);
+    // Add real logic for sending a friend request here (e.g., make a POST request to the backend)
+}
 
 
   </script>

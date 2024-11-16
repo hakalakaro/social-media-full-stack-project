@@ -6,11 +6,12 @@ import authRoutes from './routes/auth';
 import uploadRoutes from './routes/upload'; // Ensure this is correct
 import path from 'path';
 import { getImages } from './controllers/upload';
-
+import userRoutes from './routes/userRoutes'; // Import user routes
+import morgan from 'morgan';
 dotenv.config(); // It's okay here, at the top
 
 const app = express();
-
+app.use(morgan('dev'));
 // Middleware to log requests
 app.use((req, res, next) => {
     console.log(`${req.method} request for '${req.url}'`);
@@ -45,7 +46,7 @@ app.get('/upload/images', (req, res) => {
 
 // Serve static files for uploads
 app.use('/uploads', express.static('uploads'));
-
+app.use('/users', userRoutes);
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));

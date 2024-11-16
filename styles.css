@@ -42,6 +42,7 @@ body {
 
 .night-mode .like-button {
   background-color: #2e3236f2;
+  color: #aaaaaa;
 }
 
 .night-mode .switchHeader i {
@@ -108,11 +109,11 @@ body {
 }
 
 .night-mode #profilePicText {
-  color: white;
+  color: #aaaaaa;
 }
 
 .night-mode #changePasswordText {
-  color: white;
+  color: #aaaaaa;
 }
 
 .night-mode #passwordChangeField1 {
@@ -1030,6 +1031,7 @@ body {
 #changePasswordText {
   font-weight: 400;
   text-decoration: none;
+  
 }
 
 #changePasswordField1 {
@@ -1118,4 +1120,58 @@ body {
 
 .white-text {
   color: black;;
+}
+#searchResults {
+  color: white;
+  border: 1px solid #555555;
+  width: 245px; 
+  height: auto;
+  max-height: 175px; 
+  top: -40px; 
+  left: 18.7%; 
+  position: absolute; 
+  z-index:99; 
+  border-radius: 5px; 
+  display: none; 
+  text-align: center;
+  padding: 10px;
+  background-color: #2e3236f2;
+  overflow-y: auto;
+}
+#searchResults::-webkit-scrollbar {
+  width: 4px;
+}
+
+#searchResults::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  border-radius: 4px;
+}
+
+#searchResults::-webkit-scrollbar-track {
+  background-color: #2e3236f2;
+}
+#searchResults p {
+  font-size: 1rem;
+  margin: 0;
+  color: white;
+}
+
+#searchResults button {
+  background-color: rgba(var(--bs-dark-rgb));
+  color: white;
+  border: none;
+  padding: 5px 10px;
+  cursor: pointer;
+  margin-top: 5px;
+}
+
+#searchResults button:hover {
+  background-color: #6d7580;
+  transform: scale(1.05);
+}
+#searchResults button:active {
+  transform: translateY(4px);
+}
+#friendBtn {
+  margin-right: 10px !important;
 }
