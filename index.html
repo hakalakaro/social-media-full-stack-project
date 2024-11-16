@@ -67,11 +67,14 @@
 
             </ul>
             <form class="d-flex" role="search" id="searchForm" style="margin-left: 258px;">
+              <div id="userAlerts" style="margin-right: 20px;">
+                <i class="fa-solid fa-bell fa-2x" id="userAlertsIcon" style="color: #aaaaaa; cursor: pointer; font-size: 30px;"></i>
+              </div>
               <!-- Dropdown with Font Awesome Icon -->
               <div class="dropdown">
                 <i class="fa fa-cog fa-2x fa-sync fa-spin dropdown-toggle" id="dropdownMenuButton"
                   data-toggle="dropdown" aria-haspopup="true" aria-expanded="false"
-                  style="margin-right: 15px; color: rgb(211, 211, 211); cursor: pointer;" title="Settings"></i>
+                  style="margin-right: 20px; color: #aaaaaa; cursor: pointer; font-size: 30px;" title="Settings"></i>
 
                 <!-- Dropdown Menu -->
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
@@ -85,6 +88,7 @@
               </div>
 
               <!-- Search Input Field -->
+               <div id="searchBarToggle" style="display: none;">
               <input class="form-control me-2" id="searchInput" type="search" placeholder="Search users" aria-label="Search"
                 style="border-color: #555555;">
 
@@ -93,6 +97,7 @@
                 style="background-color: rgba(var(--bs-dark-rgb)); color: white; border-color: #555555; margin-right: 25px;">
                 Search
               </button>
+            </div>
             </form>
           </div>
         </div>
@@ -212,7 +217,7 @@
                 Share Images
               </button>
               <button type="button" class="btn" id="keyboardIcon1" style=" border: none; font-weight: 500;">
-                <i id="keyboardIcon" class="fa fa-keyboard-o fa-1x" aria-hidden="true"
+                <i id="keyboardIcon" class="fa-solid fa-comment fa-1x" aria-hidden="true"
                   style="font-size: 20px; cursor: pointer; padding: 5px; color: #ee6306;" title="Upload Text"></i>
                 Share Stories
               </button>
@@ -245,7 +250,7 @@
               style=" margin-top: 30px;">Share your <span id="span2">&nbsp;<em>stories</em></span></label>
             <textarea class="form-control" id="textBox" rows="3"
               style="height: 80%; width: 25%;  resize: none; margin-left: 50px; "></textarea>
-            <button class="shareBtn btn" type="submit" style="color: white; margin-left: 50px; width: 140px; "><i
+            <button class="shareBtn " type="submit" style="margin-left: 50px; width: 140px; font-family: 'Poppins', sans-serif; "><i
                 class="fa fa-pencil" aria-hidden="true" style="margin-right: 10px;"></i>Share</button>
           </div>
         </div>
@@ -258,7 +263,7 @@
             <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data"
               style="margin-left: 40px; display: flex; align-items: center; color: white;">
               <input type="file" name="image" accept=".jpg, .jpeg, .png" required />
-              <button class="shareBtn btn" type="submit" style="color: white; width: 140px;"><i class="fa fa-upload"
+              <button class="shareBtn " type="submit" style="width: 140px; font-family: 'Poppins', sans-serif;"><i class="fa fa-upload"
                   aria-hidden="true" style="margin-right: 10px;"></i> Share</button>
             </form>
           </div>
@@ -290,10 +295,10 @@
                 <span id="changePasswordText">Change password</span>
               </div>
               <div id="changePasswordField1">
-                <input type="text" id="passwordChangeField1" placeholder="New password.."></input>
+                <input type="text" id="passwordChangeField1" placeholder="New password.." style="font-size: 14px;"></input>
               </div>
               <div id="changePasswordField2">
-                <input type="text" id="passwordChangeField2" placeholder="New password.."></input>
+                <input type="text" id="passwordChangeField2" placeholder="New password.."  style="font-size: 14px;"></input>
               </div>
               <div id="changePasswordButton">
                 <button id="changePasswordBtn" class="like-button">Confirm</button>
@@ -311,6 +316,14 @@
     </div>
     <div class="column side" id="side2">
       <div id = "searchResults" ></div>
+      <div id="userAlertsContainer">
+        <div id="userAlertsContainerHeader">
+          <span id="userAlertsContainerText">Notifications</span>
+        </div>
+        <div id="userAlertsContent">
+
+        </div>
+      </div>
       <div class="friendsListModal" id="friendsListModal" style="display: none;">
         <h2 class="active-friends-header">Active Friends</h2>
         <div class="friendsListModalContainer" id="friendsListModalContainer">
@@ -492,6 +505,7 @@
       const friendsListIcon = document.getElementById("friendsListIcon");
 
       if (isLoggedIn()) {
+        searchBarToggle.style.display = "flex";  
         logoutLink.style.display = "block"; // Show the Logout link
         loginLink.style.display = "none";
         profileLink.style.display = "block";
@@ -515,6 +529,7 @@
       // Hide the carousel and the account form
       document.getElementById("carouselExampleCaptions").style.display = "none";
       document.getElementById("accountForm").style.display = "none";
+      
     }
 
     function logout() {
@@ -527,7 +542,8 @@
       // Show the carousel
       document.getElementById('carouselExampleCaptions').style.display = 'block';
       document.getElementById('helpPage').style.display = 'none';
-
+      searchBarToggle.style.display = "none";
+      
 
 
       // Update logout link visibility
@@ -1094,8 +1110,29 @@ function sendFriendRequest(username) {
     console.log(`Sending friend request to ${username}`);
     // Add real logic for sending a friend request here (e.g., make a POST request to the backend)
 }
+const userAlertsIcon = document.getElementById('userAlertsIcon');
+const userAlertsContainer = document.getElementById('userAlertsContainer');
+userAlertsIcon.addEventListener('click', () => {
+  event.stopPropagation();
+      if (userAlertsContainer.style.display === 'none') {
+        userAlertsContainer.style.display = 'block';
+      }
+      else {
+        userAlertsContainer.style.display = 'none';
+      }
+    });
 
-
+    document.addEventListener('click', function(event) {
+  const target = event.target;
+  const settingsBtn = document.getElementById('settingsBtn');
+  // Check if the click is outside the userAlertsContainer and userAlertsIcon
+  if (!userAlertsContainer.contains(target) && target !== userAlertsIcon) {
+    userAlertsContainer.style.display = 'none';
+  }
+  if (!settingsContainer.contains(target) && target !== settingsBtn) {
+    settingsContainer.style.display = 'none';
+  }
+});
   </script>
 
 </body>

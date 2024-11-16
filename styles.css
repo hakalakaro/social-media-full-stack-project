@@ -88,12 +88,12 @@ body {
 
 /* Ensure button text is white in night mode */
 .night-mode .switchHeader button {
-  color: white;
+  color: #b3afaf;
 }
 
 /* Ensure icons and text inside buttons are white */
 .night-mode .switchHeader i {
-  color: white;
+  color: #b3afaf;
 }
 
 .night-mode #side1 {
@@ -118,10 +118,12 @@ body {
 
 .night-mode #passwordChangeField1 {
   background-color: #2e3236f2;
+  width: 160px;
 }
 
 .night-mode #passwordChangeField2 {
   background-color: #2e3236f2;
+  width: 160px;
 }
 
 .night-mode .form-control {
@@ -146,7 +148,30 @@ body {
 .night-mode .aboutPageHeader .white-text {
   color: #ffffff;
 }
-
+.night-mode .userComment {
+  color: #b3afaf;
+}
+.night-mode .username {
+  color: #b3afaf;
+}
+.night-mode #searchResults {
+  color: #b3afaf;
+}
+.night-mode #searchResults p {
+  color: #b3afaf;
+}
+.night-mode #friendsListIcon {
+  color: #aaaaaa;
+}
+.night-mode #searchResults button {
+  color: #aaaaaa;
+}
+.night-mode #userAlertsContainer {
+  background-color: rgba(var(--bs-dark-rgb));
+}
+.night-mode #userAlertsContainerText {
+  color: #aaaaaa;
+}
 /* Style the header */
 .header {
   font-family: 'Poppins', sans-serif;
@@ -473,7 +498,7 @@ body {
   color: white;
   background-color: rgba(var(--bs-dark-rgb));
   transition: color 0.4s ease;
-
+  font-family: 'Poppins', sans-serif;
   border-radius: 5px;
   overflow: hidden;
   /* Ensure the pseudo-element stays within the button */
@@ -482,7 +507,7 @@ body {
   text-decoration: none;
   display: inline-block;
   font-size: 14px;
-  font-weight: 600;
+  font-weight: 400;
   /* Slightly bolder text */
 }
 
@@ -829,7 +854,7 @@ body {
 
   text-decoration: none;
   font-size: 15px;
-  font-weight: 400;
+  font-weight: 500;
 
 }
 
@@ -857,23 +882,23 @@ body {
 }
 
 #friendsListModal {
-  height: 75%;
+  height: 66%;
   width: 70%;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 5px;
   margin-top: 20px;
   display: flex;
   position: absolute;
-  top: 20px;
+  top: 12%;
   border: 2px solid #555555;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   /* Add shadow for depth */
-
+  z-index: 1;
 }
 
 .active-friends-header {
-  font-family: 'Poppins', sans-serif;
-  font-size: 20px;
+  
+  font-size: 16px;
   background: linear-gradient(90deg, #ffffff, #e76006);
   background-clip: text;
   /* Standard property */
@@ -881,13 +906,17 @@ body {
   /* Vendor prefix for older WebKit browsers */
   -webkit-text-fill-color: transparent;
   text-align: center;
-  margin-bottom: 20px;
-  margin-top: 20px;
+  margin-bottom: 10px;
+  margin-top: 10px;
+  font-family: 'Arial', sans-serif;
+  
+  
+  font-weight: 600;
 }
 
 #friendsListModalContainer {
-  width: 93%;
-  height: 87%;
+  width: 97%;
+  height: 91%;
   border-radius: 5px;
   border: 2px solid #555555;
   display: flex;
@@ -1174,4 +1203,55 @@ body {
 }
 #friendBtn {
   margin-right: 10px !important;
+}
+#userAlertsIcon:hover {
+  transform: scale(1.1);
+}
+#userAlertsIcon:active {
+  transform: translateY(4px);
+}
+#userAlertsContainer {
+  position: absolute;
+  top: 10px;
+  z-index: 2;
+  border: 2px solid #555555;
+  width: 70%;
+  height: 100px;
+  
+  border-radius: 5px;
+  background-color: #fafafa;
+  display: none;
+  padding-top: 5px;
+}
+#userAlertsContainerHeader {
+  text-align: center;
+}
+#userAlertsContainerText {
+  font-family: 'Arial', sans-serif;
+  color: #aaaaaa;
+  font-size: 16px;
+  font-weight: 600;
+}
+#userAlertsContent {
+  
+  border-top: 2px solid #555555;
+  border-width: 90%;
+  width: 98.5%;
+  
+  height: 65%; 
+  margin-left: 2.5px; 
+  margin-top: 5px;
+  overflow: auto;
+}
+#userAlertsContent::-webkit-scrollbar {
+  width: 5px;
+}
+
+#userAlertsContent::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  border-radius: 4px;
+}
+
+#userAlertsContent::-webkit-scrollbar-track {
+  background-color: #2e3236f2;
 }
