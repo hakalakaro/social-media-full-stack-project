@@ -14,52 +14,68 @@ body {
 body {
   font-family: Arial, Helvetica, sans-serif;
 }
+
 .night-mode #profilePageContainer {
   background-color: rgba(var(--bs-dark-rgb));
 }
+
 .night-mode #profilePage {
   background-color: #2e3236f2;
 }
+
 .night-mode .uploaded-image-container {
   background-color: rgba(var(--bs-dark-rgb));
 }
+
 .night-mode .no-lines {
   background-color: rgba(var(--bs-dark-rgb)) !important;
 }
+
 .night-mode #mainContainer {
   background-color: #212529f2;
 }
+
 .night-mode .comment-box {
   background-color: rgba(var(--bs-dark-rgb));
   color: white;
 }
+
 .night-mode .like-button {
   background-color: #2e3236f2;
 }
+
 .night-mode .switchHeader i {
   color: linear-gradient(90deg, #ee6306, #887c65);
 }
+
 .night-mode .column.middle {
   background-color: #2e3236f2;
 }
+
 .night-mode #accountForm {
   background-color: rgba(var(--bs-dark-rgb));
 }
-.night-mode #registerForm{
+
+.night-mode #registerForm {
   color: white;
 }
+
 .night-mode #accountForm h3 {
   color: white;
 }
+
 .night-mode #helpPage {
   background-color: #2e3236f2;
 }
+
 .night-mode #helpPageContainer {
   background-color: rgba(var(--bs-dark-rgb));
 }
+
 .night-mode #friendsListModal {
   background-color: rgba(var(--bs-dark-rgb));
 }
+
 /* Night mode styles for switchHeader */
 .night-mode .switchHeader {
   background-color: rgba(var(--bs-dark-rgb));
@@ -78,30 +94,58 @@ body {
 .night-mode .switchHeader i {
   color: white;
 }
-.night-mode #side1{
+
+.night-mode #side1 {
   background-image: url('./images/nightpicture.jpg');
 }
+
 .night-mode #side2 {
   background-image: url('./images/nightpicture.jpg');
 }
+
 .night-mode .shareBtn {
   background-color: #2e3236f2;
 }
+
 .night-mode #profilePicText {
   color: white;
 }
+
 .night-mode #changePasswordText {
   color: white;
 }
+
 .night-mode #passwordChangeField1 {
   background-color: #2e3236f2;
 }
+
 .night-mode #passwordChangeField2 {
   background-color: #2e3236f2;
 }
+
 .night-mode .form-control {
   background-color: #2e3236f2;
 }
+
+.night-mode .comment {
+  border: 1px solid #555555;
+}
+
+.night-mode #settingsContainer {
+  background-color: rgba(var(--bs-dark-rgb));
+}
+
+.night-mode #aboutPage {
+  background-color: #2e3236f2;
+}
+
+.night-mode #aboutPageContainer {
+  background-color: rgba(var(--bs-dark-rgb));
+}
+.night-mode .aboutPageHeader .white-text {
+  color: #ffffff;
+}
+
 /* Style the header */
 .header {
   font-family: 'Poppins', sans-serif;
@@ -232,7 +276,7 @@ body {
 /* Footer styling */
 .footer {
   background-color: rgba(var(--bs-dark-rgb));
-  
+
   padding: 10px;
   text-align: center;
   width: 100%;
@@ -285,7 +329,7 @@ body {
 
 #accountForm {
   background-color: #fafafa;
-  
+
   color: white;
   display: flex;
   flex-direction: column;
@@ -320,9 +364,25 @@ body {
   /* Ensure label takes full width */
 }
 
+#aboutPage {
+  display: flex;
+  position: relative;
+  height: 85vh;
+  background-color: #fafafa;
+}
+
+#aboutPageContainer {
+  border-radius: 10px;
+  width: 80%;
+  height: 92%;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  display: flex;
+  margin: auto;
+  margin-top: 20px;
+  position: relative;
+}
+
 #mainPage {
-
-
   height: 100%;
 }
 
@@ -334,9 +394,9 @@ body {
   height: 85vh;
   background-color: #fafafa;
   align-items: center;
-  
+
   padding-bottom: 0;
-  background-color: white;
+
 }
 
 #mainContainer::-webkit-scrollbar {
@@ -349,7 +409,7 @@ body {
 }
 
 #mainContainer::-webkit-scrollbar-track {
-  background-color: #f0f0f0;
+  background-color: #2e3236f2;
 }
 
 #postContainer {
@@ -371,7 +431,7 @@ body {
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
   color: white;
-  
+
   text-align: center;
 }
 
@@ -386,7 +446,7 @@ body {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  
+
   position: relative;
 }
 
@@ -477,7 +537,7 @@ body {
   position: absolute;
   height: 2px;
   width: calc(99% - 40px);
-  background-color:#555555;
+  background-color: #555555;
 }
 
 .with-lines::before {
@@ -559,7 +619,7 @@ body {
   border-bottom-right-radius: 5px;
   border: 2px solid #555555;
   border-top: none;
-  
+
 }
 
 .switchHeader.hidden {
@@ -696,10 +756,11 @@ body {
   /* Ensure padding doesn't overflow */
   position: sticky;
   /* Keep the input at the bottom */
-  background-color: #fff;
+  background-color: #2e3236f2;
   /* Make sure the input has a background */
   margin-top: 5px;
-  margin-left: 3px;
+  margin-left: 10px;
+  color: white;
 }
 
 /* Optional: Style for input focus */
@@ -748,8 +809,12 @@ body {
 }
 
 .comment {
-  margin-left: 20px;
-  margin-right: 20px;
+  margin-left: 10px;
+  margin-right: 10px;
+  border: 1px solid #b9b6b6;
+  border-radius: 5px;
+  padding: 10px;
+  margin-bottom: 5px;
 }
 
 .username {
@@ -843,6 +908,7 @@ body {
   /* Vendor prefix for older WebKit browsers */
   -webkit-text-fill-color: transparent;
 }
+
 #profilePage {
   height: 85vh;
   width: 100%;
@@ -850,6 +916,7 @@ body {
   display: flex;
   background-color: white;
 }
+
 #profilePageContainer {
   border-radius: 10px;
   width: 80%;
@@ -859,26 +926,29 @@ body {
   margin: auto;
   margin-top: 20px;
   position: relative;
-  
+
 }
+
 #profilePageHeader {
   width: 100%;
-  
+
   position: relative;
   display: flex;
 }
+
 #profilePictureContainer {
- position: relative;
- top: 20px;
- left: 20px;
- border: 2px solid #555555;
- height: 250px;
- width: 250px;
- display: flex;
- align-items: center;
- justify-content: center;
- border-radius: 5px;
+  position: relative;
+  top: 20px;
+  left: 20px;
+  border: 2px solid #555555;
+  height: 34%;
+  width: 32%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  border-radius: 5px;
 }
+
 /* CSS for the welcome text */
 #welcomeProfileMessage {
   font-family: 'Poppins', sans-serif;
@@ -887,82 +957,95 @@ body {
   color: #4a4a4a;
   display: flex;
   margin-left: 75px;
-  margin-top: 20px;
+  margin-top: 15px;
 }
 
 #welcomeProfileUser {
   font-family: 'Dancing Script', cursive;
   font-weight: 700;
-  color: #e58e26; /* A vibrant color for emphasis */
+  color: #e58e26;
+  /* A vibrant color for emphasis */
   margin-top: 40px;
   font-size: 35px;
 }
+
 #profileSettings {
   position: absolute;
-  top: 290px;
+  top: 39%;
   border: 2px solid #555555;
   border-radius: 5px;
-  height: 437px;
-  width: 470px;
-  left: 290px;
+  height: 59%;
+  width: 61%;
+  left: 37%;
   display: flex;
 }
+
 #profileSettings2 {
   position: absolute;
-  left: 20px;
-  top: 290px;
+  left: 2.5%;
+  top: 39%;
   border: 2px solid #555555;
   border-radius: 5px;
-  height: 437px;
-  width: 250px;
+  height: 59%;
+  width: 32%;
   display: flex;
   justify-content: center;
   text-align: center;
 }
+
 #changeProfilePicture {
   position: relative;
   padding: 20px;
   display: flex;
-  
+
 }
+
 #profilePicText {
-  font-weight: 500;
+  font-weight: 400;
   text-decoration: none;
 }
-#profilePicButton { 
+
+#profilePicButton {
   position: absolute;
   display: flex;
-  top: 70px; /* the div */
+  top: 70px;
+  /* the div */
   width: 100%;
   margin-right: 50px;
   justify-content: center;
   left: -10px;
 }
+
 #profilePicBtn {
   /* the button */
   width: 50%;
 }
+
 #changePassword {
   position: absolute;
   display: flex;
   top: 140px;
 }
-#changePasswordText{
-  font-weight: 500;
+
+#changePasswordText {
+  font-weight: 400;
   text-decoration: none;
 }
+
 #changePasswordField1 {
   position: absolute;
   display: flex;
   top: 190px;
   border-radius: 5px;
 }
+
 #changePasswordField2 {
   position: absolute;
   display: flex;
   top: 230px;
   border-radius: 5px;
 }
+
 #changePasswordButton {
   position: absolute;
   display: flex;
@@ -972,18 +1055,29 @@ body {
   justify-content: center;
   left: -10px;
 }
+
 #changePasswordBtn {
   width: 50%;
 }
+
 #span1 {
-  color: orange !important; /* Add !important to override the parent styles */
-  
+  color: orange !important;
+  /* Add !important to override the parent styles */
+
 }
+
 #span2 {
-  color: orange !important; /* Add !important to override the parent styles */
-  
+  color: orange !important;
+  /* Add !important to override the parent styles */
+
 }
+
 #helpPage {
+  background-color: white;
+  height: 85vh;
+}
+
+#helpPageContainer {
   border-radius: 10px;
   width: 80%;
   height: 92%;
@@ -992,4 +1086,36 @@ body {
   margin: auto;
   margin-top: 20px;
   position: relative;
+}
+
+#settingsContainer {
+  height: 75%;
+  width: 70%;
+  background-color: white;
+  border-radius: 10px;
+  margin-top: 20px;
+  display: flex;
+  position: absolute;
+  top: 20px;
+  border: 2px solid #555555;
+  box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
+  /* Add shadow for depth */
+  display: none;
+  /* initially hidden */
+}
+
+.aboutPageHeader{
+  font-family: 'Arial', sans-serif;
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  padding-top: 15px;
+}
+
+.orange-text {
+  color: #ee6306;
+}
+
+.white-text {
+  color: black;;
 }

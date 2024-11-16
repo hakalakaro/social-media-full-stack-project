@@ -24,8 +24,8 @@
       <nav class="navbar navbar-expand-lg bg-body-tertiary"
         style="background-color: rgba(var(--bs-dark-rgb)); border-bottom: 2px solid #555555; padding: 10px;">
         <div class="container-fluid">
-          <a class="navbar-brand" href="#" style="float: left;"><img src="./images/logopicture.jpg" id="logo" alt="Logo"
-              style="height: 90px; margin-left: 25px; border-radius: 10px;"></a>
+          <a class="navbar-brand" id="homeL" href="#" style="float: left;"><img src="./images/logopicture.jpg" id="logo"
+              alt="Logo" style="height: 90px; margin-left: 25px; border-radius: 10px;"></a>
           <button class="navbar-toggler" type="button" data-bs-toggle="collapse"
             data-bs-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false"
             aria-label="Toggle navigation">
@@ -38,8 +38,8 @@
                     class="fa fa-home" aria-hidden="true" style="margin-right: 5px; color: #ee6306;"></i>Home</a>
               </li>
               <li class="nav-item" style="padding-right: 40px;">
-                <a class="nav-link" href="#" style="color: white;"><i class="fa fa-info-circle" aria-hidden="true"
-                    style="margin-right: 5px; color: #ee6306;"></i>About</a>
+                <a class="nav-link" id="aboutLink" href="#" style="color: white;"><i class="fa fa-info-circle"
+                    aria-hidden="true" style="margin-right: 5px; color: #ee6306;"></i>About</a>
               </li>
               <li class="nav-item dropdown" style="padding-right: 40px;">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
@@ -75,7 +75,7 @@
 
                 <!-- Dropdown Menu -->
                 <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
-                  <a class="dropdown-item" href="#"><i class="fa fa-cog" aria-hidden="true"
+                  <a class="dropdown-item" id="settingsBtn" href="#"><i class="fa fa-cog" aria-hidden="true"
                       style="margin-right: 12px;"></i>Settings</a>
                   <hr class="dropdown-divider">
                   <a class="dropdown-item" id="nightModeToggle" href="#"><i class="fa fa-moon-o" id="nightModeIcon"
@@ -102,7 +102,11 @@
 
   <div class="row">
     <div class="column side" id="side1">
+      <div id="settingsContainer">
+        <div id="settingsHeader">
 
+        </div>
+      </div>
     </div>
     <!-- Middle div start -->
     <div class="column middle">
@@ -171,7 +175,18 @@
           <button class="like-button" type="submit">Register</button>
         </form>
       </div>
-
+      <!-- About Page -->
+      <div id="aboutPage" style="display: none;">
+        <div id="aboutPageContainer">
+        <div id="aboutPageTitle">
+          <h2 class="aboutPageHeader">
+            <span class="white-text">About</span> 
+            <span class="white-text">This</span> 
+            <span class="orange-text">Project</span>
+          </h2>
+        </div>
+        </div>
+      </div>
       <!-- Main Page -->
       <div id="mainPage" style="display: none; background-color: #fafafa;">
         <div id="mainContainer" style="text-align: center; position: relative;">
@@ -181,29 +196,29 @@
           <!-- Text/Picture Switch -->
           <div class="switchHeader">
             <div class="btn-group" id="switchHeaderBtnGroup" role="group" aria-label="Basic example">
-              <button type="button" class="btn" style=" border: none;">
+              <button type="button" class="btn" style=" border: none; font-weight: 500;">
                 <i class="far fa-images fa-1x" aria-hidden="true"
-                  style="font-size: 20px; cursor: pointer; padding: 5px; color: orange;" title="Show Images"></i>
+                  style="font-size: 20px; cursor: pointer; padding: 5px; color: #ee6306;" title="Show Images"></i>
                 Images
               </button>
-              <button type="button" class="btn" style=" border: none;">
+              <button type="button" class="btn" style=" border: none; font-weight: 500;">
                 <i class="fa fa-list-alt fa-1x" aria-hidden="true"
-                  style="font-size: 20px; cursor: pointer; padding: 5px; color: orange;" title="Show Stories"></i>
+                  style="font-size: 20px; cursor: pointer; padding: 5px; color: #ee6306;" title="Show Stories"></i>
                 Stories
               </button>
-              <button type="button" class="btn" id="cameraIcon1" style=" border: none;">
+              <button type="button" class="btn" id="cameraIcon1" style=" border: none; font-weight: 500;">
                 <i id="cameraIcon" class="fa fa-upload fa-1x" aria-hidden="true"
-                  style="font-size: 20px; cursor: pointer; padding: 5px; color: orange;" title="Upload Images"></i>
+                  style="font-size: 20px; cursor: pointer; padding: 5px; color: #ee6306;" title="Upload Images"></i>
                 Share Images
               </button>
-              <button type="button" class="btn" id="keyboardIcon1" style=" border: none;">
+              <button type="button" class="btn" id="keyboardIcon1" style=" border: none; font-weight: 500;">
                 <i id="keyboardIcon" class="fa fa-keyboard-o fa-1x" aria-hidden="true"
-                  style="font-size: 20px; cursor: pointer; padding: 5px; color: orange;" title="Upload Text"></i>
+                  style="font-size: 20px; cursor: pointer; padding: 5px; color: #ee6306;" title="Upload Text"></i>
                 Share Stories
               </button>
-              <button type="button" id="toggleIcon" class="btn" style=" border: none;">
+              <button type="button" id="toggleIcon" class="btn" style=" border: none; font-weight: 500;">
                 <i class="fa fa-arrows-v fa-1x" aria-hidden="true"
-                  style="font-size: 20px; cursor: pointer; padding: 5px; color: orange;" title="Show/Hide UI"></i>
+                  style="font-size: 20px; cursor: pointer; padding: 5px; color: #ee6306;" title="Show/Hide UI"></i>
                 Toggle Interface
               </button>
             </div>
@@ -230,9 +245,8 @@
               style=" margin-top: 30px;">Share your <span id="span2">&nbsp;<em>stories</em></span></label>
             <textarea class="form-control" id="textBox" rows="3"
               style="height: 80%; width: 25%;  resize: none; margin-left: 50px; "></textarea>
-            <button class="shareBtn btn" type="submit"
-              style="color: white; margin-left: 50px; width: 140px; "><i class="fa fa-pencil"
-                aria-hidden="true" style="margin-right: 10px;"></i>Share</button>
+            <button class="shareBtn btn" type="submit" style="color: white; margin-left: 50px; width: 140px; "><i
+                class="fa fa-pencil" aria-hidden="true" style="margin-right: 10px;"></i>Share</button>
           </div>
         </div>
         <!-- Upload Container-->
@@ -244,8 +258,7 @@
             <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data"
               style="margin-left: 40px; display: flex; align-items: center; color: white;">
               <input type="file" name="image" accept=".jpg, .jpeg, .png" required />
-              <button class="shareBtn btn" type="submit"
-                style="color: white; width: 140px;"><i class="fa fa-upload"
+              <button class="shareBtn btn" type="submit" style="color: white; width: 140px;"><i class="fa fa-upload"
                   aria-hidden="true" style="margin-right: 10px;"></i> Share</button>
             </form>
           </div>
@@ -267,24 +280,24 @@
 
             </div>
             <div id="profileSettings2">
-             <div id="changeProfilePicture">
-              <span id="profilePicText">Change profile picture</span>
-             </div>
-             <div id="profilePicButton">
-              <button id="profilePicBtn" class="like-button">Browse</button>
-             </div>
-             <div id="changePassword">
-              <span id="changePasswordText">Change password</span>
-             </div>
-             <div id="changePasswordField1">
-             <input type="text" id="passwordChangeField1" placeholder="New password.."></input>
-             </div>
-             <div id="changePasswordField2">
-             <input type="text" id="passwordChangeField2" placeholder="New password.."></input>
-             </div>
-             <div id="changePasswordButton">
-              <button id="changePasswordBtn" class="like-button">Confirm</button>
-             </div>
+              <div id="changeProfilePicture">
+                <span id="profilePicText">Change profile picture</span>
+              </div>
+              <div id="profilePicButton">
+                <button id="profilePicBtn" class="like-button">Browse</button>
+              </div>
+              <div id="changePassword">
+                <span id="changePasswordText">Change password</span>
+              </div>
+              <div id="changePasswordField1">
+                <input type="text" id="passwordChangeField1" placeholder="New password.."></input>
+              </div>
+              <div id="changePasswordField2">
+                <input type="text" id="passwordChangeField2" placeholder="New password.."></input>
+              </div>
+              <div id="changePasswordButton">
+                <button id="changePasswordBtn" class="like-button">Confirm</button>
+              </div>
             </div>
           </div>
         </div>
@@ -297,6 +310,7 @@
       </div>
     </div>
     <div class="column side" id="side2">
+      <div id = "searchResults" style="border: 1px solid #555555; width: 50%; height: 5%; max-height: 40%; top: -37px; left: 19%; position: absolute; z-index:99; border-radius: 5px; display: none;"></div>
       <div class="friendsListModal" id="friendsListModal" style="display: none;">
         <h2 class="active-friends-header">Active Friends</h2>
         <div class="friendsListModalContainer" id="friendsListModalContainer">
@@ -318,7 +332,8 @@
     <div class="modal-dialog modal-dialog-centered">
       <div class="modal-content" style="background-color: rgba(var(--bs-dark-rgb)); color: rgb(211, 211, 211);  ">
         <div class="modal-header">
-          <h5 class="modal-title" id="loginModalLabel" style="text-align: center; width: 100%; margin-left: 20px;">Login</h5>
+          <h5 class="modal-title" id="loginModalLabel" style="text-align: center; width: 100%; margin-left: 20px;">Login
+          </h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"
             style="background-color: white;"></button>
         </div>
@@ -358,19 +373,25 @@
           document.getElementById("accountForm").style.display = "none";
           document.getElementById("helpPage").style.display = "none";
           document.getElementById("profilePage").style.display = "none";
+          aboutPage.style.display = 'none';
+          aboutPageContainer.style.display = 'none';
         } else {
           document.getElementById("carouselExampleCaptions").style.display = "none"; // Hide carousel if logged in
           document.getElementById("mainPage").style.display = "block"; // Show main page content
           document.getElementById("helpPage").style.display = "none";
           document.getElementById("profilePage").style.display = "none";
+          aboutPage.style.display = 'none';
+          aboutPageContainer.style.display = 'none';
         }
       }
-
+      document.getElementById('homeL').addEventListener('click', () => {
+        mainContainer.scrollTo({ top: 0, behavior: 'smooth' });
+      });
       // Set up the click event for homeLink
       document.getElementById("homeLink").onclick = handleHomeNavigation;
       document.getElementById('homeLink').addEventListener('click', () => {
         const mainContainer = document.getElementById('mainContainer');
-        mainContainer.scrollTop = 0;  // Scroll to the top
+        mainContainer.scrollTo({ top: 0, behavior: 'smooth' }); // Scroll to the top
       });
       // Set up the click event for homeLogo
       document.getElementById("logo").onclick = handleHomeNavigation; // Add similar functionality
@@ -593,7 +614,7 @@
       } catch (error) {
         console.error('Error uploading image:', error);
       }
-      mainContainer.scrollTop = 0;
+      mainContainer.scrollTo({ top: 0, behavior: 'smooth' });
     });
 
     document.addEventListener("DOMContentLoaded", function () {
@@ -606,7 +627,7 @@
       // Add click event listener to the keyboard icon
       keyboardIcon1.addEventListener("click", function () {
         // Hide the keyboard icon and show the upload icon
-
+      if (textContainer.style.display === 'none') {
         // Show/Hide text/upload containers
         postContainer.style.display = "none";
         textContainer.style.display = "block";
@@ -617,10 +638,15 @@
         textContainer.style.borderbottomleftradius = "0";
         textContainer.style.borderbottomrightradius = "0";
         mainContainer.style.height = '65vh';
+      }
+      else {
+        textContainer.style.display = 'none';
+        mainContainer.style.height = '85vh';
+      }
       });
 
       cameraIcon1.addEventListener("click", function () {
-
+        if (postContainer.style.display === 'none') {
         postContainer.style.display = "block";
         textContainer.style.display = "none";
         postContainer.style.display = "flex";
@@ -631,6 +657,11 @@
         postContainer.style.borderbottomleftradius = "0";
         postContainer.style.borderbottomrightradius = "0";
         mainContainer.style.height = '65vh';
+        }
+        else {
+          postContainer.style.display = 'none';
+          mainContainer.style.height = '85vh';
+        }
 
       });
     });
@@ -856,6 +887,8 @@
       profilePage.style.display = 'block';
       mainPage.style.display = 'none';
       helpPage.style.display = 'none';
+      aboutPage.style.display = 'none';
+      aboutPageContainer.style.display = 'none';
     });
 
     // Toggle help page
@@ -866,6 +899,8 @@
       var carouselExampleCaptions = document.getElementById('carouselExampleCaptions');
       var accountForm = document.getElementById('accountForm');
 
+      aboutPage.style.display = 'none';
+      aboutPageContainer.style.display = 'none';
       accountForm.style.display = 'none';
       carouselExampleCaptions.style.display = 'none';
       profilePage.style.display = 'none';
@@ -876,7 +911,8 @@
     // Toggle Account Creation Form
     document.getElementById('createAccDropdown').addEventListener('click', function () {
       var helpPage = document.getElementById('helpPage');
-
+      aboutPage.style.display = 'none';
+      aboutPageContainer.style.display = 'none';
       helpPage.style.display = 'none';
     });
     // Custom script for the second dropdown (settings icon)
@@ -921,7 +957,7 @@
         mainContainer.style.height = '85vh'; // Adjust height as needed
       }
     });
-
+    // Friend List icon event handler
     friendsListIcon.addEventListener('click', () => {
       const friendsListModal = document.getElementById('friendsListModal');
       if (friendsListModal.style.display === 'none') {
@@ -939,6 +975,7 @@
     nightModeToggle.addEventListener('click', () => {
       event.preventDefault();
       document.body.classList.toggle('night-mode');
+
       if (nightModeText.textContent === 'Night Mode') {
         nightModeText.textContent = 'Day Mode';
         nightModeIcon.classList.remove('fa-moon-o');
@@ -950,12 +987,47 @@
         nightModeIcon.classList.add('fa-moon-o');
         document.body.classList.remove('night-mode'); // Remove the class to disable dark mode
       }
-
-
+      // Save the preferred theme
+      if (document.body.classList.contains('night-mode')) {
+        localStorage.setItem('theme', 'night');
+      } else {
+        localStorage.setItem('theme', 'day');
+      }
 
     });
+    // Load preferred theme
+    window.addEventListener('DOMContentLoaded', () => {
+      const savedTheme = localStorage.getItem('theme');
+      if (savedTheme === 'night') {
+        document.body.classList.add('night-mode');
+        nightModeText.textContent = 'Day Mode';
+      }
+    });
+    // Settings on click event listener (fa cog)
+    const settingsContainer = document.getElementById('settingsContainer');
+    document.getElementById('settingsBtn').addEventListener('click', () => {
+      if (settingsContainer.style.display === 'none') {
 
 
+        settingsContainer.style.display = 'block';
+      }
+      else {
+        settingsContainer.style.display = 'none';
+      }
+    });
+    // About page click event listener
+    const aboutPage = document.getElementById('aboutPage');
+    const aboutPageContainer = document.getElementById('aboutPageContainer');
+
+    document.getElementById('aboutLink').addEventListener('click', () => {
+      mainPage.style.display = 'none';
+      aboutPage.style.display = 'block';
+      aboutPageContainer.style.display = 'block';
+      profilePage.style.display = 'none';
+      helpPage.style.display = 'none';
+      accountForm.style.display = 'none';
+      carouselExampleCaptions.style.display = 'none';
+    });
 
 
 
