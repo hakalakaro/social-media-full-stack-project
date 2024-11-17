@@ -2,6 +2,8 @@ import { Request, Response } from 'express';
 import jwt from 'jsonwebtoken';
 import User from '../models/User';
 import authMiddleware from '../middleware/authMiddleware';
+import { uploadProfilePicture } from '../controllers/upload';
+
 const express = require('express');
 const router = express.Router();
 router.use(authMiddleware);
@@ -108,5 +110,7 @@ router.post('/accept-friend-request', async (req: Request, res: Response) => {
     res.status(500).json({ message: 'Internal server error' });
   }
 });
+
+router.post('/upload-profile-picture', uploadProfilePicture);
 
 export default router;
