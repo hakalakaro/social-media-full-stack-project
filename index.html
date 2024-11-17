@@ -718,8 +718,8 @@
         // Add each image from the data
         data.reverse().forEach(post => {
           const { _id, imageUrl, username, comments } = post;
-          console.log('Post ID:', _id);
-          console.log('Comments:', comments);
+          //console.log('Post ID:', _id);
+          //console.log('Comments:', comments);
 
           const displayUsername = post.username || 'Anonymous'; // Display "anonymous" if username not found.
 
@@ -735,7 +735,7 @@
           postContainer.appendChild(upperContainer);
           const img = document.createElement('img');
           img.src = `http://localhost:5000/${post.imageUrl}`;
-          console.log('Image URL:', img.src);  // Log image URL to verify it's correct
+          //console.log('Image URL:', img.src);  // Log image URL to verify it's correct
           img.alt = "Uploaded Image";
           img.classList.add('uploaded-image'); // Apply the existing image styles
 
@@ -965,7 +965,7 @@
         postContainer.style.borderbottomleftradius = "0";
         postContainer.style.borderbottomrightradius = "0";
         mainContainer.style.height = '65vh'; // Reset to original height
-        postContainer.style.borderbottom.style = '2px solid #555555;'
+        postContainer.style.borderbottom = '2px solid #555555;'
       } else {
         // Hide the textContainer and postContainer
         textContainer.style.display = 'none';
@@ -1106,10 +1106,7 @@
 });
 
 // Function to handle sending friend requests
-function sendFriendRequest(username) {
-    console.log(`Sending friend request to ${username}`);
-    // Add real logic for sending a friend request here (e.g., make a POST request to the backend)
-}
+
 const userAlertsIcon = document.getElementById('userAlertsIcon');
 const userAlertsContainer = document.getElementById('userAlertsContainer');
 userAlertsIcon.addEventListener('click', () => {
@@ -1133,6 +1130,107 @@ userAlertsIcon.addEventListener('click', () => {
     settingsContainer.style.display = 'none';
   }
 });
+
+async function sendFriendRequest(username) {
+    console.log(`Sending friend request to ${username}`);
+    try {
+        const token = localStorage.getItem('authToken');
+        if (!token) {
+    alert('Authentication token is missing');
+    console.log('Token not found in localStorage');
+    return;
+}
+        const response = await fetch('http://localhost:5000/users/send-friend-request', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ username })
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            alert('Friend request sent!');
+        } else {
+            alert(result.message);
+        }
+    } catch (error) {
+        console.error('Error sending friend request:', error);
+        alert('Failed to send friend request.');
+    }
+}
+
+async function fetchFriendRequests() {
+  const token = localStorage.getItem('authToken');
+  console.log('Token from localStorage:', token); // Log token value
+  if (!token) {
+    console.log('No token found, aborting request');
+    return;
+  }
+    try {
+        const response = await fetch('http://localhost:5000/users/friend-requests', {
+            headers: { 'Authorization': `Bearer ${token}` }
+        });
+
+        // Check the response status and body
+        if (!response.ok) {
+            console.log('Failed to fetch friend requests', response.status, await response.text());
+            return;
+        }
+
+        const { receivedRequests } = await response.json();
+
+        // Log to check if receivedRequests is correct
+        console.log('Received Friend Requests:', receivedRequests);
+
+        const userAlertsContent = document.getElementById('userAlertsContent');
+        userAlertsContent.innerHTML = '';
+
+        if (receivedRequests.length > 0) {
+            receivedRequests.forEach(username => {
+                const requestDiv = document.createElement('div');
+                requestDiv.innerHTML = `
+                    <span style="color: white;">${username}</span>
+                    <button onclick="acceptFriendRequest('${username}')">Accept</button>
+                `;
+                userAlertsContent.appendChild(requestDiv);
+            });
+        } else {
+            userAlertsContent.innerHTML = '<p>No friend requests</p>';
+        }
+    } catch (error) {
+        console.error('Error fetching friend requests:', error);
+    }
+}
+
+document.getElementById('userAlertsIcon').addEventListener('click', fetchFriendRequests);
+
+async function acceptFriendRequest(username) {
+    console.log(`Accepting friend request from ${username}`);
+    try {
+        const token = localStorage.getItem('authToken');
+        const response = await fetch('http://localhost:5000/users/accept-friend-request', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ username })
+        });
+
+        const result = await response.json();
+        if (response.ok) {
+            alert('Friend request accepted!');
+            fetchFriendRequests(); // Refresh the list
+        } else {
+            alert(result.message);
+        }
+    } catch (error) {
+        console.error('Error accepting friend request:', error);
+        alert('Failed to accept friend request.');
+    }
+}
   </script>
 
 </body>

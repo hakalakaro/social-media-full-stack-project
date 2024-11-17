@@ -8,6 +8,7 @@ import path from 'path';
 import { getImages } from './controllers/upload';
 import userRoutes from './routes/userRoutes'; // Import user routes
 import morgan from 'morgan';
+import userRouter from './routes/user';
 dotenv.config(); // It's okay here, at the top
 
 const app = express();
@@ -47,6 +48,7 @@ app.get('/upload/images', (req, res) => {
 // Serve static files for uploads
 app.use('/uploads', express.static('uploads'));
 app.use('/users', userRoutes);
+app.use('/users', userRouter);
 // Start server
 const PORT = process.env.PORT || 5000;
 app.listen(PORT, () => console.log(`Server running on port ${PORT}`));
