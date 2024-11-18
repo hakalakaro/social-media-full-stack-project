@@ -68,7 +68,7 @@
             </ul>
             <form class="d-flex" role="search" id="searchForm" style="margin-left: 258px;">
               <div id="userAlerts" style="margin-right: 20px;">
-                <i class="fa-solid fa-bell fa-2x" id="userAlertsIcon" style="color: #aaaaaa; cursor: pointer; font-size: 30px;"></i>
+                <i class="fa-solid fa-bell fa-2x" id="userAlertsIcon" style="color: #aaaaaa; cursor: pointer; font-size: 30px; display: none;"></i>
               </div>
               <!-- Dropdown with Font Awesome Icon -->
               <div class="dropdown">
@@ -77,7 +77,7 @@
                   style="margin-right: 20px; color: #aaaaaa; cursor: pointer; font-size: 30px;" title="Settings"></i>
 
                 <!-- Dropdown Menu -->
-                <div class="dropdown-menu" aria-labelledby="dropdownMenuButton">
+                <div class="dropdown-menu" id="dropdown-menu2" aria-labelledby="dropdownMenuButton">
                   <a class="dropdown-item" id="settingsBtn" href="#"><i class="fa fa-cog" aria-hidden="true"
                       style="margin-right: 12px;"></i>Settings</a>
                   <hr class="dropdown-divider">
@@ -109,6 +109,9 @@
     <div class="column side" id="side1">
       <div id="settingsContainer">
         <div id="settingsHeader">
+          <h2 class="active-friends-header"><i class="fas fa-cog" style="margin-right: 10px;"></i>Settings</h2>
+        </div>
+        <div id="settingsContainerInner">
 
         </div>
       </div>
@@ -274,12 +277,12 @@
         <div id="profilePageContainer">
           <div id="profilePageHeader">
             <div id="profilePictureContainer">
-              <img id="profilePicture" src="" alt="Profile Picture" style=" width: 100%; height: 100%; object-fit: contain; border-radius: 5px;"/>
+              <img id="profilePicture" src="" alt="Profile Picture" style=" width: 100%; height: 100%;  object-fit: cover;"/>
               <i class='far fa-image' id="profilePicPlaceholder" style='font-size:75px; color: #969494; position: absolute; display: none;'></i>
             </div>
             <div id="profileUserInfo">
               <div id="welcomeProfileMessage">
-                Welcome back, <span id="welcomeProfileUser">&nbsp;User.</span>
+                Welcome back, <span id="welcomeProfileUser" style="margin-left: 20px;">&nbsp;User.</span>
               </div>
             </div>
             <div id="profileSettings">
@@ -327,7 +330,7 @@
         </div>
       </div>
       <div class="friendsListModal" id="friendsListModal" style="display: none;">
-        <h2 class="active-friends-header">Active Friends</h2>
+        <h2 class="active-friends-header"><i class="fas fa-user-friends" style="margin-right: 10px;"></i>Active Friends</h2>
         <div class="friendsListModalContainer" id="friendsListModalContainer">
 
         </div>
@@ -379,6 +382,11 @@
       // Show login modal on page load if not logged in
       if (!isLoggedIn()) {
         $('#loginModal').modal('show'); // Show the login modal if not logged in
+        const dropdownMenuButton = document.getElementById('dropdownMenuButton');
+        const dropdownMenu2 = document.querySelector('#dropdown-menu2');
+        dropdownMenuButton.style.setProperty('margin-left', '-100px', 'important'); // Move cog icon to the left
+        dropdownMenu2.style.setProperty('transform', 'translateX(-150px)', 'important');
+        
       }
 
       function handleHomeNavigation() {
@@ -486,6 +494,12 @@
             updateLogoutLinkVisibility(); // Update logout link visibility
             $('#loginModal').modal('hide'); // Hide the modal
             document.getElementById('welcomeProfileUser').textContent = username;
+            if (data.profilePicture) {
+        localStorage.setItem("profilePicture", data.profilePicture);
+      } else {
+        localStorage.removeItem("profilePicture"); // Clear if not set
+      }
+      displayProfilePicture();
             location.reload();
           } else {
             console.error("Login failed");
@@ -509,6 +523,7 @@
       const friendsListIcon = document.getElementById("friendsListIcon");
 
       if (isLoggedIn()) {
+        userAlertsIcon.style.display = "flex";
         searchBarToggle.style.display = "flex";  
         logoutLink.style.display = "block"; // Show the Logout link
         loginLink.style.display = "none";
@@ -519,6 +534,7 @@
         document.getElementById("carouselExampleCaptions").style.display = "none"; // Hide carousel
         document.getElementById("mainPage").style.display = "block"; // Show main page content
       } else {
+        userAlertsIcon.style.display = "none";
         logoutLink.style.display = "none"; // Hide the Logout link
         createAccLink.style.display = "block"; // Show account creation link
         loginLink.style.display = "block"; // Show login link
@@ -547,7 +563,11 @@
       document.getElementById('carouselExampleCaptions').style.display = 'block';
       document.getElementById('helpPage').style.display = 'none';
       searchBarToggle.style.display = "none";
-      
+      userAlertsIcon.style.display = "none";
+      const dropdownMenuButton = document.getElementById('dropdownMenuButton');
+        const dropdownMenu2 = document.querySelector('#dropdown-menu2');
+        dropdownMenuButton.style.setProperty('margin-left', '-100px', 'important'); // Move cog icon to the left
+        dropdownMenu2.style.setProperty('transform', 'translateX(-150px)', 'important');
 
 
       // Update logout link visibility
@@ -950,6 +970,14 @@
       }
     });
 
+     // Close the dropdown2 when clicking outside
+     document.addEventListener('click', function (event) {
+      const dropdownMenu2 = document.querySelector('#dropdown-menu2');
+      if (dropdownMenu2 && !dropdownMenu2.contains(event.target) && !event.target.closest('.dropdown')) {
+        dropdownMenu2.classList.remove('show'); // Hide the dropdown if clicking outside
+      }
+    });
+
     // Toggle visibility of upload / post interface
     const toggleIcon = document.getElementById('toggleIcon');
     const mainContainer = document.getElementById('mainContainer');
@@ -1269,7 +1297,7 @@ async function uploadProfilePicture(event) {
             // Update profile picture on the frontend
             const profilePictureElement = document.getElementById('profilePicture');
             profilePictureElement.src = `http://localhost:5000${result.filePath}`;
-
+            
             alert('Profile picture uploaded successfully!');
         } else {
             alert(result.message);
@@ -1285,6 +1313,34 @@ document.addEventListener('DOMContentLoaded', () => {
             document.getElementById('welcomeProfileUser').textContent = username;
         }
     });
+
+    function displayProfilePicture() {
+  console.log('displayProfilePicture called');
+
+  const profilePictureUrl = localStorage.getItem('profilePicture');
+  console.log('Profile Picture URL from localStorage:', profilePictureUrl);
+
+  const profileImageElement = document.getElementById('profilePicture');
+
+  if (profileImageElement) {
+    if (profilePictureUrl) {
+      profileImageElement.src = `${profilePictureUrl}`;
+      profileImageElement.style.display = 'block';
+      console.log('Profile picture displayed:', profilePictureUrl);
+    } else {
+      profileImageElement.style.display = 'none';
+      console.log('No profile picture found, hiding element');
+    }
+  } else {
+    console.error('Profile image element not found in the DOM');
+  }
+}
+
+// Call this function when the page loads
+document.addEventListener('DOMContentLoaded', () => {
+  console.log('Page loaded');
+  displayProfilePicture();
+});
   </script>
 
 </body>

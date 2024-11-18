@@ -971,12 +971,13 @@ body {
   top: 20px;
   left: 20px;
   border: 2px solid #555555;
-  height: 34%;
-  width: 32%;
+  height: 255px;
+  width: 255px;
   display: flex;
   align-items: center;
   justify-content: center;
-  border-radius: 5px;
+  border-radius: 50%;
+  overflow: hidden;
 }
 
 /* CSS for the welcome text */
@@ -1120,21 +1121,34 @@ body {
 }
 
 #settingsContainer {
-  height: 75%;
+  height: 66%;
   width: 70%;
   background-color: white;
-  border-radius: 10px;
+  border-radius: 5px;
   margin-top: 20px;
   display: flex;
   position: absolute;
-  top: 20px;
+  top: 12%;
   border: 2px solid #555555;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   /* Add shadow for depth */
   display: none;
   /* initially hidden */
 }
-
+#settingsContainerInner
+{
+  width: 97%;
+  height: 91%;
+  border-radius: 5px;
+  border: 2px solid #555555;
+  display: flex;
+  align-items: center;
+  /* Center content vertically inside container */
+  justify-content: center;
+  /* Center content horizontally inside container */
+  margin: auto;
+  /* Optional - center within parent if needed */
+}
 .aboutPageHeader{
   font-family: 'Arial', sans-serif;
   font-size: 2rem;
