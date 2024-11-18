@@ -44,7 +44,7 @@ app.get('/upload/images', (req, res) => {
     console.log('Image request received');
     getImages(req, res);
 });
-
+app.use('/uploads', express.static(path.join(__dirname, 'uploads')));
 // Serve static files for uploads
 app.use('/uploads', express.static('uploads'));
 app.use('/users', userRoutes);
