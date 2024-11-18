@@ -323,7 +323,7 @@
       <div id = "searchResults" ></div>
       <div id="userAlertsContainer">
         <div id="userAlertsContainerHeader">
-          <span id="userAlertsContainerText">Notifications</span>
+          <span id="userAlertsContainerText"><i class="fa-solid fa-bell" style="margin-right: 10px;"></i>Notifications</span>
         </div>
         <div id="userAlertsContent">
 
@@ -492,6 +492,7 @@
             localStorage.setItem("authToken", data.token); // Store token
             localStorage.setItem("username", username); // Store username
             updateLogoutLinkVisibility(); // Update logout link visibility
+            fetchFriendRequests();
             $('#loginModal').modal('hide'); // Hide the modal
             document.getElementById('welcomeProfileUser').textContent = username;
             if (data.profilePicture) {
@@ -499,6 +500,7 @@
       } else {
         localStorage.removeItem("profilePicture"); // Clear if not set
       }
+      
       displayProfilePicture();
             location.reload();
           } else {
@@ -813,7 +815,7 @@
 
           // Set the button text 
           button.appendChild(document.createTextNode(' Like'));
-          button2.appendChild(document.createTextNode(' Comments'));
+          button2.appendChild(document.createTextNode(` Comments (${comments.length})`));
           button3.appendChild(document.createTextNode(' Comment'));
 
           // Append the button to the newContainer
@@ -874,7 +876,7 @@
                 newComment.classList.add('comment');
                 commentDiv.innerHTML = `<span class="username">${comment.username}:</span> <br> <span class="userComment">${comment.commentText}</span>`;
                 commentsContainer.appendChild(newComment);
-
+                button2.textContent = ` Comments (${comments.length + 1})`;  // Update button text with new comment count
               } else {
                 const errorData = await response.json();
                 console.error('Error adding comment:', errorData);
@@ -1219,7 +1221,11 @@ async function fetchFriendRequests() {
         const userAlertsContent = document.getElementById('userAlertsContent');
         userAlertsContent.innerHTML = '';
 
+        const userAlertsIcon = document.getElementById('userAlertsIcon');
+
+
         if (receivedRequests.length > 0) {
+          userAlertsIcon.classList.add('fa-beat');
             receivedRequests.forEach(username => {
                 const requestDiv = document.createElement('div');
                 requestDiv.innerHTML = `
@@ -1229,6 +1235,7 @@ async function fetchFriendRequests() {
                 userAlertsContent.appendChild(requestDiv);
             });
         } else {
+          userAlertsIcon.classList.remove('fa-beat');
             userAlertsContent.innerHTML = '<p>No friend requests</p>';
         }
     } catch (error) {
@@ -1340,6 +1347,14 @@ document.addEventListener('DOMContentLoaded', () => {
 document.addEventListener('DOMContentLoaded', () => {
   console.log('Page loaded');
   displayProfilePicture();
+});
+
+document.addEventListener('DOMContentLoaded', () => {
+    const token = localStorage.getItem('authToken');
+    if (token) {
+        // User is logged in, fetch notifications
+        fetchFriendRequests();
+    }
 });
   </script>
 
