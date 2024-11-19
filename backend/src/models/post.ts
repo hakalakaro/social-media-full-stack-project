@@ -11,6 +11,7 @@ export interface PostDocument extends Document {
     createdAt: Date;
     username: string;
     comments: Comment[];
+    likes: string[];
 }
 
 const commentSchema = new Schema<Comment>({
@@ -23,7 +24,8 @@ const postSchema = new Schema({
     imageUrl: { type: String, required: true },
     createdAt: { type: Date, default: Date.now },
     username: { type: String, required: true },
-    comments: { type: [commentSchema], default: [] }
+    comments: { type: [commentSchema], default: [] },
+    likes: [{ type: String }]
 });
 
 

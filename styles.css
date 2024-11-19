@@ -125,7 +125,9 @@ body {
   background-color: #2e3236f2;
   width: 160px;
 }
-
+.night-mode #deleteUserText {
+  color: #aaaaaa;
+}
 .night-mode .form-control {
   background-color: #2e3236f2;
 }
@@ -231,6 +233,7 @@ body {
   flex-direction: column;
   padding: 0;
   width: 60vh;
+  background-color: #fafafa;
 }
 
 /* Full height for carousel */
@@ -355,7 +358,7 @@ body {
 
 #accountForm {
   background-color: #fafafa;
-
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
   color: white;
   display: flex;
   flex-direction: column;
@@ -605,10 +608,10 @@ body {
   width: 100%;
   height: auto;
   /* Allow height to adjust automatically */
-  max-height: 100%;
+  max-height: 60vh;
   /* Prevents the image from exceeding container height */
   cursor: pointer;
-  object-fit: contain;
+  object-fit: cover;
   /* Ensures the image fits within container while maintaining aspect ratio */
 }
 
@@ -734,9 +737,9 @@ body {
 .comment-box {
   /* CHECK THIS LATER */
   width: 100%;
-  height: 150px;
-  padding: 8px 8px;
-  padding-bottom: 20px;
+  height: 200px;
+  padding: 5px 5px;
+  padding-bottom: 5px;
   box-sizing: border-box;
   border: 2px solid #555555;
   border-radius: 5px;
@@ -785,7 +788,7 @@ body {
   background-color: #2e3236f2;
   /* Make sure the input has a background */
   margin-top: 5px;
-  margin-left: 10px;
+  margin-left: 5px;
   color: white;
 }
 
@@ -800,7 +803,7 @@ body {
   color: white;
   /* White text */
   border: none;
-  padding: 10px 10px;
+  padding: 5px 5px;
   font-size: 14px;
   font-weight: 500;
   /* Slightly bolder text */
@@ -813,7 +816,7 @@ body {
   transition: background-color 0.3s ease, transform 0.2s ease;
   width: 20%;
   /* Make button width responsive */
-  margin-left: 12px;
+  margin-left: 10px;
 }
 
 .upperContainer {
@@ -823,7 +826,7 @@ body {
   border-top-right-radius: 10px;
   height: 300px;
   margin-bottom: 0;
-  margin-top: 10px;
+  
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
   background-color: white;
 }
@@ -835,8 +838,8 @@ body {
 }
 
 .comment {
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-left: 5px;
+  margin-right: 5px;
   border: 1px solid #b9b6b6;
   border-radius: 5px;
   padding: 10px;
@@ -1034,7 +1037,7 @@ body {
 #profilePicButton {
   position: absolute;
   display: flex;
-  top: 70px;
+  top: 55px;
   /* the div */
   width: 100%;
   margin-right: 50px;
@@ -1050,7 +1053,7 @@ body {
 #changePassword {
   position: absolute;
   display: flex;
-  top: 140px;
+  top: 115px;
 }
 
 #changePasswordText {
@@ -1062,21 +1065,21 @@ body {
 #changePasswordField1 {
   position: absolute;
   display: flex;
-  top: 190px;
+  top: 150px;
   border-radius: 5px;
 }
 
 #changePasswordField2 {
   position: absolute;
   display: flex;
-  top: 230px;
+  top: 185px;
   border-radius: 5px;
 }
 
 #changePasswordButton {
   position: absolute;
   display: flex;
-  top: 290px;
+  top: 230px;
   width: 100%;
   margin-right: 50px;
   justify-content: center;
@@ -1086,7 +1089,27 @@ body {
 #changePasswordBtn {
   width: 50%;
 }
-
+#deleteUser {
+  position: absolute;
+  display: flex;
+  top: 300px;
+}
+#deleteUserText {
+  font-weight: 400;
+  text-decoration: none;
+}
+#deleteUserButton {
+  position: absolute;
+  display: flex;
+  top: 340px;
+  width: 100%;
+  left: -10px;
+  margin-right: 50px;
+  justify-content: center;
+}
+#deleteUserBtn {
+  width: 50%;
+}
 #span1 {
   color: orange !important;
   /* Add !important to override the parent styles */
@@ -1227,7 +1250,7 @@ body {
   width: 70%;
   height: 100px;
   
-  border-radius: 5px;
+  border-radius: 10px;
   background-color: #fafafa;
   display: none;
   padding-top: 5px;
@@ -1263,4 +1286,7 @@ body {
 
 #userAlertsContent::-webkit-scrollbar-track {
   background-color: #2e3236f2;
+}
+.orange-alert {
+  color: #ee6306 !important;
 }

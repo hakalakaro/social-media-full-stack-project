@@ -77,7 +77,7 @@ export const uploadImage = async (req: Request, res: Response): Promise<void> =>
 // Controller function to fetch images
 export const getImages = async (req: Request, res: Response): Promise<void> => {
     try {
-        const posts = await Post.find({}, 'imageUrl username comments _id');
+        const posts = await Post.find({}, 'imageUrl username comments _id likes');
         console.log('Fetched Posts:', posts);
         
         const imagesWithDetails = posts.map(post => {
@@ -85,7 +85,8 @@ export const getImages = async (req: Request, res: Response): Promise<void> => {
             const username = post.username || 'Anonymous';
             const _id = post._id;
             const comments = post.comments || [];
-            return { imageUrl, username, _id, comments };
+            const likes = post.likes || [];
+            return { imageUrl, username, _id, comments, likes };
         });
 
         res.json(imagesWithDetails);
@@ -231,5 +232,42 @@ const getUserProfilePic = async (username: string): Promise<string | null> => {
 const updateUserProfilePic = async (username: string, fileName: string): Promise<void> => {
     await User.updateOne({ username }, { profilePicture: fileName });
 };
+
+export const likePost = async (req: Request, res: Response): Promise<void> => {
+    console.log('Like post request received');
+    const { postId } = req.body;
+    const token = req.header('Authorization')?.replace('Bearer ', '');
+  
+    if (!token) {
+      res.status(401).json({ message: 'No token, authorization denied' });
+      return;
+    }
+  
+    try {
+      const decoded: any = jwt.verify(token, process.env.JWT_SECRET!);
+      console.log('Decoded token:', decoded);  // Debugging the token
+      const username = decoded.username;
+  
+      const post = await Post.findById(postId);
+      if (!post) {
+        res.status(404).json({ message: 'Post not found' });
+        return;
+      }
+  
+      console.log('Post found:', post);  // Log the post found
+      if (post.likes.includes(username)) {
+        post.likes = post.likes.filter((like) => like !== username);
+      } else {
+        post.likes.push(username);
+      }
+  
+      await post.save();
+      res.status(200).json({ message: 'Like toggled', likes: post.likes.length });
+    } catch (error) {
+      console.error('Error liking post:', error);  // Log the error
+      res.status(500).json({ message: 'Error liking post', error });
+    }
+  };
+
 // Export the multer middleware as a separate function
 export const uploadMiddleware = upload.single('image');

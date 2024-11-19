@@ -68,7 +68,8 @@
             </ul>
             <form class="d-flex" role="search" id="searchForm" style="margin-left: 258px;">
               <div id="userAlerts" style="margin-right: 20px;">
-                <i class="fa-solid fa-bell fa-2x" id="userAlertsIcon" style="color: #aaaaaa; cursor: pointer; font-size: 30px; display: none;"></i>
+                <i class="fa-solid fa-bell fa-2x" id="userAlertsIcon"
+                  style="color: #aaaaaa; cursor: pointer; font-size: 30px; display: none;"></i>
               </div>
               <!-- Dropdown with Font Awesome Icon -->
               <div class="dropdown">
@@ -88,16 +89,16 @@
               </div>
 
               <!-- Search Input Field -->
-               <div id="searchBarToggle" style="display: none;">
-              <input class="form-control me-2" id="searchInput" type="search" placeholder="Search users" aria-label="Search"
-                style="border-color: #555555;">
+              <div id="searchBarToggle" style="display: none;">
+                <input class="form-control me-2" id="searchInput" type="search" placeholder="Search users"
+                  aria-label="Search" style="border-color: #555555;">
 
-              <!-- Search Button -->
-              <button class="btn btn-outline-secondary" type="submit" id="searchBtn"
-                style="background-color: rgba(var(--bs-dark-rgb)); color: white; border-color: #555555; margin-right: 25px;">
-                Search
-              </button>
-            </div>
+                <!-- Search Button -->
+                <button class="btn btn-outline-secondary" type="submit" id="searchBtn"
+                  style="background-color: rgba(var(--bs-dark-rgb)); color: white; border-color: #555555; margin-right: 25px;">
+                  Search
+                </button>
+              </div>
             </form>
           </div>
         </div>
@@ -186,13 +187,13 @@
       <!-- About Page -->
       <div id="aboutPage" style="display: none;">
         <div id="aboutPageContainer">
-        <div id="aboutPageTitle">
-          <h2 class="aboutPageHeader">
-            <span class="white-text">About</span> 
-            <span class="white-text">This</span> 
-            <span class="orange-text">Project</span>
-          </h2>
-        </div>
+          <div id="aboutPageTitle">
+            <h2 class="aboutPageHeader">
+              <span class="white-text">About</span>
+              <span class="white-text">This</span>
+              <span class="orange-text">Project</span>
+            </h2>
+          </div>
         </div>
       </div>
       <!-- Main Page -->
@@ -253,8 +254,9 @@
               style=" margin-top: 30px;">Share your <span id="span2">&nbsp;<em>stories</em></span></label>
             <textarea class="form-control" id="textBox" rows="3"
               style="height: 80%; width: 25%;  resize: none; margin-left: 50px; "></textarea>
-            <button class="shareBtn " type="submit" style="margin-left: 50px; width: 140px; font-family: 'Poppins', sans-serif; "><i
-                class="fa fa-pencil" aria-hidden="true" style="margin-right: 10px;"></i>Share</button>
+            <button class="shareBtn " type="submit"
+              style="margin-left: 50px; width: 140px; font-family: 'Poppins', sans-serif; "><i class="fa fa-pencil"
+                aria-hidden="true" style="margin-right: 10px;"></i>Share</button>
           </div>
         </div>
         <!-- Upload Container-->
@@ -266,8 +268,8 @@
             <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data"
               style="margin-left: 40px; display: flex; align-items: center; color: white;">
               <input type="file" name="image" accept=".jpg, .jpeg, .png" required />
-              <button class="shareBtn " type="submit" style="width: 140px; font-family: 'Poppins', sans-serif;"><i class="fa fa-upload"
-                  aria-hidden="true" style="margin-right: 10px;"></i> Share</button>
+              <button class="shareBtn " type="submit" style="width: 140px; font-family: 'Poppins', sans-serif;"><i
+                  class="fa fa-upload" aria-hidden="true" style="margin-right: 10px;"></i> Share</button>
             </form>
           </div>
         </div>
@@ -277,8 +279,10 @@
         <div id="profilePageContainer">
           <div id="profilePageHeader">
             <div id="profilePictureContainer">
-              <img id="profilePicture" src="" alt="Profile Picture" style=" width: 100%; height: 100%;  object-fit: cover;"/>
-              <i class='far fa-image' id="profilePicPlaceholder" style='font-size:75px; color: #969494; position: absolute; display: none;'></i>
+              <img id="profilePicture" src="" alt="Profile Picture"
+                style=" width: 100%; height: 100%;  object-fit: cover;" />
+              <i class='far fa-image' id="profilePicPlaceholder"
+                style='font-size:75px; color: #969494; position: absolute; display: none;'></i>
             </div>
             <div id="profileUserInfo">
               <div id="welcomeProfileMessage">
@@ -293,20 +297,30 @@
                 <span id="profilePicText">Change profile picture</span>
               </div>
               <div id="profilePicButton">
-                <input type="file" id="uploadProfileInput" style="display: none;" accept=".jpg, .jpeg, .png" onchange="uploadProfilePicture(event)" />
-                <button id="profilePicBtn" class="like-button" onclick="document.getElementById('uploadProfileInput').click()">Browse</button>
+                <input type="file" id="uploadProfileInput" style="display: none;" accept=".jpg, .jpeg, .png"
+                  onchange="uploadProfilePicture(event)" />
+                <button id="profilePicBtn" class="like-button"
+                  onclick="document.getElementById('uploadProfileInput').click()">Browse</button>
               </div>
               <div id="changePassword">
                 <span id="changePasswordText">Change password</span>
               </div>
               <div id="changePasswordField1">
-                <input type="text" id="passwordChangeField1" placeholder="New password.." style="font-size: 14px;"></input>
+                <input type="text" id="passwordChangeField1" placeholder="New password.."
+                  style="font-size: 14px;"></input>
               </div>
               <div id="changePasswordField2">
-                <input type="text" id="passwordChangeField2" placeholder="New password.."  style="font-size: 14px;"></input>
+                <input type="text" id="passwordChangeField2" placeholder="New password.."
+                  style="font-size: 14px;"></input>
               </div>
               <div id="changePasswordButton">
                 <button id="changePasswordBtn" class="like-button">Confirm</button>
+              </div>
+              <div id="deleteUser">
+                <span id="deleteUserText">Delete account</span>
+              </div>
+              <div id="deleteUserButton">
+                <button id="deleteUserBtn" class="like-button">Confirm</button>
               </div>
             </div>
           </div>
@@ -320,17 +334,19 @@
       </div>
     </div>
     <div class="column side" id="side2">
-      <div id = "searchResults" ></div>
+      <div id="searchResults"></div>
       <div id="userAlertsContainer">
         <div id="userAlertsContainerHeader">
-          <span id="userAlertsContainerText"><i class="fa-solid fa-bell" style="margin-right: 10px;"></i>Notifications</span>
+          <span id="userAlertsContainerText"><i class="fa-solid fa-bell"
+              style="margin-right: 10px;"></i>Notifications</span>
         </div>
         <div id="userAlertsContent">
 
         </div>
       </div>
       <div class="friendsListModal" id="friendsListModal" style="display: none;">
-        <h2 class="active-friends-header"><i class="fas fa-user-friends" style="margin-right: 10px;"></i>Active Friends</h2>
+        <h2 class="active-friends-header"><i class="fas fa-user-friends" style="margin-right: 10px;"></i>Active Friends
+        </h2>
         <div class="friendsListModalContainer" id="friendsListModalContainer">
 
         </div>
@@ -386,7 +402,7 @@
         const dropdownMenu2 = document.querySelector('#dropdown-menu2');
         dropdownMenuButton.style.setProperty('margin-left', '-100px', 'important'); // Move cog icon to the left
         dropdownMenu2.style.setProperty('transform', 'translateX(-150px)', 'important');
-        
+
       }
 
       function handleHomeNavigation() {
@@ -496,12 +512,12 @@
             $('#loginModal').modal('hide'); // Hide the modal
             document.getElementById('welcomeProfileUser').textContent = username;
             if (data.profilePicture) {
-        localStorage.setItem("profilePicture", data.profilePicture);
-      } else {
-        localStorage.removeItem("profilePicture"); // Clear if not set
-      }
-      
-      displayProfilePicture();
+              localStorage.setItem("profilePicture", data.profilePicture);
+            } else {
+              localStorage.removeItem("profilePicture"); // Clear if not set
+            }
+
+            displayProfilePicture();
             location.reload();
           } else {
             console.error("Login failed");
@@ -526,7 +542,7 @@
 
       if (isLoggedIn()) {
         userAlertsIcon.style.display = "flex";
-        searchBarToggle.style.display = "flex";  
+        searchBarToggle.style.display = "flex";
         logoutLink.style.display = "block"; // Show the Logout link
         loginLink.style.display = "none";
         profileLink.style.display = "block";
@@ -551,7 +567,7 @@
       // Hide the carousel and the account form
       document.getElementById("carouselExampleCaptions").style.display = "none";
       document.getElementById("accountForm").style.display = "none";
-      
+
     }
 
     function logout() {
@@ -564,12 +580,13 @@
       // Show the carousel
       document.getElementById('carouselExampleCaptions').style.display = 'block';
       document.getElementById('helpPage').style.display = 'none';
+      document.getElementById('friendsListModal').style.display = 'none';
       searchBarToggle.style.display = "none";
       userAlertsIcon.style.display = "none";
       const dropdownMenuButton = document.getElementById('dropdownMenuButton');
-        const dropdownMenu2 = document.querySelector('#dropdown-menu2');
-        dropdownMenuButton.style.setProperty('margin-left', '-100px', 'important'); // Move cog icon to the left
-        dropdownMenu2.style.setProperty('transform', 'translateX(-150px)', 'important');
+      const dropdownMenu2 = document.querySelector('#dropdown-menu2');
+      dropdownMenuButton.style.setProperty('margin-left', '-100px', 'important'); // Move cog icon to the left
+      dropdownMenu2.style.setProperty('transform', 'translateX(-150px)', 'important');
 
 
       // Update logout link visibility
@@ -669,36 +686,36 @@
       // Add click event listener to the keyboard icon
       keyboardIcon1.addEventListener("click", function () {
         // Hide the keyboard icon and show the upload icon
-      if (textContainer.style.display === 'none') {
-        // Show/Hide text/upload containers
-        postContainer.style.display = "none";
-        textContainer.style.display = "block";
-        textContainer.style.display = "flex";
-        textContainer.style.backgroundColor = "rgba(var(--bs-dark-rgb))";
-        textContainer.style.height = "18vh";
-        textContainer.style.boxShadow = "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
-        textContainer.style.borderbottomleftradius = "0";
-        textContainer.style.borderbottomrightradius = "0";
-        mainContainer.style.height = '65vh';
-      }
-      else {
-        textContainer.style.display = 'none';
-        mainContainer.style.height = '85vh';
-      }
+        if (textContainer.style.display === 'none') {
+          // Show/Hide text/upload containers
+          postContainer.style.display = "none";
+          textContainer.style.display = "block";
+          textContainer.style.display = "flex";
+          textContainer.style.backgroundColor = "rgba(var(--bs-dark-rgb))";
+          textContainer.style.height = "18vh";
+          textContainer.style.boxShadow = "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
+          textContainer.style.borderbottomleftradius = "0";
+          textContainer.style.borderbottomrightradius = "0";
+          mainContainer.style.height = '65vh';
+        }
+        else {
+          textContainer.style.display = 'none';
+          mainContainer.style.height = '85vh';
+        }
       });
 
       cameraIcon1.addEventListener("click", function () {
         if (postContainer.style.display === 'none') {
-        postContainer.style.display = "block";
-        textContainer.style.display = "none";
-        postContainer.style.display = "flex";
-        postContainer.style.backgroundColor = "rgba(var(--bs-dark-rgb))";
-        postContainer.style.height = "18vh";
-        postContainer.style.display = "flex";
-        postContainer.style.boxShadow = "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
-        postContainer.style.borderbottomleftradius = "0";
-        postContainer.style.borderbottomrightradius = "0";
-        mainContainer.style.height = '65vh';
+          postContainer.style.display = "block";
+          textContainer.style.display = "none";
+          postContainer.style.display = "flex";
+          postContainer.style.backgroundColor = "rgba(var(--bs-dark-rgb))";
+          postContainer.style.height = "18vh";
+          postContainer.style.display = "flex";
+          postContainer.style.boxShadow = "rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;"
+          postContainer.style.borderbottomleftradius = "0";
+          postContainer.style.borderbottomrightradius = "0";
+          mainContainer.style.height = '65vh';
         }
         else {
           postContainer.style.display = 'none';
@@ -707,7 +724,7 @@
 
       });
     });
-
+     
     //Load images from database and create layout for pictures/comments etc
     async function loadImages() {
       try {
@@ -743,10 +760,11 @@
 
         // Add each image from the data
         data.reverse().forEach(post => {
-          const { _id, imageUrl, username, comments } = post;
+          const { _id, imageUrl, username, comments, likes } = post;
+          console.log(`Post ID: ${post._id}, Likes: ${post.likes.length}`);
           //console.log('Post ID:', _id);
           //console.log('Comments:', comments);
-
+          
           const displayUsername = post.username || 'Anonymous'; // Display "anonymous" if username not found.
 
           // Create the upper container for upload name of uploader etc
@@ -793,6 +811,7 @@
           const button3 = document.createElement('button');
 
           button.classList.add('like-button'); // Add custom class for styling if needed
+          button.id = `like-button-${_id}`;
           button2.classList.add('like-button');
           button3.classList.add('like-button', 'postComment');
 
@@ -807,14 +826,14 @@
           icon.setAttribute('aria-hidden', 'true'); // Accessibility
           icon2.setAttribute('aria-hidden', 'true');
           icon3.setAttribute('aria-hidden', 'true');
-
+          
           // Add the icon inside the button
           button.appendChild(icon);
           button2.appendChild(icon2);
           button3.appendChild(icon3);
-
+          
           // Set the button text 
-          button.appendChild(document.createTextNode(' Like'));
+          button.appendChild(document.createTextNode(` Like (${likes.length})`));
           button2.appendChild(document.createTextNode(` Comments (${comments.length})`));
           button3.appendChild(document.createTextNode(' Comment'));
 
@@ -834,7 +853,35 @@
           commentBox.appendChild(inputField); // Append input field to comment box
           commentBox.appendChild(button3);
 
+          button.addEventListener('click', async () => {
+            const token = localStorage.getItem('authToken');
+            const postId = _id; // Use the image ID from the current post
 
+            try {
+              const response = await fetch('http://localhost:5000/upload/like', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ postId })
+              });
+              if (!response.ok) {
+                const errorData = await response.json();
+                console.error('Error toggling like:', errorData);
+                return;
+              }
+
+              const result = await response.json();  // Parse as JSON directly
+              const likeText = ` Like (${result.likes})`;  // This is just the text part
+
+              // Update only the text content while preserving the icon
+              button.lastChild.textContent = likeText;
+
+            } catch (error) {
+              console.error('Error:', error);
+            }
+          });
 
           // Add event listener to comment button
           button2.addEventListener('click', () => {
@@ -972,8 +1019,8 @@
       }
     });
 
-     // Close the dropdown2 when clicking outside
-     document.addEventListener('click', function (event) {
+    // Close the dropdown2 when clicking outside
+    document.addEventListener('click', function (event) {
       const dropdownMenu2 = document.querySelector('#dropdown-menu2');
       if (dropdownMenu2 && !dropdownMenu2.contains(event.target) && !event.target.closest('.dropdown')) {
         dropdownMenu2.classList.remove('show'); // Hide the dropdown if clicking outside
@@ -1057,11 +1104,11 @@
     const settingsContainer = document.getElementById('settingsContainer');
     document.getElementById('settingsBtn').addEventListener('click', () => {
       if (settingsContainer.style.display === '' || settingsContainer.style.display === 'none') {
-    settingsContainer.style.display = 'block';
-  } else {
-    settingsContainer.style.display = 'none';
-  }
-    }); 
+        settingsContainer.style.display = 'block';
+      } else {
+        settingsContainer.style.display = 'none';
+      }
+    });
     // About page click event listener
     const aboutPage = document.getElementById('aboutPage');
     const aboutPageContainer = document.getElementById('aboutPageContainer');
@@ -1076,26 +1123,26 @@
       carouselExampleCaptions.style.display = 'none';
     });
     document.addEventListener('DOMContentLoaded', () => {
-    const searchBtn = document.getElementById('searchBtn');
-    const searchInput = document.getElementById('searchInput');
-    const searchResultsDiv = document.getElementById('searchResults');
+      const searchBtn = document.getElementById('searchBtn');
+      const searchInput = document.getElementById('searchInput');
+      const searchResultsDiv = document.getElementById('searchResults');
 
-    console.log('searchBtn:', searchBtn);
-    console.log('searchInput:', searchInput);
-    console.log('searchResultsDiv:', searchResultsDiv);
+      console.log('searchBtn:', searchBtn);
+      console.log('searchInput:', searchInput);
+      console.log('searchResultsDiv:', searchResultsDiv);
 
-    // Add event listener for the search button
-    searchBtn.addEventListener('click', async (event) => {
+      // Add event listener for the search button
+      searchBtn.addEventListener('click', async (event) => {
         event.preventDefault();  // Prevent the default form submission (page refresh)
-        
+
         console.log('Button clicked');
         const query = searchInput.value.trim(); // Get the trimmed value from the input field
         console.log('Search query:', query);
 
         if (query === '') {
-            searchResultsDiv.style.display = 'none'; // Hide the div if query is empty
-            console.log('Query is empty, hiding results div');
-            return;
+          searchResultsDiv.style.display = 'none'; // Hide the div if query is empty
+          console.log('Query is empty, hiding results div');
+          return;
         }
 
         searchResultsDiv.style.display = 'block'; // Show the div
@@ -1103,14 +1150,14 @@
 
         // Fetch users from the backend based on the search query
         try {
-            const response = await fetch(`http://localhost:5000/users/search?query=${query}`);
-            const users = await response.json(); // Parse the JSON response
+          const response = await fetch(`http://localhost:5000/users/search?query=${query}`);
+          const users = await response.json(); // Parse the JSON response
 
-            if (users.length > 0) {
-                // Display the search results dynamically
-                searchResultsDiv.innerHTML = `<p>Showing results for: "${query}"</p><ul>`;
-                users.forEach(user => {
-                    searchResultsDiv.innerHTML += `
+          if (users.length > 0) {
+            // Display the search results dynamically
+            searchResultsDiv.innerHTML = `<p>Showing results for: "${query}"</p><ul>`;
+            users.forEach(user => {
+              searchResultsDiv.innerHTML += `
                     <li style="display: flex; justify-content: space-between; align-items: center;">
                         <span style="margin-left: 10px;">${user.username}</span>
                         <button 
@@ -1120,31 +1167,31 @@
                             <i class="fas fa-user-plus"></i> 
                         </button>
                     </li>`;
-                });
-                searchResultsDiv.innerHTML += `</ul>`;
-            } else {
-                searchResultsDiv.innerHTML = `<p>No users found for "${query}"</p>`;
-            }
+            });
+            searchResultsDiv.innerHTML += `</ul>`;
+          } else {
+            searchResultsDiv.innerHTML = `<p>No users found for "${query}"</p>`;
+          }
         } catch (error) {
-            console.error('Error fetching search results:', error);
-            searchResultsDiv.innerHTML = `<p>There was an error fetching the search results.</p>`;
+          console.error('Error fetching search results:', error);
+          searchResultsDiv.innerHTML = `<p>There was an error fetching the search results.</p>`;
         }
-    });
-    document.addEventListener('click', (event) => {
+      });
+      document.addEventListener('click', (event) => {
         // Check if the click is outside the search results div
         if (!searchResultsDiv.contains(event.target) && !searchInput.contains(event.target) && event.target !== searchBtn) {
-            searchResultsDiv.style.display = 'none';
-            searchInput.value = '';
+          searchResultsDiv.style.display = 'none';
+          searchInput.value = '';
         }
+      });
     });
-});
 
-// Function to handle sending friend requests
+    // Function to handle sending friend requests
 
-const userAlertsIcon = document.getElementById('userAlertsIcon');
-const userAlertsContainer = document.getElementById('userAlertsContainer');
-userAlertsIcon.addEventListener('click', () => {
-  event.stopPropagation();
+    const userAlertsIcon = document.getElementById('userAlertsIcon');
+    const userAlertsContainer = document.getElementById('userAlertsContainer');
+    userAlertsIcon.addEventListener('click', () => {
+      event.stopPropagation();
       if (userAlertsContainer.style.display === 'none') {
         userAlertsContainer.style.display = 'block';
       }
@@ -1153,64 +1200,64 @@ userAlertsIcon.addEventListener('click', () => {
       }
     });
 
-    document.addEventListener('click', function(event) {
-  const target = event.target;
-  const settingsBtn = document.getElementById('settingsBtn');
-  // Check if the click is outside the userAlertsContainer and userAlertsIcon
-  if (!userAlertsContainer.contains(target) && target !== userAlertsIcon) {
-    userAlertsContainer.style.display = 'none';
-  }
-  if (!settingsContainer.contains(target) && target !== settingsBtn) {
-    settingsContainer.style.display = 'none';
-  }
-});
+    document.addEventListener('click', function (event) {
+      const target = event.target;
+      const settingsBtn = document.getElementById('settingsBtn');
+      // Check if the click is outside the userAlertsContainer and userAlertsIcon
+      if (!userAlertsContainer.contains(target) && target !== userAlertsIcon) {
+        userAlertsContainer.style.display = 'none';
+      }
+      if (!settingsContainer.contains(target) && target !== settingsBtn) {
+        settingsContainer.style.display = 'none';
+      }
+    });
 
-async function sendFriendRequest(username) {
-    console.log(`Sending friend request to ${username}`);
-    try {
+    async function sendFriendRequest(username) {
+      console.log(`Sending friend request to ${username}`);
+      try {
         const token = localStorage.getItem('authToken');
         if (!token) {
-    alert('Authentication token is missing');
-    console.log('Token not found in localStorage');
-    return;
-}
+          alert('Authentication token is missing');
+          console.log('Token not found in localStorage');
+          return;
+        }
         const response = await fetch('http://localhost:5000/users/send-friend-request', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({ username })
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({ username })
         });
 
         const result = await response.json();
         if (response.ok) {
-            alert('Friend request sent!');
+          alert('Friend request sent!');
         } else {
-            alert(result.message);
+          alert(result.message);
         }
-    } catch (error) {
+      } catch (error) {
         console.error('Error sending friend request:', error);
         alert('Failed to send friend request.');
+      }
     }
-}
 
-async function fetchFriendRequests() {
-  const token = localStorage.getItem('authToken');
-  console.log('Token from localStorage:', token); // Log token value
-  if (!token) {
-    console.log('No token found, aborting request');
-    return;
-  }
-    try {
+    async function fetchFriendRequests() {
+      const token = localStorage.getItem('authToken');
+      console.log('Token from localStorage:', token); // Log token value
+      if (!token) {
+        console.log('No token found, aborting request');
+        return;
+      }
+      try {
         const response = await fetch('http://localhost:5000/users/friend-requests', {
-            headers: { 'Authorization': `Bearer ${token}` }
+          headers: { 'Authorization': `Bearer ${token}` }
         });
 
         // Check the response status and body
         if (!response.ok) {
-            console.log('Failed to fetch friend requests', response.status, await response.text());
-            return;
+          console.log('Failed to fetch friend requests', response.status, await response.text());
+          return;
         }
 
         const { receivedRequests } = await response.json();
@@ -1225,137 +1272,139 @@ async function fetchFriendRequests() {
 
 
         if (receivedRequests.length > 0) {
-          userAlertsIcon.classList.add('fa-beat');
-            receivedRequests.forEach(username => {
-                const requestDiv = document.createElement('div');
-                requestDiv.innerHTML = `
+          userAlertsIcon.classList.add('fa-beat', 'orange-alert');
+          receivedRequests.forEach(username => {
+            const requestDiv = document.createElement('div');
+            requestDiv.innerHTML = `
+                    <span style="color: white;">New friend request: </span>
                     <span style="color: white;">${username}</span>
                     <button onclick="acceptFriendRequest('${username}')">Accept</button>
                 `;
-                userAlertsContent.appendChild(requestDiv);
-            });
+            userAlertsContent.appendChild(requestDiv);
+          });
         } else {
-          userAlertsIcon.classList.remove('fa-beat');
-            userAlertsContent.innerHTML = '<p>No friend requests</p>';
+          userAlertsIcon.classList.remove('fa-beat', 'orange-alert');
+          userAlertsContent.innerHTML = '<p>No friend requests</p>';
         }
-    } catch (error) {
+      } catch (error) {
         console.error('Error fetching friend requests:', error);
+      }
     }
-}
 
-document.getElementById('userAlertsIcon').addEventListener('click', fetchFriendRequests);
+    document.getElementById('userAlertsIcon').addEventListener('click', fetchFriendRequests);
 
-async function acceptFriendRequest(username) {
-    console.log(`Accepting friend request from ${username}`);
-    try {
+    async function acceptFriendRequest(username) {
+      console.log(`Accepting friend request from ${username}`);
+      try {
         const token = localStorage.getItem('authToken');
         const response = await fetch('http://localhost:5000/users/accept-friend-request', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({ username })
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({ username })
         });
 
         const result = await response.json();
         if (response.ok) {
-            alert('Friend request accepted!');
-            fetchFriendRequests(); // Refresh the list
+          alert('Friend request accepted!');
+          fetchFriendRequests(); // Refresh the list
         } else {
-            alert(result.message);
+          alert(result.message);
         }
-    } catch (error) {
+      } catch (error) {
         console.error('Error accepting friend request:', error);
         alert('Failed to accept friend request.');
+      }
     }
-}
 
-async function uploadProfilePicture(event) {
-    const fileInput = event.target;
-    const file = fileInput.files[0];
-    if (!file) return;
+    async function uploadProfilePicture(event) {
+      const fileInput = event.target;
+      const file = fileInput.files[0];
+      if (!file) return;
 
-    const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
-    if (!allowedTypes.includes(file.type)) {
+      const allowedTypes = ['image/jpeg', 'image/jpg', 'image/png'];
+      if (!allowedTypes.includes(file.type)) {
         alert('Only JPG, JPEG, and PNG files are allowed.');
         return;
-    }
+      }
 
-    const formData = new FormData();
-    formData.append('profilePicture', file);
+      const formData = new FormData();
+      formData.append('profilePicture', file);
 
-    const token = localStorage.getItem('authToken');
-    if (!token) {
+      const token = localStorage.getItem('authToken');
+      if (!token) {
         alert('You are not logged in.');
         return;
-    }
+      }
 
-    try {
+      try {
         const response = await fetch('http://localhost:5000/users/upload-profile-picture', {
-            method: 'POST',
-            headers: { 'Authorization': `Bearer ${token}` },
-            body: formData
+          method: 'POST',
+          headers: { 'Authorization': `Bearer ${token}` },
+          body: formData
         });
 
         const result = await response.json();
 
         if (response.ok) {
-            // Update profile picture on the frontend
-            const profilePictureElement = document.getElementById('profilePicture');
-            profilePictureElement.src = `http://localhost:5000${result.filePath}`;
-            
-            alert('Profile picture uploaded successfully!');
+          // Update profile picture on the frontend
+          const profilePictureElement = document.getElementById('profilePicture');
+          profilePictureElement.src = `http://localhost:5000${result.filePath}`;
+
+          alert('Profile picture uploaded successfully!');
         } else {
-            alert(result.message);
+          alert(result.message);
         }
-    } catch (error) {
+      } catch (error) {
         console.error('Error uploading profile picture:', error);
         alert('Failed to upload profile picture.');
+      }
     }
-}
-document.addEventListener('DOMContentLoaded', () => {
-        const username = localStorage.getItem('username');
-        if (username) {
-            document.getElementById('welcomeProfileUser').textContent = username;
-        }
+    document.addEventListener('DOMContentLoaded', () => {
+      const username = localStorage.getItem('username');
+      if (username) {
+        document.getElementById('welcomeProfileUser').textContent = username;
+      }
     });
 
     function displayProfilePicture() {
-  console.log('displayProfilePicture called');
+      console.log('displayProfilePicture called');
 
-  const profilePictureUrl = localStorage.getItem('profilePicture');
-  console.log('Profile Picture URL from localStorage:', profilePictureUrl);
+      const profilePictureUrl = localStorage.getItem('profilePicture');
+      console.log('Profile Picture URL from localStorage:', profilePictureUrl);
 
-  const profileImageElement = document.getElementById('profilePicture');
+      const profileImageElement = document.getElementById('profilePicture');
 
-  if (profileImageElement) {
-    if (profilePictureUrl) {
-      profileImageElement.src = `${profilePictureUrl}`;
-      profileImageElement.style.display = 'block';
-      console.log('Profile picture displayed:', profilePictureUrl);
-    } else {
-      profileImageElement.style.display = 'none';
-      console.log('No profile picture found, hiding element');
+      if (profileImageElement) {
+        if (profilePictureUrl) {
+          profileImageElement.src = `${profilePictureUrl}`;
+          profileImageElement.style.display = 'block';
+          console.log('Profile picture displayed:', profilePictureUrl);
+        } else {
+          profileImageElement.style.display = 'none';
+          console.log('No profile picture found, hiding element');
+        }
+      } else {
+        console.error('Profile image element not found in the DOM');
+      }
     }
-  } else {
-    console.error('Profile image element not found in the DOM');
-  }
-}
 
-// Call this function when the page loads
-document.addEventListener('DOMContentLoaded', () => {
-  console.log('Page loaded');
-  displayProfilePicture();
-});
+    // Call this function when the page loads
+    document.addEventListener('DOMContentLoaded', () => {
+      console.log('Page loaded');
+      displayProfilePicture();
+    });
 
-document.addEventListener('DOMContentLoaded', () => {
-    const token = localStorage.getItem('authToken');
-    if (token) {
+    document.addEventListener('DOMContentLoaded', () => {
+      const token = localStorage.getItem('authToken');
+      if (token) {
         // User is logged in, fetch notifications
         fetchFriendRequests();
-    }
-});
+      }
+    });
+    
   </script>
 
 </body>
