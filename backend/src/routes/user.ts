@@ -3,6 +3,7 @@ import jwt from 'jsonwebtoken';
 import User from '../models/User';
 import authMiddleware from '../middleware/authMiddleware';
 import { uploadProfilePicture } from '../controllers/upload';
+import { getUserFriends } from '../controllers/upload';
 
 const express = require('express');
 const router = express.Router();
@@ -14,7 +15,7 @@ router.post('/send-friend-request', async (req: Request, res: Response) => {
   // Extract the token from the authorization header
   const authHeader = req.headers.authorization;
         const token = authHeader && authHeader.split(' ')[1];
-        console.log('Authorization header:', req.headers.authorization);
+        //console.log('Authorization header:', req.headers.authorization);
   if (!token) {
     return res.status(401).json({ message: 'Authentication token missing' });
   }
@@ -112,5 +113,5 @@ router.post('/accept-friend-request', async (req: Request, res: Response) => {
 });
 
 router.post('/upload-profile-picture', uploadProfilePicture);
-
+router.get('/friends', authMiddleware, getUserFriends);
 export default router;

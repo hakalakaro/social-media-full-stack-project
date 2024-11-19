@@ -6,11 +6,11 @@ const router = express.Router();
 router.get('/search', async (req: Request, res: Response) => {
     try {
         const query = req.query.query as string; // Type the query as a string
-        console.log(`Search query: ${query}`);
+        //console.log(`Search query: ${query}`);
         const users = await User.find({
             username: { $regex: query, $options: 'i' }, // Case-insensitive search
         }).exec();
-        console.log(`Found ${users.length} user(s) matching '${query}'`);
+        //console.log(`Found ${users.length} user(s) matching '${query}'`);
         return res.json(users); // Return the found users
     } catch (error) {
         console.error('Error occurred while searching:', error);

@@ -345,7 +345,7 @@
         </div>
       </div>
       <div class="friendsListModal" id="friendsListModal" style="display: none;">
-        <h2 class="active-friends-header"><i class="fas fa-user-friends" style="margin-right: 10px;"></i>Active Friends
+        <h2 class="active-friends-header"><i class="fas fa-user-friends" style="margin-right: 10px; color: #ee6306;"></i>Friends
         </h2>
         <div class="friendsListModalContainer" id="friendsListModalContainer">
 
@@ -507,6 +507,7 @@
             mainContainer?.scrollTo({ top: 0, behavior: 'smooth' });
             localStorage.setItem("authToken", data.token); // Store token
             localStorage.setItem("username", username); // Store username
+            loadFriendsList();
             updateLogoutLinkVisibility(); // Update logout link visibility
             fetchFriendRequests();
             $('#loginModal').modal('hide'); // Hide the modal
@@ -761,7 +762,7 @@
         // Add each image from the data
         data.reverse().forEach(post => {
           const { _id, imageUrl, username, comments, likes } = post;
-          console.log(`Post ID: ${post._id}, Likes: ${post.likes.length}`);
+          //console.log(`Post ID: ${post._id}, Likes: ${post.likes.length}`);
           //console.log('Post ID:', _id);
           //console.log('Comments:', comments);
           
@@ -1275,10 +1276,11 @@
           userAlertsIcon.classList.add('fa-beat', 'orange-alert');
           receivedRequests.forEach(username => {
             const requestDiv = document.createElement('div');
+            requestDiv.id='requestDiv';
             requestDiv.innerHTML = `
-                    <span style="color: white;">New friend request: </span>
-                    <span style="color: white;">${username}</span>
-                    <button onclick="acceptFriendRequest('${username}')">Accept</button>
+                    <span style="font-weight: 500;">Friend request from: </span>
+                    <span style="font-weight: 500;">${username}</span>
+                    <button id="acceptFriendBtn" class="like-button" style="padding: 5px 5px;" onclick="acceptFriendRequest('${username}')">Accept</button>
                 `;
             userAlertsContent.appendChild(requestDiv);
           });
@@ -1405,6 +1407,80 @@
       }
     });
     
+    async function loadFriendsList() {
+  const token = localStorage.getItem('authToken');
+  const friendsListModalContainer = document.getElementById('friendsListModalContainer');
+  
+  if (!friendsListModalContainer) {
+    console.error('Friends list container not found');
+    return;
+  }
+
+  try {
+    const response = await fetch('http://localhost:5000/users/friends', {
+      method: 'GET',
+      headers: {
+        'Authorization': `Bearer ${token}`,
+        'Content-Type': 'application/json',
+      },
+    });
+
+    if (!response.ok) {
+      throw new Error('Failed to fetch friends');
+    }
+
+    const friends = await response.json();
+
+    // Clear the container
+    friendsListModalContainer.innerHTML = '';
+
+    if (friends.length > 0) {
+      friends.forEach((friend) => {
+        // Create friend row container
+        const friendRow = document.createElement('div');
+        friendRow.classList.add('friend-row');
+
+        // Create username element
+        const usernameSpan = document.createElement('span');
+        usernameSpan.classList.add('username');
+        usernameSpan.textContent = friend;
+
+        // Create buttons container
+        const buttonsDiv = document.createElement('div');
+        buttonsDiv.classList.add('buttons');
+
+        // Create the Font Awesome icon
+        const chatButton = document.createElement('button');
+        chatButton.classList.add('fas', 'fa-comment');
+        chatButton.classList.add('chatButton')
+        
+        // Create the unfriend button
+        const unfriendButton = document.createElement('button');
+        unfriendButton.classList.add('unfriend-button');
+        unfriendButton.classList.add('fas',  'fa-user-times')
+        unfriendButton.addEventListener('click', () => {
+          unfriendFriend(friend);
+        });
+
+        // Append elements to the row
+        buttonsDiv.appendChild(chatButton);
+        buttonsDiv.appendChild(unfriendButton);
+        friendRow.appendChild(usernameSpan);
+        friendRow.appendChild(buttonsDiv);
+
+        // Add the row to the container
+        friendsListModalContainer.appendChild(friendRow);
+      });
+    } else {
+      friendsListModalContainer.innerHTML = '<p>No friends found</p>';
+    }
+  } catch (error) {
+    console.error('Error loading friends list:', error);
+  }
+}
+document.addEventListener('DOMContentLoaded', function() {
+  loadFriendsList(); // Call your function here
+});
   </script>
 
 </body>

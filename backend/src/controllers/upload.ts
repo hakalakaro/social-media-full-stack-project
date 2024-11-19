@@ -13,13 +13,13 @@ const fileFilter = (req: Request, file: Express.Multer.File, cb: Function) => {
     const extName = allowedTypes.test(path.extname(file.originalname).toLowerCase());
 
     // Log the file's MIME type and extension for debugging
-    console.log("File MIME Type: ", file.mimetype);
-    console.log("File Extension: ", path.extname(file.originalname));
+    //console.log("File MIME Type: ", file.mimetype);
+    //console.log("File Extension: ", path.extname(file.originalname));
 
     if (mimeType && extName) {
         return cb(null, true); // Allow the file to be uploaded
     } else {
-        console.log("File rejected: Invalid type"); // Log the rejected file
+        //console.log("File rejected: Invalid type"); // Log the rejected file
         return cb(new Error('Invalid file type. Only jpg, jpeg, and png are allowed.'));
     }
 };
@@ -51,7 +51,7 @@ export const uploadImage = async (req: Request, res: Response): Promise<void> =>
 
         // Decode the token using your secret key
         const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as { username: string };
-        console.log('Extracted Username:', decoded.username); // Log the username
+        //console.log('Extracted Username:', decoded.username); // Log the username
 
         if (!req.file) {
             res.status(400).send('No file uploaded.');
@@ -59,7 +59,7 @@ export const uploadImage = async (req: Request, res: Response): Promise<void> =>
         }
 
         // Log the uploaded file details
-        console.log(`Image uploaded by user: ${decoded.username}`);
+        //console.log(`Image uploaded by user: ${decoded.username}`);
 
         const post = new Post({
             imageUrl: req.file.path,
@@ -78,7 +78,7 @@ export const uploadImage = async (req: Request, res: Response): Promise<void> =>
 export const getImages = async (req: Request, res: Response): Promise<void> => {
     try {
         const posts = await Post.find({}, 'imageUrl username comments _id likes');
-        console.log('Fetched Posts:', posts);
+        //console.log('Fetched Posts:', posts);
         
         const imagesWithDetails = posts.map(post => {
             const imageUrl = post.imageUrl.replace(/\\/g, '/');
@@ -188,7 +188,7 @@ export const uploadProfilePicture = [
 
             if (typeof decoded === 'object' && decoded !== null && 'username' in decoded) {
                 const username = (decoded as { username: string }).username; // Safe type assertion here
-                console.log('User:', username);
+                //console.log('User:', username);
 
                 // Fetch the user's current profile picture from the database
                 const existingProfilePicPath = await getUserProfilePic(username);
@@ -200,14 +200,14 @@ export const uploadProfilePicture = [
                         if (err) {
                             console.error('Error deleting old profile picture:', err);
                         } else {
-                            console.log('Old profile picture deleted');
+                            //console.log('Old profile picture deleted');
                         }
                     });
                 }
 
                 // Construct the new file path
                 const filePath = `/uploads/profile-pictures/${req.file.filename}`;
-                console.log('Profile picture saved to:', filePath);
+                //console.log('Profile picture saved to:', filePath);
 
                 // Save the new profile picture file path in the database
                 await updateUserProfilePic(username, req.file.filename);
@@ -245,7 +245,7 @@ export const likePost = async (req: Request, res: Response): Promise<void> => {
   
     try {
       const decoded: any = jwt.verify(token, process.env.JWT_SECRET!);
-      console.log('Decoded token:', decoded);  // Debugging the token
+      //console.log('Decoded token:', decoded);  // Debugging the token
       const username = decoded.username;
   
       const post = await Post.findById(postId);
@@ -254,7 +254,7 @@ export const likePost = async (req: Request, res: Response): Promise<void> => {
         return;
       }
   
-      console.log('Post found:', post);  // Log the post found
+      //console.log('Post found:', post);  // Log the post found
       if (post.likes.includes(username)) {
         post.likes = post.likes.filter((like) => like !== username);
       } else {
@@ -269,5 +269,31 @@ export const likePost = async (req: Request, res: Response): Promise<void> => {
     }
   };
 
+  export const getUserFriends = async (req: Request, res: Response): Promise<void> => {
+    try {
+      const token = req.header('Authorization')?.replace('Bearer ', '');
+      if (!token) {
+        res.status(401).json({ message: 'Authorization denied' });
+        return;
+      }
+  
+      const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as { username: string };
+      const username = decoded.username;
+      console.log('Username from token:', username);  // Log the decoded username
+  
+      const user = await User.findOne({ username });
+      if (!user) {
+        res.status(404).json({ message: 'User not found' });
+        return;
+      }
+  
+      console.log('User found, friends:', user.friends);  // Log the user's friends list
+      res.json(user.friends);
+    } catch (error) {
+      console.error('Error fetching friends:', error);
+      res.status(500).json({ message: 'Error fetching friends', error });
+    }
+  };
+  
 // Export the multer middleware as a separate function
 export const uploadMiddleware = upload.single('image');

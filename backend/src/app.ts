@@ -15,7 +15,7 @@ const app = express();
 app.use(morgan('dev'));
 // Middleware to log requests
 app.use((req, res, next) => {
-    console.log(`${req.method} request for '${req.url}'`);
+    //console.log(`${req.method} request for '${req.url}'`);
     next();
 });
 
@@ -41,7 +41,7 @@ app.use('/upload', uploadRoutes); // Adjust the prefix as necessary
 
 // Custom route for getting images (if implemented in controller)
 app.get('/upload/images', (req, res) => {
-    console.log('Image request received');
+    //console.log('Image request received');
     getImages(req, res);
 });
 app.use('/uploads', express.static(path.join(__dirname, 'uploads')));

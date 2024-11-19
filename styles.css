@@ -174,6 +174,9 @@ body {
 .night-mode #userAlertsContainerText {
   color: #aaaaaa;
 }
+.night-mode #requestDiv {
+  color: #aaaaaa;
+}
 /* Style the header */
 .header {
   font-family: 'Poppins', sans-serif;
@@ -893,10 +896,11 @@ body {
   display: flex;
   position: absolute;
   top: 12%;
-  border: 2px solid #555555;
+  padding: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   /* Add shadow for depth */
   z-index: 1;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 .active-friends-header {
@@ -905,7 +909,7 @@ body {
   color: #aaaaaa;
   text-align: center;
   margin-bottom: 10px;
-  margin-top: 10px;
+  
   font-family: 'Arial', sans-serif;
   
   
@@ -918,12 +922,25 @@ body {
   border-bottom: 2px solid #555555;
   border-top: 2px solid #555555;
   display: flex;
-  align-items: center;
+  flex-direction: column; 
   /* Center content vertically inside container */
-  justify-content: center;
+  margin-top: 20px;
   /* Center content horizontally inside container */
   margin: auto;
   /* Optional - center within parent if needed */
+  overflow: auto;
+}
+#friendsListModalContainer::-webkit-scrollbar {
+  width: 4px;
+}
+
+#friendsListModalContainer::-webkit-scrollbar-thumb {
+  background-color: #555555;
+  border-radius: 4px;
+}
+
+#friendsListModalContainer::-webkit-scrollbar-track {
+  background-color: #2e3236f2;
 }
 
 #submittedBySpan {
@@ -1147,7 +1164,7 @@ body {
   display: flex;
   position: absolute;
   top: 12%;
-  border: 2px solid #555555;
+  padding: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   /* Add shadow for depth */
   display: none;
@@ -1247,7 +1264,7 @@ body {
   top: 10px;
   z-index: 2;
   border: 2px solid #555555;
-  width: 70%;
+  width: 92%;
   height: 100px;
   
   border-radius: 10px;
@@ -1289,4 +1306,64 @@ body {
 }
 .orange-alert {
   color: #ee6306 !important;
+}
+/* Friend list content */
+.friend-row {
+  display: flex;
+  justify-content: space-between; /* Space between username and buttons */
+  align-items: center; /* Vertically center content */
+  padding: 10px;
+  border-bottom: 1px solid #555555; /* Optional: separate rows */
+}
+
+.username {
+  font-size: 16px;
+  color: #aaaaaa; /* Adjust as needed */
+  font-weight: 500;
+}
+
+.buttons {
+  display: flex;
+  align-items: center; /* Vertically center icon and button */
+  gap: 20px; /* Space between the icon and the button */
+}
+
+.unfriend-button {
+  background-color: transparent; /* Transparent background */
+  color: #aaaaaa; 
+  border: none; /* No border */
+  font-size: 16px; /* Adjust size */
+  cursor: pointer;
+  padding: 0; /* Remove padding */
+  
+}
+
+.unfriend-button:hover {
+  color: #fafafa; 
+  transform: scale(1.1);
+}
+.unfriend-button:active {
+  transform: translateY(3px);
+}
+.chatButton {
+  background-color: transparent; /* Transparent background */
+  color: #ee6306;
+  border: none; /* No border */
+  font-size: 16px; /* Adjust size */
+  cursor: pointer;
+  padding: 0; /* Remove padding */
+  font-size: 20px;
+}
+.chatButton:hover {
+  color: #fd7a00; 
+  transform: scale(1.1);
+}
+.chatButton:active {
+  transform: translateY(3px);
+}
+#registerBtn {
+  color: white;
+}
+#requestDiv {
+  padding: 12px;
 }
