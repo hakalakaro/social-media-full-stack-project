@@ -35,16 +35,16 @@
             <ul class="navbar-nav me-auto mb-2 mb-lg-0" style="font-size: 20px;">
               <li class="nav-item" style="padding-right: 40px;">
                 <a class="nav-link active" aria-current="page" href="#" id="homeLink" style="margin-left: 45px;"><i
-                    class="fa fa-home" aria-hidden="true" style="margin-right: 5px; color: #ee6306;"></i>Home</a>
+                    class="fa fa-home" aria-hidden="true" style="margin-right: 5px; color: #e58e26;;"></i>Home</a>
               </li>
               <li class="nav-item" style="padding-right: 40px;">
                 <a class="nav-link" id="aboutLink" href="#" style="color: white;"><i class="fa fa-info-circle"
-                    aria-hidden="true" style="margin-right: 5px; color: #ee6306;"></i>About</a>
+                    aria-hidden="true" style="margin-right: 5px; color: #e58e26;;"></i>About</a>
               </li>
               <li class="nav-item dropdown" style="padding-right: 40px;">
                 <a class="nav-link dropdown-toggle" href="#" role="button" data-bs-toggle="dropdown"
                   aria-expanded="false" style="color: white;"><i class="fas fa-cube" aria-hidden="true"
-                    style="margin-right: 5px; color: #ee6306;"></i>
+                    style="margin-right: 5px; color: #e58e26;;"></i>
                   Portal
                 </a>
                 <ul class="dropdown-menu">
@@ -110,7 +110,8 @@
     <div class="column side" id="side1">
       <div id="settingsContainer">
         <div id="settingsHeader">
-          <h2 class="active-friends-header"><i class="fas fa-cog" style="margin-right: 10px;"></i>Settings</h2>
+          <h2 class="active-friends-header"><i class="fas fa-cog"
+              style="margin-right: 10px; color: #e58e26;"></i>Settings</h2>
         </div>
         <div id="settingsContainerInner">
 
@@ -207,27 +208,27 @@
             <div class="btn-group" id="switchHeaderBtnGroup" role="group" aria-label="Basic example">
               <button type="button" class="btn" style=" border: none; font-weight: 500;">
                 <i class="far fa-images fa-1x" aria-hidden="true"
-                  style="font-size: 20px; cursor: pointer; padding: 5px; color: #ee6306;" title="Show Images"></i>
+                  style="font-size: 20px; cursor: pointer; padding: 5px; color: #e58e26;" title="Show Images"></i>
                 Images
               </button>
               <button type="button" class="btn" style=" border: none; font-weight: 500;">
                 <i class="fa fa-list-alt fa-1x" aria-hidden="true"
-                  style="font-size: 20px; cursor: pointer; padding: 5px; color: #ee6306;" title="Show Stories"></i>
+                  style="font-size: 20px; cursor: pointer; padding: 5px; color: #e58e26;" title="Show Stories"></i>
                 Stories
               </button>
               <button type="button" class="btn" id="cameraIcon1" style=" border: none; font-weight: 500;">
                 <i id="cameraIcon" class="fa fa-upload fa-1x" aria-hidden="true"
-                  style="font-size: 20px; cursor: pointer; padding: 5px; color: #ee6306;" title="Upload Images"></i>
+                  style="font-size: 20px; cursor: pointer; padding: 5px; color: #e58e26;" title="Upload Images"></i>
                 Share Images
               </button>
               <button type="button" class="btn" id="keyboardIcon1" style=" border: none; font-weight: 500;">
                 <i id="keyboardIcon" class="fa-solid fa-comment fa-1x" aria-hidden="true"
-                  style="font-size: 20px; cursor: pointer; padding: 5px; color: #ee6306;" title="Upload Text"></i>
+                  style="font-size: 20px; cursor: pointer; padding: 5px; color: #e58e26;" title="Upload Text"></i>
                 Share Stories
               </button>
               <button type="button" id="toggleIcon" class="btn" style=" border: none; font-weight: 500;">
                 <i class="fa fa-arrows-v fa-1x" aria-hidden="true"
-                  style="font-size: 20px; cursor: pointer; padding: 5px; color: #ee6306;" title="Show/Hide UI"></i>
+                  style="font-size: 20px; cursor: pointer; padding: 5px; color: #e58e26;" title="Show/Hide UI"></i>
                 Toggle Interface
               </button>
             </div>
@@ -338,14 +339,15 @@
       <div id="userAlertsContainer">
         <div id="userAlertsContainerHeader">
           <span id="userAlertsContainerText"><i class="fa-solid fa-bell"
-              style="margin-right: 10px;"></i>Notifications</span>
+              style="margin-right: 10px; color: #e58e26;"></i>Notifications</span>
         </div>
         <div id="userAlertsContent">
 
         </div>
       </div>
       <div class="friendsListModal" id="friendsListModal" style="display: none;">
-        <h2 class="active-friends-header"><i class="fas fa-user-friends" style="margin-right: 10px; color: #ee6306;"></i>Friends
+        <h2 class="active-friends-header"><i class="fas fa-user-friends"
+            style="margin-right: 10px; color: #e58e26;"></i>Friends
         </h2>
         <div class="friendsListModalContainer" id="friendsListModalContainer">
 
@@ -725,7 +727,7 @@
 
       });
     });
-     
+
     //Load images from database and create layout for pictures/comments etc
     async function loadImages() {
       try {
@@ -765,13 +767,13 @@
           //console.log(`Post ID: ${post._id}, Likes: ${post.likes.length}`);
           //console.log('Post ID:', _id);
           //console.log('Comments:', comments);
-          
+
           const displayUsername = post.username || 'Anonymous'; // Display "anonymous" if username not found.
 
           // Create the upper container for upload name of uploader etc
           const upperContainer = document.createElement('div');
           upperContainer.classList.add('uploaded-image-container', 'no-lines', 'upperContainer');
-          upperContainer.innerHTML = `<span id="submittedBySpan"><i class="fa-solid fa-crosshairs"></i> ${displayUsername}</span>`; // Example content
+          upperContainer.innerHTML = `<span id="submittedBySpan"><i class="fa-solid fa-camera"></i> ${displayUsername}</span>`; // Example content
 
           // Create the container for each image
           const container = document.createElement('div');
@@ -827,12 +829,12 @@
           icon.setAttribute('aria-hidden', 'true'); // Accessibility
           icon2.setAttribute('aria-hidden', 'true');
           icon3.setAttribute('aria-hidden', 'true');
-          
+
           // Add the icon inside the button
           button.appendChild(icon);
           button2.appendChild(icon2);
           button3.appendChild(icon3);
-          
+
           // Set the button text 
           button.appendChild(document.createTextNode(` Like (${likes.length})`));
           button2.appendChild(document.createTextNode(` Comments (${comments.length})`));
@@ -1276,7 +1278,7 @@
           userAlertsIcon.classList.add('fa-beat', 'orange-alert');
           receivedRequests.forEach(username => {
             const requestDiv = document.createElement('div');
-            requestDiv.id='requestDiv';
+            requestDiv.id = 'requestDiv';
             requestDiv.innerHTML = `
                     <span style="font-weight: 500;">Friend request from: </span>
                     <span style="font-weight: 500;">${username}</span>
@@ -1406,11 +1408,11 @@
         fetchFriendRequests();
       }
     });
-    
+
     async function loadFriendsList() {
   const token = localStorage.getItem('authToken');
   const friendsListModalContainer = document.getElementById('friendsListModalContainer');
-  
+
   if (!friendsListModalContainer) {
     console.error('Friends list container not found');
     return;
@@ -1439,25 +1441,43 @@
         // Create friend row container
         const friendRow = document.createElement('div');
         friendRow.classList.add('friend-row');
+ 
+        // Create the profile picture element
+        const profilePicture = document.createElement('img');
+        profilePicture.classList.add('profile-picture');
+        if (friend.profilePicture && friend.profilePicture !== '/uploads/profile-pictures/profileplaceholder.png') {
+          profilePicture.src = `http://localhost:5000/uploads/profile-pictures/${friend.profilePicture}`;
+        } else {
+          // If there's no valid profile picture, use the placeholder
+          profilePicture.src = `http://localhost:5000/uploads/profile-pictures/profileplaceholder.png`;
+        }
 
+        profilePicture.alt = `${friend.username}'s profile picture`;
+        console.log(friend.profilePicture);
         // Create username element
         const usernameSpan = document.createElement('span');
         usernameSpan.classList.add('username');
-        usernameSpan.textContent = friend;
+        usernameSpan.textContent = friend.username;
+
+        // Create the user info container (wrap profile picture and username)
+        const userInfoDiv = document.createElement('div');
+        userInfoDiv.classList.add('user-info');
+        userInfoDiv.appendChild(profilePicture);
+        userInfoDiv.appendChild(usernameSpan);
 
         // Create buttons container
         const buttonsDiv = document.createElement('div');
         buttonsDiv.classList.add('buttons');
 
-        // Create the Font Awesome icon
+        // Create the chat button
         const chatButton = document.createElement('button');
         chatButton.classList.add('fas', 'fa-comment');
-        chatButton.classList.add('chatButton')
-        
+        chatButton.classList.add('chatButton');
+
         // Create the unfriend button
         const unfriendButton = document.createElement('button');
         unfriendButton.classList.add('unfriend-button');
-        unfriendButton.classList.add('fas',  'fa-user-times')
+        unfriendButton.classList.add('fa', 'fa-remove');
         unfriendButton.addEventListener('click', () => {
           unfriendFriend(friend);
         });
@@ -1465,7 +1485,7 @@
         // Append elements to the row
         buttonsDiv.appendChild(chatButton);
         buttonsDiv.appendChild(unfriendButton);
-        friendRow.appendChild(usernameSpan);
+        friendRow.appendChild(userInfoDiv); // Add user info (profile picture and username)
         friendRow.appendChild(buttonsDiv);
 
         // Add the row to the container
@@ -1478,9 +1498,9 @@
     console.error('Error loading friends list:', error);
   }
 }
-document.addEventListener('DOMContentLoaded', function() {
-  loadFriendsList(); // Call your function here
-});
+    document.addEventListener('DOMContentLoaded', function () {
+      loadFriendsList(); // Call your function here
+    });
   </script>
 
 </body>

@@ -279,7 +279,6 @@ export const likePost = async (req: Request, res: Response): Promise<void> => {
   
       const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as { username: string };
       const username = decoded.username;
-      console.log('Username from token:', username);  // Log the decoded username
   
       const user = await User.findOne({ username });
       if (!user) {
@@ -287,8 +286,19 @@ export const likePost = async (req: Request, res: Response): Promise<void> => {
         return;
       }
   
-      console.log('User found, friends:', user.friends);  // Log the user's friends list
-      res.json(user.friends);
+      // Fetch friends' details
+      const friendsDetails = await User.find(
+        { username: { $in: user.friends } },
+        { username: 1, profilePicture: 1 }
+      );
+  
+      // Add default profile picture if not set
+      const response = friendsDetails.map(friend => ({
+        username: friend.username,
+        profilePicture: friend.profilePicture || '/uploads/profile-pictures/profileplaceholder.png', // Fallback profile picture
+      }));
+  
+      res.json(response);
     } catch (error) {
       console.error('Error fetching friends:', error);
       res.status(500).json({ message: 'Error fetching friends', error });

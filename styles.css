@@ -37,7 +37,7 @@ body {
 
 .night-mode .comment-box {
   background-color: rgba(var(--bs-dark-rgb));
-  color: white;
+  color: #EDEDED;
 }
 
 .night-mode .like-button {
@@ -58,11 +58,11 @@ body {
 }
 
 .night-mode #registerForm {
-  color: white;
+  color: #EDEDED;
 }
 
 .night-mode #accountForm h3 {
-  color: white;
+  color: #EDEDED;
 }
 
 .night-mode #helpPage {
@@ -75,6 +75,8 @@ body {
 
 .night-mode #friendsListModal {
   background-color: rgba(var(--bs-dark-rgb));
+
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.5);
 }
 
 /* Night mode styles for switchHeader */
@@ -88,7 +90,7 @@ body {
 
 /* Ensure button text is white in night mode */
 .night-mode .switchHeader button {
-  color: #b3afaf;
+  color: #EDEDED;
 }
 
 /* Ensure icons and text inside buttons are white */
@@ -148,7 +150,7 @@ body {
   background-color: rgba(var(--bs-dark-rgb));
 }
 .night-mode .aboutPageHeader .white-text {
-  color: #ffffff;
+  color: #EDEDED;
 }
 .night-mode .userComment {
   color: #b3afaf;
@@ -172,7 +174,7 @@ body {
   background-color: rgba(var(--bs-dark-rgb));
 }
 .night-mode #userAlertsContainerText {
-  color: #aaaaaa;
+  color: #EDEDED;
 }
 .night-mode #requestDiv {
   color: #aaaaaa;
@@ -346,7 +348,7 @@ body {
   }
 }
 
-@media (max-width: 1800px) {
+@media (max-width: 1000px) {
   .column.side {
     display: none !important;
     /* Hide side columns */
@@ -362,7 +364,7 @@ body {
 #accountForm {
   background-color: #fafafa;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-  color: white;
+  color: #EDEDED;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -462,7 +464,7 @@ body {
 #imageShareText {
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
-  color: white;
+  color: #EDEDED;
 
   text-align: center;
 }
@@ -485,7 +487,7 @@ body {
 #textShareText {
   font-family: 'Poppins', sans-serif;
   font-size: 20px;
-  color: white;
+  color: #EDEDED;
   text-align: center;
 
   display: flex;
@@ -501,7 +503,7 @@ body {
   position: relative;
   padding: 10px 20px;
   border: none;
-  color: white;
+  color: #EDEDED;
   background-color: rgba(var(--bs-dark-rgb));
   transition: color 0.4s ease;
   font-family: 'Poppins', sans-serif;
@@ -644,7 +646,7 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 10;
-  background-color: white;
+  background-color: #EDEDED;
   transition: opacity 1s ease-in-out, visibility 0s 1s, display 0s 1s;
   /* Slower fade, delayed hiding */
   border-bottom-left-radius: 5px;
@@ -672,7 +674,7 @@ body {
 /* Like button */
 .like-button {
   background-color: rgba(var(--bs-dark-rgb));
-  color: white;
+  color: #EDEDED;
   /* White text */
   border: none;
   padding: 10px 20px;
@@ -792,7 +794,7 @@ body {
   /* Make sure the input has a background */
   margin-top: 5px;
   margin-left: 5px;
-  color: white;
+  color: #EDEDED;
 }
 
 /* Optional: Style for input focus */
@@ -803,7 +805,7 @@ body {
 }
 
 .postComment {
-  color: white;
+  color: #EDEDED;
   /* White text */
   border: none;
   padding: 5px 5px;
@@ -831,7 +833,7 @@ body {
   margin-bottom: 0;
   
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-  background-color: white;
+  background-color: #EDEDED;
 }
 
 .upperContainer span {
@@ -867,12 +869,12 @@ body {
 #friendsListIcon {
   border: 2px solid #555555;
   font-size: 25px;
-  color: white;
+  color: #EDEDED;
   padding: 20px;
   background-color: rgba(var(--bs-dark-rgb));
   border-radius: 50%;
   position: absolute;
-  bottom: 60px;
+  bottom: 55px;
   left: 42%;
   box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
 }
@@ -890,12 +892,12 @@ body {
 #friendsListModal {
   height: 66%;
   width: 70%;
-  background-color: white;
+  background-color: #EDEDED;
   border-radius: 10px;
   margin-top: 20px;
   display: flex;
   position: absolute;
-  top: 12%;
+  top: 14%;
   padding: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   /* Add shadow for depth */
@@ -906,10 +908,10 @@ body {
 .active-friends-header {
   
   font-size: 16px;
-  color: #aaaaaa;
+  color: #EDEDED;
   text-align: center;
-  margin-bottom: 10px;
-  
+  margin-bottom: 15px;
+  margin-top: 10px;
   font-family: 'Arial', sans-serif;
   
   
@@ -921,6 +923,7 @@ body {
   height: 91%;
   border-bottom: 2px solid #555555;
   border-top: 2px solid #555555;
+  border-left: 2px solid #555555;
   display: flex;
   flex-direction: column; 
   /* Center content vertically inside container */
@@ -959,7 +962,7 @@ body {
   width: 100%;
   position: relative;
   display: flex;
-  background-color: white;
+  background-color: #EDEDED;
 }
 
 #profilePageContainer {
@@ -986,8 +989,8 @@ body {
   top: 20px;
   left: 20px;
   border: 2px solid #555555;
-  height: 255px;
-  width: 255px;
+  height: 250px;
+  width: 250px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1003,7 +1006,7 @@ body {
   color: #4a4a4a;
   display: flex;
   margin-left: 75px;
-  margin-top: 15px;
+  margin-top: 25px;
 }
 
 #welcomeProfileUser {
@@ -1140,7 +1143,7 @@ body {
 }
 
 #helpPage {
-  background-color: white;
+  background-color: #EDEDED;
   height: 85vh;
 }
 
@@ -1158,12 +1161,12 @@ body {
 #settingsContainer {
   height: 66%;
   width: 70%;
-  background-color: white;
+  background-color: #EDEDED;
   border-radius: 10px;
   margin-top: 20px;
   display: flex;
   position: absolute;
-  top: 12%;
+  top: 14%;
   padding: 10px;
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   /* Add shadow for depth */
@@ -1176,6 +1179,7 @@ body {
   height: 91%;
   border-bottom: 2px solid #555555;
   border-top: 2px solid #555555;
+  border-left: 2px solid #555555;
   display: flex;
   align-items: center;
   /* Center content vertically inside container */
@@ -1189,18 +1193,18 @@ body {
   font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
-  padding-top: 15px;
+  padding-top: 25px;
 }
 
 .orange-text {
-  color: #ee6306;
+  color: #e58e26;
 }
 
 .white-text {
   color: black;;
 }
 #searchResults {
-  color: white;
+  color: #EDEDED;
   border: 1px solid #555555;
   width: 245px; 
   height: auto;
@@ -1231,12 +1235,12 @@ body {
 #searchResults p {
   font-size: 1rem;
   margin: 0;
-  color: white;
+  color: #EDEDED;
 }
 
 #searchResults button {
   background-color: rgba(var(--bs-dark-rgb));
-  color: white;
+  color: #EDEDED;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
@@ -1263,21 +1267,22 @@ body {
   position: absolute;
   top: 10px;
   z-index: 2;
-  border: 2px solid #555555;
+  
   width: 92%;
   height: 100px;
-  
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
   border-radius: 10px;
   background-color: #fafafa;
   display: none;
   padding-top: 5px;
+  padding-bottom: 10px;
 }
 #userAlertsContainerHeader {
   text-align: center;
 }
 #userAlertsContainerText {
   font-family: 'Arial', sans-serif;
-  color: #aaaaaa;
+  color: #EDEDED;
   font-size: 16px;
   font-weight: 600;
 }
@@ -1285,12 +1290,14 @@ body {
   
   border-top: 2px solid #555555;
   border-width: 90%;
-  width: 98.5%;
-  
+  width: 95%;
+  margin-left: 10px;
   height: 65%; 
-  margin-left: 2.5px; 
+  border-bottom: 2px solid #555555;
+  border-left: 2px solid #555555;
   margin-top: 5px;
   overflow: auto;
+  
 }
 #userAlertsContent::-webkit-scrollbar {
   width: 5px;
@@ -1305,7 +1312,7 @@ body {
   background-color: #2e3236f2;
 }
 .orange-alert {
-  color: #ee6306 !important;
+  color: #e58e26 !important;
 }
 /* Friend list content */
 .friend-row {
@@ -1313,15 +1320,25 @@ body {
   justify-content: space-between; /* Space between username and buttons */
   align-items: center; /* Vertically center content */
   padding: 10px;
-  border-bottom: 1px solid #555555; /* Optional: separate rows */
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  transition: background 0.2s ease-in-out;
 }
-
+.friend-row:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
+.friend-row:last-child {
+  border-bottom: none;
+}
 .username {
   font-size: 16px;
-  color: #aaaaaa; /* Adjust as needed */
-  font-weight: 500;
+  color: #EDEDED;
+  font-weight: 600;
 }
-
+.user-info {
+  display: flex;
+  align-items: center; /* Align profile picture and username */
+  gap: 10px;
+}
 .buttons {
   display: flex;
   align-items: center; /* Vertically center icon and button */
@@ -1332,10 +1349,10 @@ body {
   background-color: transparent; /* Transparent background */
   color: #aaaaaa; 
   border: none; /* No border */
-  font-size: 16px; /* Adjust size */
+  margin-right: 10px;
   cursor: pointer;
   padding: 0; /* Remove padding */
-  
+  font-size: 25px;
 }
 
 .unfriend-button:hover {
@@ -1347,9 +1364,9 @@ body {
 }
 .chatButton {
   background-color: transparent; /* Transparent background */
-  color: #ee6306;
+  color: #e58e26;
   border: none; /* No border */
-  font-size: 16px; /* Adjust size */
+  
   cursor: pointer;
   padding: 0; /* Remove padding */
   font-size: 20px;
@@ -1362,8 +1379,16 @@ body {
   transform: translateY(3px);
 }
 #registerBtn {
-  color: white;
+  color: #EDEDED;
 }
 #requestDiv {
   padding: 12px;
+}
+.profile-picture {
+  width: 40px;
+  height: 40px;
+  border-radius: 50%; /* Makes it circular */
+  margin-right: 10px;
+  cursor: pointer;
+  background-color: lightgrey;
 }

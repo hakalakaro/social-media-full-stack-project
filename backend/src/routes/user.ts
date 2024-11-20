@@ -14,8 +14,8 @@ router.post('/send-friend-request', async (req: Request, res: Response) => {
 
   // Extract the token from the authorization header
   const authHeader = req.headers.authorization;
-        const token = authHeader && authHeader.split(' ')[1];
-        //console.log('Authorization header:', req.headers.authorization);
+  const token = authHeader && authHeader.split(' ')[1];
+  //console.log('Authorization header:', req.headers.authorization);
   if (!token) {
     return res.status(401).json({ message: 'Authentication token missing' });
   }
@@ -24,11 +24,19 @@ router.post('/send-friend-request', async (req: Request, res: Response) => {
     // Verify and decode the JWT
     const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as { username: string };
     const senderUsername = decoded.username; // Extract sender's username from decoded token
+    
+    if (senderUsername === username) {
+      return res.status(400).json({ message: 'You cannot send a friend request to yourself' });
+    }
 
     const targetUser = await User.findOne({ username });
 
     if (!targetUser) {
       return res.status(404).json({ message: 'User not found' });
+    }
+    
+    if (targetUser.friends.includes(senderUsername)) {
+      return res.status(400).json({ message: 'You are already friends with this user' });
     }
 
     // Prevent duplicate friend requests
@@ -114,4 +122,5 @@ router.post('/accept-friend-request', async (req: Request, res: Response) => {
 
 router.post('/upload-profile-picture', uploadProfilePicture);
 router.get('/friends', authMiddleware, getUserFriends);
+
 export default router;
