@@ -289,14 +289,48 @@ export const likePost = async (req: Request, res: Response): Promise<void> => {
       // Fetch friends' details
       const friendsDetails = await User.find(
         { username: { $in: user.friends } },
-        { username: 1, profilePicture: 1 }
+        { username: 1, profilePicture: 1, lastActive: 1 } // Include `lastActive` field
       );
   
-      // Add default profile picture if not set
-      const response = friendsDetails.map(friend => ({
-        username: friend.username,
-        profilePicture: friend.profilePicture || '/uploads/profile-pictures/profileplaceholder.png', // Fallback profile picture
-      }));
+      // Map friends' details
+      const response = friendsDetails.map(friend => {
+        // Log raw `lastActive` field value
+        console.log('Raw lastActive value:', friend.lastActive);
+  
+        // Ensure `lastActive` is a valid date string and parse it in UTC
+        const lastActiveTime = friend.lastActive ? new Date(friend.lastActive).toISOString() : null;
+        console.log('Parsed lastActive (UTC):', lastActiveTime);
+  
+        // Handle case where `lastActive` might be invalid or null
+        if (!lastActiveTime || isNaN(new Date(lastActiveTime).getTime())) {
+          console.log('Invalid lastActive time for', friend.username);
+          return {
+            username: friend.username,
+            profilePicture: friend.profilePicture || '/uploads/profile-pictures/profileplaceholder.png',
+            isOnline: false, // Consider as offline if the time is invalid
+          };
+        }
+  
+        const currentTime = new Date().toISOString(); // Current time in UTC
+        const oneHourAgo = new Date(new Date().getTime() - 60 * 60 * 1000).toISOString(); // One hour ago in UTC
+        const oneDayAgo = new Date(new Date().getTime() - 24 * 60 * 60 * 1000).toISOString(); // One day ago in UTC
+  
+        console.log(`Raw lastActive for ${friend.username}:`, friend.lastActive);
+        console.log('Last Active Time:', lastActiveTime);
+        console.log('Current Time:', currentTime);
+        console.log('One Hour Ago:', oneHourAgo);
+  
+        const timeTolerance = 5000; // 5 seconds
+
+const isOnline = (lastActiveTime > oneHourAgo) && (Math.abs(new Date(lastActiveTime).getTime() - new Date().getTime()) > timeTolerance);
+        console.log(`${friend.username} is online:`, isOnline);
+  
+        return {
+          username: friend.username,
+          profilePicture: friend.profilePicture || '/uploads/profile-pictures/profileplaceholder.png', // Fallback profile picture
+          isOnline,
+        };
+      });
   
       res.json(response);
     } catch (error) {
@@ -305,5 +339,26 @@ export const likePost = async (req: Request, res: Response): Promise<void> => {
     }
   };
   
+  
+  export const updateLastActive = async (req: Request, res: Response) => {
+    try {
+      const token = req.header('Authorization')?.replace('Bearer ', '');
+      if (!token) {
+        return res.status(401).json({ message: 'Authorization denied' });
+      }
+  
+      const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as { username: string };
+      const username = decoded.username;
+  
+      // Update the lastActive time to now
+      await User.updateOne({ username }, { $set: { lastActive: new Date() } });
+  
+      res.json({ message: 'Last active time updated' });
+    } catch (error) {
+      console.error('Error updating last active time:', error);
+      res.status(500).json({ message: 'Error updating last active time', error });
+    }
+  };
+
 // Export the multer middleware as a separate function
 export const uploadMiddleware = upload.single('image');

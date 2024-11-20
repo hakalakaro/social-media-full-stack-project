@@ -69,7 +69,7 @@
             <form class="d-flex" role="search" id="searchForm" style="margin-left: 258px;">
               <div id="userAlerts" style="margin-right: 20px;">
                 <i class="fa-solid fa-bell fa-2x" id="userAlertsIcon"
-                  style="color: #aaaaaa; cursor: pointer; font-size: 30px; display: none;"></i>
+                  style="color: #aaaaaa; cursor: pointer; font-size: 30px; display: none;" title="Notifications"></i>
               </div>
               <!-- Dropdown with Font Awesome Icon -->
               <div class="dropdown">
@@ -1288,7 +1288,7 @@
           });
         } else {
           userAlertsIcon.classList.remove('fa-beat', 'orange-alert');
-          userAlertsContent.innerHTML = '<p>No friend requests</p>';
+          userAlertsContent.innerHTML = '<p style="color: #EDEDED; text-align: center; margin-top: 10px;">No notifications to display.</p>';
         }
       } catch (error) {
         console.error('Error fetching friend requests:', error);
@@ -1410,94 +1410,101 @@
     });
 
     async function loadFriendsList() {
-  const token = localStorage.getItem('authToken');
-  const friendsListModalContainer = document.getElementById('friendsListModalContainer');
+      const token = localStorage.getItem('authToken');
+      const friendsListModalContainer = document.getElementById('friendsListModalContainer');
 
-  if (!friendsListModalContainer) {
-    console.error('Friends list container not found');
-    return;
-  }
+      if (!friendsListModalContainer) {
+        console.error('Friends list container not found');
+        return;
+      }
 
-  try {
-    const response = await fetch('http://localhost:5000/users/friends', {
-      method: 'GET',
-      headers: {
-        'Authorization': `Bearer ${token}`,
-        'Content-Type': 'application/json',
-      },
-    });
-
-    if (!response.ok) {
-      throw new Error('Failed to fetch friends');
-    }
-
-    const friends = await response.json();
-
-    // Clear the container
-    friendsListModalContainer.innerHTML = '';
-
-    if (friends.length > 0) {
-      friends.forEach((friend) => {
-        // Create friend row container
-        const friendRow = document.createElement('div');
-        friendRow.classList.add('friend-row');
- 
-        // Create the profile picture element
-        const profilePicture = document.createElement('img');
-        profilePicture.classList.add('profile-picture');
-        if (friend.profilePicture && friend.profilePicture !== '/uploads/profile-pictures/profileplaceholder.png') {
-          profilePicture.src = `http://localhost:5000/uploads/profile-pictures/${friend.profilePicture}`;
-        } else {
-          // If there's no valid profile picture, use the placeholder
-          profilePicture.src = `http://localhost:5000/uploads/profile-pictures/profileplaceholder.png`;
-        }
-
-        profilePicture.alt = `${friend.username}'s profile picture`;
-        console.log(friend.profilePicture);
-        // Create username element
-        const usernameSpan = document.createElement('span');
-        usernameSpan.classList.add('username');
-        usernameSpan.textContent = friend.username;
-
-        // Create the user info container (wrap profile picture and username)
-        const userInfoDiv = document.createElement('div');
-        userInfoDiv.classList.add('user-info');
-        userInfoDiv.appendChild(profilePicture);
-        userInfoDiv.appendChild(usernameSpan);
-
-        // Create buttons container
-        const buttonsDiv = document.createElement('div');
-        buttonsDiv.classList.add('buttons');
-
-        // Create the chat button
-        const chatButton = document.createElement('button');
-        chatButton.classList.add('fas', 'fa-comment');
-        chatButton.classList.add('chatButton');
-
-        // Create the unfriend button
-        const unfriendButton = document.createElement('button');
-        unfriendButton.classList.add('unfriend-button');
-        unfriendButton.classList.add('fa', 'fa-remove');
-        unfriendButton.addEventListener('click', () => {
-          unfriendFriend(friend);
+      try {
+        const response = await fetch('http://localhost:5000/users/friends', {
+          method: 'GET',
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json',
+          },
         });
 
-        // Append elements to the row
-        buttonsDiv.appendChild(chatButton);
-        buttonsDiv.appendChild(unfriendButton);
-        friendRow.appendChild(userInfoDiv); // Add user info (profile picture and username)
-        friendRow.appendChild(buttonsDiv);
+        if (!response.ok) {
+          throw new Error('Failed to fetch friends');
+        }
 
-        // Add the row to the container
-        friendsListModalContainer.appendChild(friendRow);
-      });
-    } else {
-      friendsListModalContainer.innerHTML = '<p>No friends found</p>';
+        const friends = await response.json();
+
+        // Clear the container
+        friendsListModalContainer.innerHTML = '';
+
+        if (friends.length > 0) {
+          friends.forEach((friend) => {
+            console.log('Friend:', friend);
+            // Create friend row container
+            const friendRow = document.createElement('div');
+            friendRow.classList.add('friend-row');
+
+            // Create the profile picture element
+            const profilePicture = document.createElement('img');
+            profilePicture.classList.add('profile-picture');
+            if (friend.profilePicture && friend.profilePicture !== '/uploads/profile-pictures/profileplaceholder.png') {
+              profilePicture.src = `http://localhost:5000/uploads/profile-pictures/${friend.profilePicture}`;
+            } else {
+              // If there's no valid profile picture, use the placeholder
+              profilePicture.src = `http://localhost:5000/uploads/profile-pictures/profileplaceholder.png`;
+            }
+
+            profilePicture.alt = `${friend.username}'s profile picture`;
+            console.log(friend.profilePicture);
+            // Create username element
+            const usernameSpan = document.createElement('span');
+            usernameSpan.classList.add('username');
+            usernameSpan.textContent = friend.username;
+
+            // Create the user info container (wrap profile picture and username)
+            const userInfoDiv = document.createElement('div');
+            userInfoDiv.classList.add('user-info');
+            userInfoDiv.appendChild(profilePicture);
+            userInfoDiv.appendChild(usernameSpan);
+
+            const statusIndicator = document.createElement('div');
+            statusIndicator.classList.add('status-indicator');
+            statusIndicator.style.backgroundColor = friend.isOnline ? 'green' : 'red';
+            statusIndicator.title = friend.isOnline ? 'Online' : 'Offline';
+            // Create buttons container
+            const buttonsDiv = document.createElement('div');
+            buttonsDiv.classList.add('buttons');
+
+            // Create the chat button
+            const chatButton = document.createElement('button');
+            chatButton.classList.add('fas', 'fa-comment');
+            chatButton.classList.add('chatButton');
+            chatButton.title = 'Chat';
+            // Create the unfriend button
+            const unfriendButton = document.createElement('button');
+            unfriendButton.classList.add('unfriend-button');
+            unfriendButton.classList.add('fa', 'fa-remove');
+            unfriendButton.title = 'Remove friend';
+            unfriendButton.addEventListener('click', () => {
+              unfriendFriend(friend);
+            });
+
+            // Append elements to the row
+            buttonsDiv.appendChild(statusIndicator);
+            buttonsDiv.appendChild(chatButton);
+            buttonsDiv.appendChild(unfriendButton);
+            friendRow.appendChild(userInfoDiv); // Add user info (profile picture and username)
+            friendRow.appendChild(buttonsDiv);
+
+            // Add the row to the container
+            friendsListModalContainer.appendChild(friendRow);
+          });
+        } else {
+          friendsListModalContainer.innerHTML = '<p style="color: white;">No friends found</p>';
+        }
+      } catch (error) {
+        console.error('Error loading friends list:', error);
+      }
     }
-  } catch (error) {
-    console.error('Error loading friends list:', error);
-  }
-}
     document.addEventListener('DOMContentLoaded', function () {
       loadFriendsList(); // Call your function here
     });

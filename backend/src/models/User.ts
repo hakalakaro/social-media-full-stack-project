@@ -6,6 +6,7 @@ const userSchema = new mongoose.Schema({
   friends: { type: [String], default: [] },
   friendRequests: { type: [String], default: [] },
   profilePicture: { type: String, default: '' },
+  lastActive: { type: Date, default: Date.now },
 });
 
 export default mongoose.model('User', userSchema);

@@ -1392,3 +1392,10 @@ body {
   cursor: pointer;
   background-color: lightgrey;
 }
+.status-indicator {
+  width: 12px;            /* Size of the indicator */
+  height: 12px;           /* Size of the indicator */
+  border-radius: 50%;     /* Make it a circle */
+  border: 2px solid #fff; /* Optional: Add a border to make it stand out */
+  margin-right: 10px;
+}

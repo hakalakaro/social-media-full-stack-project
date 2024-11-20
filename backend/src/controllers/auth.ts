@@ -44,6 +44,8 @@ export const login = async (req: Request, res: Response): Promise<Response> => {
 
     // Generate JWT
     const token = jwt.sign({ id: user._id, username: user.username }, process.env.JWT_SECRET || '', { expiresIn: '1h' });
+    user.lastActive = new Date(); // Set to current time
+    await user.save();
     const profilePictureUrl = user.profilePicture
     ? `http://localhost:5000/uploads/profile-pictures/${user.profilePicture}`
     : null;
