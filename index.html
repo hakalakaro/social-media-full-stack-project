@@ -732,8 +732,25 @@
     async function loadImages() {
       try {
         const token = localStorage.getItem('authToken');
-        console.log('Token:', token);  // Check the token
+        console.log('Token:', token);
 
+        // First, fetch the user's friends list
+        const friendsResponse = await fetch('http://localhost:5000/users/friends', {
+          headers: {
+            'Authorization': `Bearer ${token}`,
+            'Content-Type': 'application/json'
+          }
+        });
+
+        if (!friendsResponse.ok) {
+          throw new Error('Failed to fetch friends list');
+        }
+
+        const friends = await friendsResponse.json();
+        // Create a Set of friend usernames for faster lookup
+        const friendUsernames = new Set(friends.map(friend => friend.username));
+
+        // Then fetch all posts
         const response = await fetch('http://localhost:5000/upload/images', {
           method: 'GET',
           headers: {
@@ -761,8 +778,19 @@
           container.remove();
         });
 
-        // Add each image from the data
-        data.reverse().forEach(post => {
+        // Filter posts to only show those from friends
+        const friendsPosts = data.filter(post => friendUsernames.has(post.username));
+
+        if (friendsPosts.length === 0) {
+          const noPostsMessage = document.createElement('p');
+          noPostsMessage.style.padding = "20px";
+          noPostsMessage.textContent = "No posts from friends to display. Add some friends to see their posts!";
+          postContainer.appendChild(noPostsMessage);
+          return;
+        }
+
+        // Add each image from the filtered data
+        friendsPosts.reverse().forEach(post => {
           const { _id, imageUrl, username, comments, likes } = post;
           //console.log(`Post ID: ${post._id}, Likes: ${post.likes.length}`);
           //console.log('Post ID:', _id);
@@ -960,6 +988,8 @@
 
       } catch (error) {
         console.error('Error fetching images:', error);
+        const postContainer = document.getElementById('mainContainer');
+        postContainer.innerHTML = '<p style="padding: 20px;">Error loading posts. Please try again later.</p>';
       }
 
       mainContainer.scrollTo({ top: 0, behavior: 'smooth' });
