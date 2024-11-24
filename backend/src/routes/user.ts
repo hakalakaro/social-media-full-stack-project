@@ -122,5 +122,15 @@ router.post('/accept-friend-request', async (req: Request, res: Response) => {
 
 router.post('/upload-profile-picture', uploadProfilePicture);
 router.get('/friends', authMiddleware, getUserFriends);
+router.get('/profile-picture/:username', async (req: Request, res: Response) => {
+  try {
+    const user = await User.findOne({ username: req.params.username });
+    res.json({ 
+      profilePicture: user?.profilePicture ? `/uploads/profile-pictures/${user.profilePicture}` : null 
+    });
+  } catch (error) {
+    res.status(500).json({ message: 'Error fetching profile picture' });
+  }
+});
 
 export default router;
