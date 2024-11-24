@@ -207,27 +207,27 @@
           <!-- Text/Picture Switch -->
           <div class="switchHeader">
             <div class="btn-group" id="switchHeaderBtnGroup" role="group" aria-label="Basic example">
-              <button type="button" class="btn" style=" border: none; font-weight: 500;">
+              <button type="button" class="btn switchHeaderBtn" style=" border: none; font-weight: 500;">
                 <i class="far fa-images fa-1x" aria-hidden="true"
                   style="font-size: 20px; cursor: pointer; padding: 5px; color: #e58e26;" title="Show Images"></i>
                 Images
               </button>
-              <button type="button" class="btn" style=" border: none; font-weight: 500;">
+              <button type="button" class="btn switchHeaderBtn" style=" border: none; font-weight: 500;">
                 <i class="fa fa-list-alt fa-1x" aria-hidden="true"
                   style="font-size: 20px; cursor: pointer; padding: 5px; color: #e58e26;" title="Show Stories"></i>
                 Stories
               </button>
-              <button type="button" class="btn" id="cameraIcon1" style=" border: none; font-weight: 500;">
+              <button type="button" class="btn switchHeaderBtn" id="cameraIcon1" style=" border: none; font-weight: 500;">
                 <i id="cameraIcon" class="fa fa-upload fa-1x" aria-hidden="true"
                   style="font-size: 20px; cursor: pointer; padding: 5px; color: #e58e26;" title="Upload Images"></i>
                 Share Images
               </button>
-              <button type="button" class="btn" id="keyboardIcon1" style=" border: none; font-weight: 500;">
+              <button type="button" class="btn switchHeaderBtn" id="keyboardIcon1" style=" border: none; font-weight: 500;">
                 <i id="keyboardIcon" class="fa-solid fa-comment fa-1x" aria-hidden="true"
                   style="font-size: 20px; cursor: pointer; padding: 5px; color: #e58e26;" title="Upload Text"></i>
                 Share Stories
               </button>
-              <button type="button" id="toggleIcon" class="btn" style=" border: none; font-weight: 500;">
+              <button type="button" id="toggleIcon" class="btn switchHeaderBtn" style=" border: none; font-weight: 500;">
                 <i class="fa fa-arrows-v fa-1x" aria-hidden="true"
                   style="font-size: 20px; cursor: pointer; padding: 5px; color: #e58e26;" title="Show/Hide UI"></i>
                 Toggle Interface
@@ -295,34 +295,29 @@
 
             </div>
             <div id="profileSettings2">
-              <div id="changeProfilePicture">
-                <span id="profilePicText">Change profile picture</span>
+              <div class="settings-section">
+                <span class="settings-text">Change profile picture</span>
+                <div class="settings-control">
+                  <input type="file" id="uploadProfileInput" style="display: none;" accept=".jpg, .jpeg, .png"
+                    onchange="uploadProfilePicture(event)" />
+                  <button class="settings-button like-button" onclick="document.getElementById('uploadProfileInput').click()">Browse</button>
+                </div>
               </div>
-              <div id="profilePicButton">
-                <input type="file" id="uploadProfileInput" style="display: none;" accept=".jpg, .jpeg, .png"
-                  onchange="uploadProfilePicture(event)" />
-                <button id="profilePicBtn" class="like-button"
-                  onclick="document.getElementById('uploadProfileInput').click()">Browse</button>
+
+              <div class="settings-section">
+                <span class="settings-text">Change password</span>
+                <div class="settings-control">
+                  <input type="password" id="passwordChangeField1" placeholder="New password.." />
+                  <input type="password" id="passwordChangeField2" placeholder="New password.." />
+                  <button class="settings-button like-button">Confirm</button>
+                </div>
               </div>
-              <div id="changePassword">
-                <span id="changePasswordText">Change password</span>
-              </div>
-              <div id="changePasswordField1">
-                <input type="text" id="passwordChangeField1" placeholder="New password.."
-                  style="font-size: 14px;"></input>
-              </div>
-              <div id="changePasswordField2">
-                <input type="text" id="passwordChangeField2" placeholder="New password.."
-                  style="font-size: 14px;"></input>
-              </div>
-              <div id="changePasswordButton">
-                <button id="changePasswordBtn" class="like-button">Confirm</button>
-              </div>
-              <div id="deleteUser">
-                <span id="deleteUserText">Delete account</span>
-              </div>
-              <div id="deleteUserButton">
-                <button id="deleteUserBtn" class="like-button">Confirm</button>
+
+              <div class="settings-section">
+                <span class="settings-text">Delete account</span>
+                <div class="settings-control">
+                  <button class="settings-button like-button">Confirm</button>
+                </div>
               </div>
             </div>
           </div>

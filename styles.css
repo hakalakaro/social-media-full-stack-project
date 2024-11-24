@@ -37,16 +37,12 @@ body {
 
 .night-mode .comment-box {
   background-color: rgba(var(--bs-dark-rgb));
-  color: #EDEDED;
+  color: #ededed;
 }
 
 .night-mode .like-button {
   background-color: #2e3236f2;
   color: #aaaaaa;
-}
-
-.night-mode .switchHeader i {
-  color: linear-gradient(90deg, #ee6306, #887c65);
 }
 
 .night-mode .column.middle {
@@ -58,11 +54,11 @@ body {
 }
 
 .night-mode #registerForm {
-  color: #EDEDED;
+  color: #ededed;
 }
 
 .night-mode #accountForm h3 {
-  color: #EDEDED;
+  color: #ededed;
 }
 
 .night-mode #helpPage {
@@ -90,28 +86,19 @@ body {
 
 /* Ensure button text is white in night mode */
 .night-mode .switchHeader button {
-  color: #EDEDED;
-}
-
-/* Ensure icons and text inside buttons are white */
-.night-mode .switchHeader i {
-  color: #b3afaf;
+  color: #ededed;
 }
 
 .night-mode #side1 {
-  background-image: url('./images/nightpicture.jpg');
+  background-image: url("./images/nightpicture.jpg");
 }
 
 .night-mode #side2 {
-  background-image: url('./images/nightpicture.jpg');
+  background-image: url("./images/nightpicture.jpg");
 }
 
 .night-mode .shareBtn {
   background-color: #2e3236f2;
-}
-
-.night-mode #profilePicText {
-  color: #aaaaaa;
 }
 
 .night-mode #changePasswordText {
@@ -127,9 +114,7 @@ body {
   background-color: #2e3236f2;
   width: 160px;
 }
-.night-mode #deleteUserText {
-  color: #aaaaaa;
-}
+
 .night-mode .form-control {
   background-color: #2e3236f2;
 }
@@ -149,39 +134,54 @@ body {
 .night-mode #aboutPageContainer {
   background-color: rgba(var(--bs-dark-rgb));
 }
+
 .night-mode .aboutPageHeader .white-text {
-  color: #EDEDED;
+  color: #ededed;
 }
+
 .night-mode .userComment {
   color: #b3afaf;
 }
+
 .night-mode .username {
   color: #b3afaf;
 }
+
 .night-mode #searchResults {
   color: #b3afaf;
 }
+
 .night-mode #searchResults p {
   color: #b3afaf;
 }
+
 .night-mode #friendsListIcon {
   color: #aaaaaa;
 }
+
 .night-mode #searchResults button {
   color: #aaaaaa;
 }
+
 .night-mode #userAlertsContainer {
   background-color: rgba(var(--bs-dark-rgb));
 }
+
 .night-mode #userAlertsContainerText {
-  color: #EDEDED;
+  color: #ededed;
 }
+
 .night-mode #requestDiv {
   color: #aaaaaa;
 }
+
+.night-mode .form-control {
+  color: #b3afaf;
+}
+
 /* Style the header */
 .header {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 20px;
   width: 100%;
   z-index: 14;
@@ -204,13 +204,12 @@ body {
 }
 
 #side1 {
-  background-image: url('./images/testpicture6.jpg');
+  background-image: url("./images/testpicture6.jpg");
   /* Replace with your image path */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  width: 20vh;
-  height: 83vh;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -218,13 +217,12 @@ body {
 }
 
 #side2 {
-  background-image: url('./images/testpicture4.jpg');
+  background-image: url("./images/testpicture4.jpg");
   /* Replace with your image path */
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
-  width: 20vh;
-  height: 83vh;
+
   display: flex;
   justify-content: center;
   align-items: center;
@@ -260,7 +258,6 @@ body {
 }
 
 #loginModal {
-
   align-items: center;
   /* Center align items horizontally */
   text-align: center;
@@ -272,7 +269,6 @@ body {
 
 /* Media query to further adjust for smaller screens */
 @media (max-width: 768px) {
-
   /* Adjust this value as needed */
   .carousel-inner,
   .carousel-item {
@@ -323,7 +319,7 @@ body {
 }
 
 #footerText {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 14px;
   background: linear-gradient(90deg, #ffffff, #f0eeee);
   background-clip: text;
@@ -363,8 +359,9 @@ body {
 
 #accountForm {
   background-color: #fafafa;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-  color: #EDEDED;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  color: #ededed;
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -392,7 +389,6 @@ body {
   margin-bottom: 5px;
   /* Space between the label and input */
   text-align: center;
-  ;
   /* Align label text to the left */
   width: 100%;
   /* Ensure label takes full width */
@@ -409,7 +405,8 @@ body {
   border-radius: 10px;
   width: 80%;
   height: 92%;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
   display: flex;
   margin: auto;
   margin-top: 20px;
@@ -430,7 +427,6 @@ body {
   align-items: center;
 
   padding-bottom: 0;
-
 }
 
 #mainContainer::-webkit-scrollbar {
@@ -462,9 +458,9 @@ body {
 }
 
 #imageShareText {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 20px;
-  color: #EDEDED;
+  color: #ededed;
 
   text-align: center;
 }
@@ -485,9 +481,9 @@ body {
 }
 
 #textShareText {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 20px;
-  color: #EDEDED;
+  color: #ededed;
   text-align: center;
 
   display: flex;
@@ -503,10 +499,10 @@ body {
   position: relative;
   padding: 10px 20px;
   border: none;
-  color: #EDEDED;
+  color: #ededed;
   background-color: rgba(var(--bs-dark-rgb));
   transition: color 0.4s ease;
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   border-radius: 5px;
   overflow: hidden;
   /* Ensure the pseudo-element stays within the button */
@@ -521,7 +517,7 @@ body {
 
 /* Create the green transition bar */
 .shareBtn::before {
-  content: '';
+  content: "";
   position: absolute;
   top: 0;
   left: -100%;
@@ -559,7 +555,8 @@ body {
   align-items: center;
   box-sizing: border-box;
   border-radius: 10px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
   position: relative;
   /* Position relative to apply pseudo-elements */
 }
@@ -620,8 +617,6 @@ body {
   /* Ensures the image fits within container while maintaining aspect ratio */
 }
 
-
-
 .uploaded-image.enlarged {
   transform: scale(1.5);
   /* Adjust scale to desired size */
@@ -635,8 +630,6 @@ body {
 }
 
 .switchHeader {
-
-
   position: sticky;
   top: 0;
   left: 0;
@@ -646,14 +639,13 @@ body {
   justify-content: center;
   align-items: center;
   z-index: 10;
-  background-color: #EDEDED;
+  background-color: #ededed;
   transition: opacity 1s ease-in-out, visibility 0s 1s, display 0s 1s;
   /* Slower fade, delayed hiding */
   border-bottom-left-radius: 5px;
   border-bottom-right-radius: 5px;
   border: 2px solid #555555;
   border-top: none;
-
 }
 
 .switchHeader.hidden {
@@ -674,7 +666,7 @@ body {
 /* Like button */
 .like-button {
   background-color: rgba(var(--bs-dark-rgb));
-  color: #EDEDED;
+  color: #ededed;
   /* White text */
   border: none;
   padding: 10px 20px;
@@ -694,7 +686,7 @@ body {
 }
 
 .like-button:hover {
-  background-color: #6d7580;
+  background-color: rgba(255, 255, 255, 0.1);
   /* Darker blue on hover */
   transform: scale(1.05);
   /* Slight zoom effect */
@@ -794,7 +786,7 @@ body {
   /* Make sure the input has a background */
   margin-top: 5px;
   margin-left: 5px;
-  color: #EDEDED;
+  color: #ededed;
 }
 
 /* Optional: Style for input focus */
@@ -805,7 +797,7 @@ body {
 }
 
 .postComment {
-  color: #EDEDED;
+  color: #ededed;
   /* White text */
   border: none;
   padding: 5px 5px;
@@ -831,9 +823,10 @@ body {
   border-top-right-radius: 10px;
   height: 300px;
   margin-bottom: 0;
-  
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
-  background-color: #EDEDED;
+
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  background-color: #ededed;
 }
 
 .upperContainer span {
@@ -855,28 +848,26 @@ body {
   font-weight: 700;
   text-decoration: none;
   font-size: 15px;
-
 }
 
 .userComment {
-
   text-decoration: none;
   font-size: 15px;
   font-weight: 500;
-
 }
 
 #friendsListIcon {
   border: 2px solid #555555;
   font-size: 25px;
-  color: #EDEDED;
+  color: #ededed;
   padding: 20px;
   background-color: rgba(var(--bs-dark-rgb));
   border-radius: 50%;
   position: absolute;
   bottom: 55px;
   left: 42%;
-  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px, rgba(0, 0, 0, 0.05) 0px 5px 10px;
+  box-shadow: rgba(0, 0, 0, 0.15) 0px 15px 25px,
+    rgba(0, 0, 0, 0.05) 0px 5px 10px;
 }
 
 #friendsListIcon:hover {
@@ -892,7 +883,7 @@ body {
 #friendsListModal {
   height: 66%;
   width: 70%;
-  background-color: #EDEDED;
+  background-color: #ededed;
   border-radius: 10px;
   margin-top: 20px;
   display: flex;
@@ -902,19 +893,18 @@ body {
   box-shadow: 0 8px 16px rgba(0, 0, 0, 0.3);
   /* Add shadow for depth */
   z-index: 1;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
 }
 
 .active-friends-header {
-  
   font-size: 16px;
-  color: #EDEDED;
+  color: #ededed;
   text-align: center;
   margin-bottom: 15px;
   margin-top: 10px;
-  font-family: 'Arial', sans-serif;
-  
-  
+  font-family: "Arial", sans-serif;
+
   font-weight: 600;
 }
 
@@ -925,7 +915,7 @@ body {
   border-top: 2px solid #555555;
   border-left: 2px solid #555555;
   display: flex;
-  flex-direction: column; 
+  flex-direction: column;
   /* Center content vertically inside container */
   margin-top: 20px;
   /* Center content horizontally inside container */
@@ -933,6 +923,7 @@ body {
   /* Optional - center within parent if needed */
   overflow: auto;
 }
+
 #friendsListModalContainer::-webkit-scrollbar {
   width: 4px;
 }
@@ -947,7 +938,7 @@ body {
 }
 
 #submittedBySpan {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 20px;
   background: linear-gradient(90deg, #ee6306, #887c65);
   background-clip: text;
@@ -962,19 +953,19 @@ body {
   width: 100%;
   position: relative;
   display: flex;
-  background-color: #EDEDED;
+  background-color: #ededed;
 }
 
 #profilePageContainer {
   border-radius: 10px;
   width: 80%;
   height: 92%;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
   display: flex;
   margin: auto;
   margin-top: 20px;
   position: relative;
-
 }
 
 #profilePageHeader {
@@ -1000,17 +991,17 @@ body {
 
 /* CSS for the welcome text */
 #welcomeProfileMessage {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 28px;
   font-weight: 700;
-  color: #4a4a4a;
+  color: #ededed;
   display: flex;
   margin-left: 75px;
   margin-top: 25px;
 }
 
 #welcomeProfileUser {
-  font-family: 'Dancing Script', cursive;
+  font-family: "Dancing Script", cursive;
   font-weight: 700;
   color: #e58e26;
   /* A vibrant color for emphasis */
@@ -1037,16 +1028,56 @@ body {
   border-radius: 5px;
   height: 59%;
   width: 32%;
+  padding: 20px;
   display: flex;
-  justify-content: center;
+  flex-direction: column;
+  gap: 30px;
+  align-items: center;
   text-align: center;
+}
+
+.settings-section {
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: 100%;
+  align-items: center;
+}
+
+.settings-text {
+  font-weight: 400;
+  text-decoration: none;
+  color: #ededed;
+}
+
+.settings-control {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  align-items: center;
+  width: 100%;
+  margin: 0;
+}
+
+.settings-button {
+  width: 50%;
+  margin: 0;
+  transform: translateX(0);
+}
+
+/* Maintain original input styling */
+#passwordChangeField1,
+#passwordChangeField2 {
+  border-radius: 5px;
+  font-size: 14px;
+  width: 50%;
+  margin: 0;
 }
 
 #changeProfilePicture {
   position: relative;
   padding: 20px;
   display: flex;
-
 }
 
 #profilePicText {
@@ -1079,7 +1110,6 @@ body {
 #changePasswordText {
   font-weight: 400;
   text-decoration: none;
-  
 }
 
 #changePasswordField1 {
@@ -1109,15 +1139,18 @@ body {
 #changePasswordBtn {
   width: 50%;
 }
+
 #deleteUser {
   position: absolute;
   display: flex;
   top: 300px;
 }
+
 #deleteUserText {
   font-weight: 400;
   text-decoration: none;
 }
+
 #deleteUserButton {
   position: absolute;
   display: flex;
@@ -1127,23 +1160,23 @@ body {
   margin-right: 50px;
   justify-content: center;
 }
+
 #deleteUserBtn {
   width: 50%;
 }
+
 #span1 {
   color: orange !important;
   /* Add !important to override the parent styles */
-
 }
 
 #span2 {
   color: orange !important;
   /* Add !important to override the parent styles */
-
 }
 
 #helpPage {
-  background-color: #EDEDED;
+  background-color: #ededed;
   height: 85vh;
 }
 
@@ -1151,7 +1184,8 @@ body {
   border-radius: 10px;
   width: 80%;
   height: 92%;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
   display: flex;
   margin: auto;
   margin-top: 20px;
@@ -1161,7 +1195,7 @@ body {
 #settingsContainer {
   height: 66%;
   width: 70%;
-  background-color: #EDEDED;
+  background-color: #ededed;
   border-radius: 10px;
   margin-top: 20px;
   display: flex;
@@ -1173,8 +1207,8 @@ body {
   display: none;
   /* initially hidden */
 }
-#settingsContainerInner
-{
+
+#settingsContainerInner {
   width: 97%;
   height: 91%;
   border-bottom: 2px solid #555555;
@@ -1188,8 +1222,9 @@ body {
   margin: auto;
   /* Optional - center within parent if needed */
 }
-.aboutPageHeader{
-  font-family: 'Arial', sans-serif;
+
+.aboutPageHeader {
+  font-family: "Arial", sans-serif;
   font-size: 1.5rem;
   font-weight: bold;
   text-align: center;
@@ -1201,25 +1236,27 @@ body {
 }
 
 .white-text {
-  color: black;;
+  color: black;
 }
+
 #searchResults {
-  color: #EDEDED;
+  color: #ededed;
   border: 1px solid #555555;
-  width: 245px; 
+  width: 245px;
   height: auto;
-  max-height: 175px; 
-  top: -40px; 
-  left: 18.7%; 
-  position: absolute; 
-  z-index:99; 
-  border-radius: 5px; 
-  display: none; 
+  max-height: 175px;
+  top: -40px;
+  left: 18.7%;
+  position: absolute;
+  z-index: 99;
+  border-radius: 5px;
+  display: none;
   text-align: center;
   padding: 10px;
   background-color: #2e3236f2;
   overflow-y: auto;
 }
+
 #searchResults::-webkit-scrollbar {
   width: 4px;
 }
@@ -1232,15 +1269,16 @@ body {
 #searchResults::-webkit-scrollbar-track {
   background-color: #2e3236f2;
 }
+
 #searchResults p {
   font-size: 1rem;
   margin: 0;
-  color: #EDEDED;
+  color: #ededed;
 }
 
 #searchResults button {
   background-color: rgba(var(--bs-dark-rgb));
-  color: #EDEDED;
+  color: #ededed;
   border: none;
   padding: 5px 10px;
   cursor: pointer;
@@ -1251,54 +1289,62 @@ body {
   background-color: #6d7580;
   transform: scale(1.05);
 }
+
 #searchResults button:active {
   transform: translateY(4px);
 }
+
 #friendBtn {
   margin-right: 10px !important;
 }
+
 #userAlertsIcon:hover {
   transform: scale(1.1);
 }
+
 #userAlertsIcon:active {
   transform: translateY(4px);
 }
+
 #userAlertsContainer {
   position: absolute;
   top: 10px;
   z-index: 2;
-  
+
   width: 92%;
   height: 100px;
-  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px, rgba(0, 0, 0, 0.22) 0px 15px 12px;
+  box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
+    rgba(0, 0, 0, 0.22) 0px 15px 12px;
   border-radius: 10px;
   background-color: #fafafa;
   display: none;
   padding-top: 5px;
   padding-bottom: 10px;
 }
+
 #userAlertsContainerHeader {
   text-align: center;
 }
+
 #userAlertsContainerText {
-  font-family: 'Arial', sans-serif;
-  color: #EDEDED;
+  font-family: "Arial", sans-serif;
+  color: #ededed;
   font-size: 16px;
   font-weight: 600;
 }
+
 #userAlertsContent {
-  
   border-top: 2px solid #555555;
   border-width: 90%;
   width: 95%;
   margin-left: 10px;
-  height: 65%; 
+  height: 65%;
   border-bottom: 2px solid #555555;
   border-left: 2px solid #555555;
   margin-top: 5px;
   overflow: auto;
-  
 }
+
 #userAlertsContent::-webkit-scrollbar {
   width: 5px;
 }
@@ -1311,92 +1357,123 @@ body {
 #userAlertsContent::-webkit-scrollbar-track {
   background-color: #2e3236f2;
 }
+
 .orange-alert {
   color: #e58e26 !important;
 }
+
 /* Friend list content */
 .friend-row {
   display: flex;
-  justify-content: space-between; /* Space between username and buttons */
-  align-items: center; /* Vertically center content */
+  justify-content: space-between;
+  /* Space between username and buttons */
+  align-items: center;
+  /* Vertically center content */
   padding: 10px;
   border-bottom: 1px solid rgba(255, 255, 255, 0.2);
   transition: background 0.2s ease-in-out;
 }
+
 .friend-row:hover {
   background: rgba(255, 255, 255, 0.1);
 }
+
 .friend-row:last-child {
   border-bottom: none;
 }
+
 .username {
   font-size: 16px;
-  color: #EDEDED;
+  color: #ededed;
   font-weight: 600;
 }
+
 .user-info {
   display: flex;
-  align-items: center; /* Align profile picture and username */
+  align-items: center;
+  /* Align profile picture and username */
   gap: 10px;
 }
+
 .buttons {
   display: flex;
-  align-items: center; /* Vertically center icon and button */
-  gap: 20px; /* Space between the icon and the button */
+  align-items: center;
+  /* Vertically center icon and button */
+  gap: 20px;
+  /* Space between the icon and the button */
 }
 
 .unfriend-button {
-  background-color: transparent; /* Transparent background */
-  color: #aaaaaa; 
-  border: none; /* No border */
+  background-color: transparent;
+  /* Transparent background */
+  color: #aaaaaa;
+  border: none;
+  /* No border */
   margin-right: 10px;
   cursor: pointer;
-  padding: 0; /* Remove padding */
+  padding: 0;
+  /* Remove padding */
   font-size: 25px;
 }
 
 .unfriend-button:hover {
-  color: #fafafa; 
+  color: #fafafa;
   transform: scale(1.1);
 }
+
 .unfriend-button:active {
   transform: translateY(3px);
 }
+
 .chatButton {
-  background-color: transparent; /* Transparent background */
+  background-color: transparent;
+  /* Transparent background */
   color: #e58e26;
-  border: none; /* No border */
-  
+  border: none;
+  /* No border */
+
   cursor: pointer;
-  padding: 0; /* Remove padding */
+  padding: 0;
+  /* Remove padding */
   font-size: 20px;
 }
+
 .chatButton:hover {
-  color: #fd7a00; 
+  color: #fd7a00;
   transform: scale(1.1);
 }
+
 .chatButton:active {
   transform: translateY(3px);
 }
+
 #registerBtn {
-  color: #EDEDED;
+  color: #ededed;
 }
+
 #requestDiv {
   padding: 12px;
 }
+
 .profile-picture {
   width: 40px;
   height: 40px;
-  border-radius: 50%; /* Makes it circular */
+  border-radius: 50%;
+  /* Makes it circular */
   margin-right: 10px;
   cursor: pointer;
   background-color: lightgrey;
 }
+
 .status-indicator {
-  width: 12px;            /* Size of the indicator */
-  height: 12px;           /* Size of the indicator */
-  border-radius: 50%;     /* Make it a circle */
-  border: 2px solid #fff; /* Optional: Add a border to make it stand out */
+  width: 12px;
+  /* Size of the indicator */
+  height: 12px;
+  /* Size of the indicator */
+  border-radius: 50%;
+  /* Make it a circle */
+  border: 2px solid #fff;
+  /* Optional: Add a border to make it stand out */
   margin-right: 10px;
 }
 
@@ -1411,13 +1488,12 @@ body {
   border-radius: 10px;
   box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
   z-index: 1000;
-  
+
   position: fixed;
   transform: translate(0, 0);
   user-select: none;
   padding: 10px;
 }
-
 
 .chat-modal-content {
   display: flex;
@@ -1524,7 +1600,7 @@ body {
 
 .night-mode #chatInput {
   background-color: #2e3236f2;
-  color: #EDEDED;
+  color: #ededed;
 }
 
 .chat-messages::-webkit-scrollbar {
@@ -1541,14 +1617,14 @@ body {
 }
 
 .chat-header .user-info {
-    display: flex;
-    align-items: center;
-    gap: 10px;
+  display: flex;
+  align-items: center;
+  gap: 10px;
 }
 
 .chat-header .chat-profile-picture {
-    width: 32px;
-    height: 32px;
-    border-radius: 50%;
-    object-fit: cover;
+  width: 32px;
+  height: 32px;
+  border-radius: 50%;
+  object-fit: cover;
 }
