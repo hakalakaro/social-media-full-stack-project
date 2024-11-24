@@ -910,13 +910,43 @@
           });
 
           // Add event listener to comment button
-          button2.addEventListener('click', () => {
-            // Toggle visibility of the comment box when the comment button is clicked
+          button2.addEventListener('click', async () => {
+            // Toggle visibility of the comment box
             if (commentBox.style.display === 'none') {
               commentBox.style.display = 'block';
-              inputField.focus(); // Auto-focus the input when opened
+              inputField.focus();
+              
+              // Clear existing comments
+              commentsContainer.innerHTML = '';
+              
+              // Display comments with profile pictures
+              for (const comment of comments) {
+                try {
+                  const profilePicResponse = await fetch(`http://localhost:5000/users/profile-picture/${comment.username}`, {
+                    headers: {
+                      'Authorization': `Bearer ${token}`
+                    }
+                  });
+                  
+                  const profileData = await profilePicResponse.json();
+                  const profilePicUrl = profileData.profilePicture || '/uploads/profile-pictures/profileplaceholder.png';
+
+                  const commentDiv = document.createElement('div');
+                  commentDiv.classList.add('comment');
+                  commentDiv.innerHTML = `
+                    <div class="comment-header">
+                      <img src="http://localhost:5000${profilePicUrl}" class="comment-profile-pic" alt="Profile">
+                      <span class="username">${comment.username}</span>
+                    </div>
+                    <span class="userComment">${comment.commentText}</span>
+                  `;
+                  commentsContainer.appendChild(commentDiv);
+                } catch (error) {
+                  console.error('Error fetching profile picture:', error);
+                }
+              }
             } else {
-              commentBox.style.display = 'none'; // Hide it again if it's already visible
+              commentBox.style.display = 'none';
             }
           });
 
@@ -944,23 +974,39 @@
                     const result = await response.json();
                     inputField.value = ''; // Clear the input field on success
 
-                    // Create and append the new comment immediately
-                    const commentDiv = document.createElement('div');
-                    commentDiv.classList.add('comment');
-                    
                     // Get current username from token
                     const base64Url = token.split('.')[1];
                     const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
                     const decodedToken = JSON.parse(atob(base64));
                     const currentUsername = decodedToken.username;
 
-                    commentDiv.innerHTML = `<span class="username">${currentUsername}</span> <br> <span class="userComment">${commentText}</span>`;
-                    commentsContainer.appendChild(commentDiv);
+                    // Fetch user profile picture
+                    const profilePicResponse = await fetch(`http://localhost:5000/users/profile-picture/${currentUsername}`, {
+                        headers: {
+                            'Authorization': `Bearer ${token}`
+                        }
+                    });
+                    
+                    const profileData = await profilePicResponse.json();
+                    const profilePicUrl = profileData.profilePicture || '/uploads/profile-pictures/profileplaceholder.png';
+
+                    // Create the new comment div
+                    const commentDiv = document.createElement('div');
+                    commentDiv.classList.add('comment');
+                    commentDiv.innerHTML = `
+                        <div class="comment-header">
+                            <img src="http://localhost:5000${profilePicUrl}" class="comment-profile-pic" alt="Profile">
+                            <span class="username">${currentUsername}</span>
+                        </div>
+                        <span class="userComment">${commentText}</span>
+                    `;
+                    
+                    // Insert at the beginning of the comments container
+                    commentsContainer.insertBefore(commentDiv, commentsContainer.firstChild);
 
                     // Update the comments count in the button
                     const currentCount = parseInt(button2.textContent.match(/\d+/)[0]);
                     button2.lastChild.textContent = ` Comments (${currentCount + 1})`;
-
                 } else {
                     const errorData = await response.json();
                     console.error('Error adding comment:', errorData);
@@ -979,7 +1025,7 @@
           commentsContainer.style.marginTop = '20px';
 
           // Display any existing comments
-          comments.forEach(comment => {
+          comments.reverse().forEach(comment => {
             const commentDiv = document.createElement('div');
             commentDiv.classList.add('comment');
             commentDiv.innerHTML = `<span class="username">${comment.username}</span> <br> <span class="userComment">${comment.commentText}</span>`;

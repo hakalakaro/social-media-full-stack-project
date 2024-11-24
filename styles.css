@@ -265,6 +265,8 @@ body {
   margin: auto;
   /* Center the form in the middle of the container */
   padding: 17px;
+  animation: fadeIn 0.3s ease-in;
+  opacity: 1;
 }
 
 /* Media query to further adjust for smaller screens */
@@ -356,7 +358,10 @@ body {
     height: 100%;
   }
 }
-
+#carouselExampleCaptions {
+  animation: fadeIn 0.3s ease-in;
+  opacity: 1;
+}
 #accountForm {
   background-color: #fafafa;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
@@ -374,6 +379,8 @@ body {
   /* Make it responsive */
   max-width: 500px;
   /* Set a maximum width for larger screens */
+  animation: fadeIn 0.3s ease-in;
+  opacity: 1;
 }
 
 #accountForm .form-control {
@@ -411,6 +418,8 @@ body {
   margin: auto;
   margin-top: 20px;
   position: relative;
+  animation: fadeIn 0.3s ease-in;
+  opacity: 1;
 }
 
 #mainPage {
@@ -425,7 +434,7 @@ body {
   height: 85vh;
   background-color: #fafafa;
   align-items: center;
-
+  
   padding-bottom: 0;
 }
 
@@ -559,6 +568,8 @@ body {
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
   position: relative;
   /* Position relative to apply pseudo-elements */
+  animation: fadeIn 0.5s ease-in;
+  opacity: 1;
 }
 
 /* Pseudo-elements for containers with lines */
@@ -751,6 +762,8 @@ body {
   flex-direction: column-reverse;
   /* Makes the input field stick at the bottom */
   justify-content: flex-start;
+  animation: fadeIn 0.3s ease-in;
+  opacity: 1;
 }
 
 .comment-box::-webkit-scrollbar {
@@ -842,8 +855,19 @@ body {
   border-radius: 5px;
   padding: 10px;
   margin-bottom: 5px;
+  animation: fadeIn 0.3s ease-in;
+  opacity: 1;
 }
-
+@keyframes fadeIn {
+  from {
+      opacity: 0;
+      transform: translateY(10px);
+  }
+  to {
+      opacity: 1;
+      transform: translateY(0);
+  }
+}
 .username {
   font-weight: 700;
   text-decoration: none;
@@ -895,6 +919,8 @@ body {
   z-index: 1;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
+    animation: fadeIn 0.3s ease-in;
+  opacity: 1;
 }
 
 .active-friends-header {
@@ -966,6 +992,8 @@ body {
   margin: auto;
   margin-top: 20px;
   position: relative;
+  animation: fadeIn 0.3s ease-in;
+  opacity: 1;
 }
 
 #profilePageHeader {
@@ -1190,6 +1218,8 @@ body {
   margin: auto;
   margin-top: 20px;
   position: relative;
+  animation: fadeIn 0.3s ease-in;
+  opacity: 1;
 }
 
 #settingsContainer {
@@ -1206,6 +1236,8 @@ body {
   /* Add shadow for depth */
   display: none;
   /* initially hidden */
+  animation: fadeIn 0.3s ease-in;
+  opacity: 1;
 }
 
 #settingsContainerInner {
@@ -1255,6 +1287,8 @@ body {
   padding: 10px;
   background-color: #2e3236f2;
   overflow-y: auto;
+  animation: fadeIn 0.3s ease-in;
+  opacity: 1;
 }
 
 #searchResults::-webkit-scrollbar {
@@ -1310,7 +1344,8 @@ body {
   position: absolute;
   top: 10px;
   z-index: 2;
-
+  animation: fadeIn 0.3s ease-in;
+  opacity: 1;
   width: 92%;
   height: 100px;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
@@ -1631,8 +1666,8 @@ body {
 .comment-header {
   display: flex;
   align-items: center;
-  gap: 8px;
-  margin-bottom: 4px;
+  gap: 10px;
+  margin-bottom: 5px;
 }
 
 .comment-profile-pic {
