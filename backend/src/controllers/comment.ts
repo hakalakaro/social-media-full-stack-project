@@ -1,3 +1,4 @@
+/*
 import { Request, Response } from 'express';
 import { Comment } from '../models/comment';
 import { Post } from '../models/post';
@@ -73,3 +74,4 @@ export const postComment = async (req: Request, res: Response): Promise<void> =>
       res.status(500).json({ message: 'Failed to fetch comments' });
     }
   };
+*/

@@ -1,3 +1,4 @@
+/*
 import mongoose, { Document, Schema } from 'mongoose';
 
 interface CommentDocument extends Document {
@@ -15,3 +16,4 @@ const commentSchema = new Schema<CommentDocument>({
 });
 
 export const Comment = mongoose.model<CommentDocument>('Comment', commentSchema);
+*/ 

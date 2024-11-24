@@ -1,3 +1,4 @@
+/*
 import express from 'express';
 import { postComment, getComments } from '../controllers/comment';
 import authMiddleware from '../middleware/authMiddleware';
@@ -11,3 +12,4 @@ router.post('/', authMiddleware, postComment);
 
 
 export default router;
+*/
