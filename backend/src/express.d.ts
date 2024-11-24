@@ -4,7 +4,7 @@ import { Post } from '../models/post';
 declare global {
     namespace Express {
         interface Request {
-            username?: string;  // Adding the userId property to the Request interface
+            username?: string;  // Adding the username property to the Request interface
         }
     }
 }
