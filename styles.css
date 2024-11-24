@@ -1628,3 +1628,16 @@ body {
   border-radius: 50%;
   object-fit: cover;
 }
+.comment-header {
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  margin-bottom: 4px;
+}
+
+.comment-profile-pic {
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  object-fit: cover;
+}

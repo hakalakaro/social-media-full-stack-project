@@ -923,39 +923,50 @@
           button3.addEventListener('click', async () => {
             const commentText = inputField.value.trim();
             if (!commentText) {
-              alert('Please enter a comment before submitting.');
-              return;
+                alert('Please enter a comment before submitting.');
+                return;
             }
 
             const token = localStorage.getItem('authToken');
             const postId = _id; // Use the image ID from the current post
 
             try {
-              const response = await fetch('http://localhost:5000/upload/comment', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({ postId, commentText })
-              });
+                const response = await fetch('http://localhost:5000/upload/comment', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ postId, commentText })
+                });
 
-              if (response.ok) {
-                inputField.value = ''; // Clear the input field on success
-                alert('Comment added successfully!');
+                if (response.ok) {
+                    const result = await response.json();
+                    inputField.value = ''; // Clear the input field on success
 
-                // Add the new comment to the commentsContainer
-                const newComment = document.createElement('div');
-                newComment.classList.add('comment');
-                commentDiv.innerHTML = `<span class="username">${comment.username}:</span> <br> <span class="userComment">${comment.commentText}</span>`;
-                commentsContainer.appendChild(newComment);
-                button2.textContent = ` Comments (${comments.length + 1})`;  // Update button text with new comment count
-              } else {
-                const errorData = await response.json();
-                console.error('Error adding comment:', errorData);
-              }
+                    // Create and append the new comment immediately
+                    const commentDiv = document.createElement('div');
+                    commentDiv.classList.add('comment');
+                    
+                    // Get current username from token
+                    const base64Url = token.split('.')[1];
+                    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                    const decodedToken = JSON.parse(atob(base64));
+                    const currentUsername = decodedToken.username;
+
+                    commentDiv.innerHTML = `<span class="username">${currentUsername}</span> <br> <span class="userComment">${commentText}</span>`;
+                    commentsContainer.appendChild(commentDiv);
+
+                    // Update the comments count in the button
+                    const currentCount = parseInt(button2.textContent.match(/\d+/)[0]);
+                    button2.lastChild.textContent = ` Comments (${currentCount + 1})`;
+
+                } else {
+                    const errorData = await response.json();
+                    console.error('Error adding comment:', errorData);
+                }
             } catch (error) {
-              console.error('Error:', error);
+                console.error('Error:', error);
             }
           });
 
