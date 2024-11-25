@@ -185,14 +185,39 @@ body {
   font-size: 20px;
   width: 100%;
   z-index: 14;
-  /* to keep border visible */
+  height: 12%;
+  display: flex;
+}
+
+/* Update navbar styles */
+.header nav {
+  height: 100%;
+  width: 100%;
+  justify-content: center;
+}
+
+.navbar {
+  height: 100% !important;
+  padding: 0 10px !important;
+}
+
+.container-fluid {
+  height: 100%;
+}
+
+/* If needed, adjust logo size proportionally */
+#logo {
+  height: 80%;
+  margin-left: 25px;
+  border-radius: 10px;
 }
 
 /* Container for flexboxes */
 .row {
   display: flex;
   flex: 1;
-  height: 100%;
+  height: 83%;
+  margin: 0;
 }
 
 /* Left and right column */
@@ -200,7 +225,7 @@ body {
   flex: 1;
   padding: 0;
   width: 20%;
-  height: 85vh;
+  height: 100%;
 }
 
 #side1 {
@@ -237,6 +262,7 @@ body {
   padding: 0;
   width: 60vh;
   background-color: #fafafa;
+  height: 100%;
 }
 
 /* Full height for carousel */
@@ -686,14 +712,23 @@ body {
   /* Slightly bolder text */
   text-align: center;
   text-decoration: none;
-  display: inline-block;
+  
   border-radius: 5px;
   /* Rounded corners */
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  width: 20%;
+  
   /* Make button width responsive */
   margin-left: 12px;
+  width: auto !important;  /* Remove fixed width */
+    min-width: 120px;  /* Set minimum width */
+     /* Add consistent padding */
+    margin: 5px;
+    
+    display: inline-flex;  /* Use flexbox for icon alignment */
+    align-items: center;
+    justify-content: center;
+    gap: 8px;  /* Space between icon and text */
 }
 
 .like-button:hover {
@@ -701,6 +736,7 @@ body {
   /* Darker blue on hover */
   transform: scale(1.05);
   /* Slight zoom effect */
+  
 }
 
 .like-button:focus {
@@ -745,7 +781,7 @@ body {
 .comment-box {
   /* CHECK THIS LATER */
   width: 100%;
-  height: 200px;
+  
   padding: 5px 5px;
   padding-bottom: 5px;
   box-sizing: border-box;
@@ -756,8 +792,8 @@ body {
   /* Optional space above the new div */
   position: relative;
   overflow-y: auto;
-  max-height: 250px;
-  height: 250px;
+  max-height: 400px;
+  height: 400px;
   display: flex;
   flex-direction: column-reverse;
   /* Makes the input field stick at the bottom */
@@ -776,7 +812,7 @@ body {
 }
 
 .comment-box::-webkit-scrollbar-track {
-  background-color: #f0f0f0;
+  background-color: rgba(var(--bs-dark-rgb));
 }
 
 /* Style for the input field inside the comment box */
@@ -1676,3 +1712,107 @@ body {
   border-radius: 50%;
   object-fit: cover;
 }
+
+
+
+/* Responsive adjustments */
+@media (max-width: 1440px) {
+    .like-button {
+        min-width: 100px;
+        padding: 6px 12px;
+        font-size: 13px;
+    }
+
+    /* Adjust icon size if needed */
+    .like-button i {
+        font-size: 14px;
+    }
+}
+
+/* Even smaller screens */
+@media (max-width: 768px) {
+    .like-button {
+        min-width: 80px;
+        padding: 5px 10px;
+        font-size: 12px;
+    }
+}
+
+/* Media query for smaller screens */
+@media (max-width: 1000px) {
+    .row {
+        flex-direction: column;
+    }
+
+    #side2 {
+        display: block !important;
+        width: 100%;
+        height: 41.5%;  /* Back to the working height */
+        order: -1;
+    }
+
+    .column.middle {
+        width: 100%;
+        height: 41.5%;
+    }
+
+    #side1 {
+        display: none;
+    }
+    #friendsListIcon {
+      bottom: 0;
+    }
+    /* Make friends modal overflow its container */
+    #friendsListModal {
+        position: absolute;
+        height: 300px;
+        width: 80%;
+        max-width: 400px;
+        overflow-y: auto;
+        z-index: 1000;
+        top: 35%;
+        left: 50%;
+        transform: translate(-50%, -50%); 
+    }
+    #friendsListModal::-webkit-scrollbar {
+      width: 4px;
+    }
+    
+    #friendsListModal::-webkit-scrollbar-thumb {
+      background-color: #555555;
+      border-radius: 4px;
+    }
+    
+    #friendsListModal::-webkit-scrollbar-track {
+      background-color: #2e3236f2;
+    }
+}
+
+.comment-input-container {
+    margin: 10px 0;
+    width: 100%;
+}
+
+.comment-input {
+    font-size: 14px;
+}
+
+.emoji-button {
+    transition: opacity 0.2s;
+}
+
+.emoji-button:hover {
+    opacity: 0.7;
+}
+
+/* Dark mode support for emoji picker */
+emoji-picker {
+    --background: #fff;
+    --text-color: #000;
+}
+
+body.night-mode emoji-picker {
+    --background: #2b2b2b;
+    --text-color: #fff;
+}
+

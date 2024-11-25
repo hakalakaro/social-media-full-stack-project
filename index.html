@@ -16,6 +16,7 @@
   <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery/3.3.1/jquery.min.js"></script>
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0-beta1/dist/js/bootstrap.bundle.min.js"></script>
   <script src="https://cdn.socket.io/4.7.2/socket.io.min.js"></script>
+  <script type="module" src="https://cdn.jsdelivr.net/npm/emoji-picker-element@^1/index.js"></script>
 </head>
 
 <body>
@@ -868,16 +869,72 @@
           newContainer.appendChild(button2);
 
           const commentBox = document.createElement('div');
-          commentBox.classList.add('comment-box');  // Apply the CSS class for styling
-          commentBox.style.display = 'none'; // Hide initially
+          commentBox.classList.add('comment-box');
+          commentBox.style.display = 'none';
+
+          const inputWrapper = document.createElement('div');
+          inputWrapper.style.position = 'relative';
+          inputWrapper.style.display = 'inline-block';
+          inputWrapper.style.width = '300px'; // Changed to 300px
 
           const inputField = document.createElement('input');
           inputField.type = 'text';
           inputField.placeholder = 'Write your comment...';
-          inputField.classList.add('comment-input'); // Add a class for specific styling if needed
+          inputField.classList.add('comment-input');
+          inputField.style.width = '300px'; // Changed to 300px
 
-          commentBox.appendChild(inputField); // Append input field to comment box
-          commentBox.appendChild(button3);
+          const emojiButton = document.createElement('button');
+          emojiButton.innerHTML = '😊';
+          emojiButton.style.position = 'absolute';
+          emojiButton.style.right = '10px';
+          emojiButton.style.top = '50%';
+          emojiButton.style.transform = 'translateY(-50%)';
+          emojiButton.style.background = 'none';
+          emojiButton.style.border = 'none';
+          emojiButton.style.fontSize = '1.2em';
+          emojiButton.style.cursor = 'pointer';
+          emojiButton.style.pointerEvents = 'auto';
+
+          const emojiPicker = document.createElement('emoji-picker');
+          emojiPicker.style.display = 'none';
+          emojiPicker.style.position = 'absolute';
+          emojiPicker.style.top = '0';
+          emojiPicker.style.right = '-490px'; // Adjust this value to move the picker more to the right
+          emojiPicker.style.zIndex = '9999'; // Increased z-index to ensure it's above everything
+
+          // Create a container for input and button to be side by side
+          const inputButtonContainer = document.createElement('div');
+          inputButtonContainer.style.display = 'flex';
+          inputButtonContainer.style.alignItems = 'center';
+          inputButtonContainer.style.gap = '10px';
+
+          inputWrapper.appendChild(inputField);
+          inputWrapper.appendChild(emojiButton);
+          inputWrapper.appendChild(emojiPicker);
+
+          inputButtonContainer.appendChild(inputWrapper);
+          inputButtonContainer.appendChild(button3); // Your comment button
+
+          commentBox.appendChild(inputButtonContainer);
+
+          // Add emoji picker functionality
+          emojiButton.addEventListener('click', (e) => {
+              e.preventDefault();
+              e.stopPropagation();
+              emojiPicker.style.display = emojiPicker.style.display === 'none' ? 'block' : 'none';
+          });
+
+          emojiPicker.addEventListener('emoji-click', event => {
+              inputField.value += event.detail.unicode;
+              emojiPicker.style.display = 'none';
+          });
+
+          // Close emoji picker when clicking outside
+          document.addEventListener('click', (event) => {
+              if (!emojiButton.contains(event.target) && !emojiPicker.contains(event.target)) {
+                  emojiPicker.style.display = 'none';
+              }
+          });
 
           button.addEventListener('click', async () => {
             const token = localStorage.getItem('authToken');
@@ -1007,6 +1064,9 @@
                     // Update the comments count in the button
                     const currentCount = parseInt(button2.textContent.match(/\d+/)[0]);
                     button2.lastChild.textContent = ` Comments (${currentCount + 1})`;
+
+                    // Add this line to update the comments array
+                    comments.unshift({ username: currentUsername, commentText: commentText });
                 } else {
                     const errorData = await response.json();
                     console.error('Error adding comment:', errorData);
@@ -1435,9 +1495,24 @@
         const result = await response.json();
 
         if (response.ok) {
-          // Update profile picture on the frontend
-          const profilePictureElement = document.getElementById('profilePicture');
-          profilePictureElement.src = `http://localhost:5000${result.filePath}`;
+          // Update all instances of the profile picture on the page
+          const profilePictures = [
+            document.getElementById('profilePicture'),
+            // Add any other profile picture elements that need updating
+          ];
+
+          profilePictures.forEach(element => {
+            if (element) {
+              element.src = `http://localhost:5000${result.filePath}`;
+              element.style.display = 'block';
+            }
+          });
+
+          // Update the profile picture in localStorage
+          localStorage.setItem('profilePicture', result.filePath);
+
+          // Refresh the friends list to update the profile picture there as well
+          await loadFriendsList();
 
           alert('Profile picture uploaded successfully!');
         } else {
