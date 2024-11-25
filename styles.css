@@ -138,7 +138,9 @@ body {
 .night-mode .aboutPageHeader .white-text {
   color: #ededed;
 }
-
+.night-mode .white-text {
+  color: #ededed;
+}
 .night-mode .userComment {
   color: #b3afaf;
 }
@@ -1846,6 +1848,19 @@ body.night-mode emoji-picker {
     /* Optional: could add subtle glow effect */
     box-shadow: 0 0 5px rgba(229, 142, 38, 0.3);
 }
+
+.like-button.liked i.fa-thumbs-up {
+  display: none;
+}
+
+.like-button.liked i.fa-heart {
+  display: inline-block;
+  color: #e58e26;  /* Your theme orange color */
+}
+
+.like-button i.fa-heart {
+  display: none;
+}
 .switchHeader button.active {
   background-color: rgba(255, 255, 255, 0.1) !important;  /* Similar to your hover effects */
 }
@@ -1853,4 +1868,117 @@ body.night-mode emoji-picker {
 /* Optional: Keep the hover effect for non-active buttons */
 .switchHeader button:hover:not(.active) {
   background-color: rgba(255, 255, 255, 0.05) !important;
+}
+
+.comment-like-button:active {
+  transform: scale(1.1);
+}
+.comment-like-button:hover .fa-thumbs-up {
+  color: #e58e26 !important;
+  transition: color 0.2s ease;
+  cursor: pointer;
+  transform: scale(1.1);
+}
+.unfriend-button:hover .fa-trash {
+  color: #e58e26 !important;
+  transform: scale(1.1);
+}
+/* Help page form styles */
+.help-form-container {
+  width: 90%;
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 2rem;
+  border-radius: 10px;
+  animation: fadeIn 0.3s ease-in;
+}
+
+.help-form-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.help-form-header h2 {
+  font-family: 'Poppins', sans-serif;
+  font-size: 1.8rem;
+  margin-bottom: 1rem;
+}
+
+.help-form-header p {
+  color: #aaaaaa;
+  font-size: 1rem;
+}
+
+.help-form {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.form-group {
+  display: flex;
+  flex-direction: column;
+  gap: 0.5rem;
+}
+
+.form-group label {
+  font-weight: 500;
+  color: #ededed;
+}
+
+.form-group input,
+.form-group textarea,
+.form-group select {
+  padding: 0.8rem;
+  border: 1px solid #555555;
+  border-radius: 5px;
+  background-color: #2e3236f2;
+  color: #ededed;
+  font-size: 0.9rem;
+}
+
+.form-group textarea {
+  min-height: 150px;
+  resize: vertical;
+}
+
+.form-group select {
+  cursor: pointer;
+}
+
+.submit-button {
+  background-color: #2e3236f2;
+  color: #aaaaaa;
+  padding: 0.8rem 1.5rem;
+  border: none;
+  border-radius: 5px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  align-self: center;
+}
+
+.submit-button:hover {
+  background-color: rgba(255, 255, 255, 0.1);
+  transform: translateY(-2px);
+}
+
+.submit-button:active {
+  transform: translateY(0);
+}
+
+/* Night mode specific styles */
+.night-mode .help-form-container {
+  background-color: rgba(var(--bs-dark-rgb));
+}
+
+.night-mode .form-group input,
+.night-mode .form-group textarea,
+.night-mode .form-group select {
+  background-color: #2e3236f2;
+  color: #ededed;
+}
+
+.night-mode .help-form-header p {
+  color: #aaaaaa;
 }

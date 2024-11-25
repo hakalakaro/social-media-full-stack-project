@@ -218,17 +218,20 @@
                   style="font-size: 20px; cursor: pointer; padding: 5px; color: #e58e26;" title="Show Stories"></i>
                 Stories
               </button>
-              <button type="button" class="btn switchHeaderBtn" id="cameraIcon1" style=" border: none; font-weight: 500;">
+              <button type="button" class="btn switchHeaderBtn" id="cameraIcon1"
+                style=" border: none; font-weight: 500;">
                 <i id="cameraIcon" class="fa fa-upload fa-1x" aria-hidden="true"
                   style="font-size: 20px; cursor: pointer; padding: 5px; color: #e58e26;" title="Upload Images"></i>
                 Share Images
               </button>
-              <button type="button" class="btn switchHeaderBtn" id="keyboardIcon1" style=" border: none; font-weight: 500;">
+              <button type="button" class="btn switchHeaderBtn" id="keyboardIcon1"
+                style=" border: none; font-weight: 500;">
                 <i id="keyboardIcon" class="fa-solid fa-comment fa-1x" aria-hidden="true"
                   style="font-size: 20px; cursor: pointer; padding: 5px; color: #e58e26;" title="Upload Text"></i>
                 Share Stories
               </button>
-              <button type="button" id="toggleIcon" class="btn switchHeaderBtn" style=" border: none; font-weight: 500;">
+              <button type="button" id="toggleIcon" class="btn switchHeaderBtn"
+                style=" border: none; font-weight: 500;">
                 <i class="fa fa-arrows-v fa-1x" aria-hidden="true"
                   style="font-size: 20px; cursor: pointer; padding: 5px; color: #e58e26;" title="Show/Hide UI"></i>
                 Toggle Interface
@@ -295,7 +298,7 @@
             <div id="profileSettings">
               <div id="userPostsContainer" style="width: 100%; height: 100%; overflow-y: auto;">
                 <!-- Posts will be dynamically populated here -->
-              </div> 
+              </div>
             </div>
             <div id="profileSettings2">
               <div class="settings-section">
@@ -303,7 +306,8 @@
                 <div class="settings-control">
                   <input type="file" id="uploadProfileInput" style="display: none;" accept=".jpg, .jpeg, .png"
                     onchange="uploadProfilePicture(event)" />
-                  <button class="settings-button like-button" onclick="document.getElementById('uploadProfileInput').click()">Browse</button>
+                  <button class="settings-button like-button"
+                    onclick="document.getElementById('uploadProfileInput').click()">Browse</button>
                 </div>
               </div>
 
@@ -329,7 +333,48 @@
       <!-- Help Page -->
       <div id="helpPage" style="display: none;">
         <div id="helpPageContainer">
-
+          <div class="help-form-container">
+            <div class="help-form-header">
+              <h2>
+                <span class="white-text">Need </span>
+                <span class="orange-text">Help?</span>
+              </h2>
+              <p>Fill out the form below and we'll get back to you as soon as possible.</p>
+            </div>
+            
+            <form class="help-form" id="helpForm">
+              <div class="form-group">
+                <label for="name">Name</label>
+                <input type="text" id="name" name="name" required placeholder="Your name">
+              </div>
+              
+              <div class="form-group">
+                <label for="email">Email</label>
+                <input type="email" id="email" name="email" required placeholder="your.email@example.com">
+              </div>
+              
+              <div class="form-group">
+                <label for="category">Category</label>
+                <select id="category" name="category" required>
+                  <option value="">Select a category</option>
+                  <option value="technical">Technical Issue</option>
+                  <option value="account">Account Related</option>
+                  <option value="feedback">Feedback</option>
+                  <option value="other">Other</option>
+                </select>
+              </div>
+              
+              <div class="form-group">
+                <label for="message">Message</label>
+                <textarea id="message" name="message" required placeholder="Describe your issue or question..."></textarea>
+              </div>
+              
+              <button type="submit" class="submit-button">
+                <i class="fa fa-paper-plane" aria-hidden="true" style="margin-right: 8px;"></i>
+                Send Message
+              </button>
+            </form>
+          </div>
         </div>
       </div>
     </div>
@@ -392,7 +437,7 @@
   </div>
   </div>
   <script>
-    
+
     document.addEventListener("DOMContentLoaded", function () {
       // Check login state and update visibility on load
       updateLogoutLinkVisibility();
@@ -591,19 +636,19 @@
       dropdownMenuButton.style.setProperty('margin-left', '-100px', 'important'); // Move cog icon to the left
       dropdownMenu2.style.setProperty('transform', 'translateX(-150px)', 'important');
       // Hide the chat modal
-    const chatModal = document.getElementById('chatModal');
-    if (chatModal) {
+      const chatModal = document.getElementById('chatModal');
+      if (chatModal) {
         chatModal.style.display = 'none';
-    }
-    
-    // Reset chat state
-    currentChatPartner = null;
-    
-    // Disconnect socket if it exists
-    if (socket) {
+      }
+
+      // Reset chat state
+      currentChatPartner = null;
+
+      // Disconnect socket if it exists
+      if (socket) {
         socket.disconnect();
         socket = null;
-    }
+      }
 
       // Update logout link visibility
       updateLogoutLinkVisibility();
@@ -774,7 +819,7 @@
         });
 
         // Filter posts to show both friends' posts AND your own posts
-        const relevantPosts = data.filter(post => 
+        const relevantPosts = data.filter(post =>
           friendUsernames.has(post.username) || // Posts from friends
           post.username === currentUsername      // Your own posts
         );
@@ -841,8 +886,8 @@
           const isLiked = likes.includes(currentUsername);
           button.classList.add('like-button'); // Add custom class for styling if needed
           if (isLiked) {
-    button.classList.add('liked');  // Add CSS class for liked state
-}
+            button.classList.add('liked');  // Add CSS class for liked state
+          }
           button.id = `like-button-${_id}`;
           button2.classList.add('like-button');
           button3.classList.add('like-button', 'postComment');
@@ -850,20 +895,20 @@
           const icon = document.createElement('i');
           const icon2 = document.createElement('i');
           const icon3 = document.createElement('i');
-
+          const heartIcon = document.createElement('i');
           icon.classList.add('fa', 'fa-thumbs-up'); // Font Awesome thumbs-up icon
           icon2.classList.add('fa', 'fa-comment');
           icon3.classList.add('fa', 'fa-share');
-
+          heartIcon.classList.add('fa', 'fa-heart');
           icon.setAttribute('aria-hidden', 'true'); // Accessibility
           icon2.setAttribute('aria-hidden', 'true');
           icon3.setAttribute('aria-hidden', 'true');
-
+          heartIcon.setAttribute('aria-hidden', 'true');
           // Add the icon inside the button
           button.appendChild(icon);
           button2.appendChild(icon2);
           button3.appendChild(icon3);
-
+          button.appendChild(heartIcon);
           // Set the button text 
           button.appendChild(document.createTextNode(` Like (${likes.length})`));
           button2.appendChild(document.createTextNode(` Comments (${comments.length})`));
@@ -924,21 +969,21 @@
 
           // Add emoji picker functionality
           emojiButton.addEventListener('click', (e) => {
-              e.preventDefault();
-              e.stopPropagation();
-              emojiPicker.style.display = emojiPicker.style.display === 'none' ? 'block' : 'none';
+            e.preventDefault();
+            e.stopPropagation();
+            emojiPicker.style.display = emojiPicker.style.display === 'none' ? 'block' : 'none';
           });
 
           emojiPicker.addEventListener('emoji-click', event => {
-              inputField.value += event.detail.unicode;
-              emojiPicker.style.display = 'none';
+            inputField.value += event.detail.unicode;
+            emojiPicker.style.display = 'none';
           });
 
           // Close emoji picker when clicking outside
           document.addEventListener('click', (event) => {
-              if (!emojiButton.contains(event.target) && !emojiPicker.contains(event.target)) {
-                  emojiPicker.style.display = 'none';
-              }
+            if (!emojiButton.contains(event.target) && !emojiPicker.contains(event.target)) {
+              emojiPicker.style.display = 'none';
+            }
           });
 
           button.addEventListener('click', async () => {
@@ -946,35 +991,35 @@
             const postId = _id;
 
             try {
-                const response = await fetch('http://localhost:5000/upload/like', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    },
-                    body: JSON.stringify({ postId })
-                });
+              const response = await fetch('http://localhost:5000/upload/like', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ postId })
+              });
 
-                if (!response.ok) {
-                    const errorData = await response.json();
-                    console.error('Error toggling like:', errorData);
-                    return;
-                }
+              if (!response.ok) {
+                const errorData = await response.json();
+                console.error('Error toggling like:', errorData);
+                return;
+              }
 
-                const result = await response.json();
-                const likeText = ` Like (${result.likes})`;
-                button.lastChild.textContent = likeText;
+              const result = await response.json();
+              const likeText = ` Like (${result.likes})`;
+              button.lastChild.textContent = likeText;
 
-                // Toggle the 'liked' class based on whether user is in likes array
-                const base64Url = token.split('.')[1];
-                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-                const decodedToken = JSON.parse(atob(base64));
-                const currentUsername = decodedToken.username;
+              // Toggle the 'liked' class based on whether user is in likes array
+              const base64Url = token.split('.')[1];
+              const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+              const decodedToken = JSON.parse(atob(base64));
+              const currentUsername = decodedToken.username;
 
-                // If button has 'liked' class, remove it; otherwise, add it
-                button.classList.toggle('liked');
+              // If button has 'liked' class, remove it; otherwise, add it
+              button.classList.toggle('liked');
             } catch (error) {
-                console.error('Error:', error);
+              console.error('Error:', error);
             }
           });
 
@@ -984,10 +1029,10 @@
             if (commentBox.style.display === 'none') {
               commentBox.style.display = 'block';
               inputField.focus();
-              
+
               // Clear existing comments
               commentsContainer.innerHTML = '';
-              
+
               // Display comments with profile pictures
               for (const comment of comments) {
                 try {
@@ -996,19 +1041,34 @@
                       'Authorization': `Bearer ${token}`
                     }
                   });
-                  
+
                   const profileData = await profilePicResponse.json();
                   const profilePicUrl = profileData.profilePicture || '/uploads/profile-pictures/profileplaceholder.png';
 
                   const commentDiv = document.createElement('div');
                   commentDiv.classList.add('comment');
                   commentDiv.innerHTML = `
-                    <div class="comment-header">
-                      <img src="http://localhost:5000${profilePicUrl}" class="comment-profile-pic" alt="Profile">
-                      <span class="username">${comment.username}</span>
-                    </div>
-                    <span class="userComment">${comment.commentText}</span>
-                  `;
+                    <div style="display: flex; justify-content: space-between; align-items: center;">
+    <div>
+      <div class="comment-header">
+        <img src="http://localhost:5000${profilePicUrl}" class="comment-profile-pic" alt="Profile">
+        <span class="username">${comment.username}</span>
+      </div>
+      <span class="userComment">${comment.commentText}</span>
+    </div>
+    <div class="comment-actions">
+      <button class="comment-like-button" style="background: none; border: none; color: #555555; cursor: pointer;">
+        <i class="fa fa-thumbs-up" style="font-size: 22px; color: #aaaaaa;"></i>
+        <span class="like-count" style="color: #aaaaaa;">0</span>
+      </button>
+      ${comment.username === currentUsername ?
+                      `<button class="unfriend-button" style="background: none; border: none; color: #555555; cursor: pointer;">
+          <i class="fa fa-trash"></i>
+        </button>`
+                      : ''}
+    </div>
+  </div>
+`;
                   commentsContainer.appendChild(commentDiv);
                 } catch (error) {
                   console.error('Error fetching profile picture:', error);
@@ -1022,69 +1082,84 @@
           button3.addEventListener('click', async () => {
             const commentText = inputField.value.trim();
             if (!commentText) {
-                alert('Please enter a comment before submitting.');
-                return;
+              alert('Please enter a comment before submitting.');
+              return;
             }
 
             const token = localStorage.getItem('authToken');
             const postId = _id; // Use the image ID from the current post
 
             try {
-                const response = await fetch('http://localhost:5000/upload/comment', {
-                    method: 'POST',
-                    headers: {
-                        'Content-Type': 'application/json',
-                        'Authorization': `Bearer ${token}`
-                    },
-                    body: JSON.stringify({ postId, commentText })
+              const response = await fetch('http://localhost:5000/upload/comment', {
+                method: 'POST',
+                headers: {
+                  'Content-Type': 'application/json',
+                  'Authorization': `Bearer ${token}`
+                },
+                body: JSON.stringify({ postId, commentText })
+              });
+
+              if (response.ok) {
+                const result = await response.json();
+                inputField.value = ''; // Clear the input field on success
+
+                // Get current username from token
+                const base64Url = token.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const decodedToken = JSON.parse(atob(base64));
+                const currentUsername = decodedToken.username;
+
+                // Fetch user profile picture
+                const profilePicResponse = await fetch(`http://localhost:5000/users/profile-picture/${currentUsername}`, {
+                  headers: {
+                    'Authorization': `Bearer ${token}`
+                  }
                 });
 
-                if (response.ok) {
-                    const result = await response.json();
-                    inputField.value = ''; // Clear the input field on success
+                const profileData = await profilePicResponse.json();
+                const profilePicUrl = profileData.profilePicture || '/uploads/profile-pictures/profileplaceholder.png';
 
-                    // Get current username from token
-                    const base64Url = token.split('.')[1];
-                    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-                    const decodedToken = JSON.parse(atob(base64));
-                    const currentUsername = decodedToken.username;
+                // Create the new comment div
+                const commentDiv = document.createElement('div');
+                commentDiv.classList.add('comment');
+                commentDiv.innerHTML = `
+  <div style="display: flex; justify-content: space-between; align-items: center;">
+    <div>
+      <div class="comment-header">
+        <img src="http://localhost:5000${profilePicUrl}" class="comment-profile-pic" alt="Profile">
+        <span class="username">${currentUsername}</span>
+      </div>
+      <span class="userComment">${commentText}</span>
+    </div>
+    <div class="comment-actions">
+      <button class="comment-like-button" style="background: none; border: none; color: #555555; cursor: pointer;">
+        <i class="fa fa-thumbs-up" style="font-size: 22px; color: #aaaaaa;"></i>
+        <span class="like-count" style="color: #aaaaaa;">0</span>
+      </button>
+      ${currentUsername === currentUsername ?
+        `<button class="unfriend-button" style="background: none; border: none; color: #555555; cursor: pointer;">
+          <i class="fa fa-trash"></i>
+        </button>`
+      : ''}
+    </div>
+  </div>
+`;
 
-                    // Fetch user profile picture
-                    const profilePicResponse = await fetch(`http://localhost:5000/users/profile-picture/${currentUsername}`, {
-                        headers: {
-                            'Authorization': `Bearer ${token}`
-                        }
-                    });
-                    
-                    const profileData = await profilePicResponse.json();
-                    const profilePicUrl = profileData.profilePicture || '/uploads/profile-pictures/profileplaceholder.png';
+                // Insert at the beginning of the comments container
+                commentsContainer.insertBefore(commentDiv, commentsContainer.firstChild);
 
-                    // Create the new comment div
-                    const commentDiv = document.createElement('div');
-                    commentDiv.classList.add('comment');
-                    commentDiv.innerHTML = `
-                        <div class="comment-header">
-                            <img src="http://localhost:5000${profilePicUrl}" class="comment-profile-pic" alt="Profile">
-                            <span class="username">${currentUsername}</span>
-                        </div>
-                        <span class="userComment">${commentText}</span>
-                    `;
-                    
-                    // Insert at the beginning of the comments container
-                    commentsContainer.insertBefore(commentDiv, commentsContainer.firstChild);
+                // Update the comments count in the button
+                const currentCount = parseInt(button2.textContent.match(/\d+/)[0]);
+                button2.lastChild.textContent = ` Comments (${currentCount + 1})`;
 
-                    // Update the comments count in the button
-                    const currentCount = parseInt(button2.textContent.match(/\d+/)[0]);
-                    button2.lastChild.textContent = ` Comments (${currentCount + 1})`;
-
-                    // Add this line to update the comments array
-                    comments.unshift({ username: currentUsername, commentText: commentText });
-                } else {
-                    const errorData = await response.json();
-                    console.error('Error adding comment:', errorData);
-                }
+                // Add this line to update the comments array
+                comments.unshift({ username: currentUsername, commentText: commentText });
+              } else {
+                const errorData = await response.json();
+                console.error('Error adding comment:', errorData);
+              }
             } catch (error) {
-                console.error('Error:', error);
+              console.error('Error:', error);
             }
           });
 
@@ -1650,7 +1725,7 @@
             chatButton.classList.add('fas', 'fa-comment');
             chatButton.classList.add('chatButton');
             chatButton.title = 'Chat';
-            
+
             // Add click event listener with error handling
             chatButton.addEventListener('click', () => {
               console.log('Chat button clicked for:', friend.username);
@@ -1693,79 +1768,79 @@
 
     // Update the openChat function to load chat history
     async function openChat(username) {
-        console.log('Opening chat for:', username);
-        const chatModal = document.getElementById('chatModal');
-        const chatUsername = document.querySelector('.chat-username');
-        const chatMessages = document.querySelector('.chat-messages');
-        const chatProfilePicture = document.querySelector('.chat-profile-picture');
-        
-        if (!chatModal || !chatUsername || !chatMessages) {
-            console.error('Chat modal elements not found');
-            return;
-        }
-        
-        currentChatPartner = username;
-        chatUsername.textContent = username;
-        chatMessages.innerHTML = '';
-        
-        // Update profile picture
-        if (chatProfilePicture) {
-            const token = localStorage.getItem('authToken');
-            try {
-                const response = await fetch('http://localhost:5000/users/friends', {
-                    method: 'GET',
-                    headers: {
-                        'Authorization': `Bearer ${token}`,
-                        'Content-Type': 'application/json',
-                    },
-                });
+      console.log('Opening chat for:', username);
+      const chatModal = document.getElementById('chatModal');
+      const chatUsername = document.querySelector('.chat-username');
+      const chatMessages = document.querySelector('.chat-messages');
+      const chatProfilePicture = document.querySelector('.chat-profile-picture');
 
-                if (response.ok) {
-                    const friends = await response.json();
-                    const friend = friends.find(f => f.username === username);
-                    if (friend && friend.profilePicture && friend.profilePicture !== '/uploads/profile-pictures/profileplaceholder.png') {
-                        chatProfilePicture.src = `http://localhost:5000/uploads/profile-pictures/${friend.profilePicture}`;
-                    } else {
-                        chatProfilePicture.src = `http://localhost:5000/uploads/profile-pictures/profileplaceholder.png`;
-                    }
-                }
-            } catch (error) {
-                console.error('Error loading friend profile picture:', error);
-                chatProfilePicture.src = `http://localhost:5000/uploads/profile-pictures/profileplaceholder.png`;
-            }
-        }
-        
-        // Load chat history
+      if (!chatModal || !chatUsername || !chatMessages) {
+        console.error('Chat modal elements not found');
+        return;
+      }
+
+      currentChatPartner = username;
+      chatUsername.textContent = username;
+      chatMessages.innerHTML = '';
+
+      // Update profile picture
+      if (chatProfilePicture) {
+        const token = localStorage.getItem('authToken');
         try {
-            const token = localStorage.getItem('authToken');
-            const base64Url = token.split('.')[1];
-            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-            const decodedToken = JSON.parse(atob(base64));
-            const currentUsername = decodedToken.username;
+          const response = await fetch('http://localhost:5000/users/friends', {
+            method: 'GET',
+            headers: {
+              'Authorization': `Bearer ${token}`,
+              'Content-Type': 'application/json',
+            },
+          });
 
-            const response = await fetch('http://localhost:5000/messages/history', {
-                method: 'POST',
-                headers: {
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify({
-                    user1: currentUsername,
-                    user2: username
-                })
-            });
-
-            if (response.ok) {
-                const messages = await response.json();
-                messages.forEach(msg => {
-                    const messageType = msg.from === currentUsername ? 'sent' : 'received';
-                    displayMessage(msg.content, messageType);
-                });
+          if (response.ok) {
+            const friends = await response.json();
+            const friend = friends.find(f => f.username === username);
+            if (friend && friend.profilePicture && friend.profilePicture !== '/uploads/profile-pictures/profileplaceholder.png') {
+              chatProfilePicture.src = `http://localhost:5000/uploads/profile-pictures/${friend.profilePicture}`;
+            } else {
+              chatProfilePicture.src = `http://localhost:5000/uploads/profile-pictures/profileplaceholder.png`;
             }
+          }
         } catch (error) {
-            console.error('Error loading chat history:', error);
+          console.error('Error loading friend profile picture:', error);
+          chatProfilePicture.src = `http://localhost:5000/uploads/profile-pictures/profileplaceholder.png`;
         }
-        
-        chatModal.style.display = 'block';
+      }
+
+      // Load chat history
+      try {
+        const token = localStorage.getItem('authToken');
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const decodedToken = JSON.parse(atob(base64));
+        const currentUsername = decodedToken.username;
+
+        const response = await fetch('http://localhost:5000/messages/history', {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            user1: currentUsername,
+            user2: username
+          })
+        });
+
+        if (response.ok) {
+          const messages = await response.json();
+          messages.forEach(msg => {
+            const messageType = msg.from === currentUsername ? 'sent' : 'received';
+            displayMessage(msg.content, messageType);
+          });
+        }
+      } catch (error) {
+        console.error('Error loading chat history:', error);
+      }
+
+      chatModal.style.display = 'block';
     }
 
     function displayMessage(message, type) {
@@ -1774,7 +1849,7 @@
       messageElement.classList.add('chat-message', `message-${type}`);
       messageElement.textContent = message;
       chatMessages.appendChild(messageElement);
-      
+
       // Scroll to bottom
       chatMessages.scrollTop = chatMessages.scrollHeight;
     }
@@ -1784,7 +1859,7 @@
       if (!input) return;
 
       const message = input.value.trim();
-      
+
       if (message && socket && currentChatPartner) {
         // Get current user's username from token
         const token = localStorage.getItem('authToken');
@@ -1802,7 +1877,7 @@
 
         // Display message in sender's chat
         displayMessage(message, 'sent');
-        
+
         // Clear input after sending
         input.value = '';
       }
@@ -1843,21 +1918,21 @@
 
     // Add this function to show/hide a loading indicator
     function setLoadingState(isLoading) {
-        const chatMessages = document.querySelector('.chat-messages');
-        if (isLoading) {
-            const loadingDiv = document.createElement('div');
-            loadingDiv.id = 'chat-loading';
-            loadingDiv.textContent = 'Loading messages...';
-            loadingDiv.style.textAlign = 'center';
-            loadingDiv.style.padding = '10px';
-            loadingDiv.style.color = '#aaaaaa';
-            chatMessages.appendChild(loadingDiv);
-        } else {
-            const loadingDiv = document.getElementById('chat-loading');
-            if (loadingDiv) {
-                loadingDiv.remove();
-            }
+      const chatMessages = document.querySelector('.chat-messages');
+      if (isLoading) {
+        const loadingDiv = document.createElement('div');
+        loadingDiv.id = 'chat-loading';
+        loadingDiv.textContent = 'Loading messages...';
+        loadingDiv.style.textAlign = 'center';
+        loadingDiv.style.padding = '10px';
+        loadingDiv.style.color = '#aaaaaa';
+        chatMessages.appendChild(loadingDiv);
+      } else {
+        const loadingDiv = document.getElementById('chat-loading');
+        if (loadingDiv) {
+          loadingDiv.remove();
         }
+      }
     }
 
     let socket;
@@ -1865,255 +1940,255 @@
 
     // Initialize socket when user logs in
     function initializeSocket() {
-        const token = localStorage.getItem('authToken');
-        if (!token) return;
+      const token = localStorage.getItem('authToken');
+      if (!token) return;
 
+      const base64Url = token.split('.')[1];
+      const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+      const decodedToken = JSON.parse(atob(base64));
+      const currentUsername = decodedToken.username;
+
+      socket = io('http://localhost:5000');
+      socket.emit('user_connected', currentUsername);
+
+      socket.on('private_message', ({ from, message }) => {
+        if (from === currentChatPartner) {
+          displayMessage(message, 'received');
+        }
+      });
+    }
+
+    function displayMessage(message, type) {
+      const chatMessages = document.querySelector('.chat-messages');
+      const messageElement = document.createElement('div');
+      messageElement.classList.add('chat-message', `message-${type}`);
+      messageElement.textContent = message;
+      chatMessages.appendChild(messageElement);
+      chatMessages.scrollTop = chatMessages.scrollHeight;
+    }
+
+    function sendMessage() {
+      const input = document.getElementById('chatInput');
+      if (!input) return;
+
+      const message = input.value.trim();
+
+      if (message && currentChatPartner) {
+        const token = localStorage.getItem('authToken');
         const base64Url = token.split('.')[1];
         const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
         const decodedToken = JSON.parse(atob(base64));
         const currentUsername = decodedToken.username;
 
-        socket = io('http://localhost:5000');
-        socket.emit('user_connected', currentUsername);
-
-        socket.on('private_message', ({ from, message }) => {
-            if (from === currentChatPartner) {
-                displayMessage(message, 'received');
-            }
+        socket.emit('private_message', {
+          to: currentChatPartner,
+          from: currentUsername,
+          message: message
         });
-    }
 
-    function displayMessage(message, type) {
-        const chatMessages = document.querySelector('.chat-messages');
-        const messageElement = document.createElement('div');
-        messageElement.classList.add('chat-message', `message-${type}`);
-        messageElement.textContent = message;
-        chatMessages.appendChild(messageElement);
-        chatMessages.scrollTop = chatMessages.scrollHeight;
-    }
-
-    function sendMessage() {
-        const input = document.getElementById('chatInput');
-        if (!input) return;
-
-        const message = input.value.trim();
-        
-        if (message && currentChatPartner) {
-            const token = localStorage.getItem('authToken');
-            const base64Url = token.split('.')[1];
-            const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-            const decodedToken = JSON.parse(atob(base64));
-            const currentUsername = decodedToken.username;
-
-            socket.emit('private_message', {
-                to: currentChatPartner,
-                from: currentUsername,
-                message: message
-            });
-
-            displayMessage(message, 'sent');
-            input.value = '';
-        }
+        displayMessage(message, 'sent');
+        input.value = '';
+      }
     }
 
     // Event Listeners
     document.addEventListener('DOMContentLoaded', () => {
-        if (localStorage.getItem('authToken')) {
-            initializeSocket();
-        }
+      if (localStorage.getItem('authToken')) {
+        initializeSocket();
+      }
 
-        const closeChat = document.querySelector('.close-chat');
-        if (closeChat) {
-            closeChat.addEventListener('click', () => {
-                const chatModal = document.getElementById('chatModal');
-                if (chatModal) {
-                    chatModal.style.display = 'none';
-                    currentChatPartner = null;
-                }
-            });
-        }
+      const closeChat = document.querySelector('.close-chat');
+      if (closeChat) {
+        closeChat.addEventListener('click', () => {
+          const chatModal = document.getElementById('chatModal');
+          if (chatModal) {
+            chatModal.style.display = 'none';
+            currentChatPartner = null;
+          }
+        });
+      }
 
-        const sendButton = document.getElementById('sendMessage');
-        const chatInput = document.getElementById('chatInput');
+      const sendButton = document.getElementById('sendMessage');
+      const chatInput = document.getElementById('chatInput');
 
-        if (sendButton && chatInput) {
-            sendButton.addEventListener('click', sendMessage);
-            chatInput.addEventListener('keypress', (e) => {
-                if (e.key === 'Enter') {
-                    e.preventDefault();
-                    sendMessage();
-                }
-            });
-        }
+      if (sendButton && chatInput) {
+        sendButton.addEventListener('click', sendMessage);
+        chatInput.addEventListener('keypress', (e) => {
+          if (e.key === 'Enter') {
+            e.preventDefault();
+            sendMessage();
+          }
+        });
+      }
     });
 
     // Add this after your existing chat-related code
     function makeDraggable() {
-        const chatModal = document.getElementById('chatModal');
-        const dragHandle = document.getElementById('chatDragHandle');
-        let isDragging = false;
-        let currentX;
-        let currentY;
-        let initialX;
-        let initialY;
-        let xOffset = 0;
-        let yOffset = 0;
+      const chatModal = document.getElementById('chatModal');
+      const dragHandle = document.getElementById('chatDragHandle');
+      let isDragging = false;
+      let currentX;
+      let currentY;
+      let initialX;
+      let initialY;
+      let xOffset = 0;
+      let yOffset = 0;
 
-        dragHandle.addEventListener('mousedown', dragStart);
-        document.addEventListener('mousemove', drag);
-        document.addEventListener('mouseup', dragEnd);
+      dragHandle.addEventListener('mousedown', dragStart);
+      document.addEventListener('mousemove', drag);
+      document.addEventListener('mouseup', dragEnd);
 
-        function dragStart(e) {
-            initialX = e.clientX - xOffset;
-            initialY = e.clientY - yOffset;
+      function dragStart(e) {
+        initialX = e.clientX - xOffset;
+        initialY = e.clientY - yOffset;
 
-            if (e.target === dragHandle || dragHandle.contains(e.target)) {
-                isDragging = true;
-                dragHandle.style.cursor = 'grabbing';
-            }
+        if (e.target === dragHandle || dragHandle.contains(e.target)) {
+          isDragging = true;
+          dragHandle.style.cursor = 'grabbing';
         }
+      }
 
-        function drag(e) {
-            if (isDragging) {
-                e.preventDefault();
-                currentX = e.clientX - initialX;
-                currentY = e.clientY - initialY;
+      function drag(e) {
+        if (isDragging) {
+          e.preventDefault();
+          currentX = e.clientX - initialX;
+          currentY = e.clientY - initialY;
 
-                xOffset = currentX;
-                yOffset = currentY;
+          xOffset = currentX;
+          yOffset = currentY;
 
-                setTranslate(currentX, currentY, chatModal);
-            }
+          setTranslate(currentX, currentY, chatModal);
         }
+      }
 
-        function dragEnd() {
-            initialX = currentX;
-            initialY = currentY;
-            isDragging = false;
-            dragHandle.style.cursor = 'grab';
-        }
+      function dragEnd() {
+        initialX = currentX;
+        initialY = currentY;
+        isDragging = false;
+        dragHandle.style.cursor = 'grab';
+      }
 
-        function setTranslate(xPos, yPos, el) {
-            el.style.transform = `translate(${xPos}px, ${yPos}px)`;
-        }
+      function setTranslate(xPos, yPos, el) {
+        el.style.transform = `translate(${xPos}px, ${yPos}px)`;
+      }
     }
 
     // Call this when the chat modal is opened
     document.addEventListener('DOMContentLoaded', () => {
-        makeDraggable();
+      makeDraggable();
     });
-    
-    async function unfriendFriend(friend) {
-    if (!confirm(`Are you sure you want to remove ${friend.username} from your friends list?`)) {
-        return;
-    }
 
-    const token = localStorage.getItem('authToken');
-    try {
+    async function unfriendFriend(friend) {
+      if (!confirm(`Are you sure you want to remove ${friend.username} from your friends list?`)) {
+        return;
+      }
+
+      const token = localStorage.getItem('authToken');
+      try {
         const response = await fetch('http://localhost:5000/users/remove-friend', {
-            method: 'POST',
-            headers: {
-                'Content-Type': 'application/json',
-                'Authorization': `Bearer ${token}`
-            },
-            body: JSON.stringify({ username: friend.username })
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+          },
+          body: JSON.stringify({ username: friend.username })
         });
 
         if (response.ok) {
-            alert(`${friend.username} has been removed from your friends list.`);
-            // Refresh the friends list
-            loadFriendsList();
-            // Reload posts to filter out removed friend's content
-            loadImages();
+          alert(`${friend.username} has been removed from your friends list.`);
+          // Refresh the friends list
+          loadFriendsList();
+          // Reload posts to filter out removed friend's content
+          loadImages();
         } else {
-            const error = await response.json();
-            alert(error.message || 'Failed to remove friend');
+          const error = await response.json();
+          alert(error.message || 'Failed to remove friend');
         }
-    } catch (error) {
+      } catch (error) {
         console.error('Error removing friend:', error);
         alert('An error occurred while removing friend');
-    }
-}
-
-async function loadUserPosts() {
-  try {
-    const token = localStorage.getItem('authToken');
-    if (!token) return;
-
-    // Get current username from token
-    const base64Url = token.split('.')[1];
-    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
-    const decodedToken = JSON.parse(atob(base64));
-    const currentUsername = decodedToken.username;
-
-    const response = await fetch('http://localhost:5000/upload/user-posts', {
-      headers: {
-        'Authorization': `Bearer ${token}`
       }
-    });
-
-    if (!response.ok) throw new Error('Failed to fetch user posts');
-
-    const posts = await response.json();
-    const userPostsContainer = document.getElementById('userPostsContainer');
-    userPostsContainer.innerHTML = '';
-
-    if (posts.length === 0) {
-      userPostsContainer.innerHTML = '<p style="padding: 20px; color: #ededed;">You haven\'t shared any posts yet.</p>';
-      return;
     }
 
-    // Use the same structure as mainContainer posts
-    posts.reverse().forEach(post => {
-      const { _id, imageUrl, comments, likes } = post;
+    async function loadUserPosts() {
+      try {
+        const token = localStorage.getItem('authToken');
+        if (!token) return;
 
-      // Create containers (same as your mainContainer structure)
-      const upperContainer = document.createElement('div');
-      upperContainer.classList.add('uploaded-image-container', 'no-lines', 'upperContainer');
-      upperContainer.innerHTML = `<span id="submittedBySpan"><i class="fa-solid fa-camera"></i> ${currentUsername}</span>`;
-      
-      const container = document.createElement('div');
-      container.classList.add('uploaded-image-container', 'with-lines');
-      container.style.padding = "20px";
+        // Get current username from token
+        const base64Url = token.split('.')[1];
+        const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+        const decodedToken = JSON.parse(atob(base64));
+        const currentUsername = decodedToken.username;
 
-      // Add image
-      const img = document.createElement('img');
-      img.src = `http://localhost:5000/${imageUrl}`;
-      img.alt = "Uploaded Image";
-      img.classList.add('uploaded-image');
-      container.appendChild(img);
+        const response = await fetch('http://localhost:5000/upload/user-posts', {
+          headers: {
+            'Authorization': `Bearer ${token}`
+          }
+        });
 
-      // Create interaction container
-      const newContainer = document.createElement('div');
-      newContainer.classList.add('uploaded-image-container', 'no-lines');
-      newContainer.style.padding = '10px';
-      newContainer.style.marginBottom = '30px';
-      newContainer.style.backgroundColor = '#fafafa';
+        if (!response.ok) throw new Error('Failed to fetch user posts');
 
-      // Add like and comment buttons (same as main page)
-      // ... (copy your existing button creation code)
+        const posts = await response.json();
+        const userPostsContainer = document.getElementById('userPostsContainer');
+        userPostsContainer.innerHTML = '';
 
-      // Append everything
-      userPostsContainer.appendChild(upperContainer);
-      userPostsContainer.appendChild(container);
-      userPostsContainer.appendChild(newContainer);
+        if (posts.length === 0) {
+          userPostsContainer.innerHTML = '<p style="padding: 20px; color: #ededed;">You haven\'t shared any posts yet.</p>';
+          return;
+        }
 
-      // Add your existing event listeners for likes and comments
-      // ... (copy your existing event listeners)
+        // Use the same structure as mainContainer posts
+        posts.reverse().forEach(post => {
+          const { _id, imageUrl, comments, likes } = post;
+
+          // Create containers (same as your mainContainer structure)
+          const upperContainer = document.createElement('div');
+          upperContainer.classList.add('uploaded-image-container', 'no-lines', 'upperContainer');
+          upperContainer.innerHTML = `<span id="submittedBySpan"><i class="fa-solid fa-camera"></i> ${currentUsername}</span>`;
+
+          const container = document.createElement('div');
+          container.classList.add('uploaded-image-container', 'with-lines');
+          container.style.padding = "20px";
+
+          // Add image
+          const img = document.createElement('img');
+          img.src = `http://localhost:5000/${imageUrl}`;
+          img.alt = "Uploaded Image";
+          img.classList.add('uploaded-image');
+          container.appendChild(img);
+
+          // Create interaction container
+          const newContainer = document.createElement('div');
+          newContainer.classList.add('uploaded-image-container', 'no-lines');
+          newContainer.style.padding = '10px';
+          newContainer.style.marginBottom = '30px';
+          newContainer.style.backgroundColor = '#fafafa';
+
+          // Add like and comment buttons (same as main page)
+          // ... (copy your existing button creation code)
+
+          // Append everything
+          userPostsContainer.appendChild(upperContainer);
+          userPostsContainer.appendChild(container);
+          userPostsContainer.appendChild(newContainer);
+
+          // Add your existing event listeners for likes and comments
+          // ... (copy your existing event listeners)
+        });
+
+      } catch (error) {
+        console.error('Error loading user posts:', error);
+        document.getElementById('userPostsContainer').innerHTML =
+          '<p style="padding: 20px; color: #ededed;">Error loading your posts. Please try again later.</p>';
+      }
+    }
+
+    // Add this to your profile page click handler
+    document.getElementById('profileDropdown').addEventListener('click', function () {
+      // ... existing profile page display logic ...
+      loadUserPosts(); // Load user's posts when profile page is opened
     });
-
-  } catch (error) {
-    console.error('Error loading user posts:', error);
-    document.getElementById('userPostsContainer').innerHTML = 
-      '<p style="padding: 20px; color: #ededed;">Error loading your posts. Please try again later.</p>';
-  }
-}
-
-// Add this to your profile page click handler
-document.getElementById('profileDropdown').addEventListener('click', function() {
-  // ... existing profile page display logic ...
-  loadUserPosts(); // Load user's posts when profile page is opened
-});
 
   </script>
 
