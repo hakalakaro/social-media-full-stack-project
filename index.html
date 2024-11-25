@@ -293,7 +293,9 @@
               </div>
             </div>
             <div id="profileSettings">
-
+              <div id="userPostsContainer" style="width: 100%; height: 100%; overflow-y: auto;">
+                <!-- Posts will be dynamically populated here -->
+              </div> 
             </div>
             <div id="profileSettings2">
               <div class="settings-section">
@@ -836,8 +838,11 @@
           const button = document.createElement('button');
           const button2 = document.createElement('button');
           const button3 = document.createElement('button');
-
+          const isLiked = likes.includes(currentUsername);
           button.classList.add('like-button'); // Add custom class for styling if needed
+          if (isLiked) {
+    button.classList.add('liked');  // Add CSS class for liked state
+}
           button.id = `like-button-${_id}`;
           button2.classList.add('like-button');
           button3.classList.add('like-button', 'postComment');
@@ -938,31 +943,38 @@
 
           button.addEventListener('click', async () => {
             const token = localStorage.getItem('authToken');
-            const postId = _id; // Use the image ID from the current post
+            const postId = _id;
 
             try {
-              const response = await fetch('http://localhost:5000/upload/like', {
-                method: 'POST',
-                headers: {
-                  'Content-Type': 'application/json',
-                  'Authorization': `Bearer ${token}`
-                },
-                body: JSON.stringify({ postId })
-              });
-              if (!response.ok) {
-                const errorData = await response.json();
-                console.error('Error toggling like:', errorData);
-                return;
-              }
+                const response = await fetch('http://localhost:5000/upload/like', {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        'Authorization': `Bearer ${token}`
+                    },
+                    body: JSON.stringify({ postId })
+                });
 
-              const result = await response.json();  // Parse as JSON directly
-              const likeText = ` Like (${result.likes})`;  // This is just the text part
+                if (!response.ok) {
+                    const errorData = await response.json();
+                    console.error('Error toggling like:', errorData);
+                    return;
+                }
 
-              // Update only the text content while preserving the icon
-              button.lastChild.textContent = likeText;
+                const result = await response.json();
+                const likeText = ` Like (${result.likes})`;
+                button.lastChild.textContent = likeText;
 
+                // Toggle the 'liked' class based on whether user is in likes array
+                const base64Url = token.split('.')[1];
+                const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+                const decodedToken = JSON.parse(atob(base64));
+                const currentUsername = decodedToken.username;
+
+                // If button has 'liked' class, remove it; otherwise, add it
+                button.classList.toggle('liked');
             } catch (error) {
-              console.error('Error:', error);
+                console.error('Error:', error);
             }
           });
 
@@ -1456,6 +1468,8 @@
         if (response.ok) {
           alert('Friend request accepted!');
           fetchFriendRequests(); // Refresh the list
+          loadFriendsList();
+          loadImages();
         } else {
           alert(result.message);
         }
@@ -1988,6 +2002,118 @@
     document.addEventListener('DOMContentLoaded', () => {
         makeDraggable();
     });
+    
+    async function unfriendFriend(friend) {
+    if (!confirm(`Are you sure you want to remove ${friend.username} from your friends list?`)) {
+        return;
+    }
+
+    const token = localStorage.getItem('authToken');
+    try {
+        const response = await fetch('http://localhost:5000/users/remove-friend', {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                'Authorization': `Bearer ${token}`
+            },
+            body: JSON.stringify({ username: friend.username })
+        });
+
+        if (response.ok) {
+            alert(`${friend.username} has been removed from your friends list.`);
+            // Refresh the friends list
+            loadFriendsList();
+            // Reload posts to filter out removed friend's content
+            loadImages();
+        } else {
+            const error = await response.json();
+            alert(error.message || 'Failed to remove friend');
+        }
+    } catch (error) {
+        console.error('Error removing friend:', error);
+        alert('An error occurred while removing friend');
+    }
+}
+
+async function loadUserPosts() {
+  try {
+    const token = localStorage.getItem('authToken');
+    if (!token) return;
+
+    // Get current username from token
+    const base64Url = token.split('.')[1];
+    const base64 = base64Url.replace(/-/g, '+').replace(/_/g, '/');
+    const decodedToken = JSON.parse(atob(base64));
+    const currentUsername = decodedToken.username;
+
+    const response = await fetch('http://localhost:5000/upload/user-posts', {
+      headers: {
+        'Authorization': `Bearer ${token}`
+      }
+    });
+
+    if (!response.ok) throw new Error('Failed to fetch user posts');
+
+    const posts = await response.json();
+    const userPostsContainer = document.getElementById('userPostsContainer');
+    userPostsContainer.innerHTML = '';
+
+    if (posts.length === 0) {
+      userPostsContainer.innerHTML = '<p style="padding: 20px; color: #ededed;">You haven\'t shared any posts yet.</p>';
+      return;
+    }
+
+    // Use the same structure as mainContainer posts
+    posts.reverse().forEach(post => {
+      const { _id, imageUrl, comments, likes } = post;
+
+      // Create containers (same as your mainContainer structure)
+      const upperContainer = document.createElement('div');
+      upperContainer.classList.add('uploaded-image-container', 'no-lines', 'upperContainer');
+      upperContainer.innerHTML = `<span id="submittedBySpan"><i class="fa-solid fa-camera"></i> ${currentUsername}</span>`;
+      
+      const container = document.createElement('div');
+      container.classList.add('uploaded-image-container', 'with-lines');
+      container.style.padding = "20px";
+
+      // Add image
+      const img = document.createElement('img');
+      img.src = `http://localhost:5000/${imageUrl}`;
+      img.alt = "Uploaded Image";
+      img.classList.add('uploaded-image');
+      container.appendChild(img);
+
+      // Create interaction container
+      const newContainer = document.createElement('div');
+      newContainer.classList.add('uploaded-image-container', 'no-lines');
+      newContainer.style.padding = '10px';
+      newContainer.style.marginBottom = '30px';
+      newContainer.style.backgroundColor = '#fafafa';
+
+      // Add like and comment buttons (same as main page)
+      // ... (copy your existing button creation code)
+
+      // Append everything
+      userPostsContainer.appendChild(upperContainer);
+      userPostsContainer.appendChild(container);
+      userPostsContainer.appendChild(newContainer);
+
+      // Add your existing event listeners for likes and comments
+      // ... (copy your existing event listeners)
+    });
+
+  } catch (error) {
+    console.error('Error loading user posts:', error);
+    document.getElementById('userPostsContainer').innerHTML = 
+      '<p style="padding: 20px; color: #ededed;">Error loading your posts. Please try again later.</p>';
+  }
+}
+
+// Add this to your profile page click handler
+document.getElementById('profileDropdown').addEventListener('click', function() {
+  // ... existing profile page display logic ...
+  loadUserPosts(); // Load user's posts when profile page is opened
+});
 
   </script>
 

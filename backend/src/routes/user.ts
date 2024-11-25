@@ -133,4 +133,52 @@ router.get('/profile-picture/:username', async (req: Request, res: Response) => 
   }
 });
 
+router.post('/remove-friend', async (req: Request, res: Response) => {
+  const { username } = req.body; // Username of friend to remove
+  
+  // Extract the token from the authorization header
+  const token = req.headers.authorization?.split(' ')[1];
+  if (!token) {
+      return res.status(401).json({ message: 'Authentication token missing' });
+  }
+
+  try {
+      // Verify and decode the JWT
+      const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as { username: string };
+      const currentUsername = decoded.username;
+
+      // Prevent removing yourself
+      if (currentUsername === username) {
+          return res.status(400).json({ message: 'You cannot remove yourself from friends' });
+      }
+
+      // Find both users
+      const [currentUser, friendUser] = await Promise.all([
+          User.findOne({ username: currentUsername }),
+          User.findOne({ username })
+      ]);
+
+      if (!currentUser || !friendUser) {
+          return res.status(404).json({ message: 'User not found' });
+      }
+
+      // Check if they are actually friends
+      if (!currentUser.friends.includes(username) || !friendUser.friends.includes(currentUsername)) {
+          return res.status(400).json({ message: 'Users are not friends' });
+      }
+
+      // Remove each user from the other's friends list
+      currentUser.friends = currentUser.friends.filter(friend => friend !== username);
+      friendUser.friends = friendUser.friends.filter(friend => friend !== currentUsername);
+
+      // Save both users
+      await Promise.all([currentUser.save(), friendUser.save()]);
+
+      res.status(200).json({ message: 'Friend removed successfully' });
+  } catch (error) {
+      console.error('Error removing friend:', error);
+      res.status(500).json({ message: 'Internal server error' });
+  }
+});
+
 export default router;

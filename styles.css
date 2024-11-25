@@ -894,6 +894,9 @@ body {
   animation: fadeIn 0.3s ease-in;
   opacity: 1;
 }
+.comment:hover {
+  background: rgba(255, 255, 255, 0.1);
+}
 @keyframes fadeIn {
   from {
       opacity: 0;
@@ -1075,15 +1078,33 @@ body {
 
 #profileSettings {
   position: absolute;
-  top: 39%;
+  top: 25%;
   border: 2px solid #555555;
   border-radius: 5px;
-  height: 59%;
+  height: 73%;
   width: 61%;
   left: 37%;
   display: flex;
 }
+#profileSettings #userPostsContainer {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+}
 
+#profileSettings #userPostsContainer::-webkit-scrollbar {
+  width: 8px;
+}
+
+#profileSettings #userPostsContainer::-webkit-scrollbar-thumb {
+  background-color: #aaa;
+  border-radius: 4px;
+}
+
+#profileSettings #userPostsContainer::-webkit-scrollbar-track {
+  background-color: #2e3236f2;
+}
 #profileSettings2 {
   position: absolute;
   left: 2.5%;
@@ -1816,3 +1837,20 @@ body.night-mode emoji-picker {
     --text-color: #fff;
 }
 
+.like-button.liked {
+  color: #e58e26;  /* Your theme color */
+  /* Could add a subtle animation */
+  transform: scale(1.05);
+  transition: all 0.2s ease;
+  border: 1px solid #e58e26;  /* Your theme orange color */
+    /* Optional: could add subtle glow effect */
+    box-shadow: 0 0 5px rgba(229, 142, 38, 0.3);
+}
+.switchHeader button.active {
+  background-color: rgba(255, 255, 255, 0.1) !important;  /* Similar to your hover effects */
+}
+
+/* Optional: Keep the hover effect for non-active buttons */
+.switchHeader button:hover:not(.active) {
+  background-color: rgba(255, 255, 255, 0.05) !important;
+}
