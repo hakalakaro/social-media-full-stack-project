@@ -9,6 +9,7 @@ import  User  from '../models/User'; // Make sure to import User model
 import { Request, Response } from 'express';
 import jwt, { JwtPayload } from 'jsonwebtoken';
 import { Post } from '../models/post';
+import { deleteComment } from '../controllers/upload';
 const router = express.Router();
 
 // Define POST route for uploading
@@ -40,5 +41,14 @@ router.get('/user-posts', authMiddleware, async (req: Request, res: Response): P
         res.status(500).json({ message: 'Error fetching user posts' });
     }
 });
+
+router.delete('/delete-comment', authMiddleware, async (req, res, next) => {
+    console.log('Delete route hit:', {
+        body: req.body,
+        method: req.method,
+        path: req.path
+    });
+    next();
+}, deleteComment);
 
 export default router;

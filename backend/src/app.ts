@@ -93,8 +93,8 @@ app.use(morgan('dev'));
 // Existing middleware
 app.use(cors({
   origin: '*',
-  methods: ['GET', 'POST'],
-  allowedHeaders: ['Authorization', 'Content-Type']
+  methods: ['GET', 'POST', 'DELETE', 'PUT', 'PATCH'],
+  allowedHeaders: ['Authorization', 'Content-Type', 'Accept']
 }));
 
 app.use(express.json());

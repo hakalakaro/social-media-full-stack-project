@@ -141,6 +141,46 @@ export const addComment = async (req: Request, res: Response): Promise<void> => 
     }
 };
 
+export const deleteComment = async (req: Request, res: Response): Promise<void> => {
+    try {
+        const { postId, commentText } = req.body; // Changed from commentId to commentText
+        const token = req.header('Authorization')?.replace('Bearer ', '');
+
+        if (!token) {
+            res.status(401).json({ message: 'Unauthorized' });
+            return;
+        }
+
+        const decoded = jwt.verify(token, process.env.JWT_SECRET as string) as { username: string };
+        const username = decoded.username;
+
+        const post = await Post.findById(postId);
+        if (!post) {
+            res.status(404).json({ message: 'Post not found' });
+            return;
+        }
+
+        // Find the comment by text and username instead of ID
+        const commentIndex = post.comments.findIndex(
+            (comment: any) => comment.commentText === commentText && comment.username === username
+        );
+
+        if (commentIndex === -1) {
+            res.status(403).json({ message: 'Comment not found or unauthorized to delete' });
+            return;
+        }
+
+        // Remove the comment
+        post.comments.splice(commentIndex, 1);
+        await post.save();
+
+        res.status(200).json({ message: 'Comment deleted successfully' });
+    } catch (error) {
+        console.error('Error deleting comment:', error);
+        res.status(500).json({ message: 'Error deleting comment' });
+    }
+};
+
 // Separate storage configuration for profile pictures
 const profileStorage = multer.diskStorage({
     destination: (req, file, cb) => {

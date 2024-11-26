@@ -138,9 +138,11 @@ body {
 .night-mode .aboutPageHeader .white-text {
   color: #ededed;
 }
+
 .night-mode .white-text {
   color: #ededed;
 }
+
 .night-mode .userComment {
   color: #b3afaf;
 }
@@ -262,7 +264,7 @@ body {
   display: flex;
   flex-direction: column;
   padding: 0;
-  width: 60vh;
+  width: 60%;
   background-color: #fafafa;
   height: 100%;
 }
@@ -299,6 +301,7 @@ body {
 
 /* Media query to further adjust for smaller screens */
 @media (max-width: 768px) {
+
   /* Adjust this value as needed */
   .carousel-inner,
   .carousel-item {
@@ -386,10 +389,12 @@ body {
     height: 100%;
   }
 }
+
 #carouselExampleCaptions {
   animation: fadeIn 0.3s ease-in;
   opacity: 1;
 }
+
 #accountForm {
   background-color: #fafafa;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
@@ -462,7 +467,7 @@ body {
   height: 85vh;
   background-color: #fafafa;
   align-items: center;
-  
+  scroll-behavior: smooth;
   padding-bottom: 0;
 }
 
@@ -482,7 +487,7 @@ body {
 #postContainer {
   background-color: rgba(var(--bs-dark-rgb));
   border: 2px solid #555555;
-  display: flex;
+
   /* Use flexbox layout */
   align-items: center;
   justify-content: start;
@@ -491,7 +496,6 @@ body {
   box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
   border-bottom-left-radius: 0;
   border-bottom-right-radius: 0;
-  border-bottom: none;
 }
 
 #imageShareText {
@@ -714,23 +718,27 @@ body {
   /* Slightly bolder text */
   text-align: center;
   text-decoration: none;
-  
+
   border-radius: 5px;
   /* Rounded corners */
   cursor: pointer;
   transition: background-color 0.3s ease, transform 0.2s ease;
-  
+
   /* Make button width responsive */
   margin-left: 12px;
-  width: auto !important;  /* Remove fixed width */
-    min-width: 120px;  /* Set minimum width */
-     /* Add consistent padding */
-    margin: 5px;
-    
-    display: inline-flex;  /* Use flexbox for icon alignment */
-    align-items: center;
-    justify-content: center;
-    gap: 8px;  /* Space between icon and text */
+  width: auto !important;
+  /* Remove fixed width */
+  min-width: 120px;
+  /* Set minimum width */
+  /* Add consistent padding */
+  margin: 5px;
+
+  display: inline-flex;
+  /* Use flexbox for icon alignment */
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  /* Space between icon and text */
 }
 
 .like-button:hover {
@@ -738,7 +746,6 @@ body {
   /* Darker blue on hover */
   transform: scale(1.05);
   /* Slight zoom effect */
-  
 }
 
 .like-button:focus {
@@ -783,7 +790,7 @@ body {
 .comment-box {
   /* CHECK THIS LATER */
   width: 100%;
-  
+
   padding: 5px 5px;
   padding-bottom: 5px;
   box-sizing: border-box;
@@ -896,19 +903,23 @@ body {
   animation: fadeIn 0.3s ease-in;
   opacity: 1;
 }
+
 .comment:hover {
   background: rgba(255, 255, 255, 0.1);
 }
+
 @keyframes fadeIn {
   from {
-      opacity: 0;
-      transform: translateY(10px);
+    opacity: 0;
+    transform: translateY(10px);
   }
+
   to {
-      opacity: 1;
-      transform: translateY(0);
+    opacity: 1;
+    transform: translateY(0);
   }
 }
+
 .username {
   font-weight: 700;
   text-decoration: none;
@@ -918,7 +929,7 @@ body {
 .userComment {
   text-decoration: none;
   font-size: 15px;
-  font-weight: 500;
+  font-weight: 400;
 }
 
 #friendsListIcon {
@@ -951,7 +962,7 @@ body {
   background-color: #ededed;
   border-radius: 10px;
   margin-top: 20px;
-  display: flex;
+  display: none;
   position: absolute;
   top: 14%;
   padding: 10px;
@@ -960,8 +971,6 @@ body {
   z-index: 1;
   box-shadow: rgba(0, 0, 0, 0.3) 0px 19px 38px,
     rgba(0, 0, 0, 0.22) 0px 15px 12px;
-    animation: fadeIn 0.3s ease-in;
-  opacity: 1;
 }
 
 .active-friends-header {
@@ -1088,6 +1097,7 @@ body {
   left: 37%;
   display: flex;
 }
+
 #profileSettings #userPostsContainer {
   display: flex;
   flex-direction: column;
@@ -1107,6 +1117,7 @@ body {
 #profileSettings #userPostsContainer::-webkit-scrollbar-track {
   background-color: #2e3236f2;
 }
+
 #profileSettings2 {
   position: absolute;
   left: 2.5%;
@@ -1132,7 +1143,7 @@ body {
 }
 
 .settings-text {
-  font-weight: 400;
+  font-weight: 500;
   text-decoration: none;
   color: #ededed;
 }
@@ -1159,72 +1170,6 @@ body {
   font-size: 14px;
   width: 50%;
   margin: 0;
-}
-
-#changeProfilePicture {
-  position: relative;
-  padding: 20px;
-  display: flex;
-}
-
-#profilePicText {
-  font-weight: 400;
-  text-decoration: none;
-}
-
-#profilePicButton {
-  position: absolute;
-  display: flex;
-  top: 55px;
-  /* the div */
-  width: 100%;
-  margin-right: 50px;
-  justify-content: center;
-  left: -10px;
-}
-
-#profilePicBtn {
-  /* the button */
-  width: 50%;
-}
-
-#changePassword {
-  position: absolute;
-  display: flex;
-  top: 115px;
-}
-
-#changePasswordText {
-  font-weight: 400;
-  text-decoration: none;
-}
-
-#changePasswordField1 {
-  position: absolute;
-  display: flex;
-  top: 150px;
-  border-radius: 5px;
-}
-
-#changePasswordField2 {
-  position: absolute;
-  display: flex;
-  top: 185px;
-  border-radius: 5px;
-}
-
-#changePasswordButton {
-  position: absolute;
-  display: flex;
-  top: 230px;
-  width: 100%;
-  margin-right: 50px;
-  justify-content: center;
-  left: -10px;
-}
-
-#changePasswordBtn {
-  width: 50%;
 }
 
 #deleteUser {
@@ -1507,7 +1452,7 @@ body {
   cursor: pointer;
   padding: 0;
   /* Remove padding */
-  font-size: 25px;
+  font-size: 20px;
 }
 
 .unfriend-button:hover {
@@ -1722,6 +1667,7 @@ body {
   border-radius: 50%;
   object-fit: cover;
 }
+
 .comment-header {
   display: flex;
   align-items: center;
@@ -1736,117 +1682,121 @@ body {
   object-fit: cover;
 }
 
-
-
 /* Responsive adjustments */
 @media (max-width: 1440px) {
-    .like-button {
-        min-width: 100px;
-        padding: 6px 12px;
-        font-size: 13px;
-    }
+  .like-button {
+    min-width: 100px;
+    padding: 6px 12px;
+    font-size: 13px;
+  }
 
-    /* Adjust icon size if needed */
-    .like-button i {
-        font-size: 14px;
-    }
+  /* Adjust icon size if needed */
+  .like-button i {
+    font-size: 14px;
+  }
 }
 
 /* Even smaller screens */
 @media (max-width: 768px) {
-    .like-button {
-        min-width: 80px;
-        padding: 5px 10px;
-        font-size: 12px;
-    }
+  .like-button {
+    min-width: 80px;
+    padding: 5px 10px;
+    font-size: 12px;
+  }
 }
 
 /* Media query for smaller screens */
 @media (max-width: 1000px) {
-    .row {
-        flex-direction: column;
-    }
+  .row {
+    flex-direction: column;
+  }
 
-    #side2 {
-        display: block !important;
-        width: 100%;
-        height: 41.5%;  /* Back to the working height */
-        order: -1;
-    }
+  #side2 {
+    display: block !important;
+    width: 100%;
+    height: 41.5%;
+    /* Back to the working height */
+    order: -1;
+  }
 
-    .column.middle {
-        width: 100%;
-        height: 41.5%;
-    }
+  .column.middle {
+    width: 100%;
+    height: 41.5%;
+  }
 
-    #side1 {
-        display: none;
-    }
-    #friendsListIcon {
-      bottom: 0;
-    }
-    /* Make friends modal overflow its container */
-    #friendsListModal {
-        position: absolute;
-        height: 300px;
-        width: 80%;
-        max-width: 400px;
-        overflow-y: auto;
-        z-index: 1000;
-        top: 35%;
-        left: 50%;
-        transform: translate(-50%, -50%); 
-    }
-    #friendsListModal::-webkit-scrollbar {
-      width: 4px;
-    }
-    
-    #friendsListModal::-webkit-scrollbar-thumb {
-      background-color: #555555;
-      border-radius: 4px;
-    }
-    
-    #friendsListModal::-webkit-scrollbar-track {
-      background-color: #2e3236f2;
-    }
+  #side1 {
+    display: none;
+  }
+
+  #friendsListIcon {
+    bottom: 0;
+  }
+
+  /* Make friends modal overflow its container */
+  #friendsListModal {
+    position: absolute;
+    height: 300px;
+    width: 80%;
+    max-width: 400px;
+    overflow-y: auto;
+    z-index: 1000;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+  }
+
+  #friendsListModal::-webkit-scrollbar {
+    width: 4px;
+  }
+
+  #friendsListModal::-webkit-scrollbar-thumb {
+    background-color: #555555;
+    border-radius: 4px;
+  }
+
+  #friendsListModal::-webkit-scrollbar-track {
+    background-color: #2e3236f2;
+  }
 }
 
 .comment-input-container {
-    margin: 10px 0;
-    width: 100%;
+  margin: 10px 0;
+  width: 100%;
 }
 
 .comment-input {
-    font-size: 14px;
+  font-size: 14px;
 }
 
 .emoji-button {
-    transition: opacity 0.2s;
+  transition: opacity 0.2s;
 }
 
 .emoji-button:hover {
-    opacity: 0.7;
+  opacity: 0.7;
 }
 
 /* Dark mode support for emoji picker */
 emoji-picker {
-    --background: #fff;
-    --text-color: #000;
+  --background: #fff;
+  --text-color: #000;
 }
 
 body.night-mode emoji-picker {
-    --background: #2b2b2b;
-    --text-color: #fff;
+  --background: #2b2b2b;
+  --text-color: #fff;
 }
 
 .like-button.liked {
-  color: #e58e26;  /* Your theme color */
+  color: #e58e26;
+  /* Your theme color */
   /* Could add a subtle animation */
   transform: scale(1.05);
   transition: all 0.2s ease;
-  border: 1px solid #e58e26;  /* Your theme orange color */
-    /* Optional: could add subtle glow effect */
-    box-shadow: 0 0 5px rgba(229, 142, 38, 0.3);
+  border: 1px solid #e58e26;
+  /* Your theme orange color */
+  /* Optional: could add subtle glow effect */
+  box-shadow: 0 0 5px rgba(229, 142, 38, 0.3);
 }
 
 .like-button.liked i.fa-thumbs-up {
@@ -1855,14 +1805,20 @@ body.night-mode emoji-picker {
 
 .like-button.liked i.fa-heart {
   display: inline-block;
-  color: #e58e26;  /* Your theme orange color */
+  color: #e58e26;
+  /* Your theme orange color */
 }
 
 .like-button i.fa-heart {
   display: none;
 }
+
 .switchHeader button.active {
-  background-color: rgba(255, 255, 255, 0.1) !important;  /* Similar to your hover effects */
+  background-color: rgba(255,
+      255,
+      255,
+      0.1) !important;
+  /* Similar to your hover effects */
 }
 
 /* Optional: Keep the hover effect for non-active buttons */
@@ -1873,16 +1829,19 @@ body.night-mode emoji-picker {
 .comment-like-button:active {
   transform: scale(1.1);
 }
+
 .comment-like-button:hover .fa-thumbs-up {
   color: #e58e26 !important;
   transition: color 0.2s ease;
   cursor: pointer;
   transform: scale(1.1);
 }
+
 .unfriend-button:hover .fa-trash {
   color: #e58e26 !important;
   transform: scale(1.1);
 }
+
 /* Help page form styles */
 .help-form-container {
   width: 90%;
@@ -1899,7 +1858,7 @@ body.night-mode emoji-picker {
 }
 
 .help-form-header h2 {
-  font-family: 'Poppins', sans-serif;
+  font-family: "Poppins", sans-serif;
   font-size: 1.8rem;
   margin-bottom: 1rem;
 }
