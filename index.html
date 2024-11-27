@@ -274,8 +274,9 @@
             <form id="uploadForm" action="/upload" method="POST" enctype="multipart/form-data"
               style="margin-left: 40px; display: flex; align-items: center; color: white;">
               <input type="file" name="image" accept=".jpg, .jpeg, .png" required />
-              <button class="shareBtn" onclick="mainContainer.scrollTo({ top: 0, behavior: 'smooth' });" type="submit" style="width: 140px; font-family: 'Poppins', sans-serif;"><i
-                  class="fa fa-upload" aria-hidden="true" style="margin-right: 10px;"></i> Share</button>
+              <button class="shareBtn" onclick="mainContainer.scrollTo({ top: 0, behavior: 'smooth' });" type="submit"
+                style="width: 140px; font-family: 'Poppins', sans-serif;"><i class="fa fa-upload" aria-hidden="true"
+                  style="margin-right: 10px;"></i> Share</button>
             </form>
           </div>
         </div>
@@ -341,18 +342,18 @@
               </h2>
               <p>Fill out the form below and we'll get back to you as soon as possible.</p>
             </div>
-            
+
             <form class="help-form" id="helpForm">
               <div class="form-group">
                 <label for="name">Name</label>
                 <input type="text" id="name" name="name" required placeholder="Your name">
               </div>
-              
+
               <div class="form-group">
                 <label for="email">Email</label>
                 <input type="email" id="email" name="email" required placeholder="your.email@example.com">
               </div>
-              
+
               <div class="form-group">
                 <label for="category">Category</label>
                 <select id="category" name="category" required>
@@ -363,12 +364,13 @@
                   <option value="other">Other</option>
                 </select>
               </div>
-              
+
               <div class="form-group">
                 <label for="message">Message</label>
-                <textarea id="message" name="message" required placeholder="Describe your issue or question..."></textarea>
+                <textarea id="message" name="message" required
+                  placeholder="Describe your issue or question..."></textarea>
               </div>
-              
+
               <button type="submit" class="submit-button">
                 <i class="fa fa-paper-plane" aria-hidden="true" style="margin-right: 8px;"></i>
                 Send Message
@@ -670,7 +672,7 @@
       // Hide the carousel and show the account creation form
       document.getElementById('carouselExampleCaptions').style.display = 'none';
       document.getElementById('accountForm').style.display = 'block';
-      document.getElementById('helpForm').style.display = 'none';
+      document.getElementById('helpPage').style.display = 'none';
     }
 
     document.getElementById('uploadForm').addEventListener('submit', async (event) => {
@@ -726,7 +728,7 @@
         if (textContainer.style.display === 'none') {
           // Show/Hide text/upload containers
           postContainer.style.display = "none";
-          
+
           textContainer.style.display = "flex";
           textContainer.style.backgroundColor = "rgba(var(--bs-dark-rgb))";
           textContainer.style.height = "18vh";
@@ -743,9 +745,9 @@
 
       cameraIcon1.addEventListener("click", function () {
         if (postContainer.style.display === 'none') {
-          
+
           textContainer.style.display = "none";
-          
+
           postContainer.style.backgroundColor = "rgba(var(--bs-dark-rgb))";
           postContainer.style.height = "18vh";
           postContainer.style.display = "flex";
@@ -838,7 +840,7 @@
           //console.log(`Post ID: ${post._id}, Likes: ${post.likes.length}`);
           //console.log('Post ID:', _id);
           //console.log('Comments:', comments);
- 
+
           const displayUsername = post.username || 'Anonymous'; // Display "anonymous" if username not found.
 
           // Create the upper container for upload name of uploader etc
@@ -850,6 +852,7 @@
           const container = document.createElement('div');
           container.classList.add('uploaded-image-container', 'with-lines'); // Apply the container styles
           container.style.padding = "20px"; // Padding to add space around the image
+          container.setAttribute('data-post-id', _id);
           postContainer.appendChild(upperContainer);
           const img = document.createElement('img');
           img.src = `http://localhost:5000/${post.imageUrl}`;
@@ -1079,7 +1082,7 @@
               commentBox.style.display = 'none';
             }
           });
-             
+
           button3.addEventListener('click', async () => {
             const commentText = inputField.value.trim();
             if (!commentText) {
@@ -1139,10 +1142,10 @@
         <span class="like-count" style="color: #aaaaaa;">0</span>
       </button>
       ${currentUsername === currentUsername ?
-        `<button class="unfriend-button" id="deleteCommentButton" style="background: none; border: none; color: #555555; cursor: pointer;">
+                    `<button class="unfriend-button" id="deleteCommentButton" style="background: none; border: none; color: #555555; cursor: pointer;">
           <i class="fa fa-trash"></i>
         </button>`
-      : ''}
+                    : ''}
     </div>
   </div>
 `;
@@ -1193,7 +1196,7 @@
         postContainer.innerHTML = '<p style="padding: 20px;">Error loading posts. Please try again later.</p>';
       }
 
-     // mainContainer.scrollTo({ top: 0, behavior: 'smooth' }); // CHECK THIS LATER!!
+      // mainContainer.scrollTo({ top: 0, behavior: 'smooth' }); // CHECK THIS LATER!!
     }
 
     // Run loadImages on window load
@@ -1656,8 +1659,8 @@
         fetchFriendRequests();
       }
     });
-     
-    
+
+
     async function loadFriendsList() {
       const token = localStorage.getItem('authToken');
       const friendsListModalContainer = document.getElementById('friendsListModalContainer');
@@ -2153,7 +2156,21 @@
           const container = document.createElement('div');
           container.classList.add('uploaded-image-container', 'with-lines');
           container.style.padding = "20px";
+          container.setAttribute('data-post-id', _id); // Add data attribute
+          container.style.cursor = 'pointer'; // Add cursor pointer
 
+          // Add click event to container -> brings you to the post on the main page
+          container.addEventListener('click', () => {
+            document.getElementById('profilePage').style.display = 'none';
+            document.getElementById('mainPage').style.display = 'block';
+
+            setTimeout(() => {
+              const mainPost = document.querySelector(`[data-post-id="${_id}"]`);
+              if (mainPost) {
+                mainPost.scrollIntoView({ behavior: 'smooth', block: 'center' });
+              }
+            }, 100);
+          });
           // Add image
           const img = document.createElement('img');
           img.src = `http://localhost:5000/${imageUrl}`;
@@ -2192,9 +2209,9 @@
       // ... existing profile page display logic ...
       loadUserPosts(); // Load user's posts when profile page is opened
     });
-    document.addEventListener('click', async function(e) {
-    // Check if clicked element is a delete comment button
-    if (e.target.closest('#deleteCommentButton')) {
+    document.addEventListener('click', async function (e) {
+      // Check if clicked element is a delete comment button
+      if (e.target.closest('#deleteCommentButton')) {
         if (!confirm('Are you sure you want to delete this comment?')) return;
 
         const commentElement = e.target.closest('.comment');
@@ -2206,52 +2223,52 @@
 
         const token = localStorage.getItem('authToken');
         if (!token) {
-            alert('You must be logged in to delete comments');
-            return;
+          alert('You must be logged in to delete comments');
+          return;
         }
 
         try {
-            // Log the request details
-            console.log('Making request to:', 'http://localhost:5000/upload/delete-comment');
-            console.log('Request data:', { postId, commentText });
-            console.log('Token:', token);
+          // Log the request details
+          console.log('Making request to:', 'http://localhost:5000/upload/delete-comment');
+          console.log('Request data:', { postId, commentText });
+          console.log('Token:', token);
 
-            const response = await fetch('http://localhost:5000/upload/delete-comment', {
-                method: 'DELETE',
-                headers: {
-                    'Content-Type': 'application/json',
-                    'Authorization': `Bearer ${token}`,
-                    'Accept': 'application/json'
-                },
-                body: JSON.stringify({ 
-                    postId,
-                    commentText 
-                })
-            });
+          const response = await fetch('http://localhost:5000/upload/delete-comment', {
+            method: 'DELETE',
+            headers: {
+              'Content-Type': 'application/json',
+              'Authorization': `Bearer ${token}`,
+              'Accept': 'application/json'
+            },
+            body: JSON.stringify({
+              postId,
+              commentText
+            })
+          });
 
-            console.log('Response:', response); // Debug log
+          console.log('Response:', response); // Debug log
 
-            if (response.ok) {
-                // Remove the comment from DOM
-                commentElement.remove();
-                
-                // Update comment count in button2
-                const currentCount = parseInt(button2.textContent.match(/\d+/)[0]);
-                button2.lastChild.textContent = ` Comments (${currentCount - 1})`;
-                await loadImages();
-                const scrollPosition = mainContainer.scrollTop;
-            } else {
-                const errorData = await response.json();
-                console.error('Server error:', errorData);
-                alert('Error deleting comment: ' + (errorData.message || 'Unknown error'));
-            }
+          if (response.ok) {
+            // Remove the comment from DOM
+            commentElement.remove();
+
+            // Update comment count in button2
+            const currentCount = parseInt(button2.textContent.match(/\d+/)[0]);
+            button2.lastChild.textContent = ` Comments (${currentCount - 1})`;
+            await loadImages();
+            const scrollPosition = mainContainer.scrollTop;
+          } else {
+            const errorData = await response.json();
+            console.error('Server error:', errorData);
+            alert('Error deleting comment: ' + (errorData.message || 'Unknown error'));
+          }
         } catch (error) {
-            console.error('Full error details:', error);
-            alert('Failed to connect to the server. Please check your connection and try again.');
+          console.error('Full error details:', error);
+          alert('Failed to connect to the server. Please check your connection and try again.');
         }
-    }
-});
-    
+      }
+    });
+
   </script>
 
   <!-- Chat Modal -->
